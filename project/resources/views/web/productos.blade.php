@@ -1,6 +1,6 @@
 @extends('layouts.index')
 
-@section('titulo', 'JVH - Inicio')
+@section('titulo', 'JVH - Productos')
 
 @section('estilos')
 	<style>

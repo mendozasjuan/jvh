@@ -58,6 +58,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('contacto', function () {
         return view('web.contacto');
     });
+
+    Route::get('productosdetalle',function(){
+        return view('web.productosdetalle');
+    });
+    
     Route::prefix('admin')->group(function() {
       Auth::routes();
       Route::get('/home', 'HomeController@index')->name('home');
