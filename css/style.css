@@ -237,6 +237,22 @@ p{
 	background-size: cover;
 }
 
+#qs-seccion1 p{
+	color:#fff;
+	padding-left: 37px;
+	padding-right: 38px;
+	font-size: 16px;
+}
+
+#qs-seccion2 p{
+	color:#6E6F71;
+	padding-left:38px;
+	padding-top: 45px;
+	padding-right:38px;
+	padding-bottom: 37px;
+	font-size: 14px;
+}
+
 #qs-seccion4{
 	width: 100%;
 	height: 286px;
@@ -244,6 +260,12 @@ p{
 	opacity: 1;
 	position: relative;
 	background-size: cover;
+}
+
+#qs-seccion4 p{
+	color:#fff;
+	padding-left: 37px;
+	padding-right: 38px;
 }
 
 footer{
