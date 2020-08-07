@@ -60,6 +60,13 @@ p{
 /*///////////////////////
 // Start Hero Img
 ///////////////////////*/
+.hero-imgProduccion{
+	height: 600px;
+	width: 100%;
+	background: url('../img/188687997.jpg.gallery.png') no-repeat center center;
+	background-size: cover;
+	position: relative;
+}
 
 .hero-img1{
 	height: 600px;
