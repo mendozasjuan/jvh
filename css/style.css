@@ -67,7 +67,6 @@ p{
 	background: url('../img/09.png') no-repeat center center;
 	background-size: cover;
 	position: relative;
-	margin-bottom: 29px;
 }
 
 .hero-img{
@@ -226,6 +225,25 @@ p{
 	margin-top: 75px;
 	color:#fff;
 	font-size: 40px;
+}
+
+
+#qs-seccion1{
+	width: 100%;
+	height: 204px;
+	background: transparent url('../img/10.png') 0% 0% no-repeat padding-box;
+	opacity: 1;
+	position: relative;
+	background-size: cover;
+}
+
+#qs-seccion4{
+	width: 100%;
+	height: 286px;
+	background: transparent url('../img/10.png') 0% 0% no-repeat padding-box;
+	opacity: 1;
+	position: relative;
+	background-size: cover;
 }
 
 footer{
