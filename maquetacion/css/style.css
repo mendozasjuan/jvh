@@ -61,7 +61,7 @@ p{
 // Start Hero Img
 ///////////////////////*/
 .hero-imgProduccion{
-	height: 100%;
+	height: 600px;
 	width: 100%;
 	background: url('../img/188687997.jpg.gallery.png') no-repeat center center;
 	background-size: cover;
@@ -69,7 +69,7 @@ p{
 }
 
 .hero-img1{
-	height: 100%;
+	height: 600px;
 	width: 100%;
 	background: url('../img/09.png') no-repeat center center;
 	background-size: cover;
@@ -291,7 +291,6 @@ p{
 
 footer{
 	font-family: 'Raleway' !important;
-	height: 100%;
 	padding-left: 65px;
 	padding-bottom: 65px;
 	padding-top: 67px;
