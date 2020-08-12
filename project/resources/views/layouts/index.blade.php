@@ -10,7 +10,7 @@
     <title>@yield('titulo')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
 
 	<!-- Bootstrap -->
@@ -92,6 +92,7 @@
 	<!-- Bootstrap -->
 	<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 	<!-- Scripts -->
+	<script src="{{ asset('js/app.js') }}" defer></script>
 	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
