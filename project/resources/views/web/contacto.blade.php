@@ -16,7 +16,9 @@
 @endsection
 
 @section('header')
-	@include('layouts.header',['text' => true])
+	@include('layouts.header',[
+			'text' => false
+	])
 @endsection
 
 @section('secciones')

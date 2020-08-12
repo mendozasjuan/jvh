@@ -16,7 +16,10 @@
 @endsection
 
 @section('header')
-	@include('layouts.header',['text' => true])
+	@include('layouts.header',[
+			'text' => false,
+			'activeLink' => 'impactosocial'
+	])
 @endsection
 
 @section('secciones')

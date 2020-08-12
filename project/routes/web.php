@@ -14,13 +14,39 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('web.index');
 });
+
 Route::get('quienessomos', function () {
-    return view('quienessomos');
+    return view('web.quienessomos');
 });
+
 Route::get('produccion', function () {
-    return view('produccion');
+    return view('web.produccion');
+});
+
+Route::get('exportacion', function () {
+    return view('web.exportacion');
+});
+
+Route::get('productos', function () {
+    return view('web.productos');
+});
+
+Route::get('calidad', function () {
+    return view('web.calidad');
+});
+
+Route::get('impactosocial', function () {
+    return view('web.impactosocial');
+});
+
+Route::get('recursoshumanos', function () {
+    return view('web.recursoshumanos');
+});
+
+Route::get('contacto', function () {
+    return view('web.contacto');
 });
 
 Route::prefix('admin')->group(function() {

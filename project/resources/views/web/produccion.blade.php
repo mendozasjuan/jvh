@@ -15,64 +15,10 @@
 @endsection
 
 @section('header')
-		<div class="degradado">
-				<section id="nav">
-					<div class="row justify-content-center">
-						<!--<div class="row">-->
-							<div class="col-12 col-sm-2">
-								<a href="{{ url('/') }}"><img src="img/Capa_1.svg"></a>
-							</div>
-							<div class="col col-sm-10">
-								<div class="row contacto justify-content-center justify-content-sm-end mr-3">
-									<a href="#">Contacto</a>
-									<a href="#">Es</a>
-									<a href="#">独</a>
-								</div>
-								<div class="row">
-									<div class="col ">
-										<nav class="nav navbar navbar-expand-lg justify-content-center">
-
-											<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-											<span class="navbar-toggler-icon">
-												<i class="fa fa-navicon"></i>
-											</span>
-											</button>
-
-											<div class="collapse navbar-collapse justify-content-lg-end" id="navbarSupportedContent">
-												<ul class="navbar-nav ">
-													<li class="nav-item">
-														<a class="nav-link" href="{{ url('quienessomos') }}">Quienes Somos</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link" href="{{ url('produccion') }}">Producción</a>
-														<div class="linea"></div>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link" href="#">Exportación</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link" href="#">Productos</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link" href="#">Calidad</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link" href="#">Impacto Social</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link" href="#">Recursos Humanos</a>
-													</li>
-												</ul>
-											</div>
-										</nav>
-									</div>
-								</div>
-						</div>
-					</div>
-
-				</section>
-
-			</div>
+	@include('layouts.header',[
+		'text' => false,
+		'activeLink' => 'produccion'
+	])
 @endsection
 
 @section('secciones')
