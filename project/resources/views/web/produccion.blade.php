@@ -23,33 +23,37 @@
 
 @section('secciones')
 		<!--<section>-->
-	<div id="qs-seccion1" >
+	<div id="p-seccion1" >
 				<div class="negro">
 
 				</div>
-				<div style="height: 100%" class="row align-items-center">
-					<div class="col-5">
-						<h2>Nuestra Carne</h2>
+				<div style="height: 100%; padding-top: 76px; padding-bottom: 70px;" class="row align-items-center" >
+					<div class="col-8 col-sm-7 col-md-8 col-lg-5" style="margin-left: 60px; border-left: 3px solid #fff;">
+						<h2>Faena / Despostada</h2>
 						<p>
-							La calidad de la carne, en términos alimenticios, depende de la conjunción de diversos factores. Entre estos se destacan el tipo de crianza del ganado y la eficacia de su comercialización. La pampa húmeda argentina es uno de los lugares en el mundo en el que la cría de los animales no se realizan en establos, sino en extensas llanuras, alejadas de la polución industrial, donde la abundancia de pasturas esta asegurada. El ganado argentino respeta, además, las pautas de crecimiento natural, ya que no se los inyecta con hormonas y antibióticos. Por estas razones, su estado resulta optimo para el consumo.
+							Nuestra linea de despostada es moderna y eficaz. Utilizamos sistemas de trazabilidad individual de corte desde su nacimiento hasta su consumo. Nuestro personal de produccion está altamente capacitado para garantizar la inocuidad y sanidad de nuestros productos.
 						</p>
 					</div>
-					<div class="col-5 ">
-						<div class="row align-items-center" style="width: 100%;height: 100%">
-							<img style="width: 100px; height: 119px; margin-right: 33px;" src="img/logo-3.png">
-							<img style="width: 87px; height: 87px; margin-right: 43px;" src="img/27201_sello islamic center halal argentina_big.png">
-							<img style="width: 94px; height: 94px;" src="img/qué-es-kosher@2x.png">
-						</div>
+					<div class="col">
+						<img width="120" height="120" style="margin-right: 33px;" src="img/Object-5209.svg">
+						<img width="120" height="120" src="img/Object-1237.svg">
 					</div>
 				</div>
 			</div>
-			<div id="qs-seccion2">
+			<div id="p-seccion2">
 				<div class="row">
-					<div class="col-6">
-						<p>El procesamiento de la carne es otro factor determinante de la calidad final. En este sentido, FRIGORIFICO HV S A es una empresa familiar, con la experiencia de 3 generaciones en la industria de la carne.</p>
-					</div>
-					<div class="col-6">
-						<p>El procesamiento de la carne es otro factor determinante de la calidad final. En este sentido, FRIGORIFICO HV S A es una empresa familiar, con la experiencia de 3 generaciones en la industria de la carne.</p>
+					<div style="height: 100%; padding-top: 47px; padding-bottom: 47px;" class="row align-items-center" >
+						<div class="col-8 col-sm-5 col-md-8 col-lg-5" style="margin-left: 80px; border-left: 3px solid #2B1C17;padding-left: 40px;">
+							<h2>Nuestro compromiso</h2>
+							<p style="color:#6E6F71">
+								Frigorifico hv produce cortes de carne, menudencias y subproductos de origen bovino para mercados internacionales y locales. Nuestras planta están ubicada en el centro de la provincia de buenos aires y en el corazón de la región ganadera argentina.Tenemos una moderna planta de procesamiento que cuenta con tecnología de punta y sistemas innovadores que permiten automatizar los procesos de producción y logística. Utilizamos equipos, métodos y tecnología de ultima generacion para poder cumplir con las especificaciones y necesidades de cada cliente. Tomamos todas las medidas necesarias para garantizar la seguridad alimentaria.
+							</p>
+						</div>
+						<div class="col-8 col-sm-5" style="margin-left: 80px; padding-left: 40px;">
+							<p style="color:#6E6F71">
+								Utilizamos equipos, métodos y tecnología de ultima generacion para poder cumplir con las especificaciones y necesidades de cada cliente. Tomamos todas las medidas necesarias para garantizar la seguridad alimentaria
+							</p>
+						</div>
 					</div>
 				</div>
 

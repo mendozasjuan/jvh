@@ -38,6 +38,9 @@ p{
 	padding-right: 0px;
 }
 
+.row{
+	margin-right: auto;
+}
 /*///////////////////////
 // End Default
 ///////////////////////*/
@@ -310,4 +313,24 @@ footer img{
 	margin-left: 10px;
 	border-radius: 50%;
 	opacity: 1;
+}
+
+#p-seccion1{
+	width: 100%;
+	background: transparent url('../img/10.png') 0% 0% no-repeat padding-box;
+	opacity: 1;
+	position: relative;
+	background-size: cover;
+}
+
+#p-seccion1 p{
+	color:#fff;
+	margin-left: 20px;
+	padding-right: 38px;
+	font-size: 16px;
+}
+
+#p-seccion1 h2{
+	color:#fff;
+	margin-left: 20px;
 }
