@@ -7,10 +7,25 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset('img/bg-black_angus-001-JAndrewPatronik.png') }}") no-repeat center center;
+			background: url("{{ asset('img/Black-Sheep-Restaurants-argentinian-steak-hong-kong.png') }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
 			margin-bottom: 29px;
+		}
+		#i-seccion5 {
+			height: 100%;
+			background: transparent url("{{ asset('img/MOcowclf_12781.png') }}") no-repeat center center;
+			background-size: cover;
+			opacity:1;
+			position: relative;
+		}
+
+		#i-seccion5 h2{
+			margin-left: 38px;
+			margin-top: 75px;
+			margin-bottom: 204px;
+			color:#fff;
+			font-size: 40px;
 		}
     </style>
 @endsection
@@ -24,56 +39,32 @@
 
 @section('secciones')
 		<!--<section>-->
-	<div id="h-seccion2" class="row">
-		<div class="col-12 col-md-5 col-lg-7 col-xl-6 ">
-			<h2>Nuestra Carne</h2>
-			<p>
-				La calidad de la carne, en términos alimenticios, depende de la conjunción de diversos factores. Entre estos se destacan el tipo de crianza del ganado y la eficacia de su comercialización. La pampa húmeda argentina es uno de los lugares en el mundo en el que la cría de los animales no se realizan en establos, sino en extensas llanuras, alejadas de la polución industrial, donde la abundancia de pasturas esta asegurada. El ganado argentino respeta, además, las pautas de crecimiento natural, ya que no se los inyecta con hormonas y antibióticos. Por estas razones, su estado resulta optimo para el consumo.
-			</p>
-		</div>
-		<div class="col">
-			<div class="row align-items-center" style="width: 100%;height: 100%">
-				<img style="width: 100px; height: 119px; margin-right: 33px;" src="img/logo-3.png">
-				<img style="width: 87px; height: 87px; margin-right: 43px;" src="img/27201_sello islamic center halal argentina_big.png">
-				<img style="width: 94px; height: 94px;" src="img/qué-es-kosher@2x.png">
-			</div>
-		</div>
-
-	</div>
-
-	<div  id="h-seccion3" >
-		<div class="negro">
-
-		</div>
-		<div style="height: 100%" class="row justify-content-end align-items-center">
-				<div class="col-11 col-sm-8 col-md-7 col-lg-5 col-xl-3">
-					<h2 class="text-right">"Última generación en la producción de carnes"</h2>
-					<p>Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío</p>
+	<div id="p-seccion2">
+				<div class="row">
+					<div style="height: 100%; padding-top: 47px; padding-bottom: 47px;" class="row align-items-center" >
+						<div class="col-8 col-sm-5 col-md-8 col-lg-5" style="margin-left: 80px; border-left: 3px solid #2B1C17;padding-left: 40px;">
+							<h2>Nuestro compromiso</h2>
+							<p style="color:#6E6F71">
+								Somos conscientes que el factor humano es la fuerza que mueve frigorifico hv sa, y nos empeñamos en cuidarlo. Aparte de preocuparnos por la capacitacion y el bienestar de nuestros empleados, nos sentimos orgullosos de contribuir al desarrollo social de la comunidad donde trabajamos. Con nuestra empresa creamos empleo y desarrollo, generando ingresos que ayudan a mejorar la calidad de vida de la comunidad de nuestra ciudad.
+							</p>
+						</div>
+						<div class="col-8 col-sm-5" style="margin-left: 80px; padding-left: 40px;">
+							<p style="color:#6E6F71">
+								Nuestra gente es el mayor capital y el bien más preciado. Nos sentimos muy orgullosos de contar con un equipo homogéneo, talentoso e innovador. Contamos con hombres y mujeres que trabajan arduamente e integran un proyecto en común.
+							</p>
+						</div>
+					</div>
 				</div>
-			</div>
-	</div>
-	<div id="h-seccion4" class="row">
-		<div class="col-7 col-lg-4 col-xl-2">
-			<div class="lineavertical">
-				<h2>Mercados en el Mundo</h2>
-				<p style="color:#6E6F71">
-					Cuenta con todos los permisos y certificaciones necesarios para exportar a la unión europea, israel, suiza, rusia, hong kong, brasil y sudáfrica entre otros.
-				</p>
-			</div>
-		</div>
-		<div class="col">
-			<img class="float-right" src="img/map.svg">
-		</div>
 
-	</div>
+			</div>
 
-	<div  id="h-seccion5">
+	<div  id="i-seccion5">
 		<div class="negro">
 
 		</div>
 		<div class="row" style="margin-right: auto;">
 			<div class="col-12 col-xl-3">
-				<h2>"Nuestra carne es altamente demandada debido a su marmoleo natural, jugosidad, terneza y sabor"</h2>
+				<h2>"Nos sentimos muy agradecidos de tener la oportunidad de contribuir al desarrollo social y económico en las comunidades donde trabajamos"</h2>
 			</div>
 		</div>
 	</div>
