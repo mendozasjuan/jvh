@@ -1,0 +1,313 @@
+/*///////////////////////
+// Start Default
+///////////////////////*/
+
+html,
+body {
+	height: 100%;
+	font-family: 'Raleway', sans-serif !important;
+	color: #060505;
+	background: #fff;
+	position: relative;
+	margin: 0;
+	 margin-right: auto;
+}
+
+/* H1, H2, H3*/
+h1,h2,h3 {
+	margin: 0 0 25px 0;
+	font-family: 'Lato', sans-serif;
+}
+
+h2{
+	text-align: left;
+	font: Bold Italic 35px/43px Lato;
+	letter-spacing: 0.63px;
+	color: #060505;
+	opacity: 1;
+}
+
+p{
+	margin: 0;
+	font-size: 14px;
+	color: #060505;
+}
+
+.container-fluid{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+/*///////////////////////
+// End Default
+///////////////////////*/
+
+/*///////////////////////
+// Start Navbar
+///////////////////////*/
+.navbar ul li a{
+	color:#FFF;
+	text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0px;
+    margin-left: 17px;
+}
+
+/*///////////////////////
+// End Navbar
+///////////////////////*/
+
+/*///////////////////////
+// Start Hero Img
+///////////////////////*/
+/*.hero-imgProduccion{
+	height: 600px;
+	width: 100%;
+	background: url('../img/188687997.jpg.gallery.png') no-repeat center center;
+	background-size: cover;
+	position: relative;
+}
+
+.hero-img1{
+	height: 600px;
+	width: 100%;
+	background: url('../img/09.png') no-repeat center center;
+	background-size: cover;
+	position: relative;
+}
+
+/*.hero-img{
+	height: 600px;
+	width: 100%;
+	background: url('../img/bg-black_angus-001-JAndrewPatronik.png') no-repeat center center;
+	background-size: cover;
+	position: relative;
+	margin-bottom: 29px;
+}*/
+
+.degradado{
+	height: 201px;
+	background: transparent linear-gradient(180deg, #060505 0%, #06050500 100%) 0% 0% no-repeat padding-box;
+	margin-bottom: 14px;
+}
+/*///////////////////////
+// End Hero Img
+///////////////////////*/
+
+#nav {
+	padding-left: 21px;
+    padding-top: 27px;
+    padding-right: 30px;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-right: auto;
+
+}
+
+.contacto a{
+	color:#fff;
+	border: 1px solid #E51D2A;
+	padding: 8px 7px 7px 7px;
+	margin-left: 10px;
+	border-radius: 50%;
+	opacity: 1;
+}
+
+.contacto a:first-child{
+	padding: 6px 18px 6px 18px;
+	border-radius: 50px;
+	opacity: 1;
+}
+
+.nav .linea{
+	border-top: 1px solid #E51D2A;
+	width: 40px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.fa.fa-navicon {
+  color:#E51D2A;
+}
+
+#h-seccion1{
+	margin-right: auto;
+	margin-top: 110px;
+}
+
+#h-seccion1 h2{
+	color:#fff;
+	/*width: 469px;*/
+	padding-left: 9.82px;
+}
+
+#h-seccion1 img:first-child{
+	margin-left: 38px;
+}
+
+#h-seccion1 img{
+	margin-right: 19px;
+}
+
+
+#h-seccion1 div{
+	margin-left: 6px;
+	border-left: 2px solid #fff;
+}
+
+#h-seccion2{
+	margin-left: 33px;
+	padding-left: 22px;
+	border-left: 2px solid #060505;
+	margin-bottom: 25px;
+	margin-right: auto;
+}
+
+#h-seccion2 div:first-child{
+	/*margin-right: 187px;*/
+}
+
+
+#h-seccion2 h2{
+	margin-bottom: 11px;
+}
+
+
+#h-seccion3{
+	height: 100%;
+	background: transparent url('../img/WhatsApp Image 2020-06-18 at 12.17.52 PM (1).png') no-repeat center center;
+	opacity:1;
+	color:#fff;
+	padding-right: 38px;
+	background-size: cover;
+	margin-right: auto;
+	position: relative;
+	width: 100%;
+	/*background: url('../img/bg-black_angus-001-JAndrewPatronik.png') no-repeat center center;
+	background-size: cover;
+	position: relative;
+	margin-bottom: 29px;*/
+}
+
+#h-seccion3 h2{
+	margin-top: 135px;
+}
+#h-seccion3 p{
+	margin-bottom: 150px;
+}
+
+
+#h-seccion3 h2,#h-seccion3 p{
+	color:#fff;
+}
+
+
+.negro{
+	background-color: #000;
+	opacity: 0.5;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+#h-seccion4 {
+	margin-left: 33px;
+	margin-right: auto;
+}
+
+#h-seccion4 :nth-child(1) {
+	padding-left: 0px;
+}
+
+.lineavertical{
+	padding-left: 15.92px !important;
+	border-left: 2px solid #E51D2A;
+}
+
+#h-seccion4 h2{
+	margin-top: 88px;
+	color: #E51D2A;
+	font-size: 40px;
+	width: 242px;
+}
+
+#h-seccion5 {
+	height: 100%;
+	background: transparent url('../img/wagyu-de-kobe-y-black-angus-las-mejores-carnes-del-mundo.png') no-repeat center center;
+	background-size: cover;
+	opacity:1;
+	position: relative;
+}
+
+#h-seccion5 h2{
+	margin-left: 38px;
+	margin-top: 75px;
+	margin-bottom: 204px;
+	color:#fff;
+	font-size: 40px;
+}
+
+
+#qs-seccion1{
+	width: 100%;
+	height: 204px;
+	background: transparent url('../img/10.png') 0% 0% no-repeat padding-box;
+	opacity: 1;
+	position: relative;
+	background-size: cover;
+}
+
+#qs-seccion1 p{
+	color:#fff;
+	padding-left: 37px;
+	padding-right: 38px;
+	font-size: 16px;
+}
+
+#qs-seccion2 p{
+	color:#6E6F71;
+	padding-left:38px;
+	padding-top: 45px;
+	padding-right:38px;
+	padding-bottom: 37px;
+	font-size: 14px;
+}
+
+#qs-seccion4{
+	width: 100%;
+	height: 286px;
+	background: transparent url('../img/10.png') 0% 0% no-repeat padding-box;
+	opacity: 1;
+	position: relative;
+	background-size: cover;
+}
+
+#qs-seccion4 p{
+	color:#fff;
+	padding-left: 37px;
+	padding-right: 38px;
+}
+
+footer{
+	font-family: 'Raleway' !important;
+	padding-left: 65px;
+	padding-bottom: 65px;
+	padding-top: 67px;
+	background: #060505 0% 0% no-repeat padding-box;
+	color: #E51D2A;
+	margin-right: auto;
+}
+
+footer img{
+	margin-bottom: 58px;
+}
+
+.redes-sociales i{
+	color:#fff;
+	border: 1px solid #fff;
+	padding: 8px 7px 7px 7px;
+	margin-left: 10px;
+	border-radius: 50%;
+	opacity: 1;
+}
