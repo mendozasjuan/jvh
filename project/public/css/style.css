@@ -382,6 +382,26 @@ footer img{
 		align-items: center;
 		cursor: pointer;
 	}
+	.topnavbar-mobile__collapse {
+		position: absolute;
+		top: 100%;
+		width: 100%;
+	}
+	.topnavbar-mobile__card {
+		background-color: rgba(0, 0, 0, 0.6);
+		border-radius: 0;
+	}
+	.topnavbar-mobile__card a {
+		width: 100%;
+		display: inline-block;
+		margin: 0;
+		padding: 14px;
+		text-align: center;
+		font-size: 1.3em;
+		color: #FFF;
+		border-bottom: 1px solid rgba(255, 255, 255, .3);
+		text-shadow: 1px 1px 1px #000;
+	}
 	footer{
 		padding: 67px 30px;
 	}

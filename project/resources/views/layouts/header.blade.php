@@ -87,13 +87,32 @@
 	@endif
 </div>
 <div class="topnavbar-mobile">
-	<div class="topnavbar-mobile__button">
+	<div class="topnavbar-mobile__button" data-toggle="collapse" href="#collapseLang" role="button" aria-expanded="false" aria-controls="collapseLang">
 		{{ strtoupper('es') }} <i class="fas fa-caret-down"></i>
 	</div>
 	<a class="topnavbar-mobile__logo" href="{{ url('/') }}">
 		<img src="img/Capa_1.svg">
 	</a>
-	<div class="topnavbar-mobile__button">
+	<div class="topnavbar-mobile__button" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu">
 		<i class="fas fa-bars" style="font-size: 2em;"></i>
+	</div>
+	<div class="topnavbar-mobile__collapse" id="accordionMobileNavbar">
+		<div class="collapse" id="collapseLang" data-parent="#accordionMobileNavbar">
+			<div class="topnavbar-mobile__card">
+				<a href="">ES</a>
+				<a href="">独</a>
+			</div>
+		</div>
+		<div class="collapse" id="collapseMenu" data-parent="#accordionMobileNavbar">
+			<div class="topnavbar-mobile__card">
+				<a href="">Quienes Somos</a>
+				<a href="">Producción</a>
+				<a href="">Exportación</a>
+				<a href="">Productos</a>
+				<a href="">Calidad</a>
+				<a href="">Impacto Social</a>
+				<a href="">Recursos Humanos</a>
+			</div>
+		</div>
 	</div>
 </div>
