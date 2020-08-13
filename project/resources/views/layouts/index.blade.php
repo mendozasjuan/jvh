@@ -27,7 +27,7 @@
 
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container-fluid overflow-hidden">
 		<header class="hero-img">
 			@yield('header')
 		</header>
