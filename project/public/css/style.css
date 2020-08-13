@@ -294,9 +294,7 @@ p{
 
 footer{
 	font-family: 'Raleway' !important;
-	padding-left: 65px;
-	padding-bottom: 65px;
-	padding-top: 67px;
+	padding: 67px 65px;
 	background: #060505 0% 0% no-repeat padding-box;
 	color: #E51D2A;
 	margin-right: auto;
@@ -335,6 +333,9 @@ footer img{
 	color:#fff;
 	margin-left: 20px;
 }
+.topnavbar-mobile {
+	display: none;
+}
 @media (max-width: 575.98px) {
 	.topnavbar-desktop__row {
 		display: none;
@@ -355,5 +356,19 @@ footer img{
 		display: flex;
 		justify-content: center;
 		align-items: stretch;
+		flex: 1;
+		border-right: 1px solid rgba(255, 255, 255, .1);
+		border-left: 1px solid rgba(255, 255, 255, .1);
+	}
+	.topnavbar-mobile__button {
+		color: #FFF;
+		width: 70px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+	}
+	footer{
+		padding: 67px 30px;
 	}
 }

@@ -87,8 +87,13 @@
 	@endif
 </div>
 <div class="topnavbar-mobile">
+	<div class="topnavbar-mobile__button">
+		{{ strtoupper('es') }} <i class="fas fa-caret-down"></i>
+	</div>
 	<a class="topnavbar-mobile__logo" href="{{ url('/') }}">
 		<img src="img/Capa_1.svg">
 	</a>
-
+	<div class="topnavbar-mobile__button">
+		<i class="fas fa-bars" style="font-size: 2em;"></i>
+	</div>
 </div>
