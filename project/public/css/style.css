@@ -114,6 +114,11 @@ p{
 	margin-left: 10px;
 	border-radius: 50%;
 	opacity: 1;
+	height: 39px;
+	min-width: 39px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .contacto a:first-child{
@@ -303,7 +308,11 @@ footer{
 footer img{
 	margin-bottom: 58px;
 }
-
+.redes-sociales {
+	font-weight: 500;
+	font-size: 16px;
+	color: #fff;
+}
 .redes-sociales i{
 	color:#fff;
 	border: 1px solid #fff;
@@ -311,6 +320,11 @@ footer img{
 	margin-left: 10px;
 	border-radius: 50%;
 	opacity: 1;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #p-seccion1{
@@ -370,5 +384,13 @@ footer img{
 	}
 	footer{
 		padding: 67px 30px;
+	}
+	footer img{
+		margin-bottom: 58px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.redes-sociales {
+		justify-content: center;
 	}
 }

@@ -41,7 +41,7 @@
 						<div class="row">
 							<img src="img/Capa_1.svg" alt="">
 						</div>
-						<div class="row redes-sociales" style="font-weight: 500; font-size: 16px; color: #fff;">
+						<div class="row redes-sociales">
 							<a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
 							<a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
 							<a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
