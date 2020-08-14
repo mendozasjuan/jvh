@@ -15,6 +15,6 @@ class CategoriaCorte extends Model
 
     public function cortes()
     {
-        return $this->hasMany('App\Corte','categoria_corte_id');
+        return $this->hasMany(Corte::class,'categoria_corte_id');
     }
 }

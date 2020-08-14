@@ -83,14 +83,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <router-link to="/categorias-corte" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cogs"></i>
               <p>
-                Categorias de Corte
+                Productos
+                <i class="right fa fa-angle-left"></i>
               </p>
-            </router-link>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <router-link to="/categorias-corte" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Categorias de Corte
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/cortes" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Cortes
+                  </p>
+                </router-link>
+              </li>
+            </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cogs"></i>
+              <p>
+                Paginas del Sitio
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <router-link to="/inicio" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Inicio
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/cortes" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Quienes Somos
+                  </p>
+                </router-link>
+              </li>
+            </ul>
+          </li>
+          
           <li class="nav-item">
             <router-link to="/profile" class="nav-link">
               <i class="nav-icon fas fa-user"></i>

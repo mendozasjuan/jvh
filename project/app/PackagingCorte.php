@@ -7,14 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class PackagingCorte extends Model
 {
     protected $table = 'packaging_corte';
+    public $timestamps = false;
 
     protected $fillable = [
-        'packaging',
+        'packaging','corte_id'
     ];
 
 
     public function corte()
     {
-        return $this->belongsTo('App\Corte');
+        return $this->belongsTo(Corte::class,'corte_id');
+    }
+
+    public function getPackagingAttribute(){
+    	return \Storage::url($this->packaging);
     }
 }

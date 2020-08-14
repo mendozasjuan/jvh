@@ -8,13 +8,18 @@ class EtiquetadoCorte extends Model
 {
     //etiquetado_corte
     protected $table = 'etiquetado_corte';
+    public $timestamps = false;
 
     protected $fillable = [
-        'etiquetado',
+        'etiquetado','corte_id'
     ];
 
     public function corte()
     {
-        return $this->belongsTo('App\Corte');
+        return $this->belongsTo(Corte::class,'corte_id');
+    }
+
+    public function getEtiquetadoAttribute(){
+    	return \Storage::url($this->etiquetado);
     }
 }

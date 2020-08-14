@@ -22,3 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources(['user' => 'API\UserController']);
 Route::apiResources(['categorias-corte' => 'API\CategoriaCorteController']);
 Route::apiResources(['corte' => 'API\CorteController']);
+Route::apiResources(['inicio' => 'API\InicioController']);

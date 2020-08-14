@@ -7,28 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 class Corte extends Model
 {
     protected $table = 'corte';
+    public $timestamps = false;
 
     protected $fillable = [
-        'nombre','descripcion','tamano_caja','medidas','envasado','piezas_por_caja','condiciones_termicas','especificaciones'
+        'nombre','descripcion','tamano_caja','medidas','envasado','piezas_por_caja','condiciones_termicas','especificaciones','categoria_corte_id'
     ];
 
     public function categoria()
     {
-        return $this->belongsTo('App\CategoriaCorte');
+        return $this->belongsTo(CategoriaCorte::class,'categoria_corte_id');
     }
 
     public function etiquetados()
     {
-        return $this->hasMany('App\EtiquetadoCorte','corte_id');
+        return $this->hasMany(EtiquetadoCorte::class,'corte_id');
     }
 
     public function imagenes()
     {
-        return $this->hasMany('App\ImagenCorte','corte_id');
+        return $this->hasMany(ImagenCorte::class,'corte_id');
     }
 
     public function packagings()
     {
-        return $this->hasMany('App\PackagingCorte','corte_id');
+        return $this->hasMany(PackagingCorte::class,'corte_id');
     }
 }

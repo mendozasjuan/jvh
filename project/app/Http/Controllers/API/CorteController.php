@@ -5,6 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Corte;
+use App\ImagenCorte;
+use App\EtiquetadoCorte;
+use App\PackagingCorte;
 
 class CorteController extends Controller
 {
@@ -15,7 +18,7 @@ class CorteController extends Controller
      */
     public function index()
     {
-        return Corte::paginate(10);
+        return Corte::with('categoria')->paginate(10);
     }
 
     /**
@@ -35,10 +38,13 @@ class CorteController extends Controller
             'piezas_por_caja' => 'required',
             'condiciones_termicas' => 'required',
             'especificaciones' => 'required',
+            'categoria_corte_id' => 'required'
 
         ]);
 
-        return Corte::create([
+        
+
+        $corte = Corte::create([
            'nombre' => $request['nombre'],
            'descripcion' => $request['descripcion'],
            'tamano_caja' => $request['tamano_caja'],
@@ -47,7 +53,61 @@ class CorteController extends Controller
            'piezas_por_caja' => $request['piezas_por_caja'],
            'condiciones_termicas' => $request['condiciones_termicas'],
            'especificaciones' => $request['especificaciones'],
+           'categoria_corte_id' => $request['categoria_corte_id'],
         ]);
+
+        if ($request->file('imagen_corte')==null)
+          {
+            $imagen_corte = null;
+          }
+          else
+          {
+            $image['imagen_corte'] = $request->file('imagen_corte');
+            // almacena y captura el nombre del archivo
+            $imagen_corte =  $image['imagen_corte']->store('producto','public');
+            if($imagen_corte){
+                ImagenCorte::create([
+                    'imagen' => $imagen_corte,
+                    'corte_id' => $corte->id
+                ]);
+            }
+          }
+
+          if ($request->file('imagen_etiquetado')==null)
+          {
+            $imagen_etiquetado = null;
+          }
+          else
+          {
+            $image['imagen_etiquetado'] = $request->file('imagen_etiquetado');
+            // almacena y captura el nombre del archivo
+            $imagen_etiquetado =  $image['imagen_etiquetado']->store('etiquetado','public');
+            if($imagen_etiquetado){
+                EtiquetadoCorte::create([
+                    'etiquetado' => $imagen_etiquetado,
+                    'corte_id' => $corte->id
+                ]);
+            }
+          }
+
+          if ($request->file('imagen_packaging')==null)
+          {
+            $imagen_packaging = null;
+          }
+          else
+          {
+            $image['imagen_packaging'] = $request->file('imagen_packaging');
+            // almacena y captura el nombre del archivo
+            $imagen_packaging =  $image['imagen_packaging']->store('packaging','public');
+            if($imagen_packaging){
+                PackagingCorte::create([
+                    'packaging' => $imagen_packaging,
+                    'corte_id' => $corte->id
+                ]);
+            }
+          }
+
+        return $corte;
     }
 
     /**
@@ -90,6 +150,7 @@ class CorteController extends Controller
         $corte->piezas_por_caja = $request['piezas_por_caja'];
         $corte->condiciones_termicas = $request['condiciones_termicas'];
         $corte->especificaciones = $request['especificaciones'];
+        $corte->categoria_corte_id = $request['categoria_corte_id'];
 
         $corte->update();
     }

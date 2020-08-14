@@ -15,6 +15,9 @@ require('./customEvents');
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+import objectToFormData from "./objectToFormData"; 
+window.objectToFormData = objectToFormData;
+
 //Import Sweetalert2
 import Swal from 'sweetalert2'
 window.Swal = Swal
