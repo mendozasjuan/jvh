@@ -5,11 +5,11 @@
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Pagina de Inicio</h3>
+                <h3 class="card-title">Pagina Quienes Somos</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" @submit.prevent="editMode ? updateInicio() : createInicio()" enctype="multipart/form-data" id='form'>
+              <form role="form" @submit.prevent="editMode ? updateQuienesSomos() : createQuienesSomos()" enctype="multipart/form-data" id='form'>
                 <div class="card-body">
                   <h3>Encabezado</h3>
                     <div class="form-group">
@@ -62,8 +62,8 @@
                   </div>
                   <div class="form-group">
                         <label>Texto</label>
-                        <!--<textarea v-model="form.texto_encabezado" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('texto_encabezado') }"></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }" tag-name="textarea" name="texto_encabezado" :editor="editor" v-model="form.texto_encabezado" :config="editorConfig"></ckeditor>
+                        <!--<textarea v-model="form.texto_encabezado" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('texto_encabezado') }"></textarea>-->
                         <has-error :form="form" field="texto_encabezado"></has-error>
                   </div>
                   <div class="form-check">
@@ -75,59 +75,42 @@
                   <h3 style="margin-top: 30px">Seccion 1</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
-                        <input v-model="form.seccion1_titulo" type="text" class="form-control" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_titulo') }">
-                        <has-error :form="form" field="seccion1_titulo"></has-error>
+                        <label>Parrafo 1</label>
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccio1_parrafo1') }" tag-name="textarea" name="seccio1_parrafo1" :editor="editor" v-model="form.seccio1_parrafo1" :config="editorConfig"></ckeditor>
+                        <!--<textarea v-model="form.seccio1_parrafo1" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccio1_parrafo1') }"></textarea>-->
+                        <has-error :form="form" field="seccio1_parrafo1"></has-error>
                   </div>
                   <div class="form-group">
-                        <label>Parrafo</label>
-                        <!--<textarea v-model="form.seccion_1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion_1_parrafo') }"></textarea>-->
-                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion_1_parrafo') }" tag-name="textarea" name="seccion_1_parrafo" :editor="editor" v-model="form.seccion_1_parrafo" :config="editorConfig"></ckeditor>
-                        <has-error :form="form" field="seccion_1_parrafo"></has-error>
+                        <label>Parrafo 2</label>
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccio1_parrafo2') }" tag-name="textarea" name="seccio1_parrafo2" :editor="editor" v-model="form.seccio1_parrafo2" :config="editorConfig"></ckeditor>
+                        <!--<textarea v-model="form.seccio1_parrafo2" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccio1_parrafo2') }"></textarea>-->
+                        <has-error :form="form" field="seccio1_parrafo2"></has-error>
                   </div>
                   <div class="form-group">
-                    <label for="seccion1_logo1">Logo 1</label>
+                    <label>Parrafo 3</label>
+                    <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccio1_parrafo3') }" tag-name="textarea" name="seccio1_parrafo3" :editor="editor" v-model="form.seccio1_parrafo3" :config="editorConfig"></ckeditor>
+                        <!--<textarea v-model="form.seccio1_parrafo3" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccio1_parrafo3') }"></textarea>-->
+                        <has-error :form="form" field="seccio1_parrafo3"></has-error>
+                  </div>
+                  <div class="form-group">
+                    <label>Parrafo 4</label>
+                    <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccio1_parrafo4') }" tag-name="textarea" name="seccio1_parrafo4" :editor="editor" v-model="form.seccio1_parrafo4" :config="editorConfig"></ckeditor>
+                        <!--<textarea v-model="form.seccio1_parrafo4" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccio1_parrafo4') }"></textarea>-->
+                        <has-error :form="form" field="seccio1_parrafo4"></has-error>
+                  </div>
+                  <div class="form-group">
+                    <label for="seccion1_imagen_fondo">Imagen de Fondo</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="seccion1_logo1" v-on:change="onUploadImage">
-                        <label class="custom-file-label" for="seccion1_logo1">Choose file</label>
+                        <input type="file" class="custom-file-input" id="seccion1_imagen_fondo" v-on:change="onUploadImage">
+                        <label class="custom-file-label" for="seccion1_imagen_fondo">Choose file</label>
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo1"/>
-                    </figure>
-                  </div>
-                  <div class="form-group">
-                    <label for="seccion1_logo2">Logo 2</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="seccion1_logo2" v-on:change="onUploadImage">
-                        <label class="custom-file-label" for="seccion1_logo2">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div>
-                    </div>
-                    <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo2"/>
-                    </figure>
-                  </div>
-                  <div class="form-group">
-                    <label for="seccion1_logo3">Logo 3</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="seccion1_logo3" v-on:change="onUploadImage">
-                        <label class="custom-file-label" for="seccion1_logo3">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div>
-                    </div>
-                    <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo3"/>
+                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_imagen_fondo"/>
                     </figure>
                   </div>
 
@@ -135,14 +118,14 @@
 
                   <div class="form-group">
                         <label>Titulo</label>
-                        <input v-model="form.seccio2_titulo" type="text" class="form-control" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccio2_titulo') }">
-                        <has-error :form="form" field="seccio2_titulo"></has-error>
+                        <input v-model="form.seccion2_titulo" type="text" class="form-control" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion2_titulo') }">
+                        <has-error :form="form" field="seccion2_titulo"></has-error>
                   </div>
                   <div class="form-group">
                         <label>Parrafo</label>
-                        <!--<textarea v-model="form.seccion_2_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion_2_parrafo') }"></textarea>-->
-                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion_2_parrafo') }" tag-name="textarea" name="seccion_2_parrafo" :editor="editor" v-model="form.seccion_2_parrafo" :config="editorConfig"></ckeditor>
-                        <has-error :form="form" field="seccion_2_parrafo"></has-error>
+                        <!--<textarea v-model="form.seccion2_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion2_parrafo') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion2_parrafo') }" tag-name="textarea" name="seccion2_parrafo" :editor="editor" v-model="form.seccion2_parrafo" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion2_parrafo"></has-error>
                   </div>
                   <div class="form-group">
                     <label for="seccion2_imagen_fondo">Imagen de Fondo</label>
@@ -163,38 +146,43 @@
                   <h3 style="margin-top: 30px">Seccion 3</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
-                        <input v-model="form.seccion3_titulo" type="text" class="form-control" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion3_titulo') }">
-                        <has-error :form="form" field="seccion3_titulo"></has-error>
+                        <label>Parrafo 1</label>
+                        <!--<textarea v-model="form.seccion3_parrafo1" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion3_parrafo1') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion3_parrafo1') }" tag-name="textarea" name="seccion3_parrafo1" :editor="editor" v-model="form.seccion3_parrafo1" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion3_parrafo1"></has-error>
                   </div>
                   <div class="form-group">
-                        <label>Parrafo</label>
-                        <!--<textarea v-model="form.seccion3_parrafo" :class="{ 'is-invalid': form.errors.has('seccion3_parrafo') }" class="form-control" rows="3" placeholder="Enter ..."></textarea>-->
-                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion3_parrafo') }" tag-name="textarea" name="seccion3_parrafo" :editor="editor" v-model="form.seccion3_parrafo" :config="editorConfig"></ckeditor>
-                        <has-error :form="form" field="seccion3_parrafo"></has-error>
-                  </div>
-                  <div class="form-group">
-                    <label for="seccion3_imagen">Imagen</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="seccion3_imagen" v-on:change="onUploadImage">
-                        <label class="custom-file-label" for="seccion3_imagen">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div>
-                    </div>
-                    <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion3_imagen"/>
-                    </figure>
+                        <label>Parrafo 2</label>
+                        <!--<textarea v-model="form.seccion3_parrafo2" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion3_parrafo2') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion3_parrafo2') }" tag-name="textarea" name="seccion3_parrafo2" :editor="editor" v-model="form.seccion3_parrafo2" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion3_parrafo2"></has-error>
                   </div>
 
                   <h3 style="margin-top: 30px">Seccion 4</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
-                        <input v-model="form.seccion4_titulo" :class="{ 'is-invalid': form.errors.has('seccion4_titulo') }" type="text" class="form-control" placeholder="Enter ...">
-                        <has-error :form="form" field="seccion4_titulo"></has-error>
+                        <label>Parrafo 1</label>
+                        <!--<textarea v-model="form.seccion4_parrafo1" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion4_parrafo1') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion4_parrafo1') }" tag-name="textarea" name="seccion4_parrafo1" :editor="editor" v-model="form.seccion4_parrafo1" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion4_parrafo1"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo 2</label>
+                        <!--<textarea v-model="form.seccion4_parrafo2" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion4_parrafo2') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion4_parrafo2') }" tag-name="textarea" name="seccion4_parrafo2" :editor="editor" v-model="form.seccion4_parrafo2" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion4_parrafo2"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo 3</label>
+                        <!--<textarea v-model="form.seccion4_parrafo3" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion4_parrafo3') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion4_parrafo3') }" tag-name="textarea" name="seccion4_parrafo3" :editor="editor" v-model="form.seccion4_parrafo3" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion4_parrafo3"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo 4</label>
+                        <!--<textarea v-model="form.seccion4_parrafo4" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion4_parrafo4') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion4_parrafo4') }" tag-name="textarea" name="seccion4_parrafo4" :editor="editor" v-model="form.seccion4_parrafo4" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion4_parrafo4"></has-error>
                   </div>
                   <div class="form-group">
                     <label for="seccion4_imagen_fondo">Imagen</label>
@@ -230,6 +218,7 @@
 
 <script>
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+  
     export default {
         data() {
             return {
@@ -249,18 +238,20 @@
                     logo_2_encabezado: '',
                     texto_encabezado: '',
                     texto_encabezado_habilitado: '',
-                    seccion1_titulo: '',
-                    seccion_1_parrafo: '',
-                    seccion1_logo1: '',
-                    seccion1_logo2: '',
-                    seccion1_logo3: '',
-                    seccion2_imagen_fondo:'',
-                    seccio2_titulo:'',
-                    seccion_2_parrafo: '',
-                    seccion3_titulo: '',
-                    seccion3_parrafo: '',
-                    seccion3_imagen: '',
-                    seccion4_titulo:'',
+                    seccio1_parrafo1: '',
+                    seccio1_parrafo2: '',
+                    seccio1_parrafo3: '',
+                    seccio1_parrafo4: '',
+                    seccion1_imagen_fondo: '',
+                    seccion2_titulo:'',
+                    seccion2_parrafo:'',
+                    seccion2_imagen_fondo: '',
+                    seccion3_parrafo1: '',
+                    seccion3_parrafo2: '',
+                    seccion4_parrafo1: '',
+                    seccion4_parrafo2:'',
+                    seccion4_parrafo3:'',
+                    seccion4_parrafo4:'',
                     seccion4_imagen_fondo:'',
                     _method:'',
 
@@ -269,34 +260,34 @@
         },
         methods: {
         
-        editWindow(inicio){
+        editWindow(quienessomos){
            this.form.clear();
            this.editMode = true
            this.form.reset();
-           this.form.fill(inicio)
+           this.form.fill(quienessomos)
         },
-        loadInicio() {
+        loadQuienesSomos() {
 
-          axios.get("api/inicio").then( data => (this.editWindow(data.data)));
+          axios.get("api/quienessomos").then( data => (this.editWindow(data.data)));
         
           //pick data from controller and push it into users object
 
         },
-        updateInicio(){
+        updateQuienesSomos(){
            this.$Progress.start()
             //this.form.submit('put','api/inicio/'+this.form.id,{
-              axios.post('api/inicio',this.form,{
+              axios.post('api/quienessomos',this.form,{
 
                 // Transform form data to FormData
                 transformRequest: [function (data, headers) {
                     return objectToFormData(data)
                 }]})
                .then(()=>{
-                  Fire.$emit('AfterCreatedInicioLoadIt');
+                  Fire.$emit('AfterCreatedQuienesSomosLoadIt');
 
                    Toast.fire({
                       icon: 'success',
-                      title: 'Corte Actualizado con Exito'
+                      title: 'Quienes Somos Actualizado con Exito'
                     })
 
                     this.$Progress.finish()
@@ -329,29 +320,14 @@
                 console.log(this.form.logo_2_encabezado);
               }
 
-              if(this.idElement.id == 'seccion1_logo1'){
-                this.form.seccion1_logo1 = this.picFile
-                console.log(this.form.seccion1_logo1);
-              }
-
-              if(this.idElement.id == 'seccion1_logo2'){
-                this.form.seccion1_logo2 = this.picFile
-                console.log(this.form.seccion1_logo2);
-              }
-              
-              if(this.idElement.id == 'seccion1_logo3'){
-                this.form.seccion1_logo3 = this.picFile
-                console.log(this.form.seccion1_logo3);
+              if(this.idElement.id == 'seccion1_imagen_fondo'){
+                this.form.seccion1_imagen_fondo = this.picFile
+                console.log(this.form.seccion1_imagen_fondo);
               }
 
               if(this.idElement.id == 'seccion2_imagen_fondo'){
                 this.form.seccion2_imagen_fondo = this.picFile
                 console.log(this.form.seccion2_imagen_fondo);
-              }
-
-              if(this.idElement.id == 'seccion3_imagen'){
-                this.form.seccion3_imagen = this.picFile
-                console.log(this.form.seccion3_imagen);
               }
               
               if(this.idElement.id == 'seccion4_imagen_fondo'){
@@ -369,11 +345,11 @@
           reader.readAsDataURL(file);
         },
 
-        createInicio(){
+        createQuienesSomos(){
 
             this.$Progress.start()
 
-            this.form.submit('post','api/inicio',{
+            this.form.submit('post','api/quienessomos',{
 
                 // Transform form data to FormData
                 transformRequest: [function (data, headers) {
@@ -382,11 +358,11 @@
             })
                 .then(() => {
                    
-                    Fire.$emit('AfterCreatedInicioLoadIt'); //custom events
+                    Fire.$emit('AfterCreatedQuienesSomosLoadIt'); //custom events
 
                         Toast.fire({
                           icon: 'success',
-                          title: 'Pagina de Inicio Actualizada con Exito'
+                          title: 'Pagina Quienes Somos Actualizada con Exito'
                         })
 
                         this.$Progress.finish()
@@ -404,9 +380,9 @@
         },
 
         created() { 
-            this.loadInicio();
-            Fire.$on('AfterCreatedInicioLoadIt',()=>{ //custom events fire on
-                this.loadInicio();
+            this.loadQuienesSomos();
+            Fire.$on('AfterCreatedQuienesSomosLoadIt',()=>{ //custom events fire on
+                this.loadQuienesSomos();
                 
             });
         }

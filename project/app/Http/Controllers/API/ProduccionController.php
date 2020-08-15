@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Inicio;
+use App\Produccion;
 
-class InicioController extends Controller
+class ProduccionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class InicioController extends Controller
      */
     public function index()
     {
-        return Inicio::first();
+        return Produccion::first();
     }
 
     /**
@@ -26,75 +26,71 @@ class InicioController extends Controller
      */
     public function store(Request $request)
     {
-        /*$this->validate($request, [
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'tamano_caja' => 'required',
-            'medidas' => 'required',
-            'envasado' => 'required',
-            'piezas_por_caja' => 'required',
-            'condiciones_termicas' => 'required',
-            'especificaciones' => 'required',
-            'categoria_corte_id' => 'required'
-
-        ]);*/
-
         if($request['id'] != null){
             return $this->update($request,$request['id']);
         }
 
         $image = $this->storeImagenes($request);
 
-        if($image['encabezado_imagen_fondo'] !=null )
+        if($image['encabezado_imagen_fondo'] !=null ){
             $encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
+        }else{
+            $encabezado_imagen_fondo = null;
+        }
 
-        if($image['logo_1_encabezado'] !=null )
+        if($image['logo_1_encabezado'] !=null ){
             $logo_1_encabezado = $image['logo_1_encabezado'];
+        }else{
+            $logo_1_encabezado = null;
+        }
 
         if($image['logo_2_encabezado'] !=null )
             $logo_2_encabezado = $image['logo_2_encabezado'];
+        else
+            $logo_2_encabezado = null;
 
         if($image['seccion1_logo1'] !=null )
             $seccion1_logo1 = $image['seccion1_logo1'];
+        else
+            $seccion1_logo1 = null;
 
         if($image['seccion1_logo2'] !=null )
             $seccion1_logo2 = $image['seccion1_logo2'];
+        else
+            $seccion1_logo2 = null;
 
-        if($image['seccion1_logo3'] !=null )
-            $seccion1_logo3 = $image['seccion1_logo3'];
+        if($image['seccion1_imagen_fondo'] !=null )
+            $seccion1_imagen_fondo = $image['seccion1_imagen_fondo'];
+        else
+            $seccion1_imagen_fondo = null;
 
-        if($image['seccion2_imagen_fondo'] !=null )
-            $seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
+        if($image['seccion3_imagen_fondo'] !=null )
+            $seccion3_imagen_fondo = $image['seccion3_imagen_fondo'];
+        else
+            $seccion3_imagen_fondo = null;
 
-        if($image['seccion3_imagen'] !=null )
-            $seccion3_imagen = $image['seccion3_imagen'];
 
-        if($image['seccion4_imagen_fondo'] !=null )
-            $seccion4_imagen_fondo = $image['seccion4_imagen_fondo'];
-
-        $inicio = Inicio::create([
+        $produccion = Produccion::create([
            'encabezado_imagen_fondo' => $encabezado_imagen_fondo,
            'logo_1_encabezado' => $logo_1_encabezado,
            'logo_2_encabezado' => $logo_2_encabezado,
            'texto_encabezado' => $request['texto_encabezado'],
            'texto_encabezado_habilitado' => $request['texto_encabezado_habilitado'],
            'seccion1_titulo' => $request['seccion1_titulo'],
-           'seccion_1_parrafo' => $request['seccion_1_parrafo'],
+           'seccion1_parrafo' => $request['seccion1_parrafo'],
            'seccion1_logo1' => $seccion1_logo1,
            'seccion1_logo2' => $seccion1_logo2,
 
-           'seccion1_logo3' => $seccion1_logo3,
-           'seccion2_imagen_fondo' => $seccion2_imagen_fondo,
-           'seccio2_titulo' => $request['seccio2_titulo'],
-           'seccion_2_parrafo' => $request['seccion_2_parrafo'],
+           'seccion1_imagen_fondo' => $seccion1_imagen_fondo,
+           'seccion2_titulo' => $request['seccion2_titulo'],
+           'seccion2_parrafo1' => $request['seccion2_parrafo1'],
+           'seccion2_parrafo2' => $request['seccion2_parrafo2'],
            'seccion3_titulo' => $request['seccion3_titulo'],
            'seccion3_parrafo' => $request['seccion3_parrafo'],
-           'seccion3_imagen' => $seccion3_imagen,
-           'seccion4_titulo' => $request['seccion4_titulo'],
-           'seccion4_imagen_fondo' => $seccion4_imagen_fondo,
+           'seccion3_imagen_fondo' => $seccion3_imagen_fondo,
         ]);
 
-        return $inicio;
+        return $produccion;
     }
 
     /**
@@ -119,48 +115,43 @@ class InicioController extends Controller
     {
         $image = $this->storeImagenes($request);
 
-        $inicio = Inicio::findOrFail($id);
-        $inicio->texto_encabezado = $request['texto_encabezado'];
-        $inicio->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
-        $inicio->seccion1_titulo = $request['seccion1_titulo'];
-        $inicio->seccion_1_parrafo = $request['seccion_1_parrafo'];
-        $inicio->seccio2_titulo = $request['seccio2_titulo'];
-        $inicio->seccion_2_parrafo = $request['seccion_2_parrafo'];
-        $inicio->seccion3_titulo = $request['seccion3_titulo'];
-        $inicio->seccion3_parrafo = $request['seccion3_parrafo'];
-        $inicio->seccion4_titulo = $request['seccion4_titulo'];
+        $produccion = QuienesSomos::findOrFail($id);
+        $produccion->texto_encabezado = $request['texto_encabezado'];
+        $produccion->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
+        $produccion->seccion1_titulo = $request['seccion1_titulo'];
+        $produccion->seccion1_parrafo = $request['seccion1_parrafo'];
+        $produccion->seccion2_titulo = $request['seccion2_titulo'];
+        $produccion->seccion2_parrafo1 = $request['seccion2_parrafo1'];
+        $produccion->seccion2_parrafo2 = $request['seccion2_parrafo2'];
+        $produccion->seccion3_titulo = $request['seccion3_titulo'];
+        $produccion->seccion3_parrafo = $request['seccion3_parrafo'];
 
 
+        
         if($image['encabezado_imagen_fondo'] !=null )
-            $inicio->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
+            $produccion->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
 
         if($image['logo_1_encabezado'] !=null )
-            $inicio->logo_1_encabezado = $image['logo_1_encabezado'];
+            $produccion->logo_1_encabezado = $image['logo_1_encabezado'];
 
         if($image['logo_2_encabezado'] !=null )
-            $inicio->logo_2_encabezado = $image['logo_2_encabezado'];
+            $produccion->logo_2_encabezado = $image['logo_2_encabezado'];
 
         if($image['seccion1_logo1'] !=null )
-            $inicio->seccion1_logo1 = $image['seccion1_logo1'];
+            $produccion->seccion1_logo1 = $image['seccion1_logo1'];
 
         if($image['seccion1_logo2'] !=null )
-            $inicio->seccion1_logo2 = $image['seccion1_logo2'];
+            $produccion->seccion1_logo2 = $image['seccion1_logo2'];
 
-        if($image['seccion1_logo3'] !=null )
-            $inicio->seccion1_logo3 = $image['seccion1_logo3'];
+        if($image['seccion1_imagen_fondo'] !=null )
+            $produccion->seccion1_imagen_fondo = $image['seccion1_imagen_fondo'];
 
-        if($image['seccion2_imagen_fondo'] !=null )
-            $inicio->seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
-
-        if($image['seccion3_imagen'] !=null )
-            $inicio->seccion3_imagen = $image['seccion3_imagen'];
-
-        if($image['seccion4_imagen_fondo'] !=null )
-            $inicio->seccion4_imagen_fondo = $image['seccion4_imagen_fondo'];
+        if($image['seccion3_imagen_fondo'] !=null )
+            $produccion->seccion3_imagen_fondo = $image['seccion3_imagen_fondo'];
 
         
 
-        $inicio->update();
+        $produccion->update();
     }
 
     /**
@@ -173,6 +164,7 @@ class InicioController extends Controller
     {
         //
     }
+
 
     public function storeImagenes($request)
     {
@@ -234,51 +226,29 @@ class InicioController extends Controller
             //$seccion1_logo2 =  $image['seccion1_logo2']->store('img','public');
           }
 
-          if ($request->file('seccion1_logo3')==null)
+          if ($request->file('seccion1_imagen_fondo')==null)
           {
-            $image['seccion1_logo3'] = null;
+            $image['seccion1_imagen_fondo'] = null;
           }
           else
           {
-            $image['seccion1_logo3'] = $request->file('seccion1_logo3')->store('img','public');
+            $image['seccion1_imagen_fondo'] = $request->file('seccion1_imagen_fondo')->store('img','public');
             // almacena y captura el nombre del archivo
             //$seccion1_logo3 =  $image['seccion1_logo3']->store('img','public');
           }
 
 
-          if ($request->file('seccion2_imagen_fondo')==null)
+          if ($request->file('seccion3_imagen_fondo')==null)
           {
-            $image['seccion2_imagen_fondo'] = null;
+            $image['seccion3_imagen_fondo'] = null;
           }
           else
           {
-            $image['seccion2_imagen_fondo'] = $request->file('seccion2_imagen_fondo')->store('img','public');
+            $image['seccion3_imagen_fondo'] = $request->file('seccion3_imagen_fondo')->store('img','public');
             // almacena y captura el nombre del archivo
-            //$seccion2_imagen_fondo =  $image['seccion2_imagen_fondo']->store('img','public');
+            //$seccion1_logo3 =  $image['seccion1_logo3']->store('img','public');
           }
 
-
-          if ($request->file('seccion3_imagen')==null)
-          {
-            $image['seccion3_imagen'] = null;
-          }
-          else
-          {
-            $image['seccion3_imagen'] = $request->file('seccion3_imagen')->store('img','public');
-            // almacena y captura el nombre del archivo
-            //$seccion3_imagen =  $image['seccion3_imagen']->store('img','public');
-          }
-
-          if ($request->file('seccion4_imagen_fondo')==null)
-          {
-            $image['seccion4_imagen_fondo'] = null;
-          }
-          else
-          {
-            $image['seccion4_imagen_fondo'] = $request->file('seccion4_imagen_fondo')->store('img','public');
-            // almacena y captura el nombre del archivo
-            //$seccion4_imagen_fondo =  $image['seccion4_imagen_fondo']->store('img','public');
-          }
 
           return $image;
     }

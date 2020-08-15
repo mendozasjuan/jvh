@@ -105,13 +105,13 @@
 		</div>
 		<div class="collapse" id="collapseMenu" data-parent="#accordionMobileNavbar">
 			<div class="topnavbar-mobile__card">
-				<a href="">Quienes Somos</a>
-				<a href="">Producción</a>
-				<a href="">Exportación</a>
-				<a href="">Productos</a>
-				<a href="">Calidad</a>
-				<a href="">Impacto Social</a>
-				<a href="">Recursos Humanos</a>
+				<a href="{{ url('quienessomos') }}">Quienes Somos</a>
+				<a href="{{ url('produccion') }}">Producción</a>
+				<a href="{{ url('exportacion') }}">Exportación</a>
+				<a href="{{ url('productos') }}">Productos</a>
+				<a href="{{ url('calidad') }}">Calidad</a>
+				<a href="{{ url('impactosocial') }}">Impacto Social</a>
+				<a href="{{ url('recursoshumanos') }}">Recursos Humanos</a>
 			</div>
 		</div>
 	</div>

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Inicio extends Model
+class Produccion extends Model
 {
-   	protected $table = 'inicio';
+    protected $table = 'produccion';
     public $timestamps = false;
 
     protected $fillable = [
@@ -16,22 +16,15 @@ class Inicio extends Model
     	'texto_encabezado',
     	'texto_encabezado_habilitado',
     	'seccion1_titulo',
-    	'seccion_1_parrafo',
+    	'seccion1_parrafo',
     	'seccion1_logo1',
     	'seccion1_logo2',
-    	'seccion1_logo3',
-    	'seccion2_imagen_fondo',
-    	'seccio2_titulo',
-    	'seccion_2_parrafo',
+    	'seccion1_imagen_fondo',
+    	'seccion2_titulo',
+    	'seccion2_parrafo1',
+    	'seccion2_parrafo2',
     	'seccion3_titulo',
     	'seccion3_parrafo',
-    	'seccion3_imagen',
-    	'seccion4_titulo',
-    	'seccion4_imagen_fondo',
+    	'seccion3_imagen_fondo'
     ];
-
-    public function getEncabezadoImagen(){
-    	return \Storage::url($this->imagen);
-    }
 }
-

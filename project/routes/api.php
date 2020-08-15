@@ -23,3 +23,5 @@ Route::apiResources(['user' => 'API\UserController']);
 Route::apiResources(['categorias-corte' => 'API\CategoriaCorteController']);
 Route::apiResources(['corte' => 'API\CorteController']);
 Route::apiResources(['inicio' => 'API\InicioController']);
+Route::apiResources(['quienessomos' => 'API\QuienesSomosController']);
+Route::apiResources(['produccion' => 'API\ProduccionSomosController']);

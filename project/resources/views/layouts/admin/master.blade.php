@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
  
-  <title>AdminLTE 3 | Starter</title>
+  <title>JVH - Panel de Admibistración</title>
  
   <link rel="stylesheet" href="css/app.css">
 </head>
@@ -34,9 +34,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="./img/logo.png" alt="LaraVue Logo" class="brand-image img-circle elevation-3"
+      <img src="./img/logo.png" alt="JVH Logo" class="brand-image elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">LaraVue</span>
+      <span class="brand-text font-weight-light">JVH</span>
     </a>
  
     <!-- Sidebar -->
@@ -70,7 +70,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
-                Management
+                Configuracion
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
@@ -78,7 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <router-link to="/users" class="nav-link">
                   <i class="fas fa-user nav-icon"></i>
-                  <p>Users</p>
+                  <p>Usuarios</p>
                 </router-link>
               </li>
             </ul>
@@ -128,10 +128,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/cortes" class="nav-link">
+                <router-link to="/quienessomos" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
                     Quienes Somos
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/produccion" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Producción
                   </p>
                 </router-link>
               </li>
@@ -142,7 +150,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/profile" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
-                Profile
+                Perfil
               </p>
             </router-link>
           </li>
@@ -152,7 +160,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                              document.getElementById('logout-form').submit();">
                 <i class="nav-icon fa fa-power-off"></i>
                 <p>
-                  {{ __('Logout') }}
+                  {{ __('Cerrar Sesion') }}
                 </p>
             </a>
  
