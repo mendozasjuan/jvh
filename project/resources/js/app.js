@@ -34,6 +34,10 @@ const Toast = Swal.mixin({
 })
 window.Toast = Toast
 
+//Import Variables
+import { imagesRootPath } from './variables'
+Vue.prototype.$imagesRootPath = imagesRootPath;
+
 //Import v-from
 import { Form, HasError, AlertError } from 'vform'
 window.Form = Form;

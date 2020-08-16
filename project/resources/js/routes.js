@@ -6,6 +6,9 @@ import Corte from './components/CorteComponent.vue'
 import Inicio from './components/InicioComponent.vue'
 import QuienesSomos from './components/QuienesSomosComponent.vue'
 import Produccion from './components/ProduccionComponent.vue'
+import Exportacion from './components/ExportacionComponent.vue'
+import Calidad from './components/CalidadComponent.vue'
+import ImpactoSocial from './components/ImpactoSocialComponent.vue'
 
 export const routes = [
     {
@@ -39,6 +42,18 @@ export const routes = [
     { 
         path:'/produccion',
         component:Produccion
+    },
+    { 
+        path:'/exportacion',
+        component:Exportacion
+    },
+    { 
+        path:'/calidad',
+        component:Calidad
+    },
+    { 
+        path:'/impactosocial',
+        component:ImpactoSocial
     },
  
  

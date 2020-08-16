@@ -143,6 +143,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </router-link>
               </li>
+              <li class="nav-item">
+                <router-link to="/exportacion" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Exportacion
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/calidad" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Calidad
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/impactosocial" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Impacto Social
+                  </p>
+                </router-link>
+              </li>
             </ul>
           </li>
           

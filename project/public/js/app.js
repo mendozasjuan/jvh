@@ -1948,6 +1948,431 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalidadComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CalidadComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      editMode: false,
+      picFile: '',
+      idElement: '',
+      inicio: '',
+      imagenMiniatura: '',
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default.a,
+      editorData: '',
+      editorConfig: {},
+      form: new Form({
+        id: '',
+        encabezado_imagen_fondo: '',
+        logo_1_encabezado: '',
+        logo_2_encabezado: '',
+        texto_encabezado: '',
+        texto_encabezado_habilitado: '',
+        seccion1_titulo: '',
+        seccion1_parrafo: '',
+        seccion1_logo1: '',
+        seccion1_logo2: '',
+        seccion1_logo3: '',
+        seccion1_logo4: '',
+        seccion1_logo5: '',
+        seccion1_logo6: '',
+        seccion1_logo7: '',
+        seccion2_imagen_fondo: '',
+        _method: ''
+      })
+    };
+  },
+  methods: {
+    editWindow: function editWindow(Calidad) {
+      this.form.clear();
+      this.editMode = true;
+      this.form.reset();
+      this.form.fill(Calidad);
+    },
+    loadCalidad: function loadCalidad() {
+      var _this = this;
+
+      axios.get("api/calidad").then(function (data) {
+        return _this.editWindow(data.data);
+      }); //pick data from controller and push it into users object
+    },
+    updateCalidad: function updateCalidad() {
+      var _this2 = this;
+
+      this.$Progress.start(); //this.form.submit('put','api/inicio/'+this.form.id,{
+
+      axios.post('api/calidad', this.form, {
+        // Transform form data to FormData
+        transformRequest: [function (data, headers) {
+          return objectToFormData(data);
+        }]
+      }).then(function () {
+        Fire.$emit('AfterCreatedCalidadLoadIt');
+        Toast.fire({
+          icon: 'success',
+          title: 'Pagina Calidad Actualizada con Exito'
+        });
+
+        _this2.$Progress.finish();
+      })["catch"](function () {
+        console.log("Error.....");
+      });
+    },
+    onUploadImage: function onUploadImage(event) {
+      if (event) {
+        this.idElement = event.target;
+        this.picFile = this.idElement.files[0];
+        $(this.idElement).next('.custom-file-label').html(this.picFile.name);
+        this.cargarMiniatura(this.idElement, this.picFile);
+      }
+
+      if (this.picFile) {
+        if (this.idElement.id == 'encabezado_imagen_fondo') {
+          this.form.encabezado_imagen_fondo = this.picFile;
+          console.log(this.form.encabezado_imagen_fondo);
+        }
+
+        if (this.idElement.id == 'logo_1_encabezado') {
+          this.form.logo_1_encabezado = this.picFile;
+          console.log(this.form.logo_1_encabezado);
+        }
+
+        if (this.idElement.id == 'logo_2_encabezado') {
+          this.form.logo_2_encabezado = this.picFile;
+          console.log(this.form.logo_2_encabezado);
+        }
+
+        if (this.idElement.id == 'seccion1_logo1') {
+          this.form.seccion1_logo1 = this.picFile;
+          console.log(this.form.seccion1_logo1);
+        }
+
+        if (this.idElement.id == 'seccion1_logo2') {
+          this.form.seccion1_logo2 = this.picFile;
+          console.log(this.form.seccion1_logo2);
+        }
+
+        if (this.idElement.id == 'seccion1_logo3') {
+          this.form.seccion1_logo3 = this.picFile;
+          console.log(this.form.seccion1_logo3);
+        }
+
+        if (this.idElement.id == 'seccion1_logo4') {
+          this.form.seccion1_logo4 = this.picFile;
+          console.log(this.form.seccion1_logo4);
+        }
+
+        if (this.idElement.id == 'seccion1_logo5') {
+          this.form.seccion1_logo5 = this.picFile;
+          console.log(this.form.seccion1_logo5);
+        }
+
+        if (this.idElement.id == 'seccion1_logo6') {
+          this.form.seccion1_logo6 = this.picFile;
+          console.log(this.form.seccion1_logo6);
+        }
+
+        if (this.idElement.id == 'seccion1_logo7') {
+          this.form.seccion1_logo7 = this.picFile;
+          console.log(this.form.seccion1_logo7);
+        }
+
+        if (this.idElement.id == 'seccion2_imagen_fondo') {
+          this.form.seccion2_imagen_fondo = this.picFile;
+          console.log(this.form.seccion2_imagen_fondo);
+        }
+      }
+    },
+    cargarMiniatura: function cargarMiniatura(object, file) {
+      var _this3 = this;
+
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $(_this3.idElement).parents('.input-group').next().find('.miniatura')[0].src = e.target.result; //return this.imagenMiniatura = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
+    createCalidad: function createCalidad() {
+      var _this4 = this;
+
+      this.$Progress.start();
+      this.form.submit('post', 'api/calidad', {
+        // Transform form data to FormData
+        transformRequest: [function (data, headers) {
+          return objectToFormData(data);
+        }]
+      }).then(function () {
+        Fire.$emit('AfterCreatedCalidadLoadIt'); //custom events
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Pagina Calidad Actualizada con Exito'
+        });
+
+        _this4.$Progress.finish();
+      })["catch"](function () {
+        console.log("Error......");
+      }); //this.loadUsers();
+    }
+  },
+  created: function created() {
+    var _this5 = this;
+
+    this.loadCalidad();
+    Fire.$on('AfterCreatedCalidadLoadIt', function () {
+      //custom events fire on
+      _this5.loadCalidad();
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CategoriaCorteComponent.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CategoriaCorteComponent.vue?vue&type=script&lang=js& ***!
@@ -2512,6 +2937,635 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExportacionComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExportacionComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      editMode: false,
+      picFile: '',
+      idElement: '',
+      inicio: '',
+      imagenMiniatura: '',
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default.a,
+      editorData: '',
+      editorConfig: {},
+      form: new Form({
+        id: '',
+        encabezado_imagen_fondo: '',
+        logo_1_encabezado: '',
+        logo_2_encabezado: '',
+        texto_encabezado: '',
+        texto_encabezado_habilitado: '',
+        seccion1_titulo: '',
+        seccion1_parrafo: '',
+        seccion1_imagen: '',
+        seccion2_parrafo1: '',
+        seccion2_parrafo2: '',
+        seccion2_imagen_fondo: '',
+        seccion3_titulo: '',
+        seccion3_imagen_fondo: '',
+        _method: ''
+      })
+    };
+  },
+  methods: {
+    editWindow: function editWindow(Exportacion) {
+      this.form.clear();
+      this.editMode = true;
+      this.form.reset();
+      this.form.fill(Exportacion);
+    },
+    loadExportacion: function loadExportacion() {
+      var _this = this;
+
+      axios.get("api/exportacion").then(function (data) {
+        return _this.editWindow(data.data);
+      }); //pick data from controller and push it into users object
+    },
+    updateExportacion: function updateExportacion() {
+      var _this2 = this;
+
+      this.$Progress.start(); //this.form.submit('put','api/inicio/'+this.form.id,{
+
+      axios.post('api/exportacion', this.form, {
+        // Transform form data to FormData
+        transformRequest: [function (data, headers) {
+          return objectToFormData(data);
+        }]
+      }).then(function () {
+        Fire.$emit('AfterCreatedExportacionLoadIt');
+        Toast.fire({
+          icon: 'success',
+          title: 'Pagina Exportacion Actualizada con Exito'
+        });
+
+        _this2.$Progress.finish();
+      })["catch"](function () {
+        console.log("Error.....");
+      });
+    },
+    onUploadImage: function onUploadImage(event) {
+      if (event) {
+        this.idElement = event.target;
+        this.picFile = this.idElement.files[0];
+        $(this.idElement).next('.custom-file-label').html(this.picFile.name);
+        this.cargarMiniatura(this.idElement, this.picFile);
+      }
+
+      if (this.picFile) {
+        if (this.idElement.id == 'encabezado_imagen_fondo') {
+          this.form.encabezado_imagen_fondo = this.picFile;
+          console.log(this.form.encabezado_imagen_fondo);
+        }
+
+        if (this.idElement.id == 'logo_1_encabezado') {
+          this.form.logo_1_encabezado = this.picFile;
+          console.log(this.form.logo_1_encabezado);
+        }
+
+        if (this.idElement.id == 'logo_2_encabezado') {
+          this.form.logo_2_encabezado = this.picFile;
+          console.log(this.form.logo_2_encabezado);
+        }
+
+        if (this.idElement.id == 'seccion1_imagen') {
+          this.form.seccion1_imagen = this.picFile;
+          console.log(this.form.seccion1_imagen);
+        }
+
+        if (this.idElement.id == 'seccion2_imagen_fondo') {
+          this.form.seccion2_imagen_fondo = this.picFile;
+          console.log(this.form.seccion2_imagen_fondo);
+        }
+
+        if (this.idElement.id == 'seccion3_imagen_fondo') {
+          this.form.seccion3_imagen_fondo = this.picFile;
+          console.log(this.form.seccion3_imagen_fondo);
+        }
+      }
+    },
+    cargarMiniatura: function cargarMiniatura(object, file) {
+      var _this3 = this;
+
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $(_this3.idElement).parents('.input-group').next().find('.miniatura')[0].src = e.target.result; //return this.imagenMiniatura = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
+    createExportacion: function createExportacion() {
+      var _this4 = this;
+
+      this.$Progress.start();
+      this.form.submit('post', 'api/exportacion', {
+        // Transform form data to FormData
+        transformRequest: [function (data, headers) {
+          return objectToFormData(data);
+        }]
+      }).then(function () {
+        Fire.$emit('AfterCreatedExportacionLoadIt'); //custom events
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Pagina Exportacion Actualizada con Exito'
+        });
+
+        _this4.$Progress.finish();
+      })["catch"](function () {
+        console.log("Error......");
+      }); //this.loadUsers();
+    }
+  },
+  created: function created() {
+    var _this5 = this;
+
+    this.loadExportacion();
+    Fire.$on('AfterCreatedExportacionLoadIt', function () {
+      //custom events fire on
+      _this5.loadExportacion();
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ImpactoSocialComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ImpactoSocialComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      editMode: false,
+      picFile: '',
+      idElement: '',
+      inicio: '',
+      imagenMiniatura: '',
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default.a,
+      editorData: '',
+      editorConfig: {},
+      imagesRootPath: this.$imagesRootPath,
+      form: new Form({
+        id: '',
+        encabezado_imagen_fondo: '',
+        logo_1_encabezado: '',
+        logo_2_encabezado: '',
+        texto_encabezado: '',
+        texto_encabezado_habilitado: '',
+        seccion1_titulo: '',
+        seccion1_parrafo1: '',
+        seccion1_parrafo2: '',
+        seccion2_titulo: '',
+        seccion2_imagen_fondo: '',
+        _method: ''
+      })
+    };
+  },
+  methods: {
+    editWindow: function editWindow(ImpactoSocial) {
+      this.form.clear();
+      this.editMode = true;
+      this.form.reset();
+      this.form.fill(ImpactoSocial);
+    },
+    loadImpactoSocial: function loadImpactoSocial() {
+      var _this = this;
+
+      axios.get("api/impactosocial").then(function (data) {
+        return _this.editWindow(data.data);
+      }); //pick data from controller and push it into users object
+    },
+    updateImpactoSocial: function updateImpactoSocial() {
+      var _this2 = this;
+
+      this.$Progress.start(); //this.form.submit('put','api/inicio/'+this.form.id,{
+
+      axios.post('api/impactosocial', this.form, {
+        // Transform form data to FormData
+        transformRequest: [function (data, headers) {
+          return objectToFormData(data);
+        }]
+      }).then(function () {
+        Fire.$emit('AfterCreatedImpactoSocialLoadIt');
+        Toast.fire({
+          icon: 'success',
+          title: 'Pagina Impacto Social Actualizada con Exito'
+        });
+
+        _this2.$Progress.finish();
+      })["catch"](function () {
+        console.log("Error.....");
+      });
+    },
+    onUploadImage: function onUploadImage(event) {
+      if (event) {
+        this.idElement = event.target;
+        this.picFile = this.idElement.files[0];
+        $(this.idElement).next('.custom-file-label').html(this.picFile.name);
+        this.cargarMiniatura(this.idElement, this.picFile);
+      }
+
+      if (this.picFile) {
+        if (this.idElement.id == 'encabezado_imagen_fondo') {
+          this.form.encabezado_imagen_fondo = this.picFile;
+          console.log(this.form.encabezado_imagen_fondo);
+        }
+
+        if (this.idElement.id == 'logo_1_encabezado') {
+          this.form.logo_1_encabezado = this.picFile;
+          console.log(this.form.logo_1_encabezado);
+        }
+
+        if (this.idElement.id == 'logo_2_encabezado') {
+          this.form.logo_2_encabezado = this.picFile;
+          console.log(this.form.logo_2_encabezado);
+        }
+
+        if (this.idElement.id == 'seccion2_imagen_fondo') {
+          this.form.seccion2_imagen_fondo = this.picFile;
+          console.log(this.form.seccion2_imagen_fondo);
+        }
+      }
+    },
+    cargarMiniatura: function cargarMiniatura(object, file) {
+      var _this3 = this;
+
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $(_this3.idElement).parents('.input-group').next().find('.miniatura')[0].src = e.target.result; //return this.imagenMiniatura = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
+    createImpactoSocial: function createImpactoSocial() {
+      var _this4 = this;
+
+      this.$Progress.start();
+      this.form.submit('post', 'api/impactosocial', {
+        // Transform form data to FormData
+        transformRequest: [function (data, headers) {
+          return objectToFormData(data);
+        }]
+      }).then(function () {
+        Fire.$emit('AfterCreatedImpactoSocialLoadIt'); //custom events
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Pagina Impacto Social Actualizada con Exito'
+        });
+
+        _this4.$Progress.finish();
+      })["catch"](function () {
+        console.log("Error......");
+      }); //this.loadUsers();
+    }
+  },
+  created: function created() {
+    var _this5 = this;
+
+    this.loadImpactoSocial();
+    Fire.$on('AfterCreatedImpactoSocialLoadIt', function () {
+      //custom events fire on
+      _this5.loadImpactoSocial();
+    });
   }
 });
 
@@ -60695,6 +61749,770 @@ var AlertSuccess_Component = normalizeComponent(
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalidadComponent.vue?vue&type=template&id=82f1a608&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CalidadComponent.vue?vue&type=template&id=82f1a608& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row mt-5" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-primary" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: {
+                role: "form",
+                enctype: "multipart/form-data",
+                id: "form"
+              },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.editMode ? _vm.updateCalidad() : _vm.createCalidad()
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h3", [_vm._v("Encabezado")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "encabezado_imagen_fondo" } }, [
+                    _vm._v("Imagen de Fondo")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "encabezado_imagen_fondo" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "encabezado_imagen_fondo" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: {
+                        src: _vm.form.encabezado_imagen_fondo
+                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                          : ""
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "logo_1_encabezado" } }, [
+                    _vm._v("Logo 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "logo_1_encabezado" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "logo_1_encabezado" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.logo_1_encabezado }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "logo_2_encabezado" } }, [
+                    _vm._v("Logo 2")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "logo_2_encabezado" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "logo_2_encabezado" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.logo_2_encabezado }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Texto")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("texto_encabezado")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        name: "texto_encabezado",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.texto_encabezado,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "texto_encabezado", $$v)
+                        },
+                        expression: "form.texto_encabezado"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "texto_encabezado" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-check" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.texto_encabezado_habilitado,
+                          expression: "form.texto_encabezado_habilitado"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      class: {
+                        "is-invalid": _vm.form.errors.has(
+                          "texto_encabezado_habilitado"
+                        )
+                      },
+                      attrs: { type: "checkbox", id: "exampleCheck1" },
+                      domProps: {
+                        checked: Array.isArray(
+                          _vm.form.texto_encabezado_habilitado
+                        )
+                          ? _vm._i(_vm.form.texto_encabezado_habilitado, null) >
+                            -1
+                          : _vm.form.texto_encabezado_habilitado
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.form.texto_encabezado_habilitado,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.form,
+                                  "texto_encabezado_habilitado",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.form,
+                                  "texto_encabezado_habilitado",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(
+                              _vm.form,
+                              "texto_encabezado_habilitado",
+                              $$c
+                            )
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "exampleCheck1" }
+                      },
+                      [_vm._v("Habilitar Texto en Encabezado")]
+                    ),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: {
+                        form: _vm.form,
+                        field: "texto_encabezado_habilitado"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("h3", { staticStyle: { "margin-top": "30px" } }, [
+                  _vm._v("Seccion 1")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Titulo")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.seccion1_titulo,
+                          expression: "form.seccion1_titulo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion1_titulo")
+                      },
+                      attrs: { type: "text", placeholder: "Enter ..." },
+                      domProps: { value: _vm.form.seccion1_titulo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "seccion1_titulo",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion1_titulo" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Parrafo")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion1_parrafo")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        name: "seccion1_parrafo",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.seccion1_parrafo,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "seccion1_parrafo", $$v)
+                        },
+                        expression: "form.seccion1_parrafo"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion1_parrafo" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion1_logo1" } }, [
+                    _vm._v("Logo 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion1_logo1" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion1_logo1" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(4)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.seccion1_logo1 }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion1_logo2" } }, [
+                    _vm._v("Logo 2")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion1_logo2" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion1_logo2" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(5)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.seccion1_logo2 }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion1_logo3" } }, [
+                    _vm._v("Logo 3")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion1_logo3" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion1_logo3" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(6)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.seccion1_logo3 }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion1_logo4" } }, [
+                    _vm._v("Logo 4")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion1_logo4" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion1_logo4" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(7)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.seccion1_logo4 }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion1_logo5" } }, [
+                    _vm._v("Logo 5")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion1_logo5" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion1_logo5" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(8)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.seccion1_logo5 }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion1_logo6" } }, [
+                    _vm._v("Logo 6")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion1_logo6" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion1_logo6" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(9)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.seccion1_logo6 }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion1_logo7" } }, [
+                    _vm._v("Logo 7")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion1_logo7" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion1_logo7" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(10)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.seccion1_logo7 }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("h3", { staticStyle: { "margin-top": "30px" } }, [
+                  _vm._v("Seccion 2")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion2_imagen_fondo" } }, [
+                    _vm._v("Imagen de Fondo")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion2_imagen_fondo" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion2_imagen_fondo" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(11)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: {
+                        src: "storage/" + _vm.form.seccion2_imagen_fondo
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(12)
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Pagina Calidad")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Guardar")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CategoriaCorteComponent.vue?vue&type=template&id=11147f3e&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CategoriaCorteComponent.vue?vue&type=template&id=11147f3e& ***!
@@ -61768,6 +63586,1203 @@ var staticRenderFns = [
           ])
         ])
       ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExportacionComponent.vue?vue&type=template&id=1f324316&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExportacionComponent.vue?vue&type=template&id=1f324316& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row mt-5" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-primary" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: {
+                role: "form",
+                enctype: "multipart/form-data",
+                id: "form"
+              },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.editMode
+                    ? _vm.updateExportacion()
+                    : _vm.createExportacion()
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h3", [_vm._v("Encabezado")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "encabezado_imagen_fondo" } }, [
+                    _vm._v("Imagen de Fondo")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "encabezado_imagen_fondo" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "encabezado_imagen_fondo" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: {
+                        src: _vm.form.encabezado_imagen_fondo
+                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                          : ""
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "logo_1_encabezado" } }, [
+                    _vm._v("Logo 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "logo_1_encabezado" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "logo_1_encabezado" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.logo_1_encabezado }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "logo_2_encabezado" } }, [
+                    _vm._v("Logo 2")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "logo_2_encabezado" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "logo_2_encabezado" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.logo_2_encabezado }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Texto")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("texto_encabezado")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        name: "texto_encabezado",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.texto_encabezado,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "texto_encabezado", $$v)
+                        },
+                        expression: "form.texto_encabezado"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "texto_encabezado" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-check" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.texto_encabezado_habilitado,
+                          expression: "form.texto_encabezado_habilitado"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      class: {
+                        "is-invalid": _vm.form.errors.has(
+                          "texto_encabezado_habilitado"
+                        )
+                      },
+                      attrs: { type: "checkbox", id: "exampleCheck1" },
+                      domProps: {
+                        checked: Array.isArray(
+                          _vm.form.texto_encabezado_habilitado
+                        )
+                          ? _vm._i(_vm.form.texto_encabezado_habilitado, null) >
+                            -1
+                          : _vm.form.texto_encabezado_habilitado
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.form.texto_encabezado_habilitado,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.form,
+                                  "texto_encabezado_habilitado",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.form,
+                                  "texto_encabezado_habilitado",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(
+                              _vm.form,
+                              "texto_encabezado_habilitado",
+                              $$c
+                            )
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "exampleCheck1" }
+                      },
+                      [_vm._v("Habilitar Texto en Encabezado")]
+                    ),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: {
+                        form: _vm.form,
+                        field: "texto_encabezado_habilitado"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("h3", { staticStyle: { "margin-top": "30px" } }, [
+                  _vm._v("Seccion 1")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Titulo")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.seccion1_titulo,
+                          expression: "form.seccion1_titulo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion1_titulo")
+                      },
+                      attrs: { type: "text", placeholder: "Enter ..." },
+                      domProps: { value: _vm.form.seccion1_titulo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "seccion1_titulo",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion1_titulo" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Parrafo")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion1_parrafo")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        name: "seccion1_parrafo",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.seccion1_parrafo,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "seccion1_parrafo", $$v)
+                        },
+                        expression: "form.seccion1_parrafo"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion1_parrafo" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion1_imagen" } }, [
+                    _vm._v("Imagen")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion1_imagen" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion1_imagen" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(4)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.seccion1_imagen }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("h3", { staticStyle: { "margin-top": "30px" } }, [
+                  _vm._v("Seccion 2")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Parrafo 1")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion2_parrafo1")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        name: "seccion2_parrafo1",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.seccion2_parrafo1,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "seccion2_parrafo1", $$v)
+                        },
+                        expression: "form.seccion2_parrafo1"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion2_parrafo1" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Parrafo 2")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion2_parrafo2")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        name: "seccion2_parrafo2",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.seccion2_parrafo2,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "seccion2_parrafo2", $$v)
+                        },
+                        expression: "form.seccion2_parrafo2"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion2_parrafo2" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion2_imagen_fondo" } }, [
+                    _vm._v("Imagen de Fondo")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion2_imagen_fondo" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion2_imagen_fondo" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(5)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: {
+                        src: "storage/" + _vm.form.seccion2_imagen_fondo
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("h3", { staticStyle: { "margin-top": "30px" } }, [
+                  _vm._v("Seccion 3")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Titulo")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.seccion3_titulo,
+                          expression: "form.seccion3_titulo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion3_titulo")
+                      },
+                      attrs: { type: "text", placeholder: "Enter ..." },
+                      domProps: { value: _vm.form.seccion3_titulo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "seccion3_titulo",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion3_titulo" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion3_imagen_fondo" } }, [
+                    _vm._v("Imagen de Fondo")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion3_imagen_fondo" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion3_imagen_fondo" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(6)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: {
+                        src: "storage/" + _vm.form.seccion3_imagen_fondo
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(7)
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Pagina Exportacion")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Guardar")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ImpactoSocialComponent.vue?vue&type=template&id=56216992&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ImpactoSocialComponent.vue?vue&type=template&id=56216992& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row mt-5" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-primary" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: {
+                role: "form",
+                enctype: "multipart/form-data",
+                id: "form"
+              },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.editMode
+                    ? _vm.updateImpactoSocial()
+                    : _vm.createImpactoSocial()
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h3", [_vm._v("Encabezado")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "encabezado_imagen_fondo" } }, [
+                    _vm._v("Imagen de Fondo")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "encabezado_imagen_fondo" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "encabezado_imagen_fondo" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: {
+                        src: _vm.form.encabezado_imagen_fondo
+                          ? this.imagesRootPath +
+                            _vm.form.encabezado_imagen_fondo
+                          : ""
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "logo_1_encabezado" } }, [
+                    _vm._v("Logo 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "logo_1_encabezado" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "logo_1_encabezado" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: { src: "storage/" + _vm.form.logo_1_encabezado }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "logo_2_encabezado" } }, [
+                    _vm._v("Logo 2")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "logo_2_encabezado" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "logo_2_encabezado" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: {
+                        src: this.imagesRootPath + _vm.form.logo_2_encabezado
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Texto")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("texto_encabezado")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        name: "texto_encabezado",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.texto_encabezado,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "texto_encabezado", $$v)
+                        },
+                        expression: "form.texto_encabezado"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "texto_encabezado" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-check" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.texto_encabezado_habilitado,
+                          expression: "form.texto_encabezado_habilitado"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      class: {
+                        "is-invalid": _vm.form.errors.has(
+                          "texto_encabezado_habilitado"
+                        )
+                      },
+                      attrs: { type: "checkbox", id: "exampleCheck1" },
+                      domProps: {
+                        checked: Array.isArray(
+                          _vm.form.texto_encabezado_habilitado
+                        )
+                          ? _vm._i(_vm.form.texto_encabezado_habilitado, null) >
+                            -1
+                          : _vm.form.texto_encabezado_habilitado
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.form.texto_encabezado_habilitado,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.form,
+                                  "texto_encabezado_habilitado",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.form,
+                                  "texto_encabezado_habilitado",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(
+                              _vm.form,
+                              "texto_encabezado_habilitado",
+                              $$c
+                            )
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "exampleCheck1" }
+                      },
+                      [_vm._v("Habilitar Texto en Encabezado")]
+                    ),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: {
+                        form: _vm.form,
+                        field: "texto_encabezado_habilitado"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("h3", { staticStyle: { "margin-top": "30px" } }, [
+                  _vm._v("Seccion 1")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Titulo")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.seccion1_titulo,
+                          expression: "form.seccion1_titulo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion1_titulo")
+                      },
+                      attrs: { type: "text", placeholder: "Enter ..." },
+                      domProps: { value: _vm.form.seccion1_titulo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "seccion1_titulo",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion1_titulo" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Parrafo 1")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion1_parrafo1")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        name: "seccion1_parrafo1",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.seccion1_parrafo1,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "seccion1_parrafo1", $$v)
+                        },
+                        expression: "form.seccion1_parrafo1"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion1_parrafo1" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Parrafo 2")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion1_parrafo2")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        name: "seccion1_parrafo2",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.seccion1_parrafo2,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "seccion1_parrafo2", $$v)
+                        },
+                        expression: "form.seccion1_parrafo2"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion1_parrafo2" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("h3", { staticStyle: { "margin-top": "30px" } }, [
+                  _vm._v("Seccion 2")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Titulo")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.seccion2_titulo,
+                          expression: "form.seccion2_titulo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("seccion2_titulo")
+                      },
+                      attrs: { type: "text", placeholder: "Enter ..." },
+                      domProps: { value: _vm.form.seccion2_titulo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "seccion2_titulo",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "seccion2_titulo" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "seccion2_imagen_fondo" } }, [
+                    _vm._v("Imagen de Fondo")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "seccion2_imagen_fondo" },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "seccion2_imagen_fondo" }
+                        },
+                        [_vm._v("Choose file")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(4)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: {
+                        src:
+                          this.imagesRootPath + _vm.form.seccion2_imagen_fondo
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(5)
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Pagina Impacto Social")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Guardar")]
+      )
     ])
   }
 ]
@@ -79572,11 +82587,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _objectToFormData__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_objectToFormData__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-vue */ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js");
-/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
+/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./variables */ "./resources/js/variables.js");
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-vue */ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //Import Vue Filter
@@ -79608,20 +82624,23 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.mixin({
     toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.resumeTimer);
   }
 });
-window.Toast = Toast; //Import v-from
+window.Toast = Toast; //Import Variables
 
 
-window.Form = vform__WEBPACK_IMPORTED_MODULE_3__["Form"];
-Vue.component(vform__WEBPACK_IMPORTED_MODULE_3__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_3__["HasError"]);
-Vue.component(vform__WEBPACK_IMPORTED_MODULE_3__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_3__["AlertError"]); //import ckeditor
+Vue.prototype.$imagesRootPath = _variables__WEBPACK_IMPORTED_MODULE_3__["imagesRootPath"]; //Import v-from
 
 
-Vue.use(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_4___default.a); //Routes
+window.Form = vform__WEBPACK_IMPORTED_MODULE_4__["Form"];
+Vue.component(vform__WEBPACK_IMPORTED_MODULE_4__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_4__["HasError"]);
+Vue.component(vform__WEBPACK_IMPORTED_MODULE_4__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_4__["AlertError"]); //import ckeditor
+
+
+Vue.use(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_5___default.a); //Routes
 
  //Register Routes
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  routes: _routes__WEBPACK_IMPORTED_MODULE_5__["routes"],
+  routes: _routes__WEBPACK_IMPORTED_MODULE_6__["routes"],
   mode: 'hash'
 }); //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
@@ -79676,6 +82695,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/CalidadComponent.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/CalidadComponent.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CalidadComponent_vue_vue_type_template_id_82f1a608___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CalidadComponent.vue?vue&type=template&id=82f1a608& */ "./resources/js/components/CalidadComponent.vue?vue&type=template&id=82f1a608&");
+/* harmony import */ var _CalidadComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CalidadComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CalidadComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CalidadComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CalidadComponent_vue_vue_type_template_id_82f1a608___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CalidadComponent_vue_vue_type_template_id_82f1a608___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CalidadComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CalidadComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/CalidadComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalidadComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CalidadComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalidadComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalidadComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CalidadComponent.vue?vue&type=template&id=82f1a608&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/CalidadComponent.vue?vue&type=template&id=82f1a608& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalidadComponent_vue_vue_type_template_id_82f1a608___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CalidadComponent.vue?vue&type=template&id=82f1a608& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalidadComponent.vue?vue&type=template&id=82f1a608&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalidadComponent_vue_vue_type_template_id_82f1a608___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalidadComponent_vue_vue_type_template_id_82f1a608___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -79881,6 +82969,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardComponent_vue_vue_type_template_id_01ab55f4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardComponent_vue_vue_type_template_id_01ab55f4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ExportacionComponent.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/ExportacionComponent.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ExportacionComponent_vue_vue_type_template_id_1f324316___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExportacionComponent.vue?vue&type=template&id=1f324316& */ "./resources/js/components/ExportacionComponent.vue?vue&type=template&id=1f324316&");
+/* harmony import */ var _ExportacionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExportacionComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ExportacionComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ExportacionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ExportacionComponent_vue_vue_type_template_id_1f324316___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ExportacionComponent_vue_vue_type_template_id_1f324316___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ExportacionComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ExportacionComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/ExportacionComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExportacionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExportacionComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExportacionComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExportacionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ExportacionComponent.vue?vue&type=template&id=1f324316&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/ExportacionComponent.vue?vue&type=template&id=1f324316& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExportacionComponent_vue_vue_type_template_id_1f324316___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ExportacionComponent.vue?vue&type=template&id=1f324316& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExportacionComponent.vue?vue&type=template&id=1f324316&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExportacionComponent_vue_vue_type_template_id_1f324316___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExportacionComponent_vue_vue_type_template_id_1f324316___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ImpactoSocialComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/ImpactoSocialComponent.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ImpactoSocialComponent_vue_vue_type_template_id_56216992___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImpactoSocialComponent.vue?vue&type=template&id=56216992& */ "./resources/js/components/ImpactoSocialComponent.vue?vue&type=template&id=56216992&");
+/* harmony import */ var _ImpactoSocialComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImpactoSocialComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ImpactoSocialComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ImpactoSocialComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ImpactoSocialComponent_vue_vue_type_template_id_56216992___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ImpactoSocialComponent_vue_vue_type_template_id_56216992___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ImpactoSocialComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ImpactoSocialComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/ImpactoSocialComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ImpactoSocialComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ImpactoSocialComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ImpactoSocialComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ImpactoSocialComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ImpactoSocialComponent.vue?vue&type=template&id=56216992&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/ImpactoSocialComponent.vue?vue&type=template&id=56216992& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ImpactoSocialComponent_vue_vue_type_template_id_56216992___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ImpactoSocialComponent.vue?vue&type=template&id=56216992& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ImpactoSocialComponent.vue?vue&type=template&id=56216992&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ImpactoSocialComponent_vue_vue_type_template_id_56216992___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ImpactoSocialComponent_vue_vue_type_template_id_56216992___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -80383,6 +83609,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_InicioComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/InicioComponent.vue */ "./resources/js/components/InicioComponent.vue");
 /* harmony import */ var _components_QuienesSomosComponent_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/QuienesSomosComponent.vue */ "./resources/js/components/QuienesSomosComponent.vue");
 /* harmony import */ var _components_ProduccionComponent_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/ProduccionComponent.vue */ "./resources/js/components/ProduccionComponent.vue");
+/* harmony import */ var _components_ExportacionComponent_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/ExportacionComponent.vue */ "./resources/js/components/ExportacionComponent.vue");
+/* harmony import */ var _components_CalidadComponent_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/CalidadComponent.vue */ "./resources/js/components/CalidadComponent.vue");
+/* harmony import */ var _components_ImpactoSocialComponent_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/ImpactoSocialComponent.vue */ "./resources/js/components/ImpactoSocialComponent.vue");
+
+
+
 
 
 
@@ -80415,7 +83647,30 @@ var routes = [{
 }, {
   path: '/produccion',
   component: _components_ProduccionComponent_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+}, {
+  path: '/exportacion',
+  component: _components_ExportacionComponent_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+}, {
+  path: '/calidad',
+  component: _components_CalidadComponent_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+}, {
+  path: '/impactosocial',
+  component: _components_ImpactoSocialComponent_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
 }];
+
+/***/ }),
+
+/***/ "./resources/js/variables.js":
+/*!***********************************!*\
+  !*** ./resources/js/variables.js ***!
+  \***********************************/
+/*! exports provided: imagesRootPath */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imagesRootPath", function() { return imagesRootPath; });
+var imagesRootPath = 'storage/';
 
 /***/ }),
 
