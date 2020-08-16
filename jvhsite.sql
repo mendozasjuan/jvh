@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 14-08-2020 a las 23:47:05
+-- Tiempo de generación: 16-08-2020 a las 14:16:07
 -- Versión del servidor: 8.0.21-0ubuntu0.20.04.4
 -- Versión de PHP: 7.4.3
 
@@ -21,6 +21,31 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `jvhsite`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `calidad`
+--
+
+CREATE TABLE `calidad` (
+  `id` int NOT NULL,
+  `encabezado_imagen_fondo` text,
+  `logo_1_encabezado` text,
+  `logo_2_encabezado` text,
+  `texto_encabezado` text,
+  `texto_encabezado_habilitado` varchar(255) DEFAULT NULL,
+  `seccion1_titulo` text NOT NULL,
+  `seccion1_parrafo` text NOT NULL,
+  `seccion1_logo1` text NOT NULL,
+  `seccion1_logo2` text NOT NULL,
+  `seccion1_logo3` text NOT NULL,
+  `seccion1_logo4` text NOT NULL,
+  `seccion1_logo5` text NOT NULL,
+  `seccion1_logo6` text NOT NULL,
+  `seccion1_logo7` text NOT NULL,
+  `seccion2_imagen_fondo` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -110,6 +135,29 @@ INSERT INTO `etiquetado_corte` (`id`, `etiquetado`, `corte_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `exportacion`
+--
+
+CREATE TABLE `exportacion` (
+  `id` int NOT NULL,
+  `encabezado_imagen_fondo` text,
+  `logo_1_encabezado` text,
+  `logo_2_encabezado` text,
+  `texto_encabezado` text,
+  `texto_encabezado_habilitado` varchar(255) DEFAULT NULL,
+  `seccion1_titulo` text NOT NULL,
+  `seccion1_parrafo` text NOT NULL,
+  `seccion1_imagen` text NOT NULL,
+  `seccion2_parrafo1` text NOT NULL,
+  `seccion2_parrafo2` text NOT NULL,
+  `seccion2_imagen_fondo` text NOT NULL,
+  `seccion3_titulo` text NOT NULL,
+  `seccion3_imagen_fondo` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `failed_jobs`
 --
 
@@ -142,6 +190,26 @@ INSERT INTO `imagen_corte` (`id`, `imagen`, `corte_id`) VALUES
 (1, 'producto/YoS5JdRr7is9otAQXQRObZ9osgH8x09QPk42LFxZ.png', 5),
 (2, 'producto/7EgioKKytLZxaoKU4zSM3vNpUEo6Jk5aG4nz2TFk.png', 8),
 (3, 'producto/wrOGJ0VpWlUWJEA4QlrYfmtx1hmQhGDcXTrCQ0TT.png', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `impactosocial`
+--
+
+CREATE TABLE `impactosocial` (
+  `id` int NOT NULL,
+  `encabezado_imagen_fondo` text,
+  `logo_1_encabezado` text,
+  `logo_2_encabezado` text,
+  `texto_encabezado` text,
+  `texto_encabezado_habilitado` varchar(255) DEFAULT NULL,
+  `seccion1_titulo` text NOT NULL,
+  `seccion1_parrafo1` text NOT NULL,
+  `seccion1_parrafo2` text NOT NULL,
+  `seccion2_titulo` text NOT NULL,
+  `seccion2_imagen_fondo` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -259,6 +327,13 @@ CREATE TABLE `produccion` (
   `seccion3_imagen_fondo` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `produccion`
+--
+
+INSERT INTO `produccion` (`id`, `encabezado_imagen_fondo`, `logo_1_encabezado`, `logo_2_encabezado`, `texto_encabezado`, `texto_encabezado_habilitado`, `seccion1_titulo`, `seccion1_parrafo`, `seccion1_logo1`, `seccion1_logo2`, `seccion1_imagen_fondo`, `seccion2_titulo`, `seccion2_parrafo1`, `seccion2_parrafo2`, `seccion3_titulo`, `seccion3_parrafo`, `seccion3_imagen_fondo`) VALUES
+(1, 'img/OZavDExIJyyVFiLInS8QAkUwL15LOoMWTfSlC7Rg.png', NULL, NULL, '<p>null</p>', 'null', 'Faena / Despostada', '<p>Nuestra linea de despostada es moderna y eficaz. Utilizamos sistemas de trazabilidad individual de corte desde su nacimiento hasta su consumo. Nuestro personal de produccion está altamente capacitado para garantizar la inocuidad y sanidad de nuestros productos.</p>', 'img/wzIUptrN0TYG7xOJQKMznU24yWDziRLzsEWewTG6.svg', 'img/pSdZxtkIKR0ptcCq4sZLbAZhihSUABQKRh4BqStI.svg', 'img/uez47dlehKE7PwG7JkfdajjwAwd766Qj2StOKlAP.png', 'Nuestro compromiso', '<p>Frigorifico hv produce cortes de carne, menudencias y subproductos de origen bovino para mercados internacionales y locales. Nuestras planta están ubicada en el centro de la provincia de buenos aires y en el corazón de la región ganadera argentina.Tenemos una moderna planta de procesamiento que cuenta con tecnología de punta y sistemas innovadores que permiten automatizar los procesos de producción y logística. Utilizamos equipos, métodos y tecnología de ultima generacion para poder cumplir con las especificaciones y necesidades de cada cliente. Tomamos todas las medidas necesarias para garantizar la seguridad alimentaria.</p>', '<p>Utilizamos equipos, métodos y tecnología de ultima generacion para poder cumplir con las especificaciones y necesidades de cada cliente. Tomamos todas las medidas necesarias para garantizar la seguridad alimentaria</p>', '\"Última generación en la producción de carnes\"', '<p>Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío</p>', 'img/6nB9RyVMkFCjl4eJVYJi2qCOSCmMjx8ltvQCSSew.png');
+
 -- --------------------------------------------------------
 
 --
@@ -365,6 +440,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 
 --
+-- Indices de la tabla `calidad`
+--
+ALTER TABLE `calidad`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `categoria_corte`
 --
 ALTER TABLE `categoria_corte`
@@ -391,6 +472,12 @@ ALTER TABLE `etiquetado_corte`
   ADD KEY `corte_id` (`corte_id`);
 
 --
+-- Indices de la tabla `exportacion`
+--
+ALTER TABLE `exportacion`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -402,6 +489,12 @@ ALTER TABLE `failed_jobs`
 ALTER TABLE `imagen_corte`
   ADD PRIMARY KEY (`id`),
   ADD KEY `corte_id` (`corte_id`);
+
+--
+-- Indices de la tabla `impactosocial`
+--
+ALTER TABLE `impactosocial`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `inicio`
@@ -470,6 +563,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `calidad`
+--
+ALTER TABLE `calidad`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `categoria_corte`
 --
 ALTER TABLE `categoria_corte`
@@ -494,6 +593,12 @@ ALTER TABLE `etiquetado_corte`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `exportacion`
+--
+ALTER TABLE `exportacion`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -504,6 +609,12 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `imagen_corte`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `impactosocial`
+--
+ALTER TABLE `impactosocial`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `inicio`
@@ -527,7 +638,7 @@ ALTER TABLE `packaging_corte`
 -- AUTO_INCREMENT de la tabla `produccion`
 --
 ALTER TABLE `produccion`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `quienessomos`
