@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 16-08-2020 a las 14:16:07
--- Versión del servidor: 8.0.21-0ubuntu0.20.04.4
--- Versión de PHP: 7.4.3
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 17-08-2020 a las 17:37:15
+-- Versión del servidor: 10.1.37-MariaDB
+-- Versión de PHP: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,23 +29,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `calidad` (
-  `id` int NOT NULL,
-  `encabezado_imagen_fondo` text,
-  `logo_1_encabezado` text,
-  `logo_2_encabezado` text,
-  `texto_encabezado` text,
-  `texto_encabezado_habilitado` varchar(255) DEFAULT NULL,
-  `seccion1_titulo` text NOT NULL,
-  `seccion1_parrafo` text NOT NULL,
-  `seccion1_logo1` text NOT NULL,
-  `seccion1_logo2` text NOT NULL,
-  `seccion1_logo3` text NOT NULL,
-  `seccion1_logo4` text NOT NULL,
-  `seccion1_logo5` text NOT NULL,
-  `seccion1_logo6` text NOT NULL,
-  `seccion1_logo7` text NOT NULL,
-  `seccion2_imagen_fondo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int(11) NOT NULL,
+  `encabezado_imagen_fondo` text COLLATE utf8mb4_unicode_ci,
+  `logo_1_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `logo_2_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado_habilitado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seccion1_titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo1` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo2` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo3` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo4` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo5` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo6` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo7` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -54,9 +54,9 @@ CREATE TABLE `calidad` (
 --
 
 CREATE TABLE `categoria_corte` (
-  `id` int NOT NULL,
-  `categoria` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `categoria` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `categoria_corte`
@@ -73,10 +73,10 @@ INSERT INTO `categoria_corte` (`id`, `categoria`) VALUES
 --
 
 CREATE TABLE `contacto` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `contacto` varchar(255) NOT NULL,
   `correo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE `contacto` (
 --
 
 CREATE TABLE `corte` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `descripcion` text NOT NULL,
   `tamano_caja` varchar(255) NOT NULL,
@@ -94,8 +94,8 @@ CREATE TABLE `corte` (
   `piezas_por_caja` varchar(255) NOT NULL,
   `condiciones_termicas` varchar(255) NOT NULL,
   `especificaciones` varchar(255) NOT NULL,
-  `categoria_corte_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `categoria_corte_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `corte`
@@ -119,10 +119,10 @@ INSERT INTO `corte` (`id`, `nombre`, `descripcion`, `tamano_caja`, `medidas`, `e
 --
 
 CREATE TABLE `etiquetado_corte` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `etiquetado` varchar(255) NOT NULL,
-  `corte_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `corte_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `etiquetado_corte`
@@ -139,21 +139,21 @@ INSERT INTO `etiquetado_corte` (`id`, `etiquetado`, `corte_id`) VALUES
 --
 
 CREATE TABLE `exportacion` (
-  `id` int NOT NULL,
-  `encabezado_imagen_fondo` text,
-  `logo_1_encabezado` text,
-  `logo_2_encabezado` text,
-  `texto_encabezado` text,
-  `texto_encabezado_habilitado` varchar(255) DEFAULT NULL,
-  `seccion1_titulo` text NOT NULL,
-  `seccion1_parrafo` text NOT NULL,
-  `seccion1_imagen` text NOT NULL,
-  `seccion2_parrafo1` text NOT NULL,
-  `seccion2_parrafo2` text NOT NULL,
-  `seccion2_imagen_fondo` text NOT NULL,
-  `seccion3_titulo` text NOT NULL,
-  `seccion3_imagen_fondo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int(11) NOT NULL,
+  `encabezado_imagen_fondo` text COLLATE utf8mb4_unicode_ci,
+  `logo_1_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `logo_2_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado_habilitado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seccion1_titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_imagen` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_parrafo1` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_parrafo2` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -162,7 +162,7 @@ CREATE TABLE `exportacion` (
 --
 
 CREATE TABLE `failed_jobs` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -177,10 +177,10 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `imagen_corte` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `imagen` varchar(255) NOT NULL,
-  `corte_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `corte_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `imagen_corte`
@@ -198,18 +198,18 @@ INSERT INTO `imagen_corte` (`id`, `imagen`, `corte_id`) VALUES
 --
 
 CREATE TABLE `impactosocial` (
-  `id` int NOT NULL,
-  `encabezado_imagen_fondo` text,
-  `logo_1_encabezado` text,
-  `logo_2_encabezado` text,
-  `texto_encabezado` text,
-  `texto_encabezado_habilitado` varchar(255) DEFAULT NULL,
-  `seccion1_titulo` text NOT NULL,
-  `seccion1_parrafo1` text NOT NULL,
-  `seccion1_parrafo2` text NOT NULL,
-  `seccion2_titulo` text NOT NULL,
-  `seccion2_imagen_fondo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int(11) NOT NULL,
+  `encabezado_imagen_fondo` text COLLATE utf8mb4_unicode_ci,
+  `logo_1_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `logo_2_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado_habilitado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seccion1_titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_parrafo1` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_parrafo2` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -218,26 +218,26 @@ CREATE TABLE `impactosocial` (
 --
 
 CREATE TABLE `inicio` (
-  `id` int NOT NULL,
-  `encabezado_imagen_fondo` text NOT NULL,
-  `logo_1_encabezado` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `logo_2_encabezado` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `texto_encabezado` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `texto_encabezado_habilitado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `seccion1_titulo` varchar(255) NOT NULL,
-  `seccion_1_parrafo` text NOT NULL,
-  `seccion1_logo1` text NOT NULL,
-  `seccion1_logo2` text NOT NULL,
-  `seccion1_logo3` text NOT NULL,
-  `seccion2_imagen_fondo` text NOT NULL,
-  `seccio2_titulo` varchar(255) NOT NULL,
-  `seccion_2_parrafo` text NOT NULL,
-  `seccion3_titulo` varchar(255) NOT NULL,
-  `seccion3_parrafo` text NOT NULL,
-  `seccion3_imagen` text NOT NULL,
-  `seccion4_titulo` varchar(255) NOT NULL,
-  `seccion4_imagen_fondo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int(11) NOT NULL,
+  `encabezado_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo_1_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `logo_2_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado_habilitado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seccion1_titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion_1_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo1` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo2` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo3` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccio2_titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion_2_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_imagen` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion4_titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion4_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `inicio`
@@ -253,9 +253,9 @@ INSERT INTO `inicio` (`id`, `encabezado_imagen_fondo`, `logo_1_encabezado`, `log
 --
 
 CREATE TABLE `migrations` (
-  `id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL
+  `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -274,10 +274,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `packaging_corte` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `packaging` varchar(255) NOT NULL,
-  `corte_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `corte_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `packaging_corte`
@@ -308,24 +308,24 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `produccion` (
-  `id` int NOT NULL,
-  `encabezado_imagen_fondo` text,
-  `logo_1_encabezado` text,
-  `logo_2_encabezado` text,
-  `texto_encabezado` text,
-  `texto_encabezado_habilitado` text,
-  `seccion1_titulo` text NOT NULL,
-  `seccion1_parrafo` text NOT NULL,
-  `seccion1_logo1` text NOT NULL,
-  `seccion1_logo2` text NOT NULL,
-  `seccion1_imagen_fondo` text NOT NULL,
-  `seccion2_titulo` text NOT NULL,
-  `seccion2_parrafo1` text NOT NULL,
-  `seccion2_parrafo2` text NOT NULL,
-  `seccion3_titulo` text NOT NULL,
-  `seccion3_parrafo` text NOT NULL,
-  `seccion3_imagen_fondo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int(11) NOT NULL,
+  `encabezado_imagen_fondo` text COLLATE utf8mb4_unicode_ci,
+  `logo_1_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `logo_2_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado_habilitado` text COLLATE utf8mb4_unicode_ci,
+  `seccion1_titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo1` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo2` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_parrafo1` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_parrafo2` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `produccion`
@@ -341,28 +341,28 @@ INSERT INTO `produccion` (`id`, `encabezado_imagen_fondo`, `logo_1_encabezado`, 
 --
 
 CREATE TABLE `quienessomos` (
-  `id` int NOT NULL,
-  `encabezado_imagen_fondo` text NOT NULL,
-  `logo_1_encabezado` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `logo_2_encabezado` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `texto_encabezado` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `texto_encabezado_habilitado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `seccio1_parrafo1` text NOT NULL,
-  `seccio1_parrafo2` text NOT NULL,
-  `seccio1_parrafo3` text NOT NULL,
-  `seccio1_parrafo4` text NOT NULL,
-  `seccion1_imagen_fondo` text NOT NULL,
-  `seccion2_titulo` text NOT NULL,
-  `seccion2_parrafo` text NOT NULL,
-  `seccion2_imagen_fondo` text NOT NULL,
-  `seccion3_parrafo1` text NOT NULL,
-  `seccion3_parrafo2` text NOT NULL,
-  `seccion4_parrafo1` text NOT NULL,
-  `seccion4_parrafo2` text NOT NULL,
-  `seccion4_parrafo3` text NOT NULL,
-  `seccion4_parrafo4` text NOT NULL,
-  `seccion4_imagen_fondo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int(11) NOT NULL,
+  `encabezado_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo_1_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `logo_2_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado_habilitado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seccio1_parrafo1` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccio1_parrafo2` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccio1_parrafo3` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccio1_parrafo4` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion2_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_parrafo1` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_parrafo2` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion4_parrafo1` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion4_parrafo2` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion4_parrafo3` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion4_parrafo4` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion4_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `quienessomos`
@@ -378,10 +378,10 @@ INSERT INTO `quienessomos` (`id`, `encabezado_imagen_fondo`, `logo_1_encabezado`
 --
 
 CREATE TABLE `redes_sociales` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -390,9 +390,9 @@ CREATE TABLE `redes_sociales` (
 --
 
 CREATE TABLE `secciones` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `seccion` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -401,14 +401,14 @@ CREATE TABLE `secciones` (
 --
 
 CREATE TABLE `sedes` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `sede` varchar(255) NOT NULL,
   `ciudad` varchar(255) NOT NULL,
   `direccion` text NOT NULL,
   `coordenadas_maps` varchar(100) NOT NULL,
   `telefono1` varchar(16) NOT NULL,
   `telefono2` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -417,8 +417,9 @@ CREATE TABLE `sedes` (
 --
 
 CREATE TABLE `users` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -431,9 +432,10 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Juan Mendoza', 'mendozajuan007@gmail.com', NULL, '$2y$10$HhVEv1Lh0C.JzBHu2DAtAOQd9oRNSsHHBQEDsNT7FgvMqyI6AF8re', NULL, '2020-08-13 02:07:10', '2020-08-13 02:07:10'),
-(2, 'Jose Perez', 'joseperez@gmail.com', NULL, '$2y$10$LGb8xIuwoGvOpvo6WAnAVemeurwEsvEEiCy0BLeseg9iQJlTxcprW', NULL, '2020-08-13 05:46:49', '2020-08-13 07:00:01');
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Juan Mendoza', 'mendozasjuan', 'mendozajuan007@gmail.com', NULL, '$2y$10$HhVEv1Lh0C.JzBHu2DAtAOQd9oRNSsHHBQEDsNT7FgvMqyI6AF8re', NULL, '2020-08-13 02:07:10', '2020-08-13 02:07:10'),
+(2, 'Jose Perez', 'joseperez', 'joseperez@gmail.com', NULL, '$2y$10$LGb8xIuwoGvOpvo6WAnAVemeurwEsvEEiCy0BLeseg9iQJlTxcprW', NULL, '2020-08-13 05:46:49', '2020-08-13 07:00:01'),
+(4, 'Administrador', 'admin', 'admin@admin.com', NULL, '$2y$10$eHFoNbd6nofU22WWVYIA3ekSDzwvzB93X6gelNAiS6AHL.qOCt8ty', NULL, '2020-08-17 19:35:26', '2020-08-17 19:35:26');
 
 --
 -- Índices para tablas volcadas
@@ -556,7 +558,8 @@ ALTER TABLE `sedes`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -566,109 +569,109 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `calidad`
 --
 ALTER TABLE `calidad`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria_corte`
 --
 ALTER TABLE `categoria_corte`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `corte`
 --
 ALTER TABLE `corte`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetado_corte`
 --
 ALTER TABLE `etiquetado_corte`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `exportacion`
 --
 ALTER TABLE `exportacion`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen_corte`
 --
 ALTER TABLE `imagen_corte`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `impactosocial`
 --
 ALTER TABLE `impactosocial`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `inicio`
 --
 ALTER TABLE `inicio`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `packaging_corte`
 --
 ALTER TABLE `packaging_corte`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `produccion`
 --
 ALTER TABLE `produccion`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `quienessomos`
 --
 ALTER TABLE `quienessomos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `redes_sociales`
 --
 ALTER TABLE `redes_sociales`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

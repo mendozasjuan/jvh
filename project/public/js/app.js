@@ -4896,6 +4896,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4904,6 +4913,7 @@ __webpack_require__.r(__webpack_exports__);
       form: new Form({
         id: '',
         name: '',
+        username: '',
         email: '',
         password: ''
       })
@@ -4921,7 +4931,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.put('api/user/' + this.form.id).then(function () {
         Toast.fire({
           icon: 'success',
-          title: 'User updated successfully'
+          title: 'Usuario Actualizado con Exito'
         });
         Fire.$emit('AfterCreatedUserLoadIt');
         $('#addNew').modal('hide');
@@ -4950,7 +4960,7 @@ __webpack_require__.r(__webpack_exports__);
 
         Toast.fire({
           icon: 'success',
-          title: 'User created successfully'
+          title: 'Usuario Creado con Exito'
         });
 
         _this2.$Progress.finish();
@@ -4964,8 +4974,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Estas Segur@?',
+        text: "Esta accion no se puede revertir!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -4975,7 +4985,7 @@ __webpack_require__.r(__webpack_exports__);
         if (result.value) {
           //Send Request to server
           _this3.form["delete"]('api/user/' + id).then(function (response) {
-            Swal.fire('Deleted!', 'User deleted successfully', 'success');
+            Swal.fire('Deleted!', 'Usuario Borrado con Exito', 'success');
 
             _this3.loadUsers();
           })["catch"](function () {
@@ -67400,9 +67410,9 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row mt-5" }, [
       _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card card-primary" }, [
           _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("Users Table")]),
+            _c("h3", { staticClass: "card-title" }, [_vm._v("Usuarios")]),
             _vm._v(" "),
             _c("div", { staticClass: "card-tools" }, [
               _c(
@@ -67413,7 +67423,7 @@ var render = function() {
                   on: { click: _vm.openModalWindow }
                 },
                 [
-                  _vm._v("Add New "),
+                  _vm._v("Agregar Nuevo "),
                   _c("i", { staticClass: "fas fa-user-plus fa-fw" })
                 ]
               )
@@ -67432,6 +67442,8 @@ var render = function() {
                       _c("td", [_vm._v(_vm._s(user.id))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(user.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(user.username))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(user.email))]),
                       _vm._v(" "),
@@ -67517,7 +67529,7 @@ var render = function() {
                     staticClass: "modal-title",
                     attrs: { id: "addNewLabel" }
                   },
-                  [_vm._v("Add New User")]
+                  [_vm._v("Agregar Nuevo Usuario")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -67534,7 +67546,7 @@ var render = function() {
                     staticClass: "modal-title",
                     attrs: { id: "addNewLabel" }
                   },
-                  [_vm._v("Update User")]
+                  [_vm._v("Actualizar Usuario")]
                 ),
                 _vm._v(" "),
                 _vm._m(1)
@@ -67570,7 +67582,7 @@ var render = function() {
                           attrs: {
                             type: "text",
                             name: "name",
-                            placeholder: "Name"
+                            placeholder: "Nombre"
                           },
                           domProps: { value: _vm.form.name },
                           on: {
@@ -67599,6 +67611,50 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
+                              value: _vm.form.username,
+                              expression: "form.username"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("username")
+                          },
+                          attrs: {
+                            type: "text",
+                            name: "username",
+                            placeholder: "Nombre de Usuario"
+                          },
+                          domProps: { value: _vm.form.username },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "username",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "username" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
                               value: _vm.form.email,
                               expression: "form.email"
                             }
@@ -67608,7 +67664,7 @@ var render = function() {
                           attrs: {
                             type: "email",
                             name: "email",
-                            placeholder: "Email Address"
+                            placeholder: "Correo Electronico"
                           },
                           domProps: { value: _vm.form.email },
                           on: {
@@ -67681,7 +67737,7 @@ var render = function() {
                         staticClass: "btn btn-danger",
                         attrs: { type: "button", "data-dismiss": "modal" }
                       },
-                      [_vm._v("Close")]
+                      [_vm._v("Cerrar")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -67698,7 +67754,7 @@ var render = function() {
                         staticClass: "btn btn-primary",
                         attrs: { type: "submit" }
                       },
-                      [_vm._v("Update")]
+                      [_vm._v("Actualizar")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -67715,7 +67771,7 @@ var render = function() {
                         staticClass: "btn btn-primary",
                         attrs: { type: "submit" }
                       },
-                      [_vm._v("Create")]
+                      [_vm._v("Crear")]
                     )
                   ])
                 ]
@@ -67735,13 +67791,15 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", [_vm._v("ID")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Name")]),
+      _c("th", [_vm._v("Nombre")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Nombre de Usuario")]),
       _vm._v(" "),
       _c("th", [_vm._v("Email")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Registered At")]),
+      _c("th", [_vm._v("Fecha de Registro")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Modify")])
+      _c("th", [_vm._v("Accion")])
     ])
   },
   function() {

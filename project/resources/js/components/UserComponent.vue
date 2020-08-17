@@ -3,12 +3,12 @@
     <div class="container">
         <div class="row mt-5">
           <div class="col-md-12">
-            <div class="card">
+            <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Users Table</h3>
+                <h3 class="card-title">Usuarios</h3>
 
                 <div class="card-tools">
-                    <button class="btn btn-success" data-toggle="modal" data-target="#addNew" @click="openModalWindow">Add New <i class="fas fa-user-plus fa-fw"></i></button>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#addNew" @click="openModalWindow">Agregar Nuevo <i class="fas fa-user-plus fa-fw"></i></button>
                 </div>
               </div>
              
@@ -17,15 +17,17 @@
                   <tbody>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>Nombre</th>
+                        <th>Nombre de Usuario</th>
                         <th>Email</th>
-                        <th>Registered At</th>
-                        <th>Modify</th>
+                        <th>Fecha de Registro</th>
+                        <th>Accion</th>
                   </tr> 
 
                   <tr v-for="user in users.data" :key="user.id">
                     <td>{{ user.id }}</td>
                     <td>{{ user.name }}</td>
+                    <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.created_at | formatDate}}</td>
 
@@ -57,8 +59,8 @@
                 <div class="modal-content">
                 <div class="modal-header">
 
-                    <h5 v-show="!editMode" class="modal-title" id="addNewLabel">Add New User</h5>
-                    <h5 v-show="editMode" class="modal-title" id="addNewLabel">Update User</h5>
+                    <h5 v-show="!editMode" class="modal-title" id="addNewLabel">Agregar Nuevo Usuario</h5>
+                    <h5 v-show="editMode" class="modal-title" id="addNewLabel">Actualizar Usuario</h5>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -69,14 +71,21 @@
 <div class="modal-body">
      <div class="form-group">
         <input v-model="form.name" type="text" name="name"
-            placeholder="Name"
+            placeholder="Nombre"
             class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
         <has-error :form="form" field="name"></has-error>
     </div>
 
+    <div class="form-group">
+        <input v-model="form.username" type="text" name="username"
+            placeholder="Nombre de Usuario"
+            class="form-control" :class="{ 'is-invalid': form.errors.has('username') }">
+        <has-error :form="form" field="username"></has-error>
+    </div>
+
      <div class="form-group">
         <input v-model="form.email" type="email" name="email"
-            placeholder="Email Address"
+            placeholder="Correo Electronico"
             class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
         <has-error :form="form" field="email"></has-error>
     </div>
@@ -90,9 +99,9 @@
 
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-    <button v-show="editMode" type="submit" class="btn btn-primary">Update</button>
-    <button v-show="!editMode" type="submit" class="btn btn-primary">Create</button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+    <button v-show="editMode" type="submit" class="btn btn-primary">Actualizar</button>
+    <button v-show="!editMode" type="submit" class="btn btn-primary">Crear</button>
 </div>
 
 </form>
@@ -113,6 +122,7 @@
                 form: new Form({
                     id: '',
                     name : '',
+                    username : '',
                     email: '',
                     password: '',
 
@@ -134,7 +144,7 @@
 
                    Toast.fire({
                       icon: 'success',
-                      title: 'User updated successfully'
+                      title: 'Usuario Actualizado con Exito'
                     })
 
                     Fire.$emit('AfterCreatedUserLoadIt');
@@ -170,7 +180,7 @@
 
                         Toast.fire({
                           icon: 'success',
-                          title: 'User created successfully'
+                          title: 'Usuario Creado con Exito'
                         })
 
                         this.$Progress.finish()
@@ -188,8 +198,8 @@
           },
           deleteUser(id) {
             Swal.fire({
-              title: 'Are you sure?',
-              text: "You won't be able to revert this!",
+              title: 'Estas Segur@?',
+              text: "Esta accion no se puede revertir!",
               icon: 'warning',
               showCancelButton: true,
               confirmButtonColor: '#3085d6',
@@ -203,7 +213,7 @@
                     .then((response)=> {
                             Swal.fire(
                               'Deleted!',
-                              'User deleted successfully',
+                              'Usuario Borrado con Exito',
                               'success'
                             )
                     this.loadUsers();

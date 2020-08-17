@@ -18,12 +18,14 @@ class UserController extends Controller
     {   
         $this->validate($request, [
             'name' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'password' => 'required',
         ]);
 
         return User::create([
            'name' => $request['name'],
+           'username' => $request['username'],
            'email' => $request['email'],
            'password' => \Hash::make($request['password']),
         ]);
@@ -38,12 +40,14 @@ class UserController extends Controller
     {   
         $this->validate($request, [
             'name' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'password' => 'required',
         ]);
 
         $user = User::findOrFail($id);
         $user->name = $request['name'];
+        $user->username = $request['username'];
         $user->email = $request['email'];
         $user->password = \Hash::make($request['password']);
 
@@ -55,7 +59,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return response()->json([
-         'message' => 'User deleted successfully'
+         'message' => 'Usuario Borrado con Exito'
         ]);
     }
 }
