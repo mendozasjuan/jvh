@@ -28,7 +28,7 @@
                     <td>{{ corte.id }}</td>
                     <td>{{ corte.nombre }}</td>
                     <td>{{ corte.descripcion }}</td>
-                    <td>{{ corte.categoria.categoria }}</td>
+                    <td>{{ corte.categoria.categoria.es }}</td>
                     <td>{{ corte.tamano_caja }}</td>
 
                     <td>
@@ -121,7 +121,7 @@
                     <div class="form-group">
                         <select v-model="form.categoria_corte_id" name="categoria_corte_id">
                           <option value="" selected>Seleccione Una Categoria</option>
-                          <option v-for="categoria in categorias.data" :key="categoria.id" :value="categoria.id" >{{ categoria.categoria }}</option>
+                          <option v-for="categoria in categorias.data" :key="categoria.id" :value="categoria.id" >{{ categoria.categoria.es }}</option>
                         </select>
                         <has-error :form="form" field="categoria_corte_id"></has-error>
                     </div>

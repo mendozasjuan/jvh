@@ -23,7 +23,7 @@
 
                   <tr v-for="categoria in categorias.data" :key="categoria.id">
                     <td>{{ categoria.id }}</td>
-                    <td>{{ categoria.categoria }}</td>
+                    <td>{{ categoria.categoria.es }}</td>
 
                     <td>
                         <a href="#" data-id="categoria.id" @click="editModalWindow(categoria)">

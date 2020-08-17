@@ -16,17 +16,18 @@
 @endsection
 
 @section('header')
-	@include('layouts.header',['text' => true])
+	@include('layouts.header',['text' => true,'titulo'=>$inicio->texto_encabezado])
 @endsection
 
 @section('secciones')
 		<!--<section>-->
 	<div id="h-seccion2" class="row">
 		<div class="col-12 col-md-5 col-lg-7 col-xl-6 ">
-			<h2>Nuestra Carne</h2>
-			<p>
-				La calidad de la carne, en términos alimenticios, depende de la conjunción de diversos factores. Entre estos se destacan el tipo de crianza del ganado y la eficacia de su comercialización. La pampa húmeda argentina es uno de los lugares en el mundo en el que la cría de los animales no se realizan en establos, sino en extensas llanuras, alejadas de la polución industrial, donde la abundancia de pasturas esta asegurada. El ganado argentino respeta, además, las pautas de crecimiento natural, ya que no se los inyecta con hormonas y antibióticos. Por estas razones, su estado resulta optimo para el consumo.
-			</p>
+			<h2>{{$inicio->seccion1_titulo}}<!--Nuestra Carne--></h2>
+			
+				{!! $inicio->seccion_1_parrafo !!}
+				<!--La calidad de la carne, en términos alimenticios, depende de la conjunción de diversos factores. Entre estos se destacan el tipo de crianza del ganado y la eficacia de su comercialización. La pampa húmeda argentina es uno de los lugares en el mundo en el que la cría de los animales no se realizan en establos, sino en extensas llanuras, alejadas de la polución industrial, donde la abundancia de pasturas esta asegurada. El ganado argentino respeta, además, las pautas de crecimiento natural, ya que no se los inyecta con hormonas y antibióticos. Por estas razones, su estado resulta optimo para el consumo.-->
+			
 		</div>
 		<div class="col">
 			<div class="row align-items-center" style="width: 100%;height: 100%">
@@ -44,17 +45,18 @@
 		</div>
 		<div style="height: 100%" class="row justify-content-end align-items-center">
 				<div class="col-11 col-sm-8 col-md-7 col-lg-5 col-xl-3">
-					<h2 class="text-right">"Última generación en la producción de carnes"</h2>
-					<p>Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío</p>
+					<h2 class="text-right">{{$inicio->seccio2_titulo}}<!--"Última generación en la producción de carnes"--></h2>
+					<p>{!! $inicio->seccion_2_parrafo !!}<!--Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío--></p>
 				</div>
 			</div>
 	</div>
 	<div id="h-seccion4" class="row">
 		<div class="col-7 col-lg-4 col-xl-2">
 			<div class="lineavertical">
-				<h2>Mercados en el Mundo</h2>
+				<h2>{{$inicio->seccion3_titulo}}<!--Mercados en el Mundo--></h2>
 				<p style="color:#6E6F71">
-					Cuenta con todos los permisos y certificaciones necesarios para exportar a la unión europea, israel, suiza, rusia, hong kong, brasil y sudáfrica entre otros.
+					{!! $inicio->seccion3_parrafo !!}
+					<!--Cuenta con todos los permisos y certificaciones necesarios para exportar a la unión europea, israel, suiza, rusia, hong kong, brasil y sudáfrica entre otros.-->
 				</p>
 			</div>
 		</div>
@@ -70,7 +72,11 @@
 		</div>
 		<div class="row" style="margin-right: auto;">
 			<div class="col-12 col-xl-3">
-				<h2>"Nuestra carne es altamente demandada debido a su marmoleo natural, jugosidad, terneza y sabor"</h2>
+				<h2>
+					{{$inicio->seccion4_titulo}}
+					<!--"Nuestra carne es altamente demandada debido a su marmoleo natural, jugosidad, terneza y sabor"-->
+						
+					</h2>
 			</div>
 		</div>
 	</div>

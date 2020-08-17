@@ -7,8 +7,8 @@
 			<div class="col col-sm-10">
 				<div class="row contacto justify-content-center justify-content-sm-end mr-3">
 					<a href="{{ url('contacto') }}">Contacto</a>
-					<a href="#">Es</a>
-					<a href="#">独</a>
+					<a href="{{ url('lang', ['es']) }}">Es</a>
+					<a href="{{ url('lang', ['zh']) }}">独</a>
 				</div>
 				<div class="row">
 					<div class="col ">
@@ -80,7 +80,7 @@
 			</div>
 			<div class="col-12 col-md-7 col-xl-3 col-lg-3">
 				<h2>
-					"Carne Argentina de alta calidad para los mercados más exigentes del mundo"
+					{!! $titulo !!}<!--"Carne Argentina de alta calidad para los mercados más exigentes del mundo"-->
 				</h2>
 			</div>
 		</div>
