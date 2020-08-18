@@ -38,6 +38,8 @@ class InicioController extends Controller
             'categoria_corte_id' => 'required'
 
         ]);*/
+        dd($request);
+        $inicio = new Inicio;
 
         if($request['id'] != null){
             return $this->update($request,$request['id']);
@@ -45,7 +47,7 @@ class InicioController extends Controller
 
         $image = $this->storeImagenes($request);
 
-        if($image['encabezado_imagen_fondo'] !=null )
+       /* if($image['encabezado_imagen_fondo'] !=null )
             $encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
 
         if($image['logo_1_encabezado'] !=null )
@@ -70,9 +72,52 @@ class InicioController extends Controller
             $seccion3_imagen = $image['seccion3_imagen'];
 
         if($image['seccion4_imagen_fondo'] !=null )
-            $seccion4_imagen_fondo = $image['seccion4_imagen_fondo'];
+            $seccion4_imagen_fondo = $image['seccion4_imagen_fondo'];*/
 
-        $inicio = Inicio::create([
+
+          $inicio->setTranslations('texto_encabezado', $request['texto_encabezado'])
+            ->setTranslations('seccion1_titulo', $request['seccion1_titulo'])
+            ->setTranslations('seccion_1_parrafo', $request['seccion_1_parrafo'])
+            ->setTranslations('seccio2_titulo', $request['seccio2_titulo'])
+            ->setTranslations('seccion_2_parrafo', $request['seccion_2_parrafo'])
+            ->setTranslations('seccion3_titulo', $request['seccion3_titulo'])
+            ->setTranslations('seccion3_parrafo', $request['seccion3_parrafo'])
+            ->setTranslations('seccion4_titulo', $request['seccion4_titulo']);
+
+        $inicio->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
+
+        if($image['encabezado_imagen_fondo'] !=null )
+            $inicio->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
+
+        if($image['logo_1_encabezado'] !=null )
+            $inicio->logo_1_encabezado = $image['logo_1_encabezado'];
+
+        if($image['logo_2_encabezado'] !=null )
+            $inicio->logo_2_encabezado = $image['logo_2_encabezado'];
+
+        if($image['seccion1_logo1'] !=null )
+            $inicio->seccion1_logo1 = $image['seccion1_logo1'];
+
+        if($image['seccion1_logo2'] !=null )
+            $inicio->seccion1_logo2 = $image['seccion1_logo2'];
+
+        if($image['seccion1_logo3'] !=null )
+            $inicio->seccion1_logo3 = $image['seccion1_logo3'];
+
+        if($image['seccion2_imagen_fondo'] !=null )
+            $inicio->seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
+
+        if($image['seccion3_imagen'] !=null )
+            $inicio->seccion3_imagen = $image['seccion3_imagen'];
+
+        if($image['seccion4_imagen_fondo'] !=null )
+            $inicio->seccion4_imagen_fondo = $image['seccion4_imagen_fondo'];
+
+
+
+        $inicio->save();
+
+        /*$inicio = Inicio::create([
            'encabezado_imagen_fondo' => $encabezado_imagen_fondo,
            'logo_1_encabezado' => $logo_1_encabezado,
            'logo_2_encabezado' => $logo_2_encabezado,
@@ -92,7 +137,7 @@ class InicioController extends Controller
            'seccion3_imagen' => $seccion3_imagen,
            'seccion4_titulo' => $request['seccion4_titulo'],
            'seccion4_imagen_fondo' => $seccion4_imagen_fondo,
-        ]);
+        ]);*/
 
         return $inicio;
     }
@@ -130,7 +175,7 @@ class InicioController extends Controller
         ->setTranslations('seccion3_parrafo', $request['seccion3_parrafo'])
         ->setTranslations('seccion4_titulo', $request['seccion4_titulo']);
 
-        $inicio->texto_encabezado = $request['texto_encabezado'];
+        $inicio->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
         /*
         $inicio->texto_encabezado = $request['texto_encabezado'];
         $inicio->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];

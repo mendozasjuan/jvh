@@ -3829,7 +3829,10 @@ __webpack_require__.r(__webpack_exports__);
         encabezado_imagen_fondo: '',
         logo_1_encabezado: '',
         logo_2_encabezado: '',
-        texto_encabezado: '',
+        texto_encabezado: {
+          es: '',
+          zh: ''
+        },
         texto_encabezado_habilitado: '',
         seccion1_titulo: '',
         seccion_1_parrafo: '',
@@ -3850,9 +3853,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     editWindow: function editWindow(inicio) {
-      this.form.clear();
       this.editMode = true;
-      this.form.reset();
+      this.form.clear();
+      this.form.reset(); //if(inicio)
+
       this.form.fill(inicio);
     },
     loadInicio: function loadInicio() {
@@ -3865,6 +3869,8 @@ __webpack_require__.r(__webpack_exports__);
     updateInicio: function updateInicio() {
       var _this2 = this;
 
+      console.log(this.form);
+      console.log(this.editMode);
       this.$Progress.start(); //this.form.submit('put','api/inicio/'+this.form.id,{
 
       axios.post('api/inicio', this.form, {
@@ -64957,25 +64963,27 @@ var render = function() {
                     _c("ckeditor", {
                       staticClass: "col-md-10 form-control",
                       class: {
-                        "is-invalid": _vm.form.errors.has("texto_encabezado.es")
+                        "is-invalid": _vm.form.errors.has(
+                          "texto_encabezado[es]"
+                        )
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "texto_encabezado.es",
+                        name: "texto_encabezado[es]",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
                       model: {
-                        value: _vm.form.texto_encabezado.es,
+                        value: _vm.form.texto_encabezado[_vm.es],
                         callback: function($$v) {
-                          _vm.$set(_vm.form.texto_encabezado, "es", $$v)
+                          _vm.$set(_vm.form.texto_encabezado, _vm.es, $$v)
                         },
-                        expression: "form.texto_encabezado.es"
+                        expression: "form.texto_encabezado[es]"
                       }
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "texto_encabezado.es" }
+                      attrs: { form: _vm.form, field: "texto_encabezado[es]" }
                     })
                   ],
                   1
@@ -65077,24 +65085,24 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.seccion1_titulo.es,
-                          expression: "form.seccion1_titulo.es"
+                          value: _vm.form.seccion1_titulo,
+                          expression: "form.seccion1_titulo"
                         }
                       ],
                       staticClass: "form-control",
                       class: {
-                        "is-invalid": _vm.form.errors.has("seccion1_titulo.es")
+                        "is-invalid": _vm.form.errors.has("seccion1_titulo")
                       },
                       attrs: { type: "text", placeholder: "Enter ..." },
-                      domProps: { value: _vm.form.seccion1_titulo.es },
+                      domProps: { value: _vm.form.seccion1_titulo },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.form.seccion1_titulo,
-                            "es",
+                            _vm.form,
+                            "seccion1_titulo",
                             $event.target.value
                           )
                         }
@@ -65102,7 +65110,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion1_titulo.es" }
+                      attrs: { form: _vm.form, field: "seccion1_titulo" }
                     })
                   ],
                   1
@@ -65117,27 +65125,25 @@ var render = function() {
                     _c("ckeditor", {
                       staticClass: "col-md-10 form-control",
                       class: {
-                        "is-invalid": _vm.form.errors.has(
-                          "seccion_1_parrafo.es"
-                        )
+                        "is-invalid": _vm.form.errors.has("seccion_1_parrafo")
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion_1_parrafo.es",
+                        name: "seccion_1_parrafo",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
                       model: {
-                        value: _vm.form.seccion_1_parrafo.es,
+                        value: _vm.form.seccion_1_parrafo,
                         callback: function($$v) {
-                          _vm.$set(_vm.form.seccion_1_parrafo, "es", $$v)
+                          _vm.$set(_vm.form, "seccion_1_parrafo", $$v)
                         },
-                        expression: "form.seccion_1_parrafo.es"
+                        expression: "form.seccion_1_parrafo"
                       }
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion_1_parrafo.es" }
+                      attrs: { form: _vm.form, field: "seccion_1_parrafo" }
                     })
                   ],
                   1
@@ -65260,24 +65266,24 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.seccio2_titulo.es,
-                          expression: "form.seccio2_titulo.es"
+                          value: _vm.form.seccio2_titulo,
+                          expression: "form.seccio2_titulo"
                         }
                       ],
                       staticClass: "form-control",
                       class: {
-                        "is-invalid": _vm.form.errors.has("seccio2_titulo.es")
+                        "is-invalid": _vm.form.errors.has("seccio2_titulo")
                       },
                       attrs: { type: "text", placeholder: "Enter ..." },
-                      domProps: { value: _vm.form.seccio2_titulo.es },
+                      domProps: { value: _vm.form.seccio2_titulo },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.form.seccio2_titulo,
-                            "es",
+                            _vm.form,
+                            "seccio2_titulo",
                             $event.target.value
                           )
                         }
@@ -65285,7 +65291,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccio2_titulo.es" }
+                      attrs: { form: _vm.form, field: "seccio2_titulo" }
                     })
                   ],
                   1
@@ -65300,27 +65306,25 @@ var render = function() {
                     _c("ckeditor", {
                       staticClass: "col-md-10 form-control",
                       class: {
-                        "is-invalid": _vm.form.errors.has(
-                          "seccion_2_parrafo.es"
-                        )
+                        "is-invalid": _vm.form.errors.has("seccion_2_parrafo")
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion_2_parrafo.es",
+                        name: "seccion_2_parrafo",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
                       model: {
-                        value: _vm.form.seccion_2_parrafo.es,
+                        value: _vm.form.seccion_2_parrafo,
                         callback: function($$v) {
-                          _vm.$set(_vm.form.seccion_2_parrafo, "es", $$v)
+                          _vm.$set(_vm.form, "seccion_2_parrafo", $$v)
                         },
-                        expression: "form.seccion_2_parrafo.es"
+                        expression: "form.seccion_2_parrafo"
                       }
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion_2_parrafo.es" }
+                      attrs: { form: _vm.form, field: "seccion_2_parrafo" }
                     })
                   ],
                   1
@@ -65377,24 +65381,24 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.seccion3_titulo.es,
-                          expression: "form.seccion3_titulo.es"
+                          value: _vm.form.seccion3_titulo,
+                          expression: "form.seccion3_titulo"
                         }
                       ],
                       staticClass: "form-control",
                       class: {
-                        "is-invalid": _vm.form.errors.has("seccion3_titulo.es")
+                        "is-invalid": _vm.form.errors.has("seccion3_titulo")
                       },
                       attrs: { type: "text", placeholder: "Enter ..." },
-                      domProps: { value: _vm.form.seccion3_titulo.es },
+                      domProps: { value: _vm.form.seccion3_titulo },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.form.seccion3_titulo,
-                            "es",
+                            _vm.form,
+                            "seccion3_titulo",
                             $event.target.value
                           )
                         }
@@ -65402,7 +65406,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion3_titulo.es" }
+                      attrs: { form: _vm.form, field: "seccion3_titulo" }
                     })
                   ],
                   1
@@ -65417,25 +65421,25 @@ var render = function() {
                     _c("ckeditor", {
                       staticClass: "col-md-10 form-control",
                       class: {
-                        "is-invalid": _vm.form.errors.has("seccion3_parrafo.es")
+                        "is-invalid": _vm.form.errors.has("seccion3_parrafo")
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion3_parrafo.es",
+                        name: "seccion3_parrafo",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
                       model: {
-                        value: _vm.form.seccion3_parrafo.es,
+                        value: _vm.form.seccion3_parrafo,
                         callback: function($$v) {
-                          _vm.$set(_vm.form.seccion3_parrafo, "es", $$v)
+                          _vm.$set(_vm.form, "seccion3_parrafo", $$v)
                         },
-                        expression: "form.seccion3_parrafo.es"
+                        expression: "form.seccion3_parrafo"
                       }
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion3_parrafo.es" }
+                      attrs: { form: _vm.form, field: "seccion3_parrafo" }
                     })
                   ],
                   1
@@ -65490,24 +65494,24 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.seccion4_titulo.es,
-                          expression: "form.seccion4_titulo.es"
+                          value: _vm.form.seccion4_titulo,
+                          expression: "form.seccion4_titulo"
                         }
                       ],
                       staticClass: "form-control",
                       class: {
-                        "is-invalid": _vm.form.errors.has("seccion4_titulo.es")
+                        "is-invalid": _vm.form.errors.has("seccion4_titulo")
                       },
                       attrs: { type: "text", placeholder: "Enter ..." },
-                      domProps: { value: _vm.form.seccion4_titulo.es },
+                      domProps: { value: _vm.form.seccion4_titulo },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.form.seccion4_titulo,
-                            "es",
+                            _vm.form,
+                            "seccion4_titulo",
                             $event.target.value
                           )
                         }
@@ -65515,7 +65519,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion4_titulo.es" }
+                      attrs: { form: _vm.form, field: "seccion4_titulo" }
                     })
                   ],
                   1
