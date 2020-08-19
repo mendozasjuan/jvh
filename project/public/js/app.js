@@ -3824,6 +3824,11 @@ __webpack_require__.r(__webpack_exports__);
       editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default.a,
       editorData: '',
       editorConfig: {},
+      data: {
+        texto_encabezado: {
+          es: ''
+        }
+      },
       form: new Form({
         id: '',
         encabezado_imagen_fondo: '',
@@ -3853,11 +3858,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     editWindow: function editWindow(inicio) {
-      this.editMode = true;
-      this.form.clear();
-      this.form.reset(); //if(inicio)
-
-      this.form.fill(inicio);
+      this.editMode = true; //this.form.clear();
+      //this.form.reset();
+      //if(inicio)
+      //this.form.fill(inicio)
     },
     loadInicio: function loadInicio() {
       var _this = this;
@@ -83758,8 +83762,8 @@ var imagesRootPath = 'storage/';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\jvhs\project\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\jvhs\project\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/jvh/project/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/jvh/project/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

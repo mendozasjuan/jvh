@@ -135,7 +135,7 @@
 			<div class="col-3">
 				<div class='item-product' >
 					<div class="fondo"></div>
-					<img class="product-img" src="{{ asset('img/13.png') }}" alt="">
+					<img class="product-img" src="{{ asset('img/03.png') }}" alt="">
 					<p class="product-title-img">Carne Intercostal</p>
 				</div>
 			</div>
@@ -149,7 +149,7 @@
 			<div class="col-3">
 				<div class='item-product' >
 					<div class="fondo"></div>
-					<img class="product-img" src="{{ asset('img/13.png') }}" alt="">
+					<img class="product-img" src="{{ asset('img/03.png') }}" alt="">
 					<p class="product-title-img">Bife Ancho con Hueso</p>
 				</div>
 			</div>
@@ -160,13 +160,9 @@
 @section('scripts')
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.item-product').on('click', function () {
-			$(this).parent().find('.card-header').removeClass('collapsed-acordion').addClass('nocollapsed-acordion');
-		})
-
-		$('.collapse').on('shown.bs.collapse', function () {
-			$(this).parent().find('.card-header').removeClass('nocollapsed-acordion').addClass('collapsed-acordion');
-		})
+		$('.item-product').on('click',function(){
+			location.href = "{{route('productosdetalle')}}"
+		});
 	});
 </script>
 @endsection

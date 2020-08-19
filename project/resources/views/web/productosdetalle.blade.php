@@ -84,6 +84,12 @@
 		  color:#E51D2A;
 		}
 
+
+		.product-img{
+			width: 300px;
+			border: 1px solid #CCCCCC;
+		}
+
     </style>
 @endsection
 
@@ -94,7 +100,7 @@
 @section('secciones')
 	<div id="pd-seccion" style="padding-top:48px;margin-bottom: 45px;height: 100%;padding-left: 38px;">
 		<div class="row">
-			<div class="col-2">
+			<div class="col-3">
 				<div class="miacordion" id="accordionExample">
 				  <div class="card box-shadow-0">
 				    <div class="card-header collapsed-acordion" id="headingOne">
@@ -147,21 +153,49 @@
 				  </div>
 				</div>
 			</div>
-			<div class="col-10">
-				<div class="row">
-					<div class="col-5" style="margin-right: 36px; width: 100%;">
-					</div>
-					<div class="col-5">
-						<h2>Corazon de Cuadril</h2>
-						<p>Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío y gran eficacia en el área de la comercialización y atención al cliente. Por su eficacia, tecnología y competitividad comercial, Frigorífico hv S.A, garantiza en todos sus productos, la más alta calidad en la industria de la carne.</p>
+			<div class="col">
+				<div class="row ">
+					<div class="col align-self-center" style="margin-right: 36px; width: 100%;">
+						
 
-						<table class="table">
+							
+								<div class="row justify-content-center align-items-center mb-4">
+									<div>
+										<img class="product-img" src="{{ asset('img/03.png') }}">
+									</div>
+									
+								</div>
+								<div class="row justify-content-between align-items-center">
+									<div>
+										<i class="far fa-arrow-alt-circle-left"></i>
+									</div>
+									<div>
+										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/03.png') }}">
+										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/03.png') }}">
+										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/03.png') }}">
+										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/03.png') }}">
+									</div>
+									<div>
+										<i class="far fa-arrow-alt-circle-right"></i>
+									</div>
+									
+									
+								
+								
+							</div>
+						
+					</div>
+					<div class="col">
+						<h2>Corazon de Cuadril</h2>
+						<p style="color: #6E6F71">Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío y gran eficacia en el área de la comercialización y atención al cliente. Por su eficacia, tecnología y competitividad comercial, Frigorífico hv S.A, garantiza en todos sus productos, la más alta calidad en la industria de la carne.</p>
+
+						<table class="table" >
 						  <thead>
 						    <tr>
 						      <th colspan="2" style="border-top: none;">Especificaciones</th>
 						    </tr>
 						  </thead>
-						  <tbody>
+						  <tbody style="color:#6E6F71; font-size: 14px;">
 						    <tr>
 						      <td>TAMAÑO DE CAJA </td>
 						      <td>Escopeta/grande</td>
@@ -195,16 +229,16 @@
 					</div>
 				</div>
 				<div class="row" >
-					<div class="col-5" style="margin-right: 36px; width: 100%;">
+					<div class="col" style="margin-right: 36px; width: 100%;">
 						<strong style="font-size: 17px;">Packaging</strong>
 						<hr style="margin-top: 12px;">
-						<img src="{{ asset('img/packaging.png')}}" alt="">
+						<img style="width:410px" src="{{ asset('img/packaging.png')}}" alt="">
 					</div>
-					<div class="col-5">
+					<div class="col">
 						<strong style="font-size: 17px;">Etiquetado</strong>
 						<hr style="margin-top: 12px;">
-						<img style="margin-right:12px; " src="{{ asset('img/etiqueta-1.png')}}" alt="">
-						<img src="{{ asset('img/etiqueta-2.png')}}" alt="">
+						<img style="margin-right:12px; width: 200px;" src="{{ asset('img/etiqueta-1.png')}}" alt="">
+						<img style="margin-right:12px; width: 200px;" src="{{ asset('img/etiqueta-2.png')}}" alt="">
 					</div>
 				</div>
 			</div>

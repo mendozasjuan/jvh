@@ -242,7 +242,7 @@
                 editorData: '',
                 editorConfig:{
                 },
-                data:{texto_encabezado:{es:''}}
+                data:{texto_encabezado:{es:''}},
                 form: new Form({
                     id: '',
                     encabezado_imagen_fondo : '',
