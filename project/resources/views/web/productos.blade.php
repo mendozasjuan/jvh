@@ -60,7 +60,7 @@
 @endsection
 
 @section('header')
-	@include('layouts.header',['text' => false,'titulo'=>$inicio->texto_encabezado ?? ''])
+	@include('layouts.header',['text' => false,'titulo'=>$inicio->texto_encabezado ?? '','activeLink' => 'productos'])
 @endsection
 
 @section('secciones')
