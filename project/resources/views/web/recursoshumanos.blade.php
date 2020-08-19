@@ -1,16 +1,15 @@
 @extends('layouts.index')
 
-@section('titulo', 'JVH - Inicio')
+@section('titulo', 'JVH - Recursos Humanos')
 
 @section('estilos')
 	<style>
 		.hero-img{
-			height: 600px;
+			height: 300px;
 			width: 100%;
 			background: url("{{ asset('img/bg-black_angus-001-JAndrewPatronik.png') }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
-			margin-bottom: 29px;
 		}
     </style>
 @endsection
@@ -23,58 +22,44 @@
 @endsection
 
 @section('secciones')
-		<!--<section>-->
-	<div id="h-seccion2" class="row">
-		<div class="col-12 col-md-5 col-lg-7 col-xl-6 ">
-			<h2>Nuestra Carne</h2>
-			<p>
-				La calidad de la carne, en términos alimenticios, depende de la conjunción de diversos factores. Entre estos se destacan el tipo de crianza del ganado y la eficacia de su comercialización. La pampa húmeda argentina es uno de los lugares en el mundo en el que la cría de los animales no se realizan en establos, sino en extensas llanuras, alejadas de la polución industrial, donde la abundancia de pasturas esta asegurada. El ganado argentino respeta, además, las pautas de crecimiento natural, ya que no se los inyecta con hormonas y antibióticos. Por estas razones, su estado resulta optimo para el consumo.
+		<!--https://xd.adobe.com/view/b80272e1-7ec5-4d6b-4e6d-03fc5611e154-ce33/screen/833932a6-8014-4052-b8bb-ddff864ec9f2/-->
+	<div id="rh-seccion" class="row" style="margin-top: 50px;margin-bottom: 30px;">
+		<div class="col-3" style="margin-left: 80px; border-left: 3px solid #2B1C17;padding-left: 20px;">
+			<h2>Recursos Humanos</h2>
+			<p style="color:#6E6F71">
+				Trabajá con nosotros. Podes sumarte en la empresa llenando este formulario y nos estaremos contactando con vos ante la primer oferta laboral.
 			</p>
 		</div>
 		<div class="col">
-			<div class="row align-items-center" style="width: 100%;height: 100%">
-				<img style="width: 100px; height: 119px; margin-right: 33px;" src="img/logo-3.png">
-				<img style="width: 87px; height: 87px; margin-right: 43px;" src="img/27201_sello islamic center halal argentina_big.png">
-				<img style="width: 94px; height: 94px;" src="img/qué-es-kosher@2x.png">
-			</div>
-		</div>
+			<div class="row">
+				<div class="col-3">
+					<span style="font-weight: bold;color:#E51D2A;">DATOS PERSONALES</span>
+					<p style="color:#6E6F71">Foto</p>
+					<div style="width: 150px;height: 150px;border: 1px solid #ccc;" class="d-flex">
+						<div >
+							<p style="color:#E51D2A;font-size: 10px; width: 100%;height:100%;padding: 10px;background-color: #ccc;margin: 5px;">
+								TAMAÑO MAXIMO: 5MB<br>
+							FORMATO: JPG O PNG
+							</p>
+							
+						</div>
 
-	</div>
-
-	<div  id="h-seccion3" >
-		<div class="negro">
-
-		</div>
-		<div style="height: 100%" class="row justify-content-end align-items-center">
-				<div class="col-11 col-sm-8 col-md-7 col-lg-5 col-xl-3">
-					<h2 class="text-right">"Última generación en la producción de carnes"</h2>
-					<p>Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío</p>
+					</div>
+					
+				</div>
+				<div class="col">
+					
 				</div>
 			</div>
-	</div>
-	<div id="h-seccion4" class="row">
-		<div class="col-7 col-lg-4 col-xl-2">
-			<div class="lineavertical">
-				<h2>Mercados en el Mundo</h2>
-				<p style="color:#6E6F71">
-					Cuenta con todos los permisos y certificaciones necesarios para exportar a la unión europea, israel, suiza, rusia, hong kong, brasil y sudáfrica entre otros.
-				</p>
-			</div>
-		</div>
-		<div class="col">
-			<img class="float-right" src="img/map.svg">
-		</div>
-
-	</div>
-
-	<div  id="h-seccion5">
-		<div class="negro">
-
-		</div>
-		<div class="row" style="margin-right: auto;">
-			<div class="col-12 col-xl-3">
-				<h2>"Nuestra carne es altamente demandada debido a su marmoleo natural, jugosidad, terneza y sabor"</h2>
+			<div class="row">
+				<div class="col-3">
+					
+				</div>
+				<div class="col">
+					
+				</div>
 			</div>
 		</div>
 	</div>
+		
 @endsection

@@ -178,9 +178,6 @@
 									<div>
 										<i class="far fa-arrow-alt-circle-right"></i>
 									</div>
-									
-									
-								
 								
 							</div>
 						
