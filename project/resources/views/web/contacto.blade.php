@@ -12,6 +12,19 @@
 			position: relative;
 			margin-bottom: 29px;
 		}
+
+		.boton{
+			background-color:#E51D2A;
+			color:#fff;
+			width:168px;
+			font-size:16px;
+		}
+
+		.caja{
+			padding-left:38px;
+			padding-top:30px;
+			padding-bottom:30px;
+		}
     </style>
 @endsection
 
@@ -25,21 +38,21 @@
 		<!--<section>-->
 	<div id="c-seccion">
 		<div class="row">
-			<div class="col" >
+			<div class="col-12 pr-0 mb-3 col-md-6" >
 				<div style="width: 100%">
 
 						<img style="width: inherit;height: 382px" src="{{ asset('img/lomasdelmirador.png')}}" alt="">
 
 				</div>
-				<div style="background: #ccc 0% 0% no-repeat padding-box">
+				<div  class="caja" style="background: #ccc 0% 0% no-repeat padding-box; ">
+						<h3 style="font: normal normal 600 23px Raleway;font-weight:bold;">Lomas del Mirador</h3>
+							
 
-							<h3>Lomas del Mirador</h3>
+					<div class="row" style="font-size:14px;color:#060505">
 
-					<div class="row">
-
-						<div class="col">
+						<div class="col" >
 							<i style="font-weight: bold; color:#E51D2A" class="fa fa-map-marker-alt "  aria-hidden="true"></i>
-							<span style="font-weight: bold; color:#E51D2A">Dirección</span> <br>Paso 3030 (1752) Lomas del Mirador Buenos Aires
+							<span style="font-weight: bold; color:#E51D2A;">Dirección</span> <br>Paso 3030 (1752) Lomas del Mirador Buenos Aires
 						</div>
 
 						<div class="col">
@@ -54,64 +67,76 @@
 						<img style="width: inherit;height: 382px" src="{{ asset('img/bernasconi.png')}}" alt="">
 
 				</div>
-				<div style="background: #060505 0% 0% no-repeat padding-box" >
+				<div class="caja" style="background: #060505 0% 0% no-repeat padding-box" >
 							<h3 style="color:#E51D2A">Bernasconi</h3>
-					<div class="row">
+					<div class="row" style="font-size:14px;color:#fff">
 
 						<div class="col">
 							<i style="font-weight: bold; color:#E51D2A" class="fa fa-map-marker-alt "  aria-hidden="true"></i>
-							<span style="color:#E51D2A"><strong>Dirección</strong> <br>Ruta 35, Km 165 (8204) Bernasconi - La Pampa</span>
+							<span style="color:#E51D2A"><strong>Dirección</strong></span> <br>Ruta 35, Km 165 (8204) Bernasconi - La Pampa
 						</div>
 
 						<div class="col">
 							<i style="font-weight: bold; color:#E51D2A" class="fas fa-phone-alt " aria-hidden="true"></i>
-							<span style="color:#E51D2A"><strong>Llámenos al</strong> <br>+54 (11)) 4699-4424 / +54 (11)) 4699-2882</span>
+							<span style="color:#E51D2A"><strong>Llámenos al</strong></span> <br>+54 (11)) 4699-4424 / +54 (11)) 4699-2882
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row justify-content-center" style="margin-top: 58px;">
-			<div class="col-4">
-				<h3>Contacto</h3>
-				<p>Para mayor información, no dude en contactarse mediante el siguiente formulario, o a través de nuestras vías de comunicación</p>
-				<p>
-					<span style="font-weight: bold;color:#E51D2A">
-						<i class="far fa-envelope " aria-hidden="true"></i>Comercio Exterior
-					</span> <br>Jescudero@frigorificohv.com.ar
-				</p>
-				<p>
-					<span style="font-weight: bold;color:#E51D2A">
-						<i class="far fa-envelope " aria-hidden="true"></i>Área Comercial
-					</span> <br>dvigna@frigorificohv.com.ar
-				</p>
+	<div class="row justify-content-center" style="margin-top: 58px;margin-left:38px;">
+			<div class="col-12 col-lg-6" style="font-size:14px;">
+				<span style="font-size:23px;font-weight:bold;margin-bottom:10px;">Contacto</span>
+				<p style="color:#6E6F71; margin-bottom:30px;">Para mayor información, no dude en contactarse mediante el siguiente formulario, o a través de nuestras vías de comunicación</p>
+
+				<div class="row" style="color:#000; margin-bottom:22px;margin-left:1px;">
+					<div style="font-weight: bold;color:#E51D2A">
+						<i  class="far fa-envelope " aria-hidden="true"></i>
+					</div>
+					<div style="margin-left:5px;">
+						<span style="font-weight: bold;color:#E51D2A;">Comercio Exterior</span>
+					 	<br>Jescudero@frigorificohv.com.ar
+					</div>
+				</div>
+
+				<div class="row" style="color:#000; margin-bottom:22px;margin-left:1px;">
+					<div style="font-weight: bold;color:#E51D2A">
+						<i  class="far fa-envelope " aria-hidden="true"></i>
+					</div>
+					<div style="margin-left:5px;">
+						<span style="font-weight: bold;color:#E51D2A;">Área Comercial</span>
+					 	<br>dvigna@frigorificohv.com.ar
+					</div>
+				</div>
 			</div>
 			<div class="col">
 				<form action="contacto_submit" method="get" accept-charset="utf-8">
 					<div class="form-row mb-3">
-						<div class="form-group col-md-5 mr-3">
+						<div class="form-group col mr-3">
 					      <input type="text" name="nombre" class="rounded-sm form-control" id="nombre" placeholder="Nombre">
 					    </div>
-					    <div class="form-group col-md-5">
+					    <div class="form-group col">
 					      <input type="text" name="apellido" class="rounded-sm form-control" id="apellido" placeholder="Apellido">
 					    </div>
 					</div>
 					<div class="form-row mb-3">
-					    <div class="form-group col-md-5 mr-3">
+					    <div class="form-group col mr-3">
 					      <input type="email" name="email" class="rounded-sm form-control" id="email" placeholder="Correo Electronico">
 					    </div>
-					    <div class="form-group col-md-5 mr-3">
+					    <div class="form-group col">
 					      <input type="text" name="telefono" class="rounded-sm form-control" id="telefono" placeholder="Teléfono">
 					    </div>
 					</div>
 					<div class="form-row mb-3">
-					    <div class="form-group col-md-10 mr-3">
+					    <div class="form-group col">
 					      <textarea name="mensaje" class="rounded-sm form-control">Mensaje</textarea>
 					    </div>
 					</div>
 					<div class="form-row">
-						<input class="btn boton float-right" type="submit" name="submit">
+						<div class="form-group col">
+							<button class="btn boton float-right rounded-pill" type="submit">Enviar           <strong>></strong></button>
+						</div>
 					</div>
 				</form>
 			</div>
