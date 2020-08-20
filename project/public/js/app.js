@@ -3582,7 +3582,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
-//
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 //
 //
 //
@@ -3824,44 +3825,93 @@ __webpack_require__.r(__webpack_exports__);
       editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default.a,
       editorData: '',
       editorConfig: {},
-      data: {
-        texto_encabezado: {
-          es: ''
-        }
-      },
-      form: new Form({
+      data: new Form({
         id: '',
         encabezado_imagen_fondo: '',
-        logo_1_encabezado: '',
-        logo_2_encabezado: '',
-        texto_encabezado: {
-          es: '',
-          zh: ''
-        },
+        texto_encabezado: '',
+        texto_encabezado_zh: '',
         texto_encabezado_habilitado: '',
         seccion1_titulo: '',
+        seccion1_titulo_zh: '',
         seccion_1_parrafo: '',
+        seccion_1_parrafo_zh: '',
         seccion1_logo1: '',
         seccion1_logo2: '',
         seccion1_logo3: '',
         seccion2_imagen_fondo: '',
         seccio2_titulo: '',
+        seccio2_titulo_zh: '',
         seccion_2_parrafo: '',
+        seccion_2_parrafo_zh: '',
         seccion3_titulo: '',
+        seccion3_titulo_zh: '',
         seccion3_parrafo: '',
+        seccion3_parrafo_zh: '',
         seccion3_imagen: '',
         seccion4_titulo: '',
-        seccion4_imagen_fondo: '',
-        _method: ''
-      })
+        seccion4_titulo_zh: '',
+        seccion4_imagen_fondo: ''
+      }),
+      errors: []
+      /*form: new Form({
+          id: inicio.,
+          encabezado_imagen_fondo : inicio.,
+          logo_1_encabezado: inicio.,
+          logo_2_encabezado: inicio.,
+          texto_encabezado:{es:inicio.,zh:inicio.} ,
+          texto_encabezado_habilitado: inicio.,
+          seccion1_titulo:inicio.,
+          seccion_1_parrafo:inicio. ,
+          seccion1_logo1: inicio.,
+          seccion1_logo2: inicio.,
+          seccion1_logo3: inicio.,
+          seccion2_imagen_fondo:inicio.,
+          seccio2_titulo:inicio.,
+          seccion_2_parrafo:inicio. ,
+          seccion3_titulo:inicio. ,
+          seccion3_parrafo:inicio. ,
+          seccion3_imagen: inicio.,
+          seccion4_titulo:inicio.,
+          seccion4_imagen_fondo:inicio.,
+          _method:inicio.,
+       })*/
+
     };
   },
   methods: {
     editWindow: function editWindow(inicio) {
-      this.editMode = true; //this.form.clear();
-      //this.form.reset();
-      //if(inicio)
-      //this.form.fill(inicio)
+      console.log(inicio);
+
+      if (inicio) {
+        this.editMode = true;
+        this.data.clear();
+        this.data.reset();
+        this.data.id = inicio.id;
+        this.data.encabezado_imagen_fondo = inicio.encabezado_imagen_fondo;
+        this.data.texto_encabezado = _typeof(inicio.texto_encabezado) === 'object' ? inicio.texto_encabezado.es : '';
+        this.data.texto_encabezado_zh = _typeof(inicio.texto_encabezado) === 'object' ? inicio.texto_encabezado.zh : '';
+        this.data.texto_encabezado_habilitado = inicio.texto_encabezado_habilitado;
+        this.data.seccion1_titulo = _typeof(inicio.seccion1_titulo) === 'object' ? inicio.seccion1_titulo.es : '';
+        this.data.seccion1_titulo_zh = _typeof(inicio.seccion1_titulo) === 'object' ? inicio.seccion1_titulo.zh : '';
+        this.data.seccion_1_parrafo = _typeof(inicio.seccion_1_parrafo) === 'object' ? inicio.seccion_1_parrafo.es : '';
+        this.data.seccion_1_parrafo_zh = _typeof(inicio.seccion_1_parrafo) === 'object' ? inicio.seccion_1_parrafo.zh : '';
+        this.data.seccion1_logo1 = inicio.seccion1_logo1;
+        this.data.seccion1_logo2 = inicio.seccion1_logo2;
+        this.data.seccion1_logo3 = inicio.seccion1_logo3;
+        this.data.seccion2_imagen_fondo = inicio.seccion2_imagen_fondo;
+        this.data.seccio2_titulo = _typeof(inicio.seccio2_titulo) === 'object' ? inicio.seccio2_titulo.es : '';
+        this.data.seccio2_titulo_zh = _typeof(inicio.seccio2_titulo) === 'object' ? inicio.seccio2_titulo.zh : '';
+        this.data.seccion_2_parrafo = _typeof(inicio.seccion_2_parrafo) === 'object' ? inicio.seccion_2_parrafo.es : '';
+        this.data.seccion_2_parrafo_zh = _typeof(inicio.seccion_2_parrafo) === 'object' ? inicio.seccion_2_parrafo.zh : '';
+        this.data.seccion3_titulo = _typeof(inicio.seccion3_titulo) === 'object' ? inicio.seccion3_titulo.es : '';
+        this.data.seccion3_titulo_zh = _typeof(inicio.seccion3_titulo) === 'object' ? inicio.seccion3_titulo.zh : '';
+        this.data.seccion3_parrafo = _typeof(inicio.seccion3_parrafo) === 'object' ? inicio.seccion3_parrafo.es : '';
+        this.data.seccion3_parrafo_zh = _typeof(inicio.seccion3_parrafo) === 'object' ? inicio.seccion3_parrafo.zh : '';
+        this.data.seccion3_imagen = inicio.seccion3_imagen;
+        this.data.seccion4_titulo = _typeof(inicio.seccion4_titulo) === 'object' ? inicio.seccion4_titulo.es : '';
+        this.data.seccion4_titulo_zh = _typeof(inicio.seccion4_titulo) === 'object' ? inicio.seccion4_titulo.zh : '';
+        this.data.seccion4_imagen_fondo = inicio.seccion4_imagen_fondo;
+      }
     },
     loadInicio: function loadInicio() {
       var _this = this;
@@ -3870,23 +3920,22 @@ __webpack_require__.r(__webpack_exports__);
         return _this.editWindow(data.data);
       }); //pick data from controller and push it into users object
     },
-    updateInicio: function updateInicio() {
+    updateInicio: function updateInicio(event) {
       var _this2 = this;
 
-      console.log(this.form);
-      console.log(this.editMode);
-      this.$Progress.start(); //this.form.submit('put','api/inicio/'+this.form.id,{
+      if (!this.editMode) return this.createInicio(event);
+      this.$Progress.start();
+      var formData = new FormData(event.target);
+      formData.append('seccion_1_parrafo', this.data.seccion_1_parrafo);
+      formData.append('seccion_2_parrafo', this.data.seccion_2_parrafo);
+      formData.append('seccion3_parrafo', this.data.seccion3_parrafo);
+      formData.append('_method', 'PUT'); //this.form.submit('put','api/inicio/'+this.form.id,{
 
-      axios.post('api/inicio', this.form, {
-        // Transform form data to FormData
-        transformRequest: [function (data, headers) {
-          return objectToFormData(data);
-        }]
-      }).then(function () {
+      axios.post('api/inicio/' + this.data.id, formData).then(function () {
         Fire.$emit('AfterCreatedInicioLoadIt');
         Toast.fire({
           icon: 'success',
-          title: 'Corte Actualizado con Exito'
+          title: 'Pagina Inicio Actualizada con Exito'
         });
 
         _this2.$Progress.finish();
@@ -3904,48 +3953,48 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.picFile) {
         if (this.idElement.id == 'encabezado_imagen_fondo') {
-          this.form.encabezado_imagen_fondo = this.picFile;
-          console.log(this.form.encabezado_imagen_fondo);
+          this.data.encabezado_imagen_fondo = this.picFile;
+          console.log(this.data.encabezado_imagen_fondo);
         }
 
         if (this.idElement.id == 'logo_1_encabezado') {
-          this.form.logo_1_encabezado = this.picFile;
-          console.log(this.form.logo_1_encabezado);
+          this.data.logo_1_encabezado = this.picFile;
+          console.log(this.data.logo_1_encabezado);
         }
 
         if (this.idElement.id == 'logo_2_encabezado') {
-          this.form.logo_2_encabezado = this.picFile;
-          console.log(this.form.logo_2_encabezado);
+          this.data.logo_2_encabezado = this.picFile;
+          console.log(this.data.logo_2_encabezado);
         }
 
         if (this.idElement.id == 'seccion1_logo1') {
-          this.form.seccion1_logo1 = this.picFile;
-          console.log(this.form.seccion1_logo1);
+          this.data.seccion1_logo1 = this.picFile;
+          console.log(this.data.seccion1_logo1);
         }
 
         if (this.idElement.id == 'seccion1_logo2') {
-          this.form.seccion1_logo2 = this.picFile;
-          console.log(this.form.seccion1_logo2);
+          this.data.seccion1_logo2 = this.picFile;
+          console.log(this.data.seccion1_logo2);
         }
 
         if (this.idElement.id == 'seccion1_logo3') {
-          this.form.seccion1_logo3 = this.picFile;
-          console.log(this.form.seccion1_logo3);
+          this.data.seccion1_logo3 = this.picFile;
+          console.log(this.data.seccion1_logo3);
         }
 
         if (this.idElement.id == 'seccion2_imagen_fondo') {
-          this.form.seccion2_imagen_fondo = this.picFile;
-          console.log(this.form.seccion2_imagen_fondo);
+          this.data.seccion2_imagen_fondo = this.picFile;
+          console.log(this.data.seccion2_imagen_fondo);
         }
 
         if (this.idElement.id == 'seccion3_imagen') {
-          this.form.seccion3_imagen = this.picFile;
-          console.log(this.form.seccion3_imagen);
+          this.data.seccion3_imagen = this.picFile;
+          console.log(this.data.seccion3_imagen);
         }
 
         if (this.idElement.id == 'seccion4_imagen_fondo') {
-          this.form.seccion4_imagen_fondo = this.picFile;
-          console.log(this.form.seccion4_imagen_fondo);
+          this.data.seccion4_imagen_fondo = this.picFile;
+          console.log(this.data.seccion4_imagen_fondo);
         }
       }
     },
@@ -3960,16 +4009,15 @@ __webpack_require__.r(__webpack_exports__);
 
       reader.readAsDataURL(file);
     },
-    createInicio: function createInicio() {
+    createInicio: function createInicio(event) {
       var _this4 = this;
 
       this.$Progress.start();
-      this.form.submit('post', 'api/inicio', {
-        // Transform form data to FormData
-        transformRequest: [function (data, headers) {
-          return objectToFormData(data);
-        }]
-      }).then(function () {
+      var formData = new FormData(event.target);
+      formData.append('seccion_1_parrafo', this.data.seccion_1_parrafo);
+      formData.append('seccion_2_parrafo', this.data.seccion_2_parrafo);
+      formData.append('seccion3_parrafo', this.data.seccion3_parrafo);
+      axios.post('api/inicio', formData).then(function () {
         Fire.$emit('AfterCreatedInicioLoadIt'); //custom events
 
         Toast.fire({
@@ -4412,6 +4460,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 //
 //
 //
@@ -4648,32 +4698,79 @@ __webpack_require__.r(__webpack_exports__);
         logo_1_encabezado: '',
         logo_2_encabezado: '',
         texto_encabezado: '',
+        texto_encabezado_zh: '',
         texto_encabezado_habilitado: '',
         seccio1_parrafo1: '',
         seccio1_parrafo2: '',
         seccio1_parrafo3: '',
         seccio1_parrafo4: '',
+        seccio1_parrafo1_zh: '',
+        seccio1_parrafo2_zh: '',
+        seccio1_parrafo3_zh: '',
+        seccio1_parrafo4_zh: '',
         seccion1_imagen_fondo: '',
         seccion2_titulo: '',
         seccion2_parrafo: '',
+        seccion2_titulo_zh: '',
+        seccion2_parrafo_zh: '',
         seccion2_imagen_fondo: '',
         seccion3_parrafo1: '',
         seccion3_parrafo2: '',
+        seccion3_parrafo1_zh: '',
+        seccion3_parrafo2_zh: '',
         seccion4_parrafo1: '',
         seccion4_parrafo2: '',
         seccion4_parrafo3: '',
         seccion4_parrafo4: '',
-        seccion4_imagen_fondo: '',
-        _method: ''
+        seccion4_parrafo1_zh: '',
+        seccion4_parrafo2_zh: '',
+        seccion4_parrafo3_zh: '',
+        seccion4_parrafo4_zh: '',
+        seccion4_imagen_fondo: ''
       })
     };
   },
   methods: {
     editWindow: function editWindow(quienessomos) {
-      this.form.clear();
-      this.editMode = true;
-      this.form.reset();
-      this.form.fill(quienessomos);
+      if (quienessomos) {
+        this.editMode = true;
+        this.form.clear();
+        this.form.reset();
+        this.form.id = quienessomos.id;
+        this.form.encabezado_imagen_fondo = quienessomos.encabezado_imagen_fondo;
+        this.form.logo_1_encabezado = quienessomos.logo_1_encabezado;
+        this.form.logo_2_encabezado = quienessomos.logo_2_encabezado;
+        this.form.texto_encabezado = _typeof(quienessomos.texto_encabezado) === 'object' ? quienessomos.texto_encabezado.es : '';
+        this.form.texto_encabezado_zh = _typeof(quienessomos.texto_encabezado) === 'object' ? quienessomos.texto_encabezado.zh : '';
+        this.form.texto_encabezado_habilitado = quienessomos.texto_encabezado_habilitado;
+        this.form.seccio1_parrafo1 = _typeof(quienessomos.seccio1_parrafo1) === 'object' ? quienessomos.seccio1_parrafo1.es : '';
+        this.form.seccio1_parrafo2 = _typeof(quienessomos.seccio1_parrafo2) === 'object' ? quienessomos.seccio1_parrafo2.es : '';
+        this.form.seccio1_parrafo3 = _typeof(quienessomos.seccio1_parrafo3) === 'object' ? quienessomos.seccio1_parrafo3.es : '';
+        this.form.seccio1_parrafo4 = _typeof(quienessomos.seccio1_parrafo4) === 'object' ? quienessomos.seccio1_parrafo4.es : '';
+        this.form.seccio1_parrafo1_zh = _typeof(quienessomos.seccio1_parrafo1) === 'object' ? quienessomos.seccio1_parrafo1.zh : '';
+        this.form.seccio1_parrafo2_zh = _typeof(quienessomos.seccio1_parrafo2) === 'object' ? quienessomos.seccio1_parrafo2.zh : '';
+        this.form.seccio1_parrafo3_zh = _typeof(quienessomos.seccio1_parrafo3) === 'object' ? quienessomos.seccio1_parrafo3.zh : '';
+        this.form.seccio1_parrafo4_zh = _typeof(quienessomos.seccio1_parrafo4) === 'object' ? quienessomos.seccio1_parrafo4.zh : '';
+        this.form.seccion1_imagen_fondo = quienessomos.seccion1_imagen_fondo;
+        this.form.seccion2_titulo = _typeof(quienessomos.seccion2_titulo) === 'object' ? quienessomos.seccion2_titulo.es : '';
+        this.form.seccion2_parrafo = _typeof(quienessomos.seccion2_parrafo) === 'object' ? quienessomos.seccion2_parrafo.es : '';
+        this.form.seccion2_titulo_zh = _typeof(quienessomos.seccion2_titulo) === 'object' ? quienessomos.seccion2_titulo.zh : '';
+        this.form.seccion2_parrafo_zh = _typeof(quienessomos.seccion2_parrafo) === 'object' ? quienessomos.seccion2_parrafo.zh : '';
+        this.form.seccion2_imagen_fondo = quienessomos.seccion2_imagen_fondo;
+        this.form.seccion3_parrafo1 = _typeof(quienessomos.seccion3_parrafo1) === 'object' ? quienessomos.seccion3_parrafo1.es : '';
+        this.form.seccion3_parrafo2 = _typeof(quienessomos.seccion3_parrafo2) === 'object' ? quienessomos.seccion3_parrafo2.es : '';
+        this.form.seccion3_parrafo1_zh = _typeof(quienessomos.seccion3_parrafo1) === 'object' ? quienessomos.seccion3_parrafo1.zh : '';
+        this.form.seccion3_parrafo2_zh = _typeof(quienessomos.seccion3_parrafo2) === 'object' ? quienessomos.seccion3_parrafo2.zh : '';
+        this.form.seccion4_parrafo1 = _typeof(quienessomos.seccion4_parrafo1) === 'object' ? quienessomos.seccion4_parrafo1.es : '';
+        this.form.seccion4_parrafo2 = _typeof(quienessomos.seccion4_parrafo2) === 'object' ? quienessomos.seccion4_parrafo2.es : '';
+        this.form.seccion4_parrafo3 = _typeof(quienessomos.seccion4_parrafo3) === 'object' ? quienessomos.seccion4_parrafo3.es : '';
+        this.form.seccion4_parrafo4 = _typeof(quienessomos.seccion4_parrafo4) === 'object' ? quienessomos.seccion4_parrafo4.es : '';
+        this.form.seccion4_parrafo1_zh = _typeof(quienessomos.seccion4_parrafo1) === 'object' ? quienessomos.seccion4_parrafo1.zh : '';
+        this.form.seccion4_parrafo2_zh = _typeof(quienessomos.seccion4_parrafo2) === 'object' ? quienessomos.seccion4_parrafo2.zh : '';
+        this.form.seccion4_parrafo3_zh = _typeof(quienessomos.seccion4_parrafo3) === 'object' ? quienessomos.seccion4_parrafo3.zh : '';
+        this.form.seccion4_parrafo4_zh = _typeof(quienessomos.seccion4_parrafo4) === 'object' ? quienessomos.seccion4_parrafo4.zh : '';
+        this.form.seccion4_imagen_fondo = quienessomos.seccion4_imagen_fondo;
+      }
     },
     loadQuienesSomos: function loadQuienesSomos() {
       var _this = this;
@@ -4682,17 +4779,41 @@ __webpack_require__.r(__webpack_exports__);
         return _this.editWindow(data.data);
       }); //pick data from controller and push it into users object
     },
-    updateQuienesSomos: function updateQuienesSomos() {
+    updateQuienesSomos: function updateQuienesSomos(event) {
       var _this2 = this;
 
-      this.$Progress.start(); //this.form.submit('put','api/inicio/'+this.form.id,{
+      if (!this.editMode) return this.createQuienesSomos(event);
+      this.$Progress.start();
+      var formData = new FormData(event.target);
+      formData.append('texto_encabezado', this.form.texto_encabezado);
+      formData.append('texto_encabezado_zh', this.form.texto_encabezado_zh);
+      formData.append('seccio1_parrafo1', this.form.seccio1_parrafo1);
+      formData.append('seccio1_parrafo2', this.form.seccio1_parrafo2);
+      formData.append('seccio1_parrafo3', this.form.seccio1_parrafo3);
+      formData.append('seccio1_parrafo4', this.form.seccio1_parrafo4);
+      formData.append('seccio1_parrafo1_zh', this.form.seccio1_parrafo1_zh);
+      formData.append('seccio1_parrafo2_zh', this.form.seccio1_parrafo2_zh);
+      formData.append('seccio1_parrafo3_zh', this.form.seccio1_parrafo3_zh);
+      formData.append('seccio1_parrafo4_zh', this.form.seccio1_parrafo4_zh);
+      formData.append('seccion2_titulo', this.form.seccion2_titulo);
+      formData.append('seccion2_parrafo', this.form.seccion2_parrafo);
+      formData.append('seccion2_titulo_zh', this.form.seccion2_titulo_zh);
+      formData.append('seccion2_parrafo_zh', this.form.seccion2_parrafo_zh);
+      formData.append('seccion3_parrafo1', this.form.seccion3_parrafo1);
+      formData.append('seccion3_parrafo2', this.form.seccion3_parrafo2);
+      formData.append('seccion3_parrafo1_zh', this.form.seccion3_parrafo1_zh);
+      formData.append('seccion3_parrafo2_zh', this.form.seccion3_parrafo2_zh);
+      formData.append('seccion4_parrafo1', this.form.seccion4_parrafo1);
+      formData.append('seccion4_parrafo2', this.form.seccion4_parrafo2);
+      formData.append('seccion4_parrafo3', this.form.seccion4_parrafo3);
+      formData.append('seccion4_parrafo4', this.form.seccion4_parrafo4);
+      formData.append('seccion4_parrafo1_zh', this.form.seccion4_parrafo1_zh);
+      formData.append('seccion4_parrafo2_zh', this.form.seccion4_parrafo2_zh);
+      formData.append('seccion4_parrafo3_zh', this.form.seccion4_parrafo3_zh);
+      formData.append('seccion4_parrafo4_zh', this.form.seccion4_parrafo4_zh);
+      formData.append('_method', 'PUT'); //this.form.submit('put','api/inicio/'+this.form.id,{
 
-      axios.post('api/quienessomos', this.form, {
-        // Transform form data to FormData
-        transformRequest: [function (data, headers) {
-          return objectToFormData(data);
-        }]
-      }).then(function () {
+      axios.post('api/quienessomos' + this.form.id, formData).then(function () {
         Fire.$emit('AfterCreatedQuienesSomosLoadIt');
         Toast.fire({
           icon: 'success',
@@ -4755,16 +4876,38 @@ __webpack_require__.r(__webpack_exports__);
 
       reader.readAsDataURL(file);
     },
-    createQuienesSomos: function createQuienesSomos() {
+    createQuienesSomos: function createQuienesSomos(event) {
       var _this4 = this;
 
       this.$Progress.start();
-      this.form.submit('post', 'api/quienessomos', {
-        // Transform form data to FormData
-        transformRequest: [function (data, headers) {
-          return objectToFormData(data);
-        }]
-      }).then(function () {
+      var formData = new FormData(event.target);
+      formData.append('texto_encabezado', this.form.texto_encabezado);
+      formData.append('texto_encabezado_zh', this.form.texto_encabezado_zh);
+      formData.append('seccio1_parrafo1', this.form.seccio1_parrafo1);
+      formData.append('seccio1_parrafo2', this.form.seccio1_parrafo2);
+      formData.append('seccio1_parrafo3', this.form.seccio1_parrafo3);
+      formData.append('seccio1_parrafo4', this.form.seccio1_parrafo4);
+      formData.append('seccio1_parrafo1_zh', this.form.seccio1_parrafo1_zh);
+      formData.append('seccio1_parrafo2_zh', this.form.seccio1_parrafo2_zh);
+      formData.append('seccio1_parrafo3_zh', this.form.seccio1_parrafo3_zh);
+      formData.append('seccio1_parrafo4_zh', this.form.seccio1_parrafo4_zh);
+      formData.append('seccion2_titulo', this.form.seccion2_titulo);
+      formData.append('seccion2_parrafo', this.form.seccion2_parrafo);
+      formData.append('seccion2_titulo_zh', this.form.seccion2_titulo_zh);
+      formData.append('seccion2_parrafo_zh', this.form.seccion2_parrafo_zh);
+      formData.append('seccion3_parrafo1', this.form.seccion3_parrafo1);
+      formData.append('seccion3_parrafo2', this.form.seccion3_parrafo2);
+      formData.append('seccion3_parrafo1_zh', this.form.seccion3_parrafo1_zh);
+      formData.append('seccion3_parrafo2_zh', this.form.seccion3_parrafo2_zh);
+      formData.append('seccion4_parrafo1', this.form.seccion4_parrafo1);
+      formData.append('seccion4_parrafo2', this.form.seccion4_parrafo2);
+      formData.append('seccion4_parrafo3', this.form.seccion4_parrafo3);
+      formData.append('seccion4_parrafo4', this.form.seccion4_parrafo4);
+      formData.append('seccion4_parrafo1_zh', this.form.seccion4_parrafo1_zh);
+      formData.append('seccion4_parrafo2_zh', this.form.seccion4_parrafo2_zh);
+      formData.append('seccion4_parrafo3_zh', this.form.seccion4_parrafo3_zh);
+      formData.append('seccion4_parrafo4_zh', this.form.seccion4_parrafo4_zh);
+      axios.post('api/quienessomos', formData).then(function () {
         Fire.$emit('AfterCreatedQuienesSomosLoadIt'); //custom events
 
         Toast.fire({
@@ -61769,6 +61912,150 @@ var AlertSuccess_Component = normalizeComponent(
 
 /***/ }),
 
+/***/ "./node_modules/vue-has-error-laravel/directives/v-has-error.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/vue-has-error-laravel/directives/v-has-error.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * @name VueJS vueHasErrorLaravel (vue-has-error-laravel)
+ * @description Permite mostrar errores de laravel
+ * @author Leonardo Manuel Alvarez <leonardomanuel.alv@gmail.com>
+ * @file v-has-error plugin definition
+ */
+
+const vOptionsDirective = (options) => {
+    const className = options.hasOwnProperty('className') ? options.className : 'is-invalid'
+    const tagName = options.hasOwnProperty('tagName') ? options.tagName : 'div'
+    const tagClassName = options.hasOwnProperty('tagClassName') ? options.tagClassName : 'invalid-feedback'
+    const showErrorMessage = options.hasOwnProperty('showErrorMessage') ? options.showErrorMessage : true
+    return { className, tagName, tagClassName, showErrorMessage }
+}
+
+const vHasErrorLaravel = {
+    bind: (el, binding, vnode) => {
+        const errors = vnode.context.$data.$errorsResponseFromLaravel
+        const property = binding.value
+        const { className } = vOptionsDirective(vnode.context.$vueHasErrorLaravelOptions)
+        if (errors && errors[property] && Array.isArray(errors[property]) && errors[property].length) {
+            el.classList.add(className)
+        } else {
+            el.classList.remove(className)
+        }
+    },
+    inserted: (el, binding, vnode) => {
+        const errors = vnode.context.$data.$errorsResponseFromLaravel
+        const property = binding.value
+        const { tagName, tagClassName, showErrorMessage } = vOptionsDirective(vnode.context.$vueHasErrorLaravelOptions)
+        if (!(errors && errors[property] && Array.isArray(errors[property]) && errors[property].length)) {
+            return
+        }
+        if (showErrorMessage) {
+            el.insertAdjacentHTML('afterend', `<${tagName} class="${tagClassName}">${errors[property][0]}</${tagName}>`)
+        }
+    },
+    update: (el, binding, vnode) => {
+        const errors = vnode.context.$data.$errorsResponseFromLaravel
+        const property = binding.value
+        const { className, tagClassName, tagName, showErrorMessage } = vOptionsDirective(vnode.context.$vueHasErrorLaravelOptions)
+        let nodes = el.nextSibling
+        if (el.nextSibling) {
+            nodes.parentNode.removeChild(nodes)
+        }
+        if (errors && errors[property] && Array.isArray(errors[property]) && errors[property].length) {
+            el.classList.add(className)
+            if (showErrorMessage) {
+                el.insertAdjacentHTML('afterend', `<${tagName} class="${tagClassName}">${errors[property][0]}</${tagName}>`)
+            }
+        } else {
+            el.classList.remove(className)
+        }
+    },
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (vHasErrorLaravel);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-has-error-laravel/mainDirective.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vue-has-error-laravel/mainDirective.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _directives_v_has_error_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./directives/v-has-error.js */ "./node_modules/vue-has-error-laravel/directives/v-has-error.js");
+/* harmony import */ var _mixins_errorsLaravel_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mixins/errorsLaravel.js */ "./node_modules/vue-has-error-laravel/mixins/errorsLaravel.js");
+/**
+ * @name VueJS vueHasErrorLaravel (vue-has-error-laravel)
+ * @description Permite mostrar errores de laravel
+ * @author Leonardo Manuel Alvarez <leonardomanuel.alv@gmail.com>
+ * @file mainDirective plugin definition
+ */
+
+
+
+
+const vueHasErrorLaravel = {
+    install: (Vue, options) => {
+        Vue.use(_mixins_errorsLaravel_js__WEBPACK_IMPORTED_MODULE_1__["default"])
+        Vue.prototype.$vueHasErrorLaravelOptions = options ? options : {}
+        Vue.prototype.$setLaravelErrors = function (laravelErrorsResponse) {
+            this.$data.$errorsResponseFromLaravel = []
+            if (!laravelErrorsResponse) {
+                return
+            }
+
+            this.$data.$errorsResponseFromLaravel = laravelErrorsResponse.hasOwnProperty('errors')
+                ? laravelErrorsResponse.errors
+                : laravelErrorsResponse
+        }
+        Vue.directive('has-error', _directives_v_has_error_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+    },
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (vueHasErrorLaravel);
+
+if (typeof window !== 'undefined' && window.Vue) {
+    window.Vue.use(vueHasErrorLaravel)
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-has-error-laravel/mixins/errorsLaravel.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-has-error-laravel/mixins/errorsLaravel.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const MixinErrorsLaravel = {
+    install(Vue) {
+        Vue.mixin({
+            data() {
+                return {
+                    $errorsResponseFromLaravel: [],
+                }
+            },
+        })
+    },
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (MixinErrorsLaravel);
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CalidadComponent.vue?vue&type=template&id=82f1a608&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CalidadComponent.vue?vue&type=template&id=82f1a608& ***!
@@ -64844,7 +65131,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  _vm.editMode ? _vm.updateInicio() : _vm.createInicio()
+                  return _vm.updateInicio($event)
                 }
               }
             },
@@ -64861,7 +65148,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "encabezado_imagen_fondo" },
+                        attrs: {
+                          type: "file",
+                          id: "encabezado_imagen_fondo",
+                          name: "encabezado_imagen_fondo"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -64871,7 +65162,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "encabezado_imagen_fondo" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -64882,8 +65173,8 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: _vm.form.encabezado_imagen_fondo
-                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                        src: _vm.data.encabezado_imagen_fondo
+                          ? "storage/" + _vm.data.encabezado_imagen_fondo
                           : ""
                       }
                     })
@@ -64899,7 +65190,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "logo_1_encabezado" },
+                        attrs: {
+                          type: "file",
+                          id: "logo_1_encabezado",
+                          name: "logo_1_encabezado"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -64909,7 +65204,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "logo_1_encabezado" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -64919,7 +65214,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_1_encabezado }
+                      attrs: {
+                        src: _vm.data.logo_1_encabezado
+                          ? "storage/" + _vm.data.logo_1_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -64933,7 +65232,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "logo_2_encabezado" },
+                        attrs: {
+                          type: "file",
+                          id: "logo_2_encabezado",
+                          name: "logo_2_encabezado"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -64943,7 +65246,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "logo_2_encabezado" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -64953,7 +65256,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_2_encabezado }
+                      attrs: {
+                        src: _vm.data.logo_2_encabezado
+                          ? "storage/" + _vm.data.logo_2_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -64964,30 +65271,39 @@ var render = function() {
                   [
                     _c("label", [_vm._v("Texto")]),
                     _vm._v(" "),
-                    _c("ckeditor", {
-                      staticClass: "col-md-10 form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has(
-                          "texto_encabezado[es]"
-                        )
-                      },
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.data.texto_encabezado,
+                          expression: "data.texto_encabezado"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": "" },
                       attrs: {
-                        "tag-name": "textarea",
-                        name: "texto_encabezado[es]",
-                        editor: _vm.editor,
-                        config: _vm.editorConfig
+                        type: "text",
+                        name: "texto_encabezado",
+                        placeholder: "Ingrese el Texto"
                       },
-                      model: {
-                        value: _vm.form.texto_encabezado[_vm.es],
-                        callback: function($$v) {
-                          _vm.$set(_vm.form.texto_encabezado, _vm.es, $$v)
-                        },
-                        expression: "form.texto_encabezado[es]"
+                      domProps: { value: _vm.data.texto_encabezado },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.data,
+                            "texto_encabezado",
+                            $event.target.value
+                          )
+                        }
                       }
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "texto_encabezado[es]" }
+                      attrs: { form: _vm.data, field: "texto_encabezado" }
                     })
                   ],
                   1
@@ -65002,28 +65318,28 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.texto_encabezado_habilitado,
-                          expression: "form.texto_encabezado_habilitado"
+                          value: _vm.data.texto_encabezado_habilitado,
+                          expression: "data.texto_encabezado_habilitado"
                         }
                       ],
                       staticClass: "form-check-input",
-                      class: {
-                        "is-invalid": _vm.form.errors.has(
-                          "texto_encabezado_habilitado"
-                        )
+                      class: { "is-invalid": "" },
+                      attrs: {
+                        type: "checkbox",
+                        name: "texto_encabezado_habilitado",
+                        id: "exampleCheck1"
                       },
-                      attrs: { type: "checkbox", id: "exampleCheck1" },
                       domProps: {
                         checked: Array.isArray(
-                          _vm.form.texto_encabezado_habilitado
+                          _vm.data.texto_encabezado_habilitado
                         )
-                          ? _vm._i(_vm.form.texto_encabezado_habilitado, null) >
+                          ? _vm._i(_vm.data.texto_encabezado_habilitado, null) >
                             -1
-                          : _vm.form.texto_encabezado_habilitado
+                          : _vm.data.texto_encabezado_habilitado
                       },
                       on: {
                         change: function($event) {
-                          var $$a = _vm.form.texto_encabezado_habilitado,
+                          var $$a = _vm.data.texto_encabezado_habilitado,
                             $$el = $event.target,
                             $$c = $$el.checked ? true : false
                           if (Array.isArray($$a)) {
@@ -65032,21 +65348,21 @@ var render = function() {
                             if ($$el.checked) {
                               $$i < 0 &&
                                 _vm.$set(
-                                  _vm.form,
+                                  _vm.data,
                                   "texto_encabezado_habilitado",
                                   $$a.concat([$$v])
                                 )
                             } else {
                               $$i > -1 &&
                                 _vm.$set(
-                                  _vm.form,
+                                  _vm.data,
                                   "texto_encabezado_habilitado",
                                   $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                                 )
                             }
                           } else {
                             _vm.$set(
-                              _vm.form,
+                              _vm.data,
                               "texto_encabezado_habilitado",
                               $$c
                             )
@@ -65066,7 +65382,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("has-error", {
                       attrs: {
-                        form: _vm.form,
+                        form: _vm.data,
                         field: "texto_encabezado_habilitado"
                       }
                     })
@@ -65089,23 +65405,25 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.seccion1_titulo,
-                          expression: "form.seccion1_titulo"
+                          value: _vm.data.seccion1_titulo,
+                          expression: "data.seccion1_titulo"
                         }
                       ],
                       staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("seccion1_titulo")
+                      class: { "is-invalid": "" },
+                      attrs: {
+                        type: "text",
+                        name: "seccion1_titulo",
+                        placeholder: "Ingrese Titulo"
                       },
-                      attrs: { type: "text", placeholder: "Enter ..." },
-                      domProps: { value: _vm.form.seccion1_titulo },
+                      domProps: { value: _vm.data.seccion1_titulo },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.form,
+                            _vm.data,
                             "seccion1_titulo",
                             $event.target.value
                           )
@@ -65114,7 +65432,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion1_titulo" }
+                      attrs: { form: _vm.data, field: "seccion1_titulo" }
                     })
                   ],
                   1
@@ -65129,25 +65447,24 @@ var render = function() {
                     _c("ckeditor", {
                       staticClass: "col-md-10 form-control",
                       class: {
-                        "is-invalid": _vm.form.errors.has("seccion_1_parrafo")
+                        "is-invalid": _vm.data.errors.has("seccion_1_parrafo")
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion_1_parrafo",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
                       model: {
-                        value: _vm.form.seccion_1_parrafo,
+                        value: _vm.data.seccion_1_parrafo,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "seccion_1_parrafo", $$v)
+                          _vm.$set(_vm.data, "seccion_1_parrafo", $$v)
                         },
-                        expression: "form.seccion_1_parrafo"
+                        expression: "data.seccion_1_parrafo"
                       }
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion_1_parrafo" }
+                      attrs: { form: _vm.data, field: "seccion_1_parrafo" }
                     })
                   ],
                   1
@@ -65162,7 +65479,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_logo1" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_logo1",
+                          name: "seccion1_logo1"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -65172,7 +65493,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion1_logo1" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -65182,7 +65503,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo1 }
+                      attrs: {
+                        src: _vm.data.seccion1_logo1
+                          ? "storage/" + _vm.data.seccion1_logo1
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -65196,7 +65521,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_logo2" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_logo2",
+                          name: "seccion1_logo2"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -65206,7 +65535,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion1_logo2" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -65216,7 +65545,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo2 }
+                      attrs: {
+                        src: _vm.data.seccion1_logo2
+                          ? "storage/" + _vm.data.seccion1_logo2
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -65230,7 +65563,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_logo3" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_logo3",
+                          name: "seccion1_logo3"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -65240,7 +65577,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion1_logo3" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -65250,7 +65587,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo3 }
+                      attrs: {
+                        src: _vm.data.seccion1_logo3
+                          ? "storage/" + _vm.data.seccion1_logo3
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -65270,23 +65611,25 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.seccio2_titulo,
-                          expression: "form.seccio2_titulo"
+                          value: _vm.data.seccio2_titulo,
+                          expression: "data.seccio2_titulo"
                         }
                       ],
                       staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("seccio2_titulo")
+                      class: { "is-invalid": "" },
+                      attrs: {
+                        type: "text",
+                        name: "seccio2_titulo",
+                        placeholder: "Ingrese Titulo"
                       },
-                      attrs: { type: "text", placeholder: "Enter ..." },
-                      domProps: { value: _vm.form.seccio2_titulo },
+                      domProps: { value: _vm.data.seccio2_titulo },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.form,
+                            _vm.data,
                             "seccio2_titulo",
                             $event.target.value
                           )
@@ -65295,7 +65638,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccio2_titulo" }
+                      attrs: { form: _vm.data, field: "seccio2_titulo" }
                     })
                   ],
                   1
@@ -65309,26 +65652,23 @@ var render = function() {
                     _vm._v(" "),
                     _c("ckeditor", {
                       staticClass: "col-md-10 form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("seccion_2_parrafo")
-                      },
+                      class: { "is-invalid": "" },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion_2_parrafo",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
                       model: {
-                        value: _vm.form.seccion_2_parrafo,
+                        value: _vm.data.seccion_2_parrafo,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "seccion_2_parrafo", $$v)
+                          _vm.$set(_vm.data, "seccion_2_parrafo", $$v)
                         },
-                        expression: "form.seccion_2_parrafo"
+                        expression: "data.seccion_2_parrafo"
                       }
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion_2_parrafo" }
+                      attrs: { form: _vm.data, field: "seccion_2_parrafo" }
                     })
                   ],
                   1
@@ -65343,7 +65683,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion2_imagen_fondo" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion2_imagen_fondo",
+                          name: "seccion2_imagen_fondo"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -65353,7 +65697,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion2_imagen_fondo" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -65364,7 +65708,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: "storage/" + _vm.form.seccion2_imagen_fondo
+                        src: _vm.data.seccion2_imagen_fondo
+                          ? "storage/" + _vm.data.seccion2_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -65385,23 +65731,25 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.seccion3_titulo,
-                          expression: "form.seccion3_titulo"
+                          value: _vm.data.seccion3_titulo,
+                          expression: "data.seccion3_titulo"
                         }
                       ],
                       staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("seccion3_titulo")
+                      class: { "is-invalid": "" },
+                      attrs: {
+                        type: "text",
+                        name: "seccion3_titulo",
+                        placeholder: "Ingrese Titulo"
                       },
-                      attrs: { type: "text", placeholder: "Enter ..." },
-                      domProps: { value: _vm.form.seccion3_titulo },
+                      domProps: { value: _vm.data.seccion3_titulo },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.form,
+                            _vm.data,
                             "seccion3_titulo",
                             $event.target.value
                           )
@@ -65410,7 +65758,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion3_titulo" }
+                      attrs: { form: _vm.data, field: "seccion3_titulo" }
                     })
                   ],
                   1
@@ -65424,26 +65772,23 @@ var render = function() {
                     _vm._v(" "),
                     _c("ckeditor", {
                       staticClass: "col-md-10 form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("seccion3_parrafo")
-                      },
+                      class: { "is-invalid": "" },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion3_parrafo",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
                       model: {
-                        value: _vm.form.seccion3_parrafo,
+                        value: _vm.data.seccion3_parrafo,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "seccion3_parrafo", $$v)
+                          _vm.$set(_vm.data, "seccion3_parrafo", $$v)
                         },
-                        expression: "form.seccion3_parrafo"
+                        expression: "data.seccion3_parrafo"
                       }
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion3_parrafo" }
+                      attrs: { form: _vm.data, field: "seccion3_parrafo" }
                     })
                   ],
                   1
@@ -65458,7 +65803,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion3_imagen" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion3_imagen",
+                          name: "seccion3_imagen"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -65468,7 +65817,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion3_imagen" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -65478,7 +65827,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion3_imagen }
+                      attrs: {
+                        src: _vm.data.seccion3_imagen
+                          ? "storage/" + _vm.data.seccion3_imagen
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -65498,23 +65851,25 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.seccion4_titulo,
-                          expression: "form.seccion4_titulo"
+                          value: _vm.data.seccion4_titulo,
+                          expression: "data.seccion4_titulo"
                         }
                       ],
                       staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("seccion4_titulo")
+                      class: { "is-invalid": "" },
+                      attrs: {
+                        type: "text",
+                        name: "seccion4_titulo",
+                        placeholder: "Ingrese Titulo"
                       },
-                      attrs: { type: "text", placeholder: "Enter ..." },
-                      domProps: { value: _vm.form.seccion4_titulo },
+                      domProps: { value: _vm.data.seccion4_titulo },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.form,
+                            _vm.data,
                             "seccion4_titulo",
                             $event.target.value
                           )
@@ -65523,7 +65878,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "seccion4_titulo" }
+                      attrs: { form: _vm.data, field: "seccion4_titulo" }
                     })
                   ],
                   1
@@ -65538,7 +65893,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion4_imagen_fondo" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion4_imagen_fondo",
+                          name: "seccion4_imagen_fondo"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -65548,7 +65907,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion4_imagen_fondo" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -65559,7 +65918,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: "storage/" + _vm.form.seccion4_imagen_fondo
+                        src: _vm.data.seccion3_imagen
+                          ? "storage/" + _vm.data.seccion4_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -66548,9 +66909,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  _vm.editMode
-                    ? _vm.updateQuienesSomos()
-                    : _vm.createQuienesSomos()
+                  return _vm.updateQuienesSomos($event)
                 }
               }
             },
@@ -66567,7 +66926,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "encabezado_imagen_fondo" },
+                        attrs: {
+                          type: "file",
+                          id: "encabezado_imagen_fondo",
+                          name: "encabezado_imagen_fondo"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -66605,7 +66968,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "logo_1_encabezado" },
+                        attrs: {
+                          type: "file",
+                          id: "logo_1_encabezado",
+                          name: "logo_1_encabezado"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -66639,7 +67006,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "logo_2_encabezado" },
+                        attrs: {
+                          type: "file",
+                          id: "logo_2_encabezado",
+                          name: "logo_2_encabezado"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -66677,7 +67048,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "texto_encabezado",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -66716,7 +67086,11 @@ var render = function() {
                           "texto_encabezado_habilitado"
                         )
                       },
-                      attrs: { type: "checkbox", id: "exampleCheck1" },
+                      attrs: {
+                        type: "checkbox",
+                        name: "texto_encabezado_habilitado",
+                        id: "exampleCheck1"
+                      },
                       domProps: {
                         checked: Array.isArray(
                           _vm.form.texto_encabezado_habilitado
@@ -66795,7 +67169,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccio1_parrafo1",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -66828,7 +67201,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccio1_parrafo2",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -66861,7 +67233,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccio1_parrafo3",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -66894,7 +67265,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccio1_parrafo4",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -66923,7 +67293,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_imagen_fondo" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_imagen_fondo",
+                          name: "seccion1_imagen_fondo"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -66973,7 +67347,11 @@ var render = function() {
                       class: {
                         "is-invalid": _vm.form.errors.has("seccion2_titulo")
                       },
-                      attrs: { type: "text", placeholder: "Enter ..." },
+                      attrs: {
+                        type: "text",
+                        name: "seccion2_titulo",
+                        placeholder: "Enter ..."
+                      },
                       domProps: { value: _vm.form.seccion2_titulo },
                       on: {
                         input: function($event) {
@@ -67009,7 +67387,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion2_parrafo",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -67038,7 +67415,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion2_imagen_fondo" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion2_imagen_fondo",
+                          name: "seccion2_imagen_fondo"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -67082,7 +67463,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion3_parrafo1",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -67115,7 +67495,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion3_parrafo2",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -67152,7 +67531,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion4_parrafo1",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -67185,7 +67563,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion4_parrafo2",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -67218,7 +67595,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion4_parrafo3",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -67251,7 +67627,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion4_parrafo4",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -67280,7 +67655,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion4_imagen_fondo" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion4_imagen_fondo",
+                          name: "seccion2_imagen_fondo"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -82653,16 +83032,17 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _objectToFormData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./objectToFormData */ "./resources/js/objectToFormData.js");
-/* harmony import */ var _objectToFormData__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_objectToFormData__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./variables */ "./resources/js/variables.js");
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-vue */ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js");
-/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
+/* harmony import */ var vue_has_error_laravel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-has-error-laravel */ "./node_modules/vue-has-error-laravel/mainDirective.js");
+/* harmony import */ var _objectToFormData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./objectToFormData */ "./resources/js/objectToFormData.js");
+/* harmony import */ var _objectToFormData__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_objectToFormData__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./variables */ "./resources/js/variables.js");
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ckeditor/ckeditor5-vue */ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //Import Vue Filter
@@ -82679,38 +83059,40 @@ __webpack_require__(/*! ./customEvents */ "./resources/js/customEvents.js"); //I
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
-window.objectToFormData = _objectToFormData__WEBPACK_IMPORTED_MODULE_1___default.a; //Import Sweetalert2
+Vue.use(vue_has_error_laravel__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+window.objectToFormData = _objectToFormData__WEBPACK_IMPORTED_MODULE_2___default.a; //Import Sweetalert2
 
 
-window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a;
-var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.mixin({
+window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a;
+var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
   timer: 3000,
   timerProgressBar: true,
   onOpen: function onOpen(toast) {
-    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.stopTimer);
-    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.resumeTimer);
+    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.stopTimer);
+    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.resumeTimer);
   }
 });
 window.Toast = Toast; //Import Variables
 
 
-Vue.prototype.$imagesRootPath = _variables__WEBPACK_IMPORTED_MODULE_3__["imagesRootPath"]; //Import v-from
+Vue.prototype.$imagesRootPath = _variables__WEBPACK_IMPORTED_MODULE_4__["imagesRootPath"]; //Import v-from
 
 
-window.Form = vform__WEBPACK_IMPORTED_MODULE_4__["Form"];
-Vue.component(vform__WEBPACK_IMPORTED_MODULE_4__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_4__["HasError"]);
-Vue.component(vform__WEBPACK_IMPORTED_MODULE_4__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_4__["AlertError"]); //import ckeditor
+window.Form = vform__WEBPACK_IMPORTED_MODULE_5__["Form"];
+Vue.component(vform__WEBPACK_IMPORTED_MODULE_5__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_5__["HasError"]);
+Vue.component(vform__WEBPACK_IMPORTED_MODULE_5__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_5__["AlertError"]); //import ckeditor
 
 
-Vue.use(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_5___default.a); //Routes
+Vue.use(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6___default.a); //Routes
 
  //Register Routes
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  routes: _routes__WEBPACK_IMPORTED_MODULE_6__["routes"],
+  routes: _routes__WEBPACK_IMPORTED_MODULE_7__["routes"],
   mode: 'hash'
 }); //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
@@ -83186,14 +83568,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************!*\
   !*** ./resources/js/components/InicioComponent.vue ***!
   \*****************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _InicioComponent_vue_vue_type_template_id_3198b07d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InicioComponent.vue?vue&type=template&id=3198b07d& */ "./resources/js/components/InicioComponent.vue?vue&type=template&id=3198b07d&");
 /* harmony import */ var _InicioComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InicioComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/InicioComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _InicioComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _InicioComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -83223,7 +83606,7 @@ component.options.__file = "resources/js/components/InicioComponent.vue"
 /*!******************************************************************************!*\
   !*** ./resources/js/components/InicioComponent.vue?vue&type=script&lang=js& ***!
   \******************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83762,8 +84145,8 @@ var imagesRootPath = 'storage/';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/jvh/project/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/jvh/project/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! c:\xampp\htdocs\jvhs\project\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! c:\xampp\htdocs\jvhs\project\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

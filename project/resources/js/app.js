@@ -15,6 +15,9 @@ require('./customEvents');
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+import VueHasErrorLaravel from 'vue-has-error-laravel'
+Vue.use(VueHasErrorLaravel)
+
 import objectToFormData from "./objectToFormData"; 
 window.objectToFormData = objectToFormData;
 

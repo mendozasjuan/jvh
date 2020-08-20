@@ -99,8 +99,8 @@
 	<div class="topnavbar-mobile__collapse" id="accordionMobileNavbar">
 		<div class="collapse" id="collapseLang" data-parent="#accordionMobileNavbar">
 			<div class="topnavbar-mobile__card">
-				<a href="">ES</a>
-				<a href="">独</a>
+				<a href="{{ url('lang', ['es']) }}">ES</a>
+				<a href="{{url('lang', ['zh']) }}">独</a>
 			</div>
 		</div>
 		<div class="collapse" id="collapseMenu" data-parent="#accordionMobileNavbar">

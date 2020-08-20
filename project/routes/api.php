@@ -28,3 +28,4 @@ Route::apiResources(['produccion' => 'API\ProduccionController']);
 Route::apiResources(['exportacion' => 'API\ExportacionController']);
 Route::apiResources(['calidad' => 'API\CalidadController']);
 Route::apiResources(['impactosocial' => 'API\ImpactoSocialController']);
+Route::get('storage/{filename}', 'InicioController@images');

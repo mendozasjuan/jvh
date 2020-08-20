@@ -44,8 +44,5 @@ class Inicio extends Model
     	'seccion4_imagen_fondo',
     ];
 
-    public function getEncabezadoImagen(){
-    	return \Storage::url($this->imagen);
     }
-}
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-08-2020 a las 17:37:15
+-- Tiempo de generación: 20-08-2020 a las 21:44:17
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.14
 
@@ -55,16 +55,16 @@ CREATE TABLE `calidad` (
 
 CREATE TABLE `categoria_corte` (
   `id` int(11) NOT NULL,
-  `categoria` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `categoria` longtext COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `categoria_corte`
 --
 
 INSERT INTO `categoria_corte` (`id`, `categoria`) VALUES
-(1, 'Cuarto Trasero'),
-(2, 'Cuarto Delantero');
+(1, '{\"es\":\"Cuarto Trasero\",\"zh\":\"\\u5f8c\\u5ba4\"}'),
+(2, '{\"es\":\"Cuarto Delantero\",\"zh\":\"\\u7b2c\\u56db\\u524d\\u9032\"}');
 
 -- --------------------------------------------------------
 
@@ -97,21 +97,6 @@ CREATE TABLE `corte` (
   `categoria_corte_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `corte`
---
-
-INSERT INTO `corte` (`id`, `nombre`, `descripcion`, `tamano_caja`, `medidas`, `envasado`, `piezas_por_caja`, `condiciones_termicas`, `especificaciones`, `categoria_corte_id`) VALUES
-(2, 'Corazon de Cuadril', 'Utilizamos Equipos de Ultima Tegnologia', 'Escopeta/grande', '60x24x15', 'Al Vacio', '2/3 piezas', 'enfriado/congelado', 'menos de 4kg / mas de 4kg', 1),
-(3, 'wrwerwer', 'werwer', 'werwer', 'werwer', 'werwer', 'werwer', 'werwer', 'werwer', 2),
-(4, 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsd', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', 1),
-(5, 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsd', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', 1),
-(6, 'dasfsdf', 'sadfsdf', 'sdfsdf', 'sdfsdf', 'sdfasd', 'sadfsdf', 'sdfsdf', 'sdfsdf', 1),
-(7, 'dasfsdf', 'sadfsdf', 'sdfsdf', 'sdfsdf', 'sdfasd', 'sadfsdf', 'sdfsdf', 'sdfsdf', 1),
-(8, 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'asdasd', 1),
-(9, 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', 2),
-(10, 'dfgdfgdfg', 'dfgdfg', 'dfg', 'dfg', 'fdg', 'dfg', 'dfg', 'dfg', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -123,14 +108,6 @@ CREATE TABLE `etiquetado_corte` (
   `etiquetado` varchar(255) NOT NULL,
   `corte_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `etiquetado_corte`
---
-
-INSERT INTO `etiquetado_corte` (`id`, `etiquetado`, `corte_id`) VALUES
-(1, 'etiquetado/T3D3dnqHtb1d2puPi88taRC2gsnRiPT6cnHCrDY1.png', 8),
-(2, 'etiquetado/gYGEXFvvS2mJM2ApiOi7WDMmVftILBMJtnp5waFM.png', 10);
 
 -- --------------------------------------------------------
 
@@ -182,15 +159,6 @@ CREATE TABLE `imagen_corte` (
   `corte_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `imagen_corte`
---
-
-INSERT INTO `imagen_corte` (`id`, `imagen`, `corte_id`) VALUES
-(1, 'producto/YoS5JdRr7is9otAQXQRObZ9osgH8x09QPk42LFxZ.png', 5),
-(2, 'producto/7EgioKKytLZxaoKU4zSM3vNpUEo6Jk5aG4nz2TFk.png', 8),
-(3, 'producto/wrOGJ0VpWlUWJEA4QlrYfmtx1hmQhGDcXTrCQ0TT.png', 10);
-
 -- --------------------------------------------------------
 
 --
@@ -219,24 +187,24 @@ CREATE TABLE `impactosocial` (
 
 CREATE TABLE `inicio` (
   `id` int(11) NOT NULL,
-  `encabezado_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `encabezado_imagen_fondo` text COLLATE utf8mb4_unicode_ci,
   `logo_1_encabezado` text COLLATE utf8mb4_unicode_ci,
   `logo_2_encabezado` text COLLATE utf8mb4_unicode_ci,
-  `texto_encabezado` text COLLATE utf8mb4_unicode_ci,
+  `texto_encabezado` longtext COLLATE utf8mb4_unicode_ci,
   `texto_encabezado_habilitado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `seccion1_titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion_1_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion1_logo1` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion1_logo2` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion1_logo3` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion2_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccio2_titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion_2_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion3_titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion3_parrafo` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion3_imagen` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion4_titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seccion4_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `seccion1_titulo` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion_1_parrafo` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion1_logo1` text COLLATE utf8mb4_unicode_ci,
+  `seccion1_logo2` text COLLATE utf8mb4_unicode_ci,
+  `seccion1_logo3` text COLLATE utf8mb4_unicode_ci,
+  `seccion2_imagen_fondo` text COLLATE utf8mb4_unicode_ci,
+  `seccio2_titulo` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion_2_parrafo` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_titulo` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_parrafo` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion3_imagen` text COLLATE utf8mb4_unicode_ci,
+  `seccion4_titulo` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seccion4_imagen_fondo` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -244,7 +212,7 @@ CREATE TABLE `inicio` (
 --
 
 INSERT INTO `inicio` (`id`, `encabezado_imagen_fondo`, `logo_1_encabezado`, `logo_2_encabezado`, `texto_encabezado`, `texto_encabezado_habilitado`, `seccion1_titulo`, `seccion_1_parrafo`, `seccion1_logo1`, `seccion1_logo2`, `seccion1_logo3`, `seccion2_imagen_fondo`, `seccio2_titulo`, `seccion_2_parrafo`, `seccion3_titulo`, `seccion3_parrafo`, `seccion3_imagen`, `seccion4_titulo`, `seccion4_imagen_fondo`) VALUES
-(1, 'img/bOlczL6hpmhUIWB3MSfxsAqU4s69ldkd45oGkU3q.png', 'img/0nyiHFvS4lmW3f1PZhC74oMmCUQ1M7gmRk1Or6Jz.svg', 'img/KM3240iOJ82TxfxQJ8HuksvLP6ZcfOgfyZX6LStJ.svg', '\"Carne Argentina de alta calidad para los mercados más exigentes del mundo\"', 'true', 'Nuestra Carne', 'La calidad de la carne, en términos alimenticios, depende de la conjunción de diversos factores. Entre estos se destacan el tipo de crianza del ganado y la eficacia de su comercialización. La pampa húmeda argentina es uno de los lugares en el mundo en el que la cría de los animales no se realizan en establos, sino en extensas llanuras, alejadas de la polución industrial, donde la abundancia de pasturas esta asegurada. El ganado argentino respeta, además, las pautas de crecimiento natural, ya que no se los inyecta con hormonas y antibióticos. Por estas razones, su estado resulta optimo para el consumo.', 'img/fzkQmS6bUlyEfJs4fWDS3D6zaFiCiDMQSX5SCeuv.png', 'img/pyYp0YQNoLICaTMrx7fBM6z4buCYrq9rrBe9eeRn.png', 'img/zvcnTicpyrfjstSQQkuQGq0hxnZwJPSbXwibl8L0.png', 'img/3W0iVzNzsZU6JizcdDdhrAApvsxZGCJGpsEchjTA.png', '\"Última generación en la producción de carnes\"', 'Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío', 'Mercados en el Mundo', 'Cuenta con todos los permisos y certificaciones necesarios para exportar a la unión europea, israel, suiza, rusia, hong kong, brasil y sudáfrica entre otros.', 'img/ipRsHil1Cm8BX1sl2aYeogIaQEzK19JXbOOCeMU5.svg', '\"Nuestra carne es altamente demandada debido a su marmoleo natural, jugosidad, terneza y sabor\"', 'img/hh0Q9AXUvbkCmMg1F7hXVeAWr6XKV4kgVoUNfz27.png');
+(1, 'img/lsJOqzjZjW73PrFlYHyOGnylmSp5HlK2th5S1G6m.png', 'img/xctx8XbnloTJ7demkxmAJrPiqOwKuHCeL3Sq9nHt.svg', 'img/n7zSfw4ABVNBLSwCBrN7Rf9LZ0ltpDS3Qc3sRFJm.svg', '{\"es\":\"\\\"Carne Argentina de alta calidad para los mercados m\\u00e1s exigentes del mundo\\\"1\",\"zh\":null}', 'on', '{\"es\":\"Nuestra Carne\",\"zh\":null}', '{\"es\":\"<p>La calidad de la carne, en t\\u00e9rminos alimenticios, depende de la conjunci\\u00f3n de diversos factores. Entre estos se destacan el tipo de crianza del ganado y la eficacia de su comercializaci\\u00f3n. La pampa h\\u00fameda argentina es uno de los lugares en el mundo en el que la cr\\u00eda de los animales no se realizan en establos, sino en extensas llanuras, alejadas de la poluci\\u00f3n industrial, donde la abundancia de pasturas esta asegurada. El ganado argentino respeta, adem\\u00e1s, las pautas de crecimiento natural, ya que no se los inyecta con hormonas y antibi\\u00f3ticos. Por estas razones, su estado resulta optimo para el consumo.<\\/p>\",\"zh\":null}', 'img/9cu3lK4llqI3bhZIDVlk21gJ2eDGswlNrrHtVqlr.png', 'img/PRKWK8VGOLHdOd3UlK0QQxdJek32Na78HYxg3mja.png', 'img/mNHz728UJ8pgZbHYAVDTsbJe78ee1TF614u0eKct.png', NULL, '{\"es\":\"\\u00daltima generaci\\u00f3n en la producci\\u00f3n de carnes\",\"zh\":null}', '{\"es\":\"<p>Equipos de \\u00faltima generaci\\u00f3n para los procesos de congelado, enfriado y envasado al vac\\u00edo<\\/p>\",\"zh\":null}', '{\"es\":\"Mercados en el Mundo\",\"zh\":null}', '{\"es\":\"<p>Cuenta con todos los permisos y certificaciones necesarios para exportar a la uni\\u00f3n europea, israel, suiza, rusia, hong kong, brasil y sud\\u00e1frica entre otros.<\\/p>\",\"zh\":null}', 'img/jkvdCfFLdNWbfgtw8BonaDO6fcsoRnqN0Ge8k26w.svg', '{\"es\":\"Nuestra carne es altamente demandada debido a su marmoleo natural, jugosidad, terneza y sabor\",\"zh\":null}', 'img/ynvw6xZgtIcr8wY32OUDpNAllDzYnpefjfleR5dx.png');
 
 -- --------------------------------------------------------
 
@@ -464,7 +432,7 @@ ALTER TABLE `contacto`
 --
 ALTER TABLE `corte`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `categoria_corte_id` (`categoria_corte_id`) USING BTREE;
+  ADD KEY `categoria_corte_id` (`categoria_corte_id`);
 
 --
 -- Indices de la tabla `etiquetado_corte`
@@ -575,7 +543,7 @@ ALTER TABLE `calidad`
 -- AUTO_INCREMENT de la tabla `categoria_corte`
 --
 ALTER TABLE `categoria_corte`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
@@ -587,13 +555,13 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `corte`
 --
 ALTER TABLE `corte`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetado_corte`
 --
 ALTER TABLE `etiquetado_corte`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `exportacion`
@@ -611,7 +579,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `imagen_corte`
 --
 ALTER TABLE `imagen_corte`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `impactosocial`
