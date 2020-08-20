@@ -57,7 +57,7 @@
 			</div>
 			
 		</div>
-		<div class="col" style="margin-left: 40px;"">
+		<div class="col" style="margin-left: 40px;">
 			<form action="recursoshumanos_submit" method="get" enctype="multipart/form-data">
 			<div class="row" style="border-top: 2px solid #ccc;border-bottom: 2px solid #ccc;padding-top: 20px;padding-bottom: 50px;">
 				<div class="col-sm-10 col-lg-4">
@@ -125,15 +125,7 @@
 							<div class="col">
 								<input type="text" name="ano" class="h-75 rounded-sm form-control form-control-lg" id="ano" placeholder="Año">
 							</div>
-						      
-						      
-						    <!--</div>
-						    <div class="form-group col-md-3 mr-3">-->
-						      
-						    <!--</div>
-						    <div class="form-group col-md-3 mr-3">-->
-						      
-						    
+
 						</div>
 				</div>
 			</div>
