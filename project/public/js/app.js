@@ -4732,6 +4732,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   },
   methods: {
     editWindow: function editWindow(quienessomos) {
+      console.log(quienessomos);
+
       if (quienessomos) {
         this.editMode = true;
         this.form.clear();
@@ -4813,7 +4815,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       formData.append('seccion4_parrafo4_zh', this.form.seccion4_parrafo4_zh);
       formData.append('_method', 'PUT'); //this.form.submit('put','api/inicio/'+this.form.id,{
 
-      axios.post('api/quienessomos' + this.form.id, formData).then(function () {
+      axios.post('api/quienessomos/' + this.form.id, formData).then(function () {
         Fire.$emit('AfterCreatedQuienesSomosLoadIt');
         Toast.fire({
           icon: 'success',
@@ -67658,7 +67660,7 @@ var render = function() {
                         attrs: {
                           type: "file",
                           id: "seccion4_imagen_fondo",
-                          name: "seccion2_imagen_fondo"
+                          name: "seccion4_imagen_fondo"
                         },
                         on: { change: _vm.onUploadImage }
                       }),

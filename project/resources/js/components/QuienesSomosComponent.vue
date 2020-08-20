@@ -188,7 +188,7 @@
                     <label for="seccion4_imagen_fondo">Imagen</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="seccion4_imagen_fondo" name="seccion2_imagen_fondo" v-on:change="onUploadImage">
+                        <input type="file" class="custom-file-input" id="seccion4_imagen_fondo" name="seccion4_imagen_fondo" v-on:change="onUploadImage">
                         <label class="custom-file-label" for="seccion4_imagen_fondo">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -273,6 +273,7 @@
         methods: {
         
         editWindow(quienessomos){
+        	console.log(quienessomos);
         	if(quienessomos){
         		this.editMode = true
         		this.form.clear();
@@ -369,7 +370,7 @@
 
              formData.append('_method', 'PUT');
             //this.form.submit('put','api/inicio/'+this.form.id,{
-              axios.post('api/quienessomos'+this.form.id,formData)
+              axios.post('api/quienessomos/'+this.form.id,formData)
                .then(()=>{
                   Fire.$emit('AfterCreatedQuienesSomosLoadIt');
 

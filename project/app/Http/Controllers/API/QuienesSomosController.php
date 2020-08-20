@@ -26,69 +26,65 @@ class QuienesSomosController extends Controller
      */
     public function store(Request $request)
     {
+    	$quienessomos = new QuienesSomos;
+
         if($request['id'] != null){
             return $this->update($request,$request['id']);
         }
 
         $image = $this->storeImagenes($request);
 
+        $quienessomos->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
+            ->setTranslations('seccio1_parrafo1', ['es' => $request['seccio1_parrafo1'],'zh' =>$request['seccio1_parrafo1_zh'] ] )
+            ->setTranslations('seccio1_parrafo2', ['es' => $request['seccio1_parrafo2'],'zh' =>$request['seccio1_parrafo2_zh'] ])
+            ->setTranslations('seccio1_parrafo3', ['es' => $request['seccio1_parrafo3'],'zh' =>$request['seccio1_parrafo3_zh'] ])
+            ->setTranslations('seccio1_parrafo4', ['es' => $request['seccio1_parrafo4'],'zh' =>$request['seccio1_parrafo4_zh'] ])
+
+            ->setTranslations('seccion2_titulo', ['es' => $request['seccion2_titulo'],'zh' =>$request['seccion2_titulo_zh'] ])
+            ->setTranslations('seccion2_parrafo', ['es' => $request['seccion2_parrafo'],'zh' =>$request['seccion2_parrafo_zh'] ])
+
+            ->setTranslations('seccion3_parrafo1', ['es' => $request['seccion3_parrafo1'],'zh' =>$request['seccion3_parrafo1_zh'] ])
+            ->setTranslations('seccion3_parrafo2', ['es' => $request['seccion3_parrafo2'],'zh' =>$request['seccion3_parrafo2_zh'] ] )
+            ->setTranslations('seccion4_parrafo1', ['es' => $request['seccion4_parrafo1'],'zh' =>$request['seccion4_parrafo1_zh'] ])
+            ->setTranslations('seccion4_parrafo2', ['es' => $request['seccion4_parrafo2'],'zh' =>$request['seccion4_parrafo2_zh'] ])
+            ->setTranslations('seccion4_parrafo3', ['es' => $request['seccion4_parrafo3'],'zh' =>$request['seccion4_parrafo3_zh'] ])
+            ->setTranslations('seccion4_parrafo4', ['es' => $request['seccion4_parrafo4'],'zh' =>$request['seccion4_parrafo4_zh'] ]);
+
+        $quienessomos->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
+
         if($image['encabezado_imagen_fondo'] !=null ){
-            $encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
+            $quienessomos->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
         }else{
-            $encabezado_imagen_fondo = null;
+            $quienessomos->encabezado_imagen_fondo = null;
         }
 
         if($image['logo_1_encabezado'] !=null ){
-            $logo_1_encabezado = $image['logo_1_encabezado'];
+            $quienessomos->logo_1_encabezado = $image['logo_1_encabezado'];
         }else{
-            $logo_1_encabezado = null;
+            $quienessomos->logo_1_encabezado = null;
         }
 
         if($image['logo_2_encabezado'] !=null )
-            $logo_2_encabezado = $image['logo_2_encabezado'];
+            $quienessomos->logo_2_encabezado = $image['logo_2_encabezado'];
         else
-            $logo_2_encabezado = null;
+            $quienessomos->logo_2_encabezado = null;
 
         if($image['seccion1_imagen_fondo'] !=null )
-            $seccion1_imagen_fondo = $image['seccion1_imagen_fondo'];
+            $quienessomos->seccion1_imagen_fondo = $image['seccion1_imagen_fondo'];
         else
-            $seccion1_imagen_fondo = null;
+            $quienessomos->seccion1_imagen_fondo = null;
 
         if($image['seccion2_imagen_fondo'] !=null )
-            $seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
+            $quienessomos->seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
         else
-            $seccion2_imagen_fondo = null;
+            $quienessomos->seccion2_imagen_fondo = null;
 
         if($image['seccion4_imagen_fondo'] !=null )
-            $seccion4_imagen_fondo = $image['seccion4_imagen_fondo'];
+            $quienessomos->seccion4_imagen_fondo = $image['seccion4_imagen_fondo'];
         else
-            $seccion4_imagen_fondo = null;
+            $quienessomos->seccion4_imagen_fondo = null;
 
-        $quienessomos = QuienesSomos::create([
-           'encabezado_imagen_fondo' => $encabezado_imagen_fondo,
-           'logo_1_encabezado' => $logo_1_encabezado,
-           'logo_2_encabezado' => $logo_2_encabezado,
-           'texto_encabezado' => $request['texto_encabezado'],
-           'texto_encabezado_habilitado' => $request['texto_encabezado_habilitado'],
-           'seccio1_parrafo1' => $request['seccio1_parrafo1'],
-           'seccio1_parrafo2' => $request['seccio1_parrafo2'],
-           'seccio1_parrafo3' => $request['seccio1_parrafo3'],
-           'seccio1_parrafo4' => $request['seccio1_parrafo4'],
-
-           'seccion1_imagen_fondo' => $seccion1_imagen_fondo,
-           'seccion2_titulo' => $request['seccion2_titulo'],
-           'seccion2_parrafo' => $request['seccion2_parrafo'],
-           'seccion2_imagen_fondo' => $seccion2_imagen_fondo,
-           'seccion3_parrafo1' => $request['seccion3_parrafo1'],
-           'seccion3_parrafo2' => $request['seccion3_parrafo2'],
-           'seccion4_parrafo1' => $request['seccion4_parrafo1'],
-           'seccion4_parrafo2' => $request['seccion4_parrafo2'],
-           'seccion4_parrafo3' => $request['seccion4_parrafo3'],
-
-           'seccion4_parrafo4' => $request['seccion4_parrafo4'],
-           'seccion4_imagen_fondo' => $seccion4_imagen_fondo,
-        ]);
-
+         $quienessomos->save();
         return $quienessomos;
     }
 
@@ -115,41 +111,55 @@ class QuienesSomosController extends Controller
         $image = $this->storeImagenes($request);
 
         $quienessomos = QuienesSomos::findOrFail($id);
-        $quienessomos->texto_encabezado = $request['texto_encabezado'];
+        $quienessomos->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
+            ->setTranslations('seccio1_parrafo1', ['es' => $request['seccio1_parrafo1'],'zh' =>$request['seccio1_parrafo1_zh'] ] )
+            ->setTranslations('seccio1_parrafo2', ['es' => $request['seccio1_parrafo2'],'zh' =>$request['seccio1_parrafo2_zh'] ])
+            ->setTranslations('seccio1_parrafo3', ['es' => $request['seccio1_parrafo3'],'zh' =>$request['seccio1_parrafo3_zh'] ])
+            ->setTranslations('seccio1_parrafo4', ['es' => $request['seccio1_parrafo4'],'zh' =>$request['seccio1_parrafo4_zh'] ])
+
+            ->setTranslations('seccion2_titulo', ['es' => $request['seccion2_titulo'],'zh' =>$request['seccion2_titulo_zh'] ])
+            ->setTranslations('seccion2_parrafo', ['es' => $request['seccion2_parrafo'],'zh' =>$request['seccion2_parrafo_zh'] ])
+
+            ->setTranslations('seccion3_parrafo1', ['es' => $request['seccion3_parrafo1'],'zh' =>$request['seccion3_parrafo1_zh'] ])
+            ->setTranslations('seccion3_parrafo2', ['es' => $request['seccion3_parrafo2'],'zh' =>$request['seccion3_parrafo2_zh'] ] )
+            ->setTranslations('seccion4_parrafo1', ['es' => $request['seccion4_parrafo1'],'zh' =>$request['seccion4_parrafo1_zh'] ])
+            ->setTranslations('seccion4_parrafo2', ['es' => $request['seccion4_parrafo2'],'zh' =>$request['seccion4_parrafo2_zh'] ])
+            ->setTranslations('seccion4_parrafo3', ['es' => $request['seccion4_parrafo3'],'zh' =>$request['seccion4_parrafo3_zh'] ])
+            ->setTranslations('seccion4_parrafo4', ['es' => $request['seccion4_parrafo4'],'zh' =>$request['seccion4_parrafo4_zh'] ]);
+
         $quienessomos->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
-        $quienessomos->seccio1_parrafo1 = $request['seccio1_parrafo1'];
-        $quienessomos->seccio1_parrafo2 = $request['seccio1_parrafo2'];
-        $quienessomos->seccio1_parrafo3 = $request['seccio1_parrafo3'];
-        $quienessomos->seccio1_parrafo4 = $request['seccio1_parrafo4'];
-        $quienessomos->seccion2_titulo = $request['seccion2_titulo'];
-        $quienessomos->seccion2_parrafo = $request['seccion2_parrafo'];
-        $quienessomos->seccion3_parrafo1 = $request['seccion3_parrafo1'];
 
-        $quienessomos->seccion3_parrafo2 = $request['seccion3_parrafo2'];
-        $quienessomos->seccion4_parrafo1 = $request['seccion4_parrafo1'];
-        $quienessomos->seccion4_parrafo2 = $request['seccion4_parrafo2'];
-        $quienessomos->seccion4_parrafo3 = $request['seccion4_parrafo3'];
-        $quienessomos->seccion4_parrafo4 = $request['seccion4_parrafo4'];
-
-
-        
-        if($image['encabezado_imagen_fondo'] !=null )
+        if($image['encabezado_imagen_fondo'] !=null ){
             $quienessomos->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
+        }else{
+            $quienessomos->encabezado_imagen_fondo = null;
+        }
 
-        if($image['logo_1_encabezado'] !=null )
+        if($image['logo_1_encabezado'] !=null ){
             $quienessomos->logo_1_encabezado = $image['logo_1_encabezado'];
+        }else{
+            $quienessomos->logo_1_encabezado = null;
+        }
 
         if($image['logo_2_encabezado'] !=null )
             $quienessomos->logo_2_encabezado = $image['logo_2_encabezado'];
+        else
+            $quienessomos->logo_2_encabezado = null;
 
         if($image['seccion1_imagen_fondo'] !=null )
             $quienessomos->seccion1_imagen_fondo = $image['seccion1_imagen_fondo'];
+        else
+            $quienessomos->seccion1_imagen_fondo = null;
 
         if($image['seccion2_imagen_fondo'] !=null )
             $quienessomos->seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
+        else
+            $quienessomos->seccion2_imagen_fondo = null;
 
         if($image['seccion4_imagen_fondo'] !=null )
             $quienessomos->seccion4_imagen_fondo = $image['seccion4_imagen_fondo'];
+        else
+            $quienessomos->seccion4_imagen_fondo = null;
 
         
 

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Inicio;
+use App\QuienesSomos;
 
-class InicioController extends Controller
+class QuienesSomosController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -14,7 +14,8 @@ class InicioController extends Controller
      */
     public function index()
     {
-        $inicio = Inicio::first();
-        return view('web.index')->with('inicio', $inicio);
+        $quienessomos = QuienesSomos::first();
+        //dd($quienessomos);
+        return view('web.quienessomos')->with('quienessomos', $quienessomos);
     }
 }

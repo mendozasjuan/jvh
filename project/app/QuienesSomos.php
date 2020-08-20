@@ -3,11 +3,30 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class QuienesSomos extends Model
 {
     protected $table = 'quienessomos';
     public $timestamps = false;
+
+    use HasTranslations;
+
+    protected $translatable = [
+        'texto_encabezado',
+    	'seccio1_parrafo1',
+    	'seccio1_parrafo2',
+    	'seccio1_parrafo3',
+    	'seccio1_parrafo4',
+    	'seccion2_titulo',
+    	'seccion2_parrafo',
+    	'seccion3_parrafo1',
+    	'seccion3_parrafo2',
+    	'seccion4_parrafo1',
+    	'seccion4_parrafo2',
+    	'seccion4_parrafo3',
+    	'seccion4_parrafo4',
+    ];
 
     protected $fillable = [
     	'encabezado_imagen_fondo',

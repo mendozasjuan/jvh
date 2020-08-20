@@ -24,12 +24,13 @@ Route::group(['middleware' => ['web']], function () {
     ]);
 
     Route::get('/','InicioController@index')->name('inicio');
+    Route::get('/quienessomos','QuienesSomosController@index')->name('quienessomos');
         
 
 
-    Route::get('/quienessomos', function () {
+    /*Route::get('/quienessomos', function () {
         return view('web.quienessomos');
-    })->name('quienessomos');
+    })->name('quienessomos');*/
 
     Route::get('produccion', function () {
         return view('web.produccion');
