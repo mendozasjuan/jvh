@@ -9,16 +9,16 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" @submit.prevent="editMode ? updateImpactoSocial() : createImpactoSocial()" enctype="multipart/form-data" id='form'>
+              <form role="form" @submit.prevent="updateImpactoSocial" enctype="multipart/form-data" id='form'>
                 <div class="card-body">
                   <h3>Encabezado</h3>
                     <div class="form-group">
                     <label for="encabezado_imagen_fondo">Imagen de Fondo</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="encabezado_imagen_fondo" v-on:change="onUploadImage">
+                        <input type="file" class="custom-file-input" id="encabezado_imagen_fondo" name="encabezado_imagen_fondo" v-on:change="onUploadImage">
 
-                        <label class="custom-file-label" for="encabezado_imagen_fondo">Choose file</label>
+                        <label class="custom-file-label" for="encabezado_imagen_fondo">Seleccione un Archivo</label>
                         
                       </div>
                       <div class="input-group-append">
@@ -34,8 +34,8 @@
                     <label for="logo_1_encabezado">Logo 1</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="logo_1_encabezado" v-on:change="onUploadImage">
-                        <label class="custom-file-label" for="logo_1_encabezado">Choose file</label>
+                        <input type="file" class="custom-file-input" id="logo_1_encabezado" name="logo_1_encabezado" v-on:change="onUploadImage">
+                        <label class="custom-file-label" for="logo_1_encabezado">Seleccione un Archivo</label>
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
@@ -49,8 +49,8 @@
                     <label for="logo_2_encabezado">Logo 2</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="logo_2_encabezado" v-on:change="onUploadImage">
-                        <label class="custom-file-label" for="logo_2_encabezado">Choose file</label>
+                        <input type="file" class="custom-file-input" id="logo_2_encabezado" name="logo_2_encabezado" v-on:change="onUploadImage">
+                        <label class="custom-file-label" for="logo_2_encabezado">Seleccione un Archivo</label>
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
@@ -62,13 +62,13 @@
                   </div>
                   <div class="form-group">
                         <label>Texto</label>
-                        <!--<textarea v-model="form.texto_encabezado" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('texto_encabezado') }"></textarea>-->
-                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }" tag-name="textarea" name="texto_encabezado" :editor="editor" v-model="form.texto_encabezado" :config="editorConfig"></ckeditor>
+                        <input v-model="form.texto_encabezado" type="text" class="form-control" name="texto_encabezado" placeholder="Ingrese Texto" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }">
+                        <!--<ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }" tag-name="textarea" name="texto_encabezado" :editor="editor" v-model="form.texto_encabezado" :config="editorConfig"></ckeditor>-->
                         <has-error :form="form" field="texto_encabezado"></has-error>
                   </div>
                   <div class="form-check">
-                    <input v-model="form.texto_encabezado_habilitado" type="checkbox" class="form-check-input" id="exampleCheck1" :class="{ 'is-invalid': form.errors.has('texto_encabezado_habilitado') }">
-                    <label class="form-check-label" for="exampleCheck1">Habilitar Texto en Encabezado</label>
+                    <input v-model="form.texto_encabezado_habilitado" type="checkbox" name="texto_encabezado_habilitado" class="form-check-input" id="texto_encabezado_habilitado" :class="{ 'is-invalid': form.errors.has('texto_encabezado_habilitado') }">
+                    <label class="form-check-label" for="texto_encabezado_habilitado">Habilitar Texto en Encabezado</label>
                     <has-error :form="form" field="texto_encabezado_habilitado"></has-error>
                   </div>
 
@@ -76,20 +76,20 @@
 
                   <div class="form-group">
                         <label>Titulo</label>
-                        <input v-model="form.seccion1_titulo" type="text" class="form-control" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_titulo') }">
+                        <input v-model="form.seccion1_titulo" type="text" class="form-control" name="seccion1_titulo" placeholder="Ingrese Titulo" :class="{ 'is-invalid': form.errors.has('seccion1_titulo') }">
                         <has-error :form="form" field="seccion1_titulo"></has-error>
                   </div>
                   <div class="form-group">
                         <label>Parrafo 1</label>
                         <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
-                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion1_parrafo1') }" tag-name="textarea" name="seccion1_parrafo1" :editor="editor" v-model="form.seccion1_parrafo1" :config="editorConfig"></ckeditor>
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion1_parrafo1') }" tag-name="textarea"  :editor="editor" v-model="form.seccion1_parrafo1" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="seccion1_parrafo1"></has-error>
                   </div>
 
                   <div class="form-group">
                         <label>Parrafo 2</label>
                         <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
-                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion1_parrafo2') }" tag-name="textarea" name="seccion1_parrafo2" :editor="editor" v-model="form.seccion1_parrafo2" :config="editorConfig"></ckeditor>
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion1_parrafo2') }" tag-name="textarea"  :editor="editor" v-model="form.seccion1_parrafo2" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="seccion1_parrafo2"></has-error>
                   </div>
                   
@@ -98,7 +98,7 @@
 
                   <div class="form-group">
                         <label>Titulo</label>
-                        <input v-model="form.seccion2_titulo" type="text" class="form-control" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion2_titulo') }">
+                        <input v-model="form.seccion2_titulo" type="text" class="form-control" name="seccion2_titulo" placeholder="Ingrese Titulo" :class="{ 'is-invalid': form.errors.has('seccion2_titulo') }">
                         <has-error :form="form" field="seccion2_titulo"></has-error>
                   </div>
                   
@@ -106,8 +106,8 @@
                     <label for="seccion2_imagen_fondo">Imagen de Fondo</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="seccion2_imagen_fondo" v-on:change="onUploadImage">
-                        <label class="custom-file-label" for="seccion2_imagen_fondo">Choose file</label>
+                        <input type="file" class="custom-file-input" id="seccion2_imagen_fondo" name="seccion2_imagen_fondo" v-on:change="onUploadImage">
+                        <label class="custom-file-label" for="seccion2_imagen_fondo">Seleccione un Archivo</label>
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
@@ -156,11 +156,16 @@
                     logo_1_encabezado: '',
                     logo_2_encabezado: '',
                     texto_encabezado: '',
+                    texto_encabezado_zh: '',
                     texto_encabezado_habilitado: '',
                     seccion1_titulo: '',
                     seccion1_parrafo1: '',
                     seccion1_parrafo2: '',
                     seccion2_titulo: '',
+                    seccion1_titulo_zh: '',
+                    seccion1_parrafo1_zh: '',
+                    seccion1_parrafo2_zh: '',
+                    seccion2_titulo_zh: '',
                     seccion2_imagen_fondo: '',
                     _method:'',
 
@@ -169,27 +174,53 @@
         },
         methods: {
         
-        editWindow(ImpactoSocial){
-           this.form.clear();
-           this.editMode = true
-           this.form.reset();
-           this.form.fill(ImpactoSocial)
+        editWindow(impactosocial){
+        	if(impactosocial){
+        		this.editMode = true;
+        		this.form.clear();
+				this.form.reset();
+
+				this.form.id= impactosocial.id;
+				this.form.encabezado_imagen_fondo = impactosocial.encabezado_imagen_fondo;
+				this.form.logo_1_encabezado= impactosocial.logo_1_encabezado;
+				this.form.logo_2_encabezado= impactosocial.logo_2_encabezado;
+
+				this.form.texto_encabezado= typeof impactosocial.texto_encabezado === 'object' ? impactosocial.texto_encabezado.es : '';
+				this.form.texto_encabezado_zh= typeof impactosocial.texto_encabezado === 'object' ? impactosocial.texto_encabezado.zh : '';
+
+				this.form.texto_encabezado_habilitado= impactosocial.texto_encabezado_habilitado;
+
+				this.form.seccion1_titulo= typeof impactosocial.seccion1_titulo === 'object' ? impactosocial.seccion1_titulo.es : '';
+				this.form.seccion1_parrafo1 = typeof impactosocial.seccion1_parrafo1 === 'object' ? impactosocial.seccion1_parrafo1.es : '';
+				this.form.seccion1_parrafo2= typeof impactosocial.seccion1_parrafo2 === 'object' ? impactosocial.seccion1_parrafo2.es : '';
+				this.form.seccion2_titulo= typeof impactosocial.seccion2_titulo === 'object' ? impactosocial.seccion2_titulo.es : '';
+
+				this.form.seccion1_titulo_zh= typeof impactosocial.seccion1_titulo === 'object' ? impactosocial.seccion1_titulo.zh : '';
+				this.form.seccion1_parrafo1_zh = typeof impactosocial.seccion1_parrafo1 === 'object' ? impactosocial.seccion1_parrafo1.ezh: '';
+				this.form.seccion1_parrafo2_zh= typeof impactosocial.seccion1_parrafo2 === 'object' ? impactosocial.seccion1_parrafo2.zh : '';
+				this.form.seccion2_titulo_zh= typeof impactosocial.seccion2_titulo === 'object' ? impactosocial.seccion2_titulo.zh : '';
+
+				this.form.seccion2_imagen_fondo= impactosocial.seccion2_imagen_fondo;
+        	}
+
         },
         loadImpactoSocial() {
           axios.get("api/impactosocial").then( data => (this.editWindow(data.data)));
-        
-          //pick data from controller and push it into users object
-
         },
-        updateImpactoSocial(){
+        updateImpactoSocial(event){
+        	if(!this.editMode)
+	        	return this.createImpactoSocial(event);
+	        let formData =  new FormData(event.target)
+			formData.append('seccion1_parrafo1',this.form.seccion1_parrafo1);
+			formData.append('seccion1_parrafo2',this.form.seccion1_parrafo2);
+			formData.append('seccion1_parrafo1_zh',this.form.seccion1_parrafo1_zh);
+			formData.append('seccion1_parrafo2_zh',this.form.seccion1_parrafo2_zh);
+
+			formData.append('_method', 'PUT');
+
            this.$Progress.start()
             //this.form.submit('put','api/inicio/'+this.form.id,{
-              axios.post('api/impactosocial',this.form,{
-
-                // Transform form data to FormData
-                transformRequest: [function (data, headers) {
-                    return objectToFormData(data)
-                }]})
+              axios.post('api/impactosocial/'+this.form.id,formData)
                .then(()=>{
                   Fire.$emit('AfterCreatedImpactoSocialLoadIt');
 
@@ -243,17 +274,16 @@
           reader.readAsDataURL(file);
         },
 
-        createImpactoSocial(){
+        createImpactoSocial(event){
 
             this.$Progress.start()
+            let formData =  new FormData(event.target)
+			formData.append('seccion1_parrafo1',this.form.seccion1_parrafo1);
+			formData.append('seccion1_parrafo2',this.form.seccion1_parrafo2);
+			formData.append('seccion1_parrafo1_zh',this.form.seccion1_parrafo1_zh);
+			formData.append('seccion1_parrafo2_zh',this.form.seccion1_parrafo2_zh);
 
-            this.form.submit('post','api/impactosocial',{
-
-                // Transform form data to FormData
-                transformRequest: [function (data, headers) {
-                    return objectToFormData(data)
-                }]
-            })
+            axios.post('api/impactosocial',formData)
                 .then(() => {
                    
                     Fire.$emit('AfterCreatedImpactoSocialLoadIt'); //custom events

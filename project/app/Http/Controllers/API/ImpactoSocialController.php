@@ -26,48 +26,48 @@ class ImpactoSocialController extends Controller
      */
     public function store(Request $request)
     {
+    	$impactosocial = new ImpactoSocial;
+
         if($request['id'] != null){
             return $this->update($request,$request['id']);
         }
 
         $image = $this->storeImagenes($request);
 
+        $impactosocial->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
+            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
+            ->setTranslations('seccion1_parrafo1', ['es' => $request['seccion1_parrafo1'],'zh' =>$request['seccion1_parrafo1_zh'] ])
+            ->setTranslations('seccion1_parrafo2', ['es' => $request['seccion1_parrafo2'],'zh' =>$request['seccion1_parrafo2_zh'] ] )
+            ->setTranslations('seccion2_titulo', ['es' => $request['seccion2_titulo'],'zh' =>$request['seccion2_titulo_zh'] ]);
+
+
+            $impactosocial->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
+
         if($image['encabezado_imagen_fondo'] !=null )
-            $encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
+            $impactosocial->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
         else
-            $encabezado_imagen_fondo = null;
+            $impactosocial->encabezado_imagen_fondo = null;
         
 
         if($image['logo_1_encabezado'] !=null )
-            $logo_1_encabezado = $image['logo_1_encabezado'];
+            $impactosocial->logo_1_encabezado = $image['logo_1_encabezado'];
         else
-            $logo_1_encabezado = null;
+            $impactosocial->logo_1_encabezado = null;
         
 
         if($image['logo_2_encabezado'] !=null )
-            $logo_2_encabezado = $image['logo_2_encabezado'];
+            $impactosocial->logo_2_encabezado = $image['logo_2_encabezado'];
         else
-            $logo_2_encabezado = null;
+            $impactosocial->logo_2_encabezado = null;
 
 
         if($image['seccion2_imagen_fondo'] !=null )
-            $seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
+            $impactosocial->seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
         else
-            $seccion2_imagen_fondo = null;
+            $impactosocial->seccion2_imagen_fondo = null;
         
 
-        $impactosocial = ImpactoSocial::create([
-           'encabezado_imagen_fondo' => $encabezado_imagen_fondo,
-           'logo_1_encabezado' => $logo_1_encabezado,
-           'logo_2_encabezado' => $logo_2_encabezado,
-           'texto_encabezado' => $request['texto_encabezado'],
-           'texto_encabezado_habilitado' => $request['texto_encabezado_habilitado'],
-           'seccion1_titulo' => $request['seccion1_titulo'],
-           'seccion1_parrafo1' => $request['seccion1_parrafo1'],
-           'seccion1_parrafo2' => $request['seccion1_parrafo2'],
-           'seccion2_titulo' => $request['seccion2_titulo'],
-           'seccion2_imagen_fondo' => $seccion2_imagen_fondo,
-        ]);
+        $impactosocial->save();
 
         return $impactosocial;
     }
@@ -95,13 +95,15 @@ class ImpactoSocialController extends Controller
         $image = $this->storeImagenes($request);
 
         $impactosocial = ImpactoSocial::findOrFail($id);
-        $impactosocial->texto_encabezado = $request['texto_encabezado'];
-        $impactosocial->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
-        $impactosocial->seccion1_titulo = $request['seccion1_titulo'];
-        $impactosocial->seccion1_parrafo1 = $request['seccion1_parrafo1'];
-        $impactosocial->seccion1_parrafo2 = $request['seccion1_parrafo2'];
-        $impactosocial->seccion2_titulo = $request['seccion2_titulo'];
 
+        $impactosocial->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
+            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
+            ->setTranslations('seccion1_parrafo1', ['es' => $request['seccion1_parrafo1'],'zh' =>$request['seccion1_parrafo1_zh'] ])
+            ->setTranslations('seccion1_parrafo2', ['es' => $request['seccion1_parrafo2'],'zh' =>$request['seccion1_parrafo2_zh'] ] )
+            ->setTranslations('seccion2_titulo', ['es' => $request['seccion2_titulo'],'zh' =>$request['seccion2_titulo_zh'] ]);
+
+
+            $impactosocial->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
 
         
         if($image['encabezado_imagen_fondo'] !=null )

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2020 a las 05:22:46
+-- Tiempo de generación: 21-08-2020 a las 06:36:58
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.14
 
@@ -192,6 +192,13 @@ CREATE TABLE `impactosocial` (
   `seccion2_titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `seccion2_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `impactosocial`
+--
+
+INSERT INTO `impactosocial` (`id`, `encabezado_imagen_fondo`, `logo_1_encabezado`, `logo_2_encabezado`, `texto_encabezado`, `texto_encabezado_habilitado`, `seccion1_titulo`, `seccion1_parrafo1`, `seccion1_parrafo2`, `seccion2_titulo`, `seccion2_imagen_fondo`) VALUES
+(1, 'img/auMF9KfG1OiHMj7AHveMHWx2jH6xE0UWEb8V3uFr.png', 'img/h1HV1XNvfPb5F0LqSOaR0uMFIKWMxPnuLAmPX2je.svg', 'img/xB7fknVwRPp8dJEEcPzfOdSdc3uOXSmvutoAxMDq.svg', '{\"es\":\"Texto\",\"zh\":null}', 'on', '{\"es\":\"Nuestro compromiso\",\"zh\":null}', '{\"es\":\"<p>Somos conscientes que el factor humano es la fuerza que mueve frigorifico hv sa, y nos empe\\u00f1amos en cuidarlo. Aparte de preocuparnos por la capacitacion y el bienestar de nuestros empleados, nos sentimos orgullosos de contribuir al desarrollo social de la comunidad donde trabajamos. Con nuestra empresa creamos empleo y desarrollo, generando ingresos que ayudan a mejorar la calidad de vida de la comunidad de nuestra ciudad.<\\/p>\",\"zh\":\"undefined\"}', '{\"es\":\"<p>Nuestra gente es el mayor capital y el bien m\\u00e1s preciado. Nos sentimos muy orgullosos de contar con un equipo homog\\u00e9neo, talentoso e innovador. Contamos con hombres y mujeres que trabajan arduamente e integran un proyecto en com\\u00fan.<\\/p>\",\"zh\":\"null\"}', '{\"es\":\"\\\"Nos sentimos muy agradecidos de tener la oportunidad de contribuir al desarrollo social y econ\\u00f3mico en las comunidades donde trabajamos\\\"\",\"zh\":null}', 'img/LecMrRd36ffMWUSJzvf8jF5Vg1GWg5ReizJYKJiP.png');
 
 -- --------------------------------------------------------
 
@@ -599,7 +606,7 @@ ALTER TABLE `imagen_corte`
 -- AUTO_INCREMENT de la tabla `impactosocial`
 --
 ALTER TABLE `impactosocial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `inicio`
