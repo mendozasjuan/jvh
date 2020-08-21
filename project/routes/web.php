@@ -28,8 +28,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/produccion','ProduccionController@index')->name('produccion');
     Route::get('/exportacion','ExportacionController@index')->name('exportacion');
     Route::get('/calidad','CalidadController@index')->name('calidad');
-    Route::get('/impactosocial','ImpactoSocialController@index')->name('impactosocial');	
-        
+    Route::get('/impactosocial','ImpactoSocialController@index')->name('impactosocial');
+    Route::get('/productos','PaginaProductosController@index')->name('productos');
+    Route::get('/recursoshumanos','PaginaRecursosHumanosController@index')->name('recursoshumanos');
 
 
     /*Route::get('/quienessomos', function () {
@@ -44,9 +45,9 @@ Route::group(['middleware' => ['web']], function () {
         return view('web.exportacion');
     });*/
 
-    Route::get('productos', function () {
+    /*Route::get('productos', function () {
         return view('web.productos');
-    })->name('productos');
+    })->name('productos');*/
 
     /*Route::get('calidad', function () {
         return view('web.calidad');
@@ -56,9 +57,9 @@ Route::group(['middleware' => ['web']], function () {
         return view('web.impactosocial');
     })->name('impactosocial');*/
 
-    Route::get('recursoshumanos', function () {
+    /*Route::get('recursoshumanos', function () {
         return view('web.recursoshumanos');
-    })->name('recursoshumanos');
+    })->name('recursoshumanos');*/
 
     Route::get('contacto', function () {
         return view('web.contacto');

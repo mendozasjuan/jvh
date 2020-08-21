@@ -68,7 +68,7 @@
 					<div class="negro"></div>
 					<div style="height: 100%; padding-top: 38px;" class="row" >
 						<div class="col-12 col-md-4 text-center" >
-							<h2 style="margin-left: 170px; padding-left: 20px; border-left: 3px solid #fff;">Catálogo de cortes</h2>
+							<h2 style="margin-left: 170px; padding-left: 20px; border-left: 3px solid #fff;">{!! $productos->seccion1_titulo!!}<!--Catálogo de cortes--></h2>
 							<img src="{{ asset('img/vaca-1.png') }}" alt="">
 						</div>
 						<div class="col-12 col-md-4 text-center">
@@ -89,28 +89,28 @@
 			</div>
 		</div>
 		<div class="row alig-items-center" style="margin-top: 34px;">
-			<div class="col-3">
+			<div class="col-12 col-md-6 col-xl-3 mb-4">
 				<div class='item-product' >
 					<div class="fondo"></div>
 					<img class="product-img" src="{{ asset('img/03.png') }}" alt="">
 					<p class="product-title-img">Corazon de Cuadril</p>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="col-12 col-md-6 col-xl-3 mb-4">
 				<div class='item-product' >
 					<div class="fondo"></div>
 					<img class="product-img" src="{{ asset('img/03.png') }}" alt="">
 					<p class="product-title-img">Cuadrada</p>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="col-12 col-md-6 col-xl-3 mb-4">
 				<div class='item-product' >
 					<div class="fondo"></div>
 					<img class="product-img" src="{{ asset('img/03.png') }}" alt="">
 					<p class="product-title-img">Paleta</p>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="col-12 col-md-6 col-xl-3 mb-4">
 				<div class='item-product' >
 					<div class="fondo"></div>
 					<img class="product-img" src="{{ asset('img/03.png') }}" alt="">
@@ -125,28 +125,28 @@
 			</div>
 		</div>
 		<div class="row alig-items-center" style="margin-top: 34px;">
-			<div class="col-3">
+			<div class="col-12 col-md-6 col-xl-3 mb-4">
 				<div class='item-product' >
 					<div class="fondo"></div>
 					<img class="product-img" src="{{ asset('img/03.png') }}" alt="">
 					<p class="product-title-img">Corazon de Cuadril En mitades</p>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="col-12 col-md-6 col-xl-3 mb-4">
 				<div class='item-product' >
 					<div class="fondo"></div>
 					<img class="product-img" src="{{ asset('img/03.png') }}" alt="">
 					<p class="product-title-img">Carne Intercostal</p>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="col-12 col-md-6 col-xl-3 mb-4">
 				<div class='item-product' >
 					<div class="fondo"></div>
 					<img class="product-img" src="{{ asset('img/03.png') }}" alt="">
 					<p class="product-title-img">Pecho</p>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="col-12 col-md-6 col-xl-3 mb-4">
 				<div class='item-product' >
 					<div class="fondo"></div>
 					<img class="product-img" src="{{ asset('img/03.png') }}" alt="">

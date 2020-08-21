@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2020 a las 06:36:58
+-- Tiempo de generación: 21-08-2020 a las 17:29:38
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.14
 
@@ -281,6 +281,47 @@ INSERT INTO `packaging_corte` (`id`, `packaging`, `corte_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pagina_productos`
+--
+
+CREATE TABLE `pagina_productos` (
+  `id` int(11) NOT NULL,
+  `encabezado_imagen_fondo` text COLLATE utf8_unicode_ci NOT NULL,
+  `seccion1_titulo` text COLLATE utf8_unicode_ci NOT NULL,
+  `seccion1_imagen` text COLLATE utf8_unicode_ci NOT NULL,
+  `seccion1_imagen_fondo` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `pagina_productos`
+--
+
+INSERT INTO `pagina_productos` (`id`, `encabezado_imagen_fondo`, `seccion1_titulo`, `seccion1_imagen`, `seccion1_imagen_fondo`) VALUES
+(1, 'img/05X4MmUNXvpkcXs8iDXDGrAXdQIB26d0RAunSpvb.png', '{\"es\":\"Cat\\u00e1logo de cortes\",\"zh\":null}', 'img/2O70ocRCR8ZSrfzQYutl5APWDGcRyvo3eyQBEtk7.png', 'img/i1cUAvDOvtENINyWJBG0DYhb26iEx1kg1RK5yewF.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagina_recursos_humanos`
+--
+
+CREATE TABLE `pagina_recursos_humanos` (
+  `id` int(11) NOT NULL,
+  `encabezado_imagen_fondo` text COLLATE utf8_unicode_ci NOT NULL,
+  `seccion1_titulo` text COLLATE utf8_unicode_ci NOT NULL,
+  `seccion1_parrafo` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `pagina_recursos_humanos`
+--
+
+INSERT INTO `pagina_recursos_humanos` (`id`, `encabezado_imagen_fondo`, `seccion1_titulo`, `seccion1_parrafo`) VALUES
+(1, 'img/5wmVPoQG4BlJdZ9XazTI7MRrEbBOMXAkGB2NdFiI.png', '{\"es\":\"Recursos Humanos\",\"zh\":null}', '{\"es\":\"<p>Trabaj\\u00e1 con nosotros. Podes sumarte en la empresa llenando este formulario y nos estaremos contactando con vos ante la primer oferta laboral.<\\/p>\",\"zh\":\"null\"}');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `password_resets`
 --
 
@@ -507,6 +548,18 @@ ALTER TABLE `packaging_corte`
   ADD KEY `corte_id` (`corte_id`);
 
 --
+-- Indices de la tabla `pagina_productos`
+--
+ALTER TABLE `pagina_productos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pagina_recursos_humanos`
+--
+ALTER TABLE `pagina_recursos_humanos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -625,6 +678,18 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `packaging_corte`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `pagina_productos`
+--
+ALTER TABLE `pagina_productos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `pagina_recursos_humanos`
+--
+ALTER TABLE `pagina_recursos_humanos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `produccion`

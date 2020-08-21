@@ -9,6 +9,8 @@ import Produccion from './components/ProduccionComponent.vue'
 import Exportacion from './components/ExportacionComponent.vue'
 import Calidad from './components/CalidadComponent.vue'
 import ImpactoSocial from './components/ImpactoSocialComponent.vue'
+import PaginaProductos from './components/PaginaProductosComponent.vue'
+import PaginaRecursosHumanos from './components/PaginaRecursosHumanosComponent.vue'
 
 export const routes = [
     {
@@ -54,6 +56,14 @@ export const routes = [
     { 
         path:'/impactosocial',
         component:ImpactoSocial
+    },
+    { 
+        path:'/paginaproductos',
+        component:PaginaProductos
+    },
+    { 
+        path:'/paginarecursoshumanos',
+        component:PaginaRecursosHumanos
     },
  
  

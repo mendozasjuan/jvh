@@ -35,6 +35,10 @@
 		  border-color: #E51D2A;
 		  box-shadow: 3px 3px 3px rgba(255, 0, 0, 0.15);
 		}
+
+		#rh-seccion p{
+			color:#6E6F71;
+		}
     </style>
 @endsection
 
@@ -50,10 +54,11 @@
 	<div id="rh-seccion" class="row" style="margin-top: 50px;margin-bottom: 30px;">
 		<div class="col col-sm-10 col-md-3" style="margin-left: 80px; padding-top: 20px;margin-bottom: 20px;">
 			<div style="border-left: 3px solid #2B1C17;padding-left: 20px;">
-				<h2>Recursos Humanos</h2>
-				<p style="color:#6E6F71">
+				<h2>{!! $recursoshumanos->seccion1_titulo !!}<!--Recursos Humanos--></h2>
+				{!! $recursoshumanos->seccion1_parrafo !!}
+				<!--<p style="color:#6E6F71">
 					Trabajá con nosotros. Podes sumarte en la empresa llenando este formulario y nos estaremos contactando con vos ante la primer oferta laboral.
-				</p>
+				</p>-->
 			</div>
 			
 		</div>
