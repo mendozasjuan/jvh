@@ -11,6 +11,7 @@ import Calidad from './components/CalidadComponent.vue'
 import ImpactoSocial from './components/ImpactoSocialComponent.vue'
 import PaginaProductos from './components/PaginaProductosComponent.vue'
 import PaginaRecursosHumanos from './components/PaginaRecursosHumanosComponent.vue'
+import PaginaContacto from './components/PaginaContactoComponent.vue'
 
 export const routes = [
     {
@@ -64,6 +65,10 @@ export const routes = [
     { 
         path:'/paginarecursoshumanos',
         component:PaginaRecursosHumanos
+    },
+    { 
+        path:'/paginacontacto',
+        component:PaginaContacto
     },
  
  

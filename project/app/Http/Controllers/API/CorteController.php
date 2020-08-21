@@ -18,7 +18,7 @@ class CorteController extends Controller
      */
     public function index()
     {
-        return Corte::with('categoria')->paginate(10);
+        return Corte::with('categoria')->paginate();
     }
 
     /**

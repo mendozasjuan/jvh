@@ -52,6 +52,9 @@ Vue.component(AlertError.name, AlertError)
 import CKEditor from '@ckeditor/ckeditor5-vue';
 Vue.use( CKEditor );
 
+import VuePaginate from 'vue-paginate'
+Vue.use(VuePaginate)
+
 
 //Routes
 import { routes } from './routes';

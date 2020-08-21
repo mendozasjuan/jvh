@@ -32,6 +32,7 @@
         "sweetalert2": "^8.2.6",
         "vform": "^1.0.0",
         "vue-has-error-laravel": "^0.1.16",
+        "vue-paginate": "^3.6.0",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.0.2"
     }

@@ -2772,14 +2772,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       editMode: false,
-      cortes: {},
+      cortes: [],
       categorias: {},
       picFile: '',
       idElement: '',
+      paginate: ['cortes'],
       form: new Form({
         id: '',
         nombre: '',
@@ -2826,8 +2851,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("api/corte").then(function (data) {
-        return _this.cortes = data.data;
-      }); //pick data from controller and push it into users object
+        _this.cortes = Array.from(data.data.data);
+      });
+      console.log(this.cortes); //pick data from controller and push it into users object
     },
     loadCategorias: function loadCategorias() {
       var _this2 = this;
@@ -4127,6 +4153,311 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaginaContactoComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PaginaContactoComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      editMode: false,
+      picFile: '',
+      idElement: '',
+      inicio: '',
+      imagenMiniatura: '',
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default.a,
+      editorData: '',
+      editorConfig: {},
+      form: new Form({
+        id: '',
+        encabezado_imagen_fondo: '',
+        'ciudad1': '',
+        'direccion1': '',
+        'ciudad1_zh': '',
+        'direccion1_zh': '',
+        'telefonos1': '',
+        'ciudad2': '',
+        'direccion2': '',
+        'ciudad2_zh': '',
+        'direccion2_zh': '',
+        'telefonos2': '',
+        'contacto_titulo': '',
+        'contacto_descripcion': '',
+        'contacto_titulo_zh': '',
+        'contacto_descripcion_zh': '',
+        'comercio_exterior': '',
+        'area_comercial': '',
+        'coordenadas1': '',
+        'coordenadas2': '',
+        _method: ''
+      })
+    };
+  },
+  methods: {
+    editWindow: function editWindow(paginacontacto) {
+      if (paginacontacto) {
+        this.editMode = true;
+        this.form.clear();
+        this.form.reset();
+        this.form.id = paginacontacto.id;
+        this.form.encabezado_imagen_fondo = paginacontacto.encabezado_imagen_fondo;
+        this.form.ciudad1 = _typeof(paginacontacto.ciudad1) === 'object' ? paginacontacto.ciudad1.es : '';
+        this.form.direccion1 = _typeof(paginacontacto.direccion1) === 'object' ? paginacontacto.direccion1.es : '';
+        this.form.ciudad1_zh = _typeof(paginacontacto.ciudad1) === 'object' ? paginacontacto.ciudad1.zh : '';
+        this.form.direccion1_zh = _typeof(paginacontacto.direccion1) === 'object' ? paginacontacto.direccion1.zh : '';
+        this.form.ciudad2 = _typeof(paginacontacto.ciudad2) === 'object' ? paginacontacto.ciudad2.es : '';
+        this.form.direccion2 = _typeof(paginacontacto.direccion2) === 'object' ? paginacontacto.direccion2.es : '';
+        this.form.ciudad2_zh = _typeof(paginacontacto.ciudad2) === 'object' ? paginacontacto.ciudad2.zh : '';
+        this.form.direccion2_zh = _typeof(paginacontacto.direccion2) === 'object' ? paginacontacto.direccion2.zh : '';
+        this.form.contacto_titulo = _typeof(paginacontacto.contacto_titulo) === 'object' ? paginacontacto.contacto_titulo.es : '';
+        this.form.contacto_descripcion = _typeof(paginacontacto.contacto_descripcion) === 'object' ? paginacontacto.contacto_descripcion.es : '';
+        this.form.contacto_titulo_zh = _typeof(paginacontacto.contacto_titulo) === 'object' ? paginacontacto.contacto_titulo.zh : '';
+        this.form.contacto_descripcion_zh = _typeof(paginacontacto.contacto_descripcion) === 'object' ? paginacontacto.contacto_descripcion.zh : '';
+        this.form.telefonos1 = paginacontacto.telefonos1;
+        this.form.telefonos2 = paginacontacto.telefonos2;
+        this.form.comercio_exterior = paginacontacto.comercio_exterior;
+        this.form.area_comercial = paginacontacto.area_comercial;
+        this.form.coordenadas1 = paginacontacto.coordenadas1;
+        this.form.coordenadas2 = paginacontacto.coordenadas2;
+      }
+    },
+    loadPaginaContacto: function loadPaginaContacto() {
+      var _this = this;
+
+      axios.get("api/paginacontacto").then(function (data) {
+        return _this.editWindow(data.data);
+      }); //pick data from controller and push it into users object
+    },
+    updatePaginaContacto: function updatePaginaContacto(event) {
+      var _this2 = this;
+
+      if (!this.editMode) return this.createPaginaContacto(event);
+      this.$Progress.start();
+      var formData = new FormData(event.target);
+      formData.append('direccion1', this.form.direccion1);
+      formData.append('direccion1_zh', this.form.direccion1_zh);
+      formData.append('direccion2', this.form.direccion2);
+      formData.append('direccion2_zh', this.form.direccion2_zh);
+      formData.append('contacto_descripcion', this.form.contacto_descripcion);
+      formData.append('contacto_descripcion_zh', this.form.contacto_descripcion_zh);
+      formData.append('_method', 'PUT'); //this.form.submit('put','api/inicio/'+this.form.id,{
+
+      axios.post('api/paginacontacto/' + this.form.id, formData).then(function () {
+        Fire.$emit('AfterCreatedPaginaContactoLoadIt');
+        Toast.fire({
+          icon: 'success',
+          title: 'Pagina Contacto Actualizada con Exito'
+        });
+
+        _this2.$Progress.finish();
+      })["catch"](function () {
+        console.log("Error.....");
+      });
+    },
+    onUploadImage: function onUploadImage(event) {
+      if (event) {
+        this.idElement = event.target;
+        this.picFile = this.idElement.files[0];
+        $(this.idElement).next('.custom-file-label').html(this.picFile.name);
+        this.cargarMiniatura(this.idElement, this.picFile);
+      }
+
+      if (this.picFile) {
+        if (this.idElement.id == 'encabezado_imagen_fondo') {
+          this.form.encabezado_imagen_fondo = this.picFile;
+          console.log(this.form.encabezado_imagen_fondo);
+        }
+      }
+    },
+    cargarMiniatura: function cargarMiniatura(object, file) {
+      var _this3 = this;
+
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $(_this3.idElement).parents('.input-group').next().find('.miniatura')[0].src = e.target.result; //return this.imagenMiniatura = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
+    createPaginaContacto: function createPaginaContacto(event) {
+      var _this4 = this;
+
+      this.$Progress.start();
+      var formData = new FormData(event.target);
+      formData.append('direccion1', this.form.direccion1);
+      formData.append('direccion1_zh', this.form.direccion1_zh);
+      formData.append('direccion2', this.form.direccion2);
+      formData.append('direccion2_zh', this.form.direccion2_zh);
+      formData.append('contacto_descripcion', this.form.contacto_descripcion);
+      formData.append('contacto_descripcion_zh', this.form.contacto_descripcion_zh);
+      axios.post('api/paginacontacto', formData).then(function () {
+        Fire.$emit('AfterCreatedPaginaContactoLoadIt'); //custom events
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Pagina Contacto Actualizada con Exito'
+        });
+
+        _this4.$Progress.finish();
+      })["catch"](function () {
+        console.log("Error......");
+      }); //this.loadUsers();
+    }
+  },
+  created: function created() {
+    var _this5 = this;
+
+    this.loadPaginaContacto();
+    Fire.$on('AfterCreatedPaginaContactoLoadIt', function () {
+      //custom events fire on
+      _this5.loadPaginaContacto();
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaginaProductosComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PaginaProductosComponent.vue?vue&type=script&lang=js& ***!
@@ -4546,7 +4877,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         Toast.fire({
           icon: 'success',
-          title: 'Pagina Productos Actualizada con Exito'
+          title: 'Pagina Recursos Humanos Actualizada con Exito'
         });
 
         _this4.$Progress.finish();
@@ -63802,13 +64133,23 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
-            _c("table", { staticClass: "table table-hover" }, [
-              _c(
-                "tbody",
-                [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _vm._l(_vm.cortes.data, function(corte) {
+            _c(
+              "table",
+              { staticClass: "table table-hover" },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "paginate",
+                  {
+                    attrs: {
+                      name: "cortes",
+                      list: _vm.cortes,
+                      per: 10,
+                      tag: "tbody"
+                    }
+                  },
+                  _vm._l(_vm.paginated("cortes"), function(corte) {
                     return _c("tr", { key: corte.id }, [
                       _c("td", [_vm._v(_vm._s(corte.id))]),
                       _vm._v(" "),
@@ -63833,7 +64174,9 @@ var render = function() {
                           },
                           [_c("i", { staticClass: "fa fa-edit blue" })]
                         ),
-                        _vm._v("\n                    |\n                    "),
+                        _vm._v(
+                          "\n                            |\n                            "
+                        ),
                         _c(
                           "a",
                           {
@@ -63848,14 +64191,27 @@ var render = function() {
                         )
                       ])
                     ])
-                  })
-                ],
-                2
-              )
-            ])
+                  }),
+                  0
+                )
+              ],
+              1
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-footer" })
+          _c(
+            "div",
+            { staticClass: "card-footer text-center" },
+            [
+              _c("paginate-links", {
+                attrs: {
+                  for: "cortes",
+                  classes: { ul: "pagination", li: "page-item", a: "page-link" }
+                }
+              })
+            ],
+            1
+          )
         ])
       ])
     ]),
@@ -64457,18 +64813,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("ID")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Nombre")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Descripcion")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Categoria de Corte")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Tamaño de Caja")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Accion")])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Descripcion")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Categoria de Corte")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tamaño de Caja")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Accion")])
+      ])
     ])
   },
   function() {
@@ -66743,6 +67101,639 @@ var staticRenderFns = [
       _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
         _vm._v("Upload")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text", attrs: { id: "" } }, [
+        _vm._v("Upload")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Guardar")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaginaContactoComponent.vue?vue&type=template&id=40ec95ed&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PaginaContactoComponent.vue?vue&type=template&id=40ec95ed& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row mt-5" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-primary" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: {
+                role: "form",
+                enctype: "multipart/form-data",
+                id: "form"
+              },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.updatePaginaContacto($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h3", [_vm._v("Encabezado")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "encabezado_imagen_fondo" } }, [
+                    _vm._v("Imagen de Encabezado")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: {
+                          type: "file",
+                          id: "encabezado_imagen_fondo",
+                          name: "encabezado_imagen_fondo"
+                        },
+                        on: { change: _vm.onUploadImage }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "encabezado_imagen_fondo" }
+                        },
+                        [_vm._v("Seleccione un Archivo")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      staticClass: "miniatura img-fluid",
+                      attrs: {
+                        src: _vm.form.encabezado_imagen_fondo
+                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                          : ""
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("h3", { staticStyle: { "margin-top": "30px" } }, [
+                  _vm._v("Seccion 1")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Ciudad 1")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.ciudad1,
+                          expression: "form.ciudad1"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": _vm.form.errors.has("ciudad1") },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "ciudad1"
+                      },
+                      domProps: { value: _vm.form.ciudad1 },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "ciudad1", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "ciudad1" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Direccion 1")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("direccion1")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.direccion1,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "direccion1", $$v)
+                        },
+                        expression: "form.direccion1"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "direccion1" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Telefono 1")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.telefonos1,
+                          expression: "form.telefonos1"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("telefonos1")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "telefonos1"
+                      },
+                      domProps: { value: _vm.form.telefonos1 },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "telefonos1", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "telefonos1" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Coordenadas 1")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.coordenadas1,
+                          expression: "form.coordenadas1"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("coordenadas1")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "coordenadas1"
+                      },
+                      domProps: { value: _vm.form.coordenadas1 },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "coordenadas1",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "coordenadas1" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Ciudad 2")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.ciudad2,
+                          expression: "form.ciudad2"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": _vm.form.errors.has("ciudad2") },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "ciudad2"
+                      },
+                      domProps: { value: _vm.form.ciudad2 },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "ciudad2", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "ciudad2" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Direccion 2")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("direccion2")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.direccion2,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "direccion2", $$v)
+                        },
+                        expression: "form.direccion2"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "direccion2" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Telefono 2")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.telefonos2,
+                          expression: "form.telefonos2"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("telefonos2")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "telefonos2"
+                      },
+                      domProps: { value: _vm.form.telefonos2 },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "telefonos2", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "telefonos2" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Coordenadas 2")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.coordenadas2,
+                          expression: "form.coordenadas2"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("coordenadas2")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "coordenadas2"
+                      },
+                      domProps: { value: _vm.form.coordenadas2 },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "coordenadas2",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "coordenadas2" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("h3", { staticStyle: { "margin-top": "30px" } }, [
+                  _vm._v("Seccion 2")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Contacto Titulo")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.contacto_titulo,
+                          expression: "form.contacto_titulo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("contacto_titulo")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "contacto_titulo"
+                      },
+                      domProps: { value: _vm.form.contacto_titulo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "contacto_titulo",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "contacto_titulo" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Contacto Descripcion")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has(
+                          "contacto_descripcion"
+                        )
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.contacto_descripcion,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "contacto_descripcion", $$v)
+                        },
+                        expression: "form.contacto_descripcion"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "contacto_descripcion" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("h3", { staticStyle: { "margin-top": "30px" } }, [
+                  _vm._v("Seccion 2")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Comercio Exterior")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.comercio_exterior,
+                          expression: "form.comercio_exterior"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("comercio_exterior")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "comercio_exterior"
+                      },
+                      domProps: { value: _vm.form.comercio_exterior },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "comercio_exterior",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "comercio_exterior" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Area Comercial")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.area_comercial,
+                          expression: "form.area_comercial"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("area_comercial")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "area_comercial"
+                      },
+                      domProps: { value: _vm.form.area_comercial },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "area_comercial",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "area_comercial" }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(2)
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Pagina Contacto")])
     ])
   },
   function() {
@@ -69596,6 +70587,610 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-paginate/dist/vue-paginate.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vue-paginate/dist/vue-paginate.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * vue-paginate v3.6.0
+ * (c) 2018 Taha Shashtari
+ * @license MIT
+ */
+(function (global, factory) {
+   true ? module.exports = factory() :
+  undefined;
+}(this, function () { 'use strict';
+
+  var warn = function () {}
+  var formatComponentName
+
+  var hasConsole = typeof console !== 'undefined'
+
+  warn = function (msg, vm, type) {
+    if ( type === void 0 ) type = 'error';
+
+    if (hasConsole) {
+      console[type]("[vue-paginate]: " + msg + " " + (
+        vm ? formatLocation(formatComponentName(vm)) : ''
+        ))
+    }
+  }
+
+  formatComponentName = function (vm) {
+    if (vm.$root === vm) {
+      return 'root instance'
+    }
+    var name = vm._isVue
+    ? vm.$options.name || vm.$options._componentTag
+    : vm.name
+    return (
+      (name ? ("component <" + name + ">") : "anonymous component") +
+      (vm._isVue && vm.$options.__file ? (" at " + (vm.$options.__file)) : '')
+      )
+  }
+
+  var formatLocation = function (str) {
+    if (str === 'anonymous component') {
+      str += " - use the \"name\" option for better debugging messages."
+    }
+    return ("\n(found in " + str + ")")
+  }
+
+  var Paginate = {
+    name: 'paginate',
+    props: {
+      name: {
+        type: String,
+        required: true
+      },
+      list: {
+        type: Array,
+        required: true
+      },
+      per: {
+        type: Number,
+        default: 3,
+        validator: function validator (value) {
+          return value > 0
+        }
+      },
+      tag: {
+        type: String,
+        default: 'ul'
+      },
+      container: {
+        type: Object,
+        default: null
+      }
+    },
+    data: function data () {
+      return {
+        initialListSize: this.list.length
+      }
+    },
+    computed: {
+      parent: function parent () {
+        return this.container ? this.container : this.$parent
+      },
+      currentPage: {
+        get: function get () {
+          if (this.parent.paginate[this.name]) {
+            return this.parent.paginate[this.name].page
+          }
+        },
+        set: function set (page) {
+          this.parent.paginate[this.name].page = page
+        }
+      },
+      pageItemsCount: function pageItemsCount () {
+        var numOfItems = this.list.length
+        var first = this.currentPage * this.per + 1
+        var last = Math.min((this.currentPage * this.per) + this.per, numOfItems)
+        return (first + "-" + last + " of " + numOfItems)
+      },
+
+      lastPage: function lastPage () {
+        return Math.ceil(this.list.length / this.per)
+      }
+    },
+    mounted: function mounted () {
+      if (this.per <= 0) {
+        warn(("<paginate name=\"" + (this.name) + "\"> 'per' prop can't be 0 or less."), this.parent)
+      }
+      if (!this.parent.paginate[this.name]) {
+        warn(("'" + (this.name) + "' is not registered in 'paginate' array."), this.parent)
+        return
+      }
+      this.paginateList()
+    },
+    watch: {
+      currentPage: function currentPage () {
+        this.paginateList()
+      },
+      list: function list () {
+        if (this.currentPage >= this.lastPage) {
+          this.currentPage = this.lastPage - 1
+        }
+        this.paginateList()
+      },
+      per: function per () {
+        this.currentPage = 0
+        this.paginateList()
+      }
+    },
+    methods: {
+      paginateList: function paginateList () {
+        var index = this.currentPage * this.per
+        var paginatedList = this.list.slice(index, index + this.per)
+        this.parent.paginate[this.name].list = paginatedList
+      },
+      goToPage: function goToPage (page) {
+        var lastPage = Math.ceil(this.list.length / this.per)
+        if (page > lastPage) {
+          warn(("You cannot go to page " + page + ". The last page is " + lastPage + "."), this.parent)
+          return
+        }
+        this.currentPage = page - 1
+      }
+    },
+    render: function render (h) {
+      return h(this.tag, {}, this.$slots.default)
+    }
+  }
+
+  var LEFT_ARROW = '«'
+  var RIGHT_ARROW = '»'
+  var ELLIPSES = '…'
+
+  var LimitedLinksGenerator = function LimitedLinksGenerator (listOfPages, currentPage, limit) {
+    this.listOfPages = listOfPages
+    this.lastPage = listOfPages.length - 1
+    this.currentPage = currentPage === this.lastPage
+      ? this.lastPage - 1
+      : currentPage
+    this.limit = limit
+  };
+
+  LimitedLinksGenerator.prototype.generate = function generate () {
+    var firstHalf = this._buildFirstHalf()
+    var secondHalf = this._buildSecondHalf()
+    return firstHalf.concat( secondHalf)
+  };
+
+  LimitedLinksGenerator.prototype._buildFirstHalf = function _buildFirstHalf () {
+    var firstHalf = this._allPagesButLast()
+      .slice(
+        this._currentChunkIndex(),
+        this._currentChunkIndex() + this.limit
+      )
+    // Add backward ellipses with first page if needed
+    if (this.currentPage >= this.limit) {
+      firstHalf.unshift(ELLIPSES)
+      firstHalf.unshift(0)
+    }
+    // Add ellipses if needed
+    if (this.lastPage - this.limit > this._currentChunkIndex()) {
+      firstHalf.push(ELLIPSES)
+    }
+    return firstHalf
+  };
+
+  LimitedLinksGenerator.prototype._buildSecondHalf = function _buildSecondHalf () {
+    var secondHalf = [this.lastPage]
+    return secondHalf
+  };
+
+  LimitedLinksGenerator.prototype._currentChunkIndex = function _currentChunkIndex () {
+    var currentChunk = Math.floor(this.currentPage / this.limit)
+    return currentChunk * this.limit 
+  };
+
+  LimitedLinksGenerator.prototype._allPagesButLast = function _allPagesButLast () {
+      var this$1 = this;
+
+    return this.listOfPages.filter(function (n) { return n !== this$1.lastPage; })
+  };
+
+  var PaginateLinks = {
+    name: 'paginate-links',
+    props: {
+      for: {
+        type: String,
+        required: true
+      },
+      limit: {
+        type: Number,
+        default: 0
+      },
+      simple: {
+        type: Object,
+        default: null,
+        validator: function validator (obj) {
+          return obj.prev && obj.next
+        }
+      },
+      stepLinks: {
+        type: Object,
+        default: function () {
+          return {
+            prev: LEFT_ARROW,
+            next: RIGHT_ARROW
+          }
+        },
+        validator: function validator$1 (obj) {
+          return obj.prev && obj.next
+        }
+      },
+      showStepLinks: {
+        type: Boolean
+      },
+      hideSinglePage: {
+        type: Boolean
+      },
+      classes: {
+        type: Object,
+        default: null
+      },
+      async: {
+        type: Boolean,
+        default: false
+      },
+      container: {
+        type: Object,
+        default: null
+      }
+    },
+    data: function data () {
+      return {
+        listOfPages: [],
+        numberOfPages: 0,
+        target: null
+      }
+    },
+    computed: {
+      parent: function parent () {
+        return this.container ? this.container.el : this.$parent
+      },
+      state: function state () {
+        return this.container ? this.container.state : this.$parent.paginate[this.for]
+      },
+      currentPage: {
+        get: function get () {
+          if (this.state) {
+            return this.state.page
+          }
+        },
+        set: function set (page) {
+          this.state.page = page
+        }
+      }
+    },
+    mounted: function mounted () {
+      var this$1 = this;
+
+      if (this.simple && this.limit) {
+        warn(("<paginate-links for=\"" + (this.for) + "\"> 'simple' and 'limit' props can't be used at the same time. In this case, 'simple' will take precedence, and 'limit' will be ignored."), this.parent, 'warn')
+      }
+      if (this.simple && !this.simple.next) {
+        warn(("<paginate-links for=\"" + (this.for) + "\"> 'simple' prop doesn't contain 'next' value."), this.parent)
+      }
+      if (this.simple && !this.simple.prev) {
+        warn(("<paginate-links for=\"" + (this.for) + "\"> 'simple' prop doesn't contain 'prev' value."), this.parent)
+      }
+      if (this.stepLinks && !this.stepLinks.next) {
+        warn(("<paginate-links for=\"" + (this.for) + "\"> 'step-links' prop doesn't contain 'next' value."), this.parent)
+      }
+      if (this.stepLinks && !this.stepLinks.prev) {
+        warn(("<paginate-links for=\"" + (this.for) + "\"> 'step-links' prop doesn't contain 'prev' value."), this.parent)
+      }
+      this.$nextTick(function () {
+        this$1.updateListOfPages()
+      })
+    },
+    watch: {
+      'state': {
+        handler: function handler () {
+          this.updateListOfPages()
+        },
+        deep: true
+      },
+      currentPage: function currentPage (toPage, fromPage) {
+        this.$emit('change', toPage + 1, fromPage + 1)
+      }
+    },
+    methods: {
+      updateListOfPages: function updateListOfPages () {
+        this.target = getTargetPaginateComponent(this.parent.$children, this.for)
+        if (!this.target) {
+          if (this.async) { return }
+          warn(("<paginate-links for=\"" + (this.for) + "\"> can't be used without its companion <paginate name=\"" + (this.for) + "\">"), this.parent)
+          warn("To fix that issue you may need to use :async=\"true\" on <paginate-links> component to allow for asyncronous rendering", this.parent, 'warn')
+          return
+        }
+        this.numberOfPages = Math.ceil(this.target.list.length / this.target.per)
+        this.listOfPages = getListOfPageNumbers(this.numberOfPages)
+      }
+    },
+    render: function render (h) {
+      var this$1 = this;
+
+      if (!this.target && this.async) { return null }
+
+      var links = this.simple
+        ? getSimpleLinks(this, h)
+        : this.limit > 1
+        ? getLimitedLinks(this, h)
+        : getFullLinks(this, h)
+
+      if (this.hideSinglePage && this.numberOfPages <= 1) {
+        return null
+      }
+
+      var el = h('ul', {
+        class: ['paginate-links', this.for]
+      }, links)
+
+      if (this.classes) {
+        this.$nextTick(function () {
+          addAdditionalClasses(el.elm, this$1.classes)
+        })
+      }
+      return el
+    }
+  }
+
+  function getFullLinks (vm, h) {
+    var allLinks = vm.showStepLinks
+      ? [vm.stepLinks.prev ].concat( vm.listOfPages, [vm.stepLinks.next])
+      : vm.listOfPages
+    return allLinks.map(function (link) {
+      var data = {
+        on: {
+          click: function (e) {
+            e.preventDefault()
+            vm.currentPage = getTargetPageForLink(
+              link,
+              vm.limit,
+              vm.currentPage,
+              vm.listOfPages,
+              vm.stepLinks
+            )
+          }
+        }
+      }
+      var liClasses = getClassesForLink(
+        link,
+        vm.currentPage,
+        vm.listOfPages.length - 1,
+        vm.stepLinks
+      )
+      var linkText = link === vm.stepLinks.next || link === vm.stepLinks.prev
+        ? link
+        : link + 1 // it means it's a number
+      return h('li', { class: liClasses }, [h('a', data, linkText)])
+    })
+  }
+
+  function getLimitedLinks (vm, h) {
+    var limitedLinks = new LimitedLinksGenerator(
+      vm.listOfPages,
+      vm.currentPage,
+      vm.limit,
+      vm.stepLinks
+    ).generate()
+
+    limitedLinks = vm.showStepLinks
+      ? [vm.stepLinks.prev ].concat( limitedLinks, [vm.stepLinks.next])
+      : limitedLinks
+
+    var limitedLinksMetadata = getLimitedLinksMetadata(limitedLinks)
+
+    return limitedLinks.map(function (link, index) {
+      var data = {
+        on: {
+          click: function (e) {
+            e.preventDefault()
+            vm.currentPage = getTargetPageForLink(
+              link,
+              vm.limit,
+              vm.currentPage,
+              vm.listOfPages,
+              vm.stepLinks,
+              limitedLinksMetadata[index]
+            )
+          }
+        }
+      }
+      var liClasses = getClassesForLink(
+        link,
+        vm.currentPage,
+        vm.listOfPages.length - 1,
+        vm.stepLinks
+      )
+      // If the link is a number,
+      // then incremented by 1 (since it's 0 based).
+      // otherwise, do nothing (so, it's a symbol).
+      var text = (link === parseInt(link, 10)) ? link + 1 : link
+      return h('li', { class: liClasses }, [h('a', data, text)])
+    })
+  }
+
+  function getSimpleLinks (vm, h) {
+    var lastPage = vm.listOfPages.length - 1
+    var prevData = {
+      on: {
+        click: function (e) {
+          e.preventDefault()
+          if (vm.currentPage > 0) { vm.currentPage -= 1 }
+        }
+      }
+    }
+    var nextData = {
+      on: {
+        click: function (e) {
+          e.preventDefault()
+          if (vm.currentPage < lastPage) { vm.currentPage += 1 }
+        }
+      }
+    }
+    var nextListData = { class: ['next', vm.currentPage >= lastPage ? 'disabled' : ''] }
+    var prevListData = { class: ['prev', vm.currentPage <= 0 ? 'disabled' : ''] }
+    var prevLink = h('li', prevListData, [h('a', prevData, vm.simple.prev)])
+    var nextLink = h('li', nextListData, [h('a', nextData, vm.simple.next)])
+    return [prevLink, nextLink]
+  }
+
+  function getTargetPaginateComponent (children, targetName) {
+    return children
+      .filter(function (child) { return (child.$vnode.componentOptions.tag === 'paginate'); })
+      .find(function (child) { return child.name === targetName; })
+  }
+
+  function getListOfPageNumbers (numberOfPages) {
+    // converts number of pages into an array
+    // that contains each individual page number
+    // For Example: 4 => [0, 1, 2, 3]
+    return Array.apply(null, { length: numberOfPages })
+      .map(function (val, index) { return index; })
+  }
+
+  function getClassesForLink(link, currentPage, lastPage, ref) {
+    var prev = ref.prev;
+    var next = ref.next;
+
+    var liClass = []
+    if (link === prev) {
+      liClass.push('left-arrow')
+    } else if (link === next) {
+      liClass.push('right-arrow')
+    } else if (link === ELLIPSES) {
+      liClass.push('ellipses')
+    } else {
+      liClass.push('number')
+    }
+
+    if (link === currentPage) {
+      liClass.push('active')
+    }
+
+    if (link === prev && currentPage <= 0) {
+      liClass.push('disabled')
+    } else if (link === next && currentPage >= lastPage) {
+      liClass.push('disabled')
+    }
+    return liClass
+  }
+
+  function getTargetPageForLink (link, limit, currentPage, listOfPages, ref, metaData) {
+    var prev = ref.prev;
+    var next = ref.next;
+    if ( metaData === void 0 ) metaData = null;
+
+    var currentChunk = Math.floor(currentPage / limit)
+    if (link === prev) {
+      return (currentPage - 1) < 0 ? 0 : currentPage - 1
+    } else if (link === next) {
+      return (currentPage + 1 > listOfPages.length - 1)
+        ? listOfPages.length - 1
+        : currentPage + 1
+    } else if (metaData && metaData === 'right-ellipses') {
+      return (currentChunk + 1) * limit
+    } else if (metaData && metaData === 'left-ellipses') {
+      var chunkContent = listOfPages.slice(currentChunk * limit, currentChunk * limit + limit)
+      var isLastPage = currentPage === listOfPages.length - 1
+      if (isLastPage && chunkContent.length === 1) {
+        currentChunk--
+      }
+      return (currentChunk - 1) * limit + limit - 1
+    }
+    // which is number
+    return link
+  }
+
+  /**
+   * Mainly used here to check whether the displayed
+   * ellipses is for showing previous or next links
+   */
+  function getLimitedLinksMetadata (limitedLinks) {
+    return limitedLinks.map(function (link, index) {
+      if (link === ELLIPSES && limitedLinks[index - 1] === 0) {
+        return 'left-ellipses'
+      } else if (link === ELLIPSES && limitedLinks[index - 1] !== 0) {
+        return 'right-ellipses'
+      }
+      return link
+    })
+  }
+
+  function addAdditionalClasses (linksContainer, classes) {
+    Object.keys(classes).forEach(function (selector) {
+      if (selector === 'ul') {
+        var selectorValue = classes['ul']
+        if (Array.isArray(selectorValue)) {
+          selectorValue.forEach(function (c) { return linksContainer.classList.add(c); })
+        } else {
+          linksContainer.classList.add(selectorValue)
+        }
+      }
+      linksContainer.querySelectorAll(selector).forEach(function (node) {
+        var selectorValue = classes[selector]
+        if (Array.isArray(selectorValue)) {
+          selectorValue.forEach(function (c) { return node.classList.add(c); })
+        } else {
+          node.classList.add(selectorValue)
+        }
+      })
+    })
+  }
+
+  function paginateDataGenerator (listNames) {
+    if ( listNames === void 0 ) listNames = [];
+
+    return listNames.reduce(function (curr, listName) {
+      curr[listName] = {
+        list: [],
+        page: 0
+      }
+      return curr
+    }, {})
+  }
+
+  var vuePaginate = {}
+
+  vuePaginate.install = function (Vue) {
+    Vue.mixin({
+      created: function created () {
+        if (this.paginate !== 'undefined' && this.paginate instanceof Array) {
+          this.paginate = paginateDataGenerator(this.paginate)
+        }
+      },
+      methods: {
+        paginated: function paginated (listName) {
+          if (!this.paginate || !this.paginate[listName]) {
+            warn(("'" + listName + "' is not registered in 'paginate' array."), this)
+            return
+          }
+          return this.paginate[listName].list
+        }
+      }
+    })
+    Vue.component('paginate', Paginate)
+    Vue.component('paginate-links', PaginateLinks)
+  }
+
+  if (typeof window !== 'undefined' && window.Vue) {
+    window.Vue.use(vuePaginate)
+  }
+
+  return vuePaginate;
+
+}));
 
 /***/ }),
 
@@ -84312,7 +85907,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ckeditor/ckeditor5-vue */ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
+/* harmony import */ var vue_paginate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-paginate */ "./node_modules/vue-paginate/dist/vue-paginate.js");
+/* harmony import */ var vue_paginate__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_paginate__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //Import Vue Filter
@@ -84357,12 +85954,14 @@ Vue.component(vform__WEBPACK_IMPORTED_MODULE_5__["HasError"].name, vform__WEBPAC
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_5__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_5__["AlertError"]); //import ckeditor
 
 
-Vue.use(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6___default.a); //Routes
+Vue.use(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6___default.a);
+
+Vue.use(vue_paginate__WEBPACK_IMPORTED_MODULE_7___default.a); //Routes
 
  //Register Routes
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  routes: _routes__WEBPACK_IMPORTED_MODULE_7__["routes"],
+  routes: _routes__WEBPACK_IMPORTED_MODULE_8__["routes"],
   mode: 'hash'
 }); //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
@@ -84562,14 +86161,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ./resources/js/components/CorteComponent.vue ***!
   \****************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CorteComponent_vue_vue_type_template_id_00e92471___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CorteComponent.vue?vue&type=template&id=00e92471& */ "./resources/js/components/CorteComponent.vue?vue&type=template&id=00e92471&");
 /* harmony import */ var _CorteComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CorteComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CorteComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CorteComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CorteComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -84599,7 +86199,7 @@ component.options.__file = "resources/js/components/CorteComponent.vue"
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/CorteComponent.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84898,6 +86498,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InicioComponent_vue_vue_type_template_id_3198b07d___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InicioComponent_vue_vue_type_template_id_3198b07d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PaginaContactoComponent.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/PaginaContactoComponent.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PaginaContactoComponent_vue_vue_type_template_id_40ec95ed___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PaginaContactoComponent.vue?vue&type=template&id=40ec95ed& */ "./resources/js/components/PaginaContactoComponent.vue?vue&type=template&id=40ec95ed&");
+/* harmony import */ var _PaginaContactoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaginaContactoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/PaginaContactoComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PaginaContactoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PaginaContactoComponent_vue_vue_type_template_id_40ec95ed___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PaginaContactoComponent_vue_vue_type_template_id_40ec95ed___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PaginaContactoComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PaginaContactoComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/PaginaContactoComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginaContactoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PaginaContactoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaginaContactoComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginaContactoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PaginaContactoComponent.vue?vue&type=template&id=40ec95ed&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/PaginaContactoComponent.vue?vue&type=template&id=40ec95ed& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginaContactoComponent_vue_vue_type_template_id_40ec95ed___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PaginaContactoComponent.vue?vue&type=template&id=40ec95ed& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaginaContactoComponent.vue?vue&type=template&id=40ec95ed&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginaContactoComponent_vue_vue_type_template_id_40ec95ed___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginaContactoComponent_vue_vue_type_template_id_40ec95ed___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -85474,6 +87143,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ImpactoSocialComponent_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/ImpactoSocialComponent.vue */ "./resources/js/components/ImpactoSocialComponent.vue");
 /* harmony import */ var _components_PaginaProductosComponent_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/PaginaProductosComponent.vue */ "./resources/js/components/PaginaProductosComponent.vue");
 /* harmony import */ var _components_PaginaRecursosHumanosComponent_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/PaginaRecursosHumanosComponent.vue */ "./resources/js/components/PaginaRecursosHumanosComponent.vue");
+/* harmony import */ var _components_PaginaContactoComponent_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/PaginaContactoComponent.vue */ "./resources/js/components/PaginaContactoComponent.vue");
+
 
 
 
@@ -85526,6 +87197,9 @@ var routes = [{
 }, {
   path: '/paginarecursoshumanos',
   component: _components_PaginaRecursosHumanosComponent_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
+}, {
+  path: '/paginacontacto',
+  component: _components_PaginaContactoComponent_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
 }];
 
 /***/ }),

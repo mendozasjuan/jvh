@@ -31,6 +31,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/impactosocial','ImpactoSocialController@index')->name('impactosocial');
     Route::get('/productos','PaginaProductosController@index')->name('productos');
     Route::get('/recursoshumanos','PaginaRecursosHumanosController@index')->name('recursoshumanos');
+    Route::get('/contacto','PaginaContactoController@index')->name('contacto');
+    Route::get('/productosdetalle/{id}','ProductosDetalleController@detalle')->name('productosdetalle');
 
 
     /*Route::get('/quienessomos', function () {
@@ -61,13 +63,13 @@ Route::group(['middleware' => ['web']], function () {
         return view('web.recursoshumanos');
     })->name('recursoshumanos');*/
 
-    Route::get('contacto', function () {
+    /*Route::get('contacto', function () {
         return view('web.contacto');
-    })->name('contacto');
+    })->name('contacto');*/
 
-    Route::get('productosdetalle',function(){
+    /*Route::get('productosdetalle',function(){
         return view('web.productosdetalle');
-    })->name('productosdetalle');
+    })->name('productosdetalle');*/
     
     Route::prefix('admin')->group(function() {
       Auth::routes();

@@ -39,7 +39,7 @@
 				<div class="row align-items-center" style="margin-right: auto;">
 					<div class="col">
 						<div class="row">
-							<img src="img/Capa_1.svg" alt="">
+							<img src="{{ asset('img/Capa_1.svg') }}" alt="">
 						</div>
 						<div class="row redes-sociales">
 							<a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>

@@ -25,6 +25,15 @@
 			padding-top:30px;
 			padding-bottom:30px;
 		}
+
+		.datos_blanco, .datos_blanco p{
+			color:#fff;
+		}
+
+		#descripcion_contacto p{
+			color:#6E6F71; 
+			margin-bottom:30px;"
+		}
     </style>
 @endsection
 
@@ -45,19 +54,23 @@
 
 				</div>
 				<div  class="caja" style="background: #ccc 0% 0% no-repeat padding-box; ">
-						<h3 style="font: normal normal 600 23px Raleway;font-weight:bold;">Lomas del Mirador</h3>
+						<h3 style="font: normal normal 600 23px Raleway;font-weight:bold;">{!! $contacto->ciudad1!!}<!--Lomas del Mirador--></h3>
 							
 
 					<div class="row" style="font-size:14px;color:#060505">
 
 						<div class="col" >
 							<i style="font-weight: bold; color:#E51D2A" class="fa fa-map-marker-alt "  aria-hidden="true"></i>
-							<span style="font-weight: bold; color:#E51D2A;">Dirección</span> <br>Paso 3030 (1752) Lomas del Mirador Buenos Aires
+							<span style="font-weight: bold; color:#E51D2A;">Dirección</span> 
+							{!! $contacto->direccion1!!}
+							<!--Paso 3030 (1752) Lomas del Mirador Buenos Aires-->
 						</div>
 
 						<div class="col">
 							<i style="font-weight: bold; color:#E51D2A" class="fas fa-phone-alt " aria-hidden="true"></i>
-							<span style="font-weight: bold; color:#E51D2A">Llámenos al</span> <br>+54 (11)) 4699-4424 +54 (11)) 4699-2882
+							<span style="font-weight: bold; color:#E51D2A">Llámenos al</span> 
+							<!--+54 (11)) 4699-4424 +54 (11)) 4699-2882-->
+							<p>{!! $contacto->telefonos1!!}</p>
 						</div>
 					</div>
 				</div>
@@ -68,17 +81,24 @@
 
 				</div>
 				<div class="caja" style="background: #060505 0% 0% no-repeat padding-box" >
-							<h3 style="color:#E51D2A">Bernasconi</h3>
+							<h3 style="color:#E51D2A">{!! $contacto->ciudad2!!}<!--Bernasconi--></h3>
 					<div class="row" style="font-size:14px;color:#fff">
 
 						<div class="col">
 							<i style="font-weight: bold; color:#E51D2A" class="fa fa-map-marker-alt "  aria-hidden="true"></i>
-							<span style="color:#E51D2A"><strong>Dirección</strong></span> <br>Ruta 35, Km 165 (8204) Bernasconi - La Pampa
+							<span style="color:#E51D2A"><strong>Dirección</strong></span>
+							<div class="datos_blanco" style="color:#fff">
+								{!! $contacto->direccion2!!}
+							</div>
+							
+							<!--<br>Ruta 35, Km 165 (8204) Bernasconi - La Pampa-->
 						</div>
 
 						<div class="col">
 							<i style="font-weight: bold; color:#E51D2A" class="fas fa-phone-alt " aria-hidden="true"></i>
-							<span style="color:#E51D2A"><strong>Llámenos al</strong></span> <br>+54 (11)) 4699-4424 / +54 (11)) 4699-2882
+							<span style="color:#E51D2A"><strong>Llámenos al</strong></span> 
+							<p class="datos_blanco">{!! $contacto->telefonos2!!}</p>
+							<!--<br>+54 (11)) 4699-4424 / +54 (11)) 4699-2882-->
 						</div>
 					</div>
 				</div>
@@ -87,8 +107,12 @@
 	</div>
 	<div class="row justify-content-center" style="margin-top: 58px;margin-left:38px;">
 			<div class="col-12 col-lg-6" style="font-size:14px;">
-				<span style="font-size:23px;font-weight:bold;margin-bottom:10px;">Contacto</span>
-				<p style="color:#6E6F71; margin-bottom:30px;">Para mayor información, no dude en contactarse mediante el siguiente formulario, o a través de nuestras vías de comunicación</p>
+				<span style="font-size:23px;font-weight:bold;margin-bottom:10px;">{!! $contacto->contacto_titulo !!}<!--Contacto--></span>
+				<div id="descripcion_contacto">
+					{!! $contacto->contacto_descripcion !!}
+				</div>
+				
+				<!--<p style="color:#6E6F71; margin-bottom:30px;">Para mayor información, no dude en contactarse mediante el siguiente formulario, o a través de nuestras vías de comunicación</p>-->
 
 				<div class="row" style="color:#000; margin-bottom:22px;margin-left:1px;">
 					<div style="font-weight: bold;color:#E51D2A">
@@ -96,7 +120,7 @@
 					</div>
 					<div style="margin-left:5px;">
 						<span style="font-weight: bold;color:#E51D2A;">Comercio Exterior</span>
-					 	<br>Jescudero@frigorificohv.com.ar
+					 	<br>{!! $contacto->comercio_exterior !!}<!--Jescudero@frigorificohv.com.ar-->
 					</div>
 				</div>
 
@@ -106,7 +130,7 @@
 					</div>
 					<div style="margin-left:5px;">
 						<span style="font-weight: bold;color:#E51D2A;">Área Comercial</span>
-					 	<br>dvigna@frigorificohv.com.ar
+					 	<br>{!! $contacto->area_comercial !!}<!--dvigna@frigorificohv.com.ar-->
 					</div>
 				</div>
 			</div>

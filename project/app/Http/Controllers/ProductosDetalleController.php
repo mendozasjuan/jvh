@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\PaginaProductos;
+use App\Corte;
 use App\CategoriaCorte;
 
-class PaginaProductosController extends Controller
+class ProductosDetalleController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -15,11 +15,23 @@ class PaginaProductosController extends Controller
      */
     public function index()
     {
-        $productos = PaginaProductos::first();
+        $productos = Corte::first();
         $categoriascorte=CategoriaCorte::all();
         return view('web.productos')->with(
             [
                 'productos' => $productos,
+                'categorias' => $categoriascorte
+            ]);
+    }
+
+
+    public function detalle($id)
+    {
+        $corte = Corte::find($id);
+        $categoriascorte=CategoriaCorte::all();
+       return view('web.productosdetalle')->with(
+            [
+                'producto' => $corte,
                 'categorias' => $categoriascorte
             ]);
     }

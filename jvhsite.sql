@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2020 a las 17:29:38
+-- Tiempo de generación: 21-08-2020 a las 22:07:27
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.14
 
@@ -104,6 +104,14 @@ CREATE TABLE `corte` (
   `categoria_corte_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `corte`
+--
+
+INSERT INTO `corte` (`id`, `nombre`, `descripcion`, `tamano_caja`, `medidas`, `envasado`, `piezas_por_caja`, `condiciones_termicas`, `especificaciones`, `categoria_corte_id`) VALUES
+(1, 'Corazon de Cuadril', 'Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío y gran eficacia en el área de la comercialización y atención al cliente. Por su eficacia, tecnología y competitividad comercial, Frigorífico hv S.A, garantiza en todos sus productos, la más alta calidad en la industria de la carne.', 'Escopeta/grande', '60x24x15 - 60x40x15', 'Al vacío', '2/3 piezas - 4/5 piezas', 'enfriado/congelado', 'Menos de 4kg/mas de 4kg- Labio 1x1/2x1', 1),
+(2, 'Bife Angosto', 'Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío y gran eficacia en el área de la comercialización y atención al cliente. Por su eficacia, tecnología y competitividad comercial, Frigorífico hv S.A, garantiza en todos sus productos, la más alta calidad en la industria de la carne.', 'Escopeta/grande', '60x24x15 - 60x40x15', 'Al vacío', '2/3 piezas - 4/5 piezas', 'enfriado/congelado', 'Menos de 4kg/mas de 4kg- Labio 1x1/2x1', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +123,14 @@ CREATE TABLE `etiquetado_corte` (
   `etiquetado` varchar(255) NOT NULL,
   `corte_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `etiquetado_corte`
+--
+
+INSERT INTO `etiquetado_corte` (`id`, `etiquetado`, `corte_id`) VALUES
+(1, 'etiquetado/7ELjoTBpbYfu9Hl2lg8fTDkoMdbb2alSfoB3VgEp.png', 1),
+(2, 'etiquetado/6tSCGn0JyiS75BegEHq9Mt7LfIwtfaOX8Nl3PQMn.png', 2);
 
 -- --------------------------------------------------------
 
@@ -172,6 +188,14 @@ CREATE TABLE `imagen_corte` (
   `imagen` varchar(255) NOT NULL,
   `corte_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `imagen_corte`
+--
+
+INSERT INTO `imagen_corte` (`id`, `imagen`, `corte_id`) VALUES
+(1, 'producto/tyQQhgUBzQ0PGrXVkPbM6FCleTjWa1gP6s7K6Fkw.png', 1),
+(2, 'producto/g6Gt9rNft1F5Yb9yhpPsmMHspCjJOYFSe6hV69UT.png', 2);
 
 -- --------------------------------------------------------
 
@@ -276,7 +300,39 @@ INSERT INTO `packaging_corte` (`id`, `packaging`, `corte_id`) VALUES
 (1, 'packaging/6J0xh9u43eEbpfj8IfudGkrR09SCS4rDM1ZL2YlE.png', 7),
 (2, 'packaging/DAni93CIfVSzZmx8IgTRa9gBF07bTCOm2yxFN5Uc.png', 8),
 (3, 'packaging/kWHg5wqRI4u3ZukTJwEO6GN8mBhLXYBiIbHZj9CM.png', 9),
-(4, 'packaging/o7VTtveQ2X8cxaSiAMDeCoqkSgxP9O8mcWafHk1i.png', 10);
+(4, 'packaging/o7VTtveQ2X8cxaSiAMDeCoqkSgxP9O8mcWafHk1i.png', 10),
+(5, 'packaging/qeZjsH2kvoUlMzcQqzk40uVEKysBMmm0PHntuRAw.png', 1),
+(6, 'packaging/nAM2AyrWwFcEfdx3TbhSHDsAmITagG5FnDzviZc4.png', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagina_contacto`
+--
+
+CREATE TABLE `pagina_contacto` (
+  `id` int(11) NOT NULL,
+  `encabezado_imagen_fondo` text COLLATE utf8_unicode_ci NOT NULL,
+  `ciudad1` text COLLATE utf8_unicode_ci NOT NULL,
+  `direccion1` text COLLATE utf8_unicode_ci NOT NULL,
+  `telefonos1` text COLLATE utf8_unicode_ci NOT NULL,
+  `ciudad2` text COLLATE utf8_unicode_ci NOT NULL,
+  `direccion2` text COLLATE utf8_unicode_ci NOT NULL,
+  `telefonos2` text COLLATE utf8_unicode_ci NOT NULL,
+  `contacto_titulo` text COLLATE utf8_unicode_ci NOT NULL,
+  `contacto_descripcion` text COLLATE utf8_unicode_ci NOT NULL,
+  `comercio_exterior` text COLLATE utf8_unicode_ci NOT NULL,
+  `area_comercial` text COLLATE utf8_unicode_ci NOT NULL,
+  `coordenadas1` text COLLATE utf8_unicode_ci NOT NULL,
+  `coordenadas2` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `pagina_contacto`
+--
+
+INSERT INTO `pagina_contacto` (`id`, `encabezado_imagen_fondo`, `ciudad1`, `direccion1`, `telefonos1`, `ciudad2`, `direccion2`, `telefonos2`, `contacto_titulo`, `contacto_descripcion`, `comercio_exterior`, `area_comercial`, `coordenadas1`, `coordenadas2`) VALUES
+(1, 'img/JcItvpxEhxeUMm2m5AiEzDhHwRmqyF3dJE7D65xk.png', '{\"es\":\"Lomas del Mirador\",\"zh\":null}', '{\"es\":\"<p>Paso 3030 (1752) Lomas del Mirador Buenos Aires<\\/p>\",\"zh\":\"null\"}', '+54 (11)) 4699-4424 +54 (11)) 4699-2882', '{\"es\":\"Bernasconi\",\"zh\":null}', '{\"es\":\"<p>Ruta 35, Km 165 (8204) Bernasconi - La Pampa<\\/p>\",\"zh\":\"null\"}', '+54 (11)) 4699-4424 / +54 (11)) 4699-2882', '{\"es\":\"Contacto\",\"zh\":null}', '{\"es\":\"<p>Para mayor informaci\\u00f3n, no dude en contactarse mediante el siguiente formulario, o a trav\\u00e9s de nuestras v\\u00edas de comunicaci\\u00f3n<\\/p>\",\"zh\":\"null\"}', 'Jescudero@frigorificohv.com.ar', 'dvigna@frigorificohv.com.ar', '010101', '010101');
 
 -- --------------------------------------------------------
 
@@ -548,6 +604,12 @@ ALTER TABLE `packaging_corte`
   ADD KEY `corte_id` (`corte_id`);
 
 --
+-- Indices de la tabla `pagina_contacto`
+--
+ALTER TABLE `pagina_contacto`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `pagina_productos`
 --
 ALTER TABLE `pagina_productos`
@@ -629,13 +691,13 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `corte`
 --
 ALTER TABLE `corte`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetado_corte`
 --
 ALTER TABLE `etiquetado_corte`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `exportacion`
@@ -653,7 +715,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `imagen_corte`
 --
 ALTER TABLE `imagen_corte`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `impactosocial`
@@ -677,7 +739,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `packaging_corte`
 --
 ALTER TABLE `packaging_corte`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `pagina_contacto`
+--
+ALTER TABLE `pagina_contacto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `pagina_productos`

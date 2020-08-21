@@ -102,7 +102,27 @@
 		<div class="row">
 			<div class="col-3">
 				<div class="miacordion" id="accordionExample">
-				  <div class="card box-shadow-0">
+					@foreach ($categorias as $categoria)
+						<div class="card box-shadow-0">
+							<div class="card-header {{ $loop->first ? 'collapsed-acordion' : 'nocollapsed-acordion' }}" id="heading{{$categoria->id}}">
+						        <a class="text-left" href="#" data-toggle="collapse" data-target="#collapse{{$categoria->id}}" aria-expanded="true" aria-controls="collapse{{$categoria->id}}">
+						          	{{ $categoria->categoria }}<!--CUARTO TRASERO-->
+						        </a>
+							      
+							    </div>
+							    <div id="collapse{{$categoria->id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+							      <div class="card-body">
+							        <ul class="list-group list-group-flush">
+									@foreach ($categoria->cortes as $corte)
+										<li class="list-group-item"><a href="{{route('productosdetalle',['id' => $corte->id])}}">{{ $corte->nombre }}</a></li>
+									@endforeach
+									</ul>
+						      </div>
+						    </div>
+						  </div>
+							
+					@endforeach
+				  <!--<div class="card box-shadow-0">
 				    <div class="card-header collapsed-acordion" id="headingOne">
 				      
 				        <a class="text-left" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -127,8 +147,9 @@
 					    </ul>
 				      </div>
 				    </div>
-				  </div>
-				  <div class="card">
+				  </div>-->
+
+				  <!--<div class="card">
 				    <div class="card-header nocollapsed-acordion" id="headingTwo">
 				      <a class="text-left" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
 				          	CUARTO DELANTERO
@@ -150,7 +171,8 @@
 					    </ul>
 				      </div>
 				    </div>
-				  </div>
+				  </div>-->
+				
 				</div>
 			</div>
 			<div class="col">
@@ -183,8 +205,8 @@
 						
 					</div>
 					<div class="col">
-						<h2>Corazon de Cuadril</h2>
-						<p style="color: #6E6F71">Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío y gran eficacia en el área de la comercialización y atención al cliente. Por su eficacia, tecnología y competitividad comercial, Frigorífico hv S.A, garantiza en todos sus productos, la más alta calidad en la industria de la carne.</p>
+						<h2>{{$producto->nombre}}<!--Corazon de Cuadril--></h2>
+						<p style="color: #6E6F71">{{$producto->descripcion}}<!--Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío y gran eficacia en el área de la comercialización y atención al cliente. Por su eficacia, tecnología y competitividad comercial, Frigorífico hv S.A, garantiza en todos sus productos, la más alta calidad en la industria de la carne.--></p>
 
 						<table class="table" >
 						  <thead>
@@ -195,31 +217,31 @@
 						  <tbody style="color:#6E6F71; font-size: 14px;">
 						    <tr>
 						      <td>TAMAÑO DE CAJA </td>
-						      <td>Escopeta/grande</td>
+						      <td>{{$producto->tamano_caja}}</td>
 						    </tr>
 						    <tr>
 						      <td>MEDIDAS</td>
-						      <td>60x24x15 - 60x40x15</td>
+						      <td>{{$producto->medidas}}</td>
 						    </tr>
 						    <tr>
 						      <td>ENVASADO</td>
-						      <td>Al vacío</td>
+						      <td>{{$producto->envasado}}</td>
 						    </tr>
 						    <tr>
 						      <td>PIEZAS POR CAJA</td>
-						      <td>2/3 piezas - 4/5 piezas</td>
+						      <td>{{$producto->piezas_por_caja}}</td>
 						    </tr>
-						    <tr>
+						    <!--<tr>
 						      <td>PESO CAJA</td>
-						      <td>≈13 kg - ≈17 kg</td>
-						    </tr>
+						      <td>{{$producto->descripcion}}</td>
+						    </tr>-->
 						    <tr>
 						      <td>CONDIONES TERMICAS</td>
-						      <td>enfriado/congelado</td>
+						      <td>{{$producto->condiciones_termicas}}</td>
 						    </tr>
 						    <tr>
 						      <td>ESPECIFICACIONES</td>
-						      <td>Menos de 4kg/mas de 4kg- Labio 1x1/2x1</td>
+						      <td>{{$producto->especificaciones}}</td>
 						    </tr>
 						  </tbody>
 						</table>
@@ -229,13 +251,17 @@
 					<div class="col" style="margin-right: 36px; width: 100%;">
 						<strong style="font-size: 17px;">Packaging</strong>
 						<hr style="margin-top: 12px;">
-						<img style="width:410px" src="{{ asset('img/packaging.png')}}" alt="">
+						@foreach ($producto->etiquetados as $etiquetado)
+								<img style="width:410px" src="{{ asset('img/packaging.png')}}" alt="">
+						@endforeach
+						
 					</div>
 					<div class="col">
 						<strong style="font-size: 17px;">Etiquetado</strong>
 						<hr style="margin-top: 12px;">
-						<img style="margin-right:12px; width: 200px;" src="{{ asset('img/etiqueta-1.png')}}" alt="">
-						<img style="margin-right:12px; width: 200px;" src="{{ asset('img/etiqueta-2.png')}}" alt="">
+						@foreach ($producto->packagings as $packaging)
+								<img style="margin-right:12px; width: 200px;" src="{{ asset('img/etiqueta-1.png')}}" alt="">
+						@endforeach
 					</div>
 				</div>
 			</div>

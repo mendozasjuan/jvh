@@ -14,7 +14,7 @@
              
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
-                  <tbody>
+                  <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
@@ -23,8 +23,31 @@
                         <th>Tamaño de Caja</th>
                         <th>Accion</th>
                   </tr> 
+                </thead>
+                  <paginate name="cortes" :list="cortes" :per="10" tag="tbody">
+                      <tr v-for="corte in paginated('cortes')" :key="corte.id">
+                          <!--<tr v-for="corte in cortes.data" :key="corte.id">-->
+                            <td>{{ corte.id }}</td>
+                            <td>{{ corte.nombre }}</td>
+                            <td>{{ corte.descripcion }}</td>
+                            <td>{{ corte.categoria.categoria.es }}</td>
+                            <td>{{ corte.tamano_caja }}</td>
 
-                  <tr v-for="corte in cortes.data" :key="corte.id">
+                            <td>
+                                <a href="#" data-id="corte.id" @click="editModalWindow(corte)">
+                                    <i class="fa fa-edit blue"></i>
+                                </a>
+                                |
+                                <a href="#" @click="deleteCorte(corte.id)">
+                                    <i class="fa fa-trash red"></i>
+                                </a>
+
+                            </td>
+                          <!--</tr>-->
+                      </tr>
+                  </paginate>
+
+                  <!--<tr v-for="corte in cortes.data" :key="corte.id">
                     <td>{{ corte.id }}</td>
                     <td>{{ corte.nombre }}</td>
                     <td>{{ corte.descripcion }}</td>
@@ -41,12 +64,13 @@
                         </a>
 
                     </td>
-                  </tr>
-                </tbody></table>
+                  </tr>-->
+                <!--</tbody>--></table>
+                
               </div>
             
-              <div class="card-footer">
-                 
+              <div class="card-footer text-center">
+                 <paginate-links for="cortes" :classes="{'ul': 'pagination', 'li': 'page-item', 'a': 'page-link'}"></paginate-links>
               </div>
             </div>
            
@@ -163,10 +187,11 @@
         data() {
             return {
                 editMode: false,
-                cortes: {},
+                cortes: [],
                 categorias:{},
                 picFile:'',
                 idElement:'',
+                paginate: ['cortes'],
                 form: new Form({
                     id: '',
                     nombre : '',
@@ -219,8 +244,12 @@
 
         loadCortes() {
 
-          axios.get("api/corte").then( data => (this.cortes = data.data));
-
+          axios.get("api/corte").then( data => {
+            this.cortes = Array.from(data.data.data)
+          }
+            
+            );
+          console.log(this.cortes)
           //pick data from controller and push it into users object
 
         },

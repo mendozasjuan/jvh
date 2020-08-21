@@ -182,7 +182,7 @@
 
                         Toast.fire({
                           icon: 'success',
-                          title: 'Pagina Productos Actualizada con Exito'
+                          title: 'Pagina Recursos Humanos Actualizada con Exito'
                         })
 
                         this.$Progress.finish()
