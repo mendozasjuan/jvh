@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2020 a las 03:54:42
+-- Tiempo de generación: 21-08-2020 a las 05:22:46
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.14
 
@@ -46,6 +46,13 @@ CREATE TABLE `calidad` (
   `seccion1_logo7` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `seccion2_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `calidad`
+--
+
+INSERT INTO `calidad` (`id`, `encabezado_imagen_fondo`, `logo_1_encabezado`, `logo_2_encabezado`, `texto_encabezado`, `texto_encabezado_habilitado`, `seccion1_titulo`, `seccion1_parrafo`, `seccion1_logo1`, `seccion1_logo2`, `seccion1_logo3`, `seccion1_logo4`, `seccion1_logo5`, `seccion1_logo6`, `seccion1_logo7`, `seccion2_imagen_fondo`) VALUES
+(1, 'img/uVLvYe5f0UXegfRQa8xWh5AtmCWJXKyJgdXpVPLM.png', 'img/fvrpb02W1QSaPaJ9gNnOmq3lqOYvThPOmqLiAGVq.svg', 'img/I515wQ6i2GwdNyuIti5h5mpjLGXIfhnH07aJkV8B.svg', '{\"es\":\"Texto\",\"zh\":null}', NULL, '{\"es\":\"Carne de Calidad\",\"zh\":null}', '{\"es\":\"<p>Contamos con:<\\/p><ul><li>procedimientos operativos estandarizados de sanitizacion (ssop)<\\/li><li>sistema de analisis de peligros y control de puntos cr\\u00edticos (haccp)<\\/li><li>buenas pr\\u00e1cticas de manufactura (gmp)<\\/li><li>procedimientos operativos estandarizadis (sop)<\\/li><li>cumplimos con las normas de bienestar animal para garantizar el m\\u00e1s alto nivel de seguridad alimentaria en la industria<\\/li><\\/ul>\",\"zh\":\"null\"}', 'img/YdzkEHgAxMtsnSsj2SDjOECTw2oLQzw8MPmsmFNH.png', 'img/sKt8lmCe1zfFn1jfVvmdoC78TooNkkgJMpaP0Ta2.png', 'img/BY5sZk9YBWsbxVkmsdMHNudCXf27NOlybUkdxAyi.png', 'img/Ad7sKWdiRvJFXkKn70h4PPZJwhrCw3qLukZhg0ZN.png', 'img/AgRuIq8Z3aErrhbQd6EBY73esYfKIUt1Wm83sQFn.png', 'img/8YgELgv46K5NReHr78nl0H9g5O3xCT3XThjnbsu6.png', 'img/MtP2dMArfbENgiMQBAJKIafJzfOo6CBOeotRtbhq.png', 'img/AYu5JYY9svS4hNM8QdcdY4Gw8R6itzPYZa4VINAi.png');
 
 -- --------------------------------------------------------
 
@@ -544,7 +551,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `calidad`
 --
 ALTER TABLE `calidad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria_corte`

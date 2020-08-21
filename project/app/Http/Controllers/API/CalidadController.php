@@ -26,88 +26,80 @@ class CalidadController extends Controller
      */
     public function store(Request $request)
     {
+    	$calidad = new Calidad;
+
         if($request['id'] != null){
             return $this->update($request,$request['id']);
         }
 
         $image = $this->storeImagenes($request);
 
+        $calidad->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
+            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
+            ->setTranslations('seccion1_parrafo', ['es' => $request['seccion1_parrafo'],'zh' =>$request['seccion1_parrafo_zh'] ]);
+
+
+            $calidad->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
+
         if($image['encabezado_imagen_fondo'] !=null )
-            $encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
+            $calidad->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
         else
-            $encabezado_imagen_fondo = null;
+            $calidad->encabezado_imagen_fondo = null;
         
 
         if($image['logo_1_encabezado'] !=null )
-            $logo_1_encabezado = $image['logo_1_encabezado'];
+            $calidad->logo_1_encabezado = $image['logo_1_encabezado'];
         else
-            $logo_1_encabezado = null;
+            $calidad->logo_1_encabezado = null;
         
 
         if($image['logo_2_encabezado'] !=null )
-            $logo_2_encabezado = $image['logo_2_encabezado'];
+            $calidad->logo_2_encabezado = $image['logo_2_encabezado'];
         else
-            $logo_2_encabezado = null;
+            $calidad->logo_2_encabezado = null;
 
         if($image['seccion1_logo1'] !=null )
-            $seccion1_logo1 = $image['seccion1_logo1'];
+            $calidad->seccion1_logo1 = $image['seccion1_logo1'];
         else
-            $seccion1_logo1 = null;
+            $calidad->seccion1_logo1 = null;
 
         if($image['seccion1_logo2'] !=null )
-            $seccion1_logo2 = $image['seccion1_logo2'];
+            $calidad->seccion1_logo2 = $image['seccion1_logo2'];
         else
-            $seccion1_logo2 = null;
+            $calidad->seccion1_logo2 = null;
 
         if($image['seccion1_logo3'] !=null )
-            $seccion1_logo3 = $image['seccion1_logo3'];
+            $calidad->seccion1_logo3 = $image['seccion1_logo3'];
         else
-            $seccion1_logo3 = null;
+            $calidad->seccion1_logo3 = null;
 
         if($image['seccion1_logo4'] !=null )
-            $seccion1_logo4 = $image['seccion1_logo4'];
+            $calidad->seccion1_logo4 = $image['seccion1_logo4'];
         else
-            $seccion1_logo4 = null;
+            $calidad->seccion1_logo4 = null;
 
         if($image['seccion1_logo5'] !=null )
-            $seccion1_logo5 = $image['seccion1_logo5'];
+            $calidad->seccion1_logo5 = $image['seccion1_logo5'];
         else
-            $seccion1_logo5 = null;
+            $calidad->seccion1_logo5 = null;
 
         if($image['seccion1_logo6'] !=null )
-            $seccion1_logo6 = $image['seccion1_logo6'];
+            $calidad->seccion1_logo6 = $image['seccion1_logo6'];
         else
-            $seccion1_logo6 = null;
+            $calidad->seccion1_logo6 = null;
 
         if($image['seccion1_logo7'] !=null )
-            $seccion1_logo7 = $image['seccion1_logo7'];
+            $calidad->seccion1_logo7 = $image['seccion1_logo7'];
         else
-            $seccion1_logo7 = null;
+            $calidad->seccion1_logo7 = null;
 
 
         if($image['seccion2_imagen_fondo'] !=null )
-            $seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
+            $calidad->seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
         else
-            $seccion2_imagen_fondo = null;
-        
+            $calidad->seccion2_imagen_fondo = null;
 
-        $calidad = Calidad::create([
-           'encabezado_imagen_fondo' => $encabezado_imagen_fondo,
-           'logo_1_encabezado' => $logo_1_encabezado,
-           'logo_2_encabezado' => $logo_2_encabezado,
-           'texto_encabezado' => $request['texto_encabezado'],
-           'texto_encabezado_habilitado' => $request['texto_encabezado_habilitado'],
-           'seccion1_titulo' => $request['seccion1_titulo'],
-           'seccion1_parrafo' => $request['seccion1_parrafo'],
-           'seccion1_logo1' => $seccion1_logo1,
-           'seccion1_logo2' => $seccion1_logo2,
-           'seccion1_logo3' => $seccion1_logo3,
-           'seccion1_logo4' => $seccion1_logo4,
-           'seccion1_logo5' => $seccion1_logo5,
-           'seccion1_logo6' => $seccion1_logo6,
-           'seccion1_logo7' => $seccion1_logo7,
-           'seccion2_imagen_fondo' => $seccion2_imagen_fondo,
-        ]);
+        $calidad->save();
 
         return $calidad;
     }
@@ -135,10 +127,12 @@ class CalidadController extends Controller
         $image = $this->storeImagenes($request);
 
         $calidad = Calidad::findOrFail($id);
-        $calidad->texto_encabezado = $request['texto_encabezado'];
-        $calidad->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
-        $calidad->seccion1_titulo = $request['seccion1_titulo'];
-        $calidad->seccion1_parrafo = $request['seccion1_parrafo'];
+        $calidad->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
+            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
+            ->setTranslations('seccion1_parrafo', ['es' => $request['seccion1_parrafo'],'zh' =>$request['seccion1_parrafo_zh'] ]);
+
+
+            $calidad->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
 
 
         

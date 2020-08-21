@@ -3,11 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Calidad extends Model
 {
     protected $table = 'calidad';
     public $timestamps = false;
+
+    use HasTranslations;
+
+    protected $translatable = [
+		'texto_encabezado',
+		'seccion1_titulo',	
+    	'seccion1_parrafo',
+    ];
 
     protected $fillable = [
     	'encabezado_imagen_fondo',	

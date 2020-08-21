@@ -24,6 +24,10 @@
 			position: relative;
 			width: 100%;
 		}
+
+		#h-seccion2 p,#h-seccion2 ul{
+			color: #6E6F71;
+		}
     </style>
 @endsection
 
@@ -38,8 +42,10 @@
 		<!--<section>-->
 	<div id="h-seccion2" class="row">
 		<div class="col-12 col-md-5 col-lg-7 col-xl-6 ">
-			<h2>Carne de Calidad</h2>
-			<p style="font-size: 14px;color: #6E6F71;">
+			<h2>{!! $calidad->seccion1_titulo !!}<!--Carne de Calidad--></h2>
+			{!! $calidad->seccion1_parrafo !!}
+			
+			<!--<p style="font-size: 14px;color: #6E6F71;">
 				Contamos con: 
 				<ul style="font-size: 14px;color: #6E6F71;">
 					<li>procedimientos operativos estandarizados de sanitizacion (ssop)</li>
@@ -48,7 +54,7 @@
 					<li>procedimientos operativos estandarizadis (sop)</li>
 					<li>cumplimos con las normas de bienestar animal para garantizar el más alto nivel de seguridad alimentaria en la industria</li>
 				</ul>
-			</p>
+			</p>-->
 		</div>
 		<div class="col">
 			<div class="row align-items-center" style="width: 100%;height: 100%">

@@ -1959,6 +1959,9 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//
 //
 //
 //
@@ -2210,9 +2213,12 @@ __webpack_require__.r(__webpack_exports__);
         logo_1_encabezado: '',
         logo_2_encabezado: '',
         texto_encabezado: '',
+        texto_encabezado_zh: '',
         texto_encabezado_habilitado: '',
         seccion1_titulo: '',
         seccion1_parrafo: '',
+        seccion1_titulo_zh: '',
+        seccion1_parrafo_zh: '',
         seccion1_logo1: '',
         seccion1_logo2: '',
         seccion1_logo3: '',
@@ -2226,11 +2232,31 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    editWindow: function editWindow(Calidad) {
-      this.form.clear();
-      this.editMode = true;
-      this.form.reset();
-      this.form.fill(Calidad);
+    editWindow: function editWindow(calidad) {
+      if (calidad) {
+        this.editMode = true;
+        this.form.clear();
+        this.form.reset();
+        this.form.id = calidad.id;
+        this.form.encabezado_imagen_fondo = calidad.encabezado_imagen_fondo;
+        this.form.logo_1_encabezado = calidad.logo_1_encabezado;
+        this.form.logo_2_encabezado = calidad.logo_2_encabezado;
+        this.form.texto_encabezado = _typeof(calidad.texto_encabezado) === 'object' ? calidad.texto_encabezado.es : '';
+        this.form.texto_encabezado_zh = _typeof(calidad.texto_encabezado) === 'object' ? calidad.texto_encabezado.zh : '';
+        this.form.texto_encabezado_habilitado = calidad.texto_encabezado_habilitado;
+        this.form.seccion1_titulo = _typeof(calidad.seccion1_titulo) === 'object' ? calidad.seccion1_titulo.es : '';
+        this.form.seccion1_parrafo = _typeof(calidad.seccion1_parrafo) === 'object' ? calidad.seccion1_parrafo.es : '';
+        this.form.seccion1_titulo_zh = _typeof(calidad.seccion1_titulo) === 'object' ? calidad.seccion1_titulo.zh : '';
+        this.form.seccion1_parrafo_zh = _typeof(calidad.seccion1_parrafo) === 'object' ? calidad.seccion1_parrafo.zh : '';
+        this.form.seccion1_logo1 = calidad.seccion1_logo1;
+        this.form.seccion1_logo2 = calidad.seccion1_logo2;
+        this.form.seccion1_logo3 = calidad.seccion1_logo3;
+        this.form.seccion1_logo4 = calidad.seccion1_logo4;
+        this.form.seccion1_logo5 = calidad.seccion1_logo5;
+        this.form.seccion1_logo6 = calidad.seccion1_logo6;
+        this.form.seccion1_logo7 = calidad.seccion1_logo7;
+        this.form.seccion2_imagen_fondo = calidad.seccion2_imagen_fondo;
+      }
     },
     loadCalidad: function loadCalidad() {
       var _this = this;
@@ -2239,17 +2265,17 @@ __webpack_require__.r(__webpack_exports__);
         return _this.editWindow(data.data);
       }); //pick data from controller and push it into users object
     },
-    updateCalidad: function updateCalidad() {
+    updateCalidad: function updateCalidad(event) {
       var _this2 = this;
 
-      this.$Progress.start(); //this.form.submit('put','api/inicio/'+this.form.id,{
+      if (!this.editMode) return this.createCalidad(event);
+      this.$Progress.start();
+      var formData = new FormData(event.target);
+      formData.append('seccion1_parrafo', this.form.seccion1_parrafo);
+      formData.append('seccion1_parrafo_zh', this.form.seccion1_parrafo_zh);
+      formData.append('_method', 'PUT'); //this.form.submit('put','api/inicio/'+this.form.id,{
 
-      axios.post('api/calidad', this.form, {
-        // Transform form data to FormData
-        transformRequest: [function (data, headers) {
-          return objectToFormData(data);
-        }]
-      }).then(function () {
+      axios.post('api/calidad/' + this.form.id, formData).then(function () {
         Fire.$emit('AfterCreatedCalidadLoadIt');
         Toast.fire({
           icon: 'success',
@@ -2337,16 +2363,14 @@ __webpack_require__.r(__webpack_exports__);
 
       reader.readAsDataURL(file);
     },
-    createCalidad: function createCalidad() {
+    createCalidad: function createCalidad(event) {
       var _this4 = this;
 
       this.$Progress.start();
-      this.form.submit('post', 'api/calidad', {
-        // Transform form data to FormData
-        transformRequest: [function (data, headers) {
-          return objectToFormData(data);
-        }]
-      }).then(function () {
+      var formData = new FormData(event.target);
+      formData.append('seccion1_parrafo', this.form.seccion1_parrafo);
+      formData.append('seccion1_parrafo_zh', this.form.seccion1_parrafo_zh);
+      axios.post('api/calidad', formData).then(function () {
         Fire.$emit('AfterCreatedCalidadLoadIt'); //custom events
 
         Toast.fire({
@@ -62173,7 +62197,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  _vm.editMode ? _vm.updateCalidad() : _vm.createCalidad()
+                  return _vm.updateCalidad($event)
                 }
               }
             },
@@ -62190,7 +62214,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "encabezado_imagen_fondo" },
+                        attrs: {
+                          type: "file",
+                          id: "encabezado_imagen_fondo",
+                          name: "encabezado_imagen_fondo"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62200,7 +62228,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "encabezado_imagen_fondo" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -62228,7 +62256,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "logo_1_encabezado" },
+                        attrs: {
+                          type: "file",
+                          id: "logo_1_encabezado",
+                          name: "logo_1_encabezado"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62238,7 +62270,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "logo_1_encabezado" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -62262,7 +62294,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "logo_2_encabezado" },
+                        attrs: {
+                          type: "file",
+                          id: "logo_2_encabezado",
+                          name: "logo_2_encabezado"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62272,7 +62308,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "logo_2_encabezado" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -62293,23 +62329,36 @@ var render = function() {
                   [
                     _c("label", [_vm._v("Texto")]),
                     _vm._v(" "),
-                    _c("ckeditor", {
-                      staticClass: "col-md-10 form-control",
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.texto_encabezado,
+                          expression: "form.texto_encabezado"
+                        }
+                      ],
+                      staticClass: "form-control",
                       class: {
                         "is-invalid": _vm.form.errors.has("texto_encabezado")
                       },
                       attrs: {
-                        "tag-name": "textarea",
-                        name: "texto_encabezado",
-                        editor: _vm.editor,
-                        config: _vm.editorConfig
+                        type: "text",
+                        placeholder: "Ingrese el Texto",
+                        name: "texto_encabezado"
                       },
-                      model: {
-                        value: _vm.form.texto_encabezado,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "texto_encabezado", $$v)
-                        },
-                        expression: "form.texto_encabezado"
+                      domProps: { value: _vm.form.texto_encabezado },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "texto_encabezado",
+                            $event.target.value
+                          )
+                        }
                       }
                     }),
                     _vm._v(" "),
@@ -62339,7 +62388,11 @@ var render = function() {
                           "texto_encabezado_habilitado"
                         )
                       },
-                      attrs: { type: "checkbox", id: "exampleCheck1" },
+                      attrs: {
+                        type: "checkbox",
+                        name: "texto_encabezado_habilitado",
+                        id: "texto_encabezado_habilitado"
+                      },
                       domProps: {
                         checked: Array.isArray(
                           _vm.form.texto_encabezado_habilitado
@@ -62386,7 +62439,7 @@ var render = function() {
                       "label",
                       {
                         staticClass: "form-check-label",
-                        attrs: { for: "exampleCheck1" }
+                        attrs: { for: "texto_encabezado_habilitado" }
                       },
                       [_vm._v("Habilitar Texto en Encabezado")]
                     ),
@@ -62424,7 +62477,11 @@ var render = function() {
                       class: {
                         "is-invalid": _vm.form.errors.has("seccion1_titulo")
                       },
-                      attrs: { type: "text", placeholder: "Enter ..." },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "seccion1_titulo"
+                      },
                       domProps: { value: _vm.form.seccion1_titulo },
                       on: {
                         input: function($event) {
@@ -62460,7 +62517,6 @@ var render = function() {
                       },
                       attrs: {
                         "tag-name": "textarea",
-                        name: "seccion1_parrafo",
                         editor: _vm.editor,
                         config: _vm.editorConfig
                       },
@@ -62489,7 +62545,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_logo1" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_logo1",
+                          name: "seccion1_logo1"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62499,7 +62559,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion1_logo1" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -62523,7 +62583,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_logo2" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_logo2",
+                          name: "seccion1_logo2"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62533,7 +62597,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion1_logo2" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -62557,7 +62621,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_logo3" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_logo3",
+                          name: "seccion1_logo3"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62567,7 +62635,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion1_logo3" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -62591,7 +62659,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_logo4" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_logo4",
+                          name: "seccion1_logo4"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62601,7 +62673,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion1_logo4" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -62625,7 +62697,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_logo5" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_logo5",
+                          name: "seccion1_logo5"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62635,7 +62711,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion1_logo5" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -62659,7 +62735,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_logo6" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_logo6",
+                          name: "seccion1_logo6"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62669,7 +62749,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion1_logo6" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -62693,7 +62773,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion1_logo7" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion1_logo7",
+                          name: "seccion1_logo7"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62703,7 +62787,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion1_logo7" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),
@@ -62731,7 +62815,11 @@ var render = function() {
                     _c("div", { staticClass: "custom-file" }, [
                       _c("input", {
                         staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "seccion2_imagen_fondo" },
+                        attrs: {
+                          type: "file",
+                          id: "seccion2_imagen_fondo",
+                          name: "seccion2_imagen_fondo"
+                        },
                         on: { change: _vm.onUploadImage }
                       }),
                       _vm._v(" "),
@@ -62741,7 +62829,7 @@ var render = function() {
                           staticClass: "custom-file-label",
                           attrs: { for: "seccion2_imagen_fondo" }
                         },
-                        [_vm._v("Choose file")]
+                        [_vm._v("Seleccione un Archivo")]
                       )
                     ]),
                     _vm._v(" "),

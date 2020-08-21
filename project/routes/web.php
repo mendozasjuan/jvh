@@ -27,6 +27,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/quienessomos','QuienesSomosController@index')->name('quienessomos');
     Route::get('/produccion','ProduccionController@index')->name('produccion');
     Route::get('/exportacion','ExportacionController@index')->name('exportacion');
+    Route::get('/calidad','CalidadController@index')->name('calidad');	
         
 
 
@@ -46,9 +47,9 @@ Route::group(['middleware' => ['web']], function () {
         return view('web.productos');
     })->name('productos');
 
-    Route::get('calidad', function () {
+    /*Route::get('calidad', function () {
         return view('web.calidad');
-    });
+    });*/
 
     Route::get('impactosocial', function () {
         return view('web.impactosocial');
