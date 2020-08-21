@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2020 a las 02:10:34
+-- Tiempo de generación: 21-08-2020 a las 03:54:42
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.14
 
@@ -132,6 +132,13 @@ CREATE TABLE `exportacion` (
   `seccion3_imagen_fondo` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `exportacion`
+--
+
+INSERT INTO `exportacion` (`id`, `encabezado_imagen_fondo`, `logo_1_encabezado`, `logo_2_encabezado`, `texto_encabezado`, `texto_encabezado_habilitado`, `seccion1_titulo`, `seccion1_parrafo`, `seccion1_imagen`, `seccion2_parrafo1`, `seccion2_parrafo2`, `seccion2_imagen_fondo`, `seccion3_titulo`, `seccion3_imagen_fondo`) VALUES
+(1, 'img/1cSqMrTffG5woTlh024GmPmZaBPESJkui5UnVlTV.png', 'img/k9XvEgSq3StaiiIYqwbWnkbpCFXKzkKGBKwwkvBH.svg', 'img/Y9OwR8LXRzGQGpd98Hb9BJo8gW20ON35lvvdHRme.svg', '{\"es\":\"Texto\",\"zh\":null}', NULL, '{\"es\":\"Mercados en el Mundo\",\"zh\":null}', '{\"es\":\"<p>Cuenta con todos los permisos y certificaciones necesarios para exportar a la uni\\u00f3n europea, israel, suiza, rusia, hong kong, brasil y sud\\u00e1frica entre otros.<\\/p>\",\"zh\":\"null\"}', 'img/YlrNwletFm8nx6HWJwcroRDoWgzSaD3EQp6yuZh0.svg', '{\"es\":\"<p>Paises a los que Exportamos<\\/p><ul><li>Angola<\\/li><li>Antillas Hol.<\\/li><li>Argelia<\\/li><li>Aruba<\\/li><li>Bosnia y Herzegovina<\\/li><li>Brasil<\\/li><li>Bulgaria<\\/li><li>Chile<\\/li><li>Curacao<\\/li><li>Estados Unidos<\\/li><li>Guinea ecuatorial<\\/li><li>Peru<\\/li><li>Reino Unido<\\/li><li>Rusia<\\/li><li>Suiza<\\/li><li>Ucrania<\\/li><li>Venezuela<\\/li><li>Uni\\u00f3n Europea<\\/li><\\/ul>\",\"zh\":\"null\"}', '{\"es\":\"<p>Paises Habilitados para Exportar<\\/p><ul><li>Angola<\\/li><li>Antillas Hol.<\\/li><li>Argelia<\\/li><li>Aruba<\\/li><li>Bosnia y Herzegovina<\\/li><li>Brasil<\\/li><li>Bulgaria<\\/li><li>Chile<\\/li><li>Curacao<\\/li><li>Egipto<\\/li><li>Estados Unidos<\\/li><li>Guinea ecuatorial<\\/li><li>Peru<\\/li><li>Rusia<\\/li><li>Suiza<\\/li><li>Ucrania<\\/li><li>Uni\\u00f3n Europea<\\/li><\\/ul>\",\"zh\":\"null\"}', 'img/qxDZNxzbcq4bkyU6VKbTZmXkvBKGyjC600wi4TcZ.png', '{\"es\":\"\\\"Nos sentimos muy agradecidos de tener la oportunidad de contribuir al desarrollo social y econ\\u00f3mico en las comunidades donde trabajamos\\\"\",\"zh\":null}', 'img/iR721l5ikyW8VaU0ShfouSkASerGpPkNRcXtrrCH.png');
+
 -- --------------------------------------------------------
 
 --
@@ -212,7 +219,7 @@ CREATE TABLE `inicio` (
 --
 
 INSERT INTO `inicio` (`id`, `encabezado_imagen_fondo`, `logo_1_encabezado`, `logo_2_encabezado`, `texto_encabezado`, `texto_encabezado_habilitado`, `seccion1_titulo`, `seccion_1_parrafo`, `seccion1_logo1`, `seccion1_logo2`, `seccion1_logo3`, `seccion2_imagen_fondo`, `seccio2_titulo`, `seccion_2_parrafo`, `seccion3_titulo`, `seccion3_parrafo`, `seccion3_imagen`, `seccion4_titulo`, `seccion4_imagen_fondo`) VALUES
-(1, 'img/lsJOqzjZjW73PrFlYHyOGnylmSp5HlK2th5S1G6m.png', 'img/xctx8XbnloTJ7demkxmAJrPiqOwKuHCeL3Sq9nHt.svg', 'img/n7zSfw4ABVNBLSwCBrN7Rf9LZ0ltpDS3Qc3sRFJm.svg', '{\"es\":\"\\\"Carne Argentina de alta calidad para los mercados m\\u00e1s exigentes del mundo\\\"1\",\"zh\":null}', 'on', '{\"es\":\"Nuestra Carne\",\"zh\":null}', '{\"es\":\"<p>La calidad de la carne, en t\\u00e9rminos alimenticios, depende de la conjunci\\u00f3n de diversos factores. Entre estos se destacan el tipo de crianza del ganado y la eficacia de su comercializaci\\u00f3n. La pampa h\\u00fameda argentina es uno de los lugares en el mundo en el que la cr\\u00eda de los animales no se realizan en establos, sino en extensas llanuras, alejadas de la poluci\\u00f3n industrial, donde la abundancia de pasturas esta asegurada. El ganado argentino respeta, adem\\u00e1s, las pautas de crecimiento natural, ya que no se los inyecta con hormonas y antibi\\u00f3ticos. Por estas razones, su estado resulta optimo para el consumo.<\\/p>\",\"zh\":null}', 'img/9cu3lK4llqI3bhZIDVlk21gJ2eDGswlNrrHtVqlr.png', 'img/PRKWK8VGOLHdOd3UlK0QQxdJek32Na78HYxg3mja.png', 'img/mNHz728UJ8pgZbHYAVDTsbJe78ee1TF614u0eKct.png', NULL, '{\"es\":\"\\u00daltima generaci\\u00f3n en la producci\\u00f3n de carnes\",\"zh\":null}', '{\"es\":\"<p>Equipos de \\u00faltima generaci\\u00f3n para los procesos de congelado, enfriado y envasado al vac\\u00edo<\\/p>\",\"zh\":null}', '{\"es\":\"Mercados en el Mundo\",\"zh\":null}', '{\"es\":\"<p>Cuenta con todos los permisos y certificaciones necesarios para exportar a la uni\\u00f3n europea, israel, suiza, rusia, hong kong, brasil y sud\\u00e1frica entre otros.<\\/p>\",\"zh\":null}', 'img/jkvdCfFLdNWbfgtw8BonaDO6fcsoRnqN0Ge8k26w.svg', '{\"es\":\"Nuestra carne es altamente demandada debido a su marmoleo natural, jugosidad, terneza y sabor\",\"zh\":null}', 'img/ynvw6xZgtIcr8wY32OUDpNAllDzYnpefjfleR5dx.png');
+(1, 'img/lsJOqzjZjW73PrFlYHyOGnylmSp5HlK2th5S1G6m.png', 'img/xctx8XbnloTJ7demkxmAJrPiqOwKuHCeL3Sq9nHt.svg', 'img/n7zSfw4ABVNBLSwCBrN7Rf9LZ0ltpDS3Qc3sRFJm.svg', '{\"es\":\"\\\"Carne Argentina de alta calidad para los mercados m\\u00e1s exigentes del mundo\\\"\",\"zh\":null}', 'on', '{\"es\":\"Nuestra Carne\",\"zh\":null}', '{\"es\":\"<p>La calidad de la carne, en t\\u00e9rminos alimenticios, depende de la conjunci\\u00f3n de diversos factores. Entre estos se destacan el tipo de crianza del ganado y la eficacia de su comercializaci\\u00f3n. La pampa h\\u00fameda argentina es uno de los lugares en el mundo en el que la cr\\u00eda de los animales no se realizan en establos, sino en extensas llanuras, alejadas de la poluci\\u00f3n industrial, donde la abundancia de pasturas esta asegurada. El ganado argentino respeta, adem\\u00e1s, las pautas de crecimiento natural, ya que no se los inyecta con hormonas y antibi\\u00f3ticos. Por estas razones, su estado resulta optimo para el consumo.<\\/p>\",\"zh\":null}', 'img/9cu3lK4llqI3bhZIDVlk21gJ2eDGswlNrrHtVqlr.png', 'img/PRKWK8VGOLHdOd3UlK0QQxdJek32Na78HYxg3mja.png', 'img/mNHz728UJ8pgZbHYAVDTsbJe78ee1TF614u0eKct.png', NULL, '{\"es\":\"\\u00daltima generaci\\u00f3n en la producci\\u00f3n de carnes\",\"zh\":null}', '{\"es\":\"<p>Equipos de \\u00faltima generaci\\u00f3n para los procesos de congelado, enfriado y envasado al vac\\u00edo<\\/p>\",\"zh\":null}', '{\"es\":\"Mercados en el Mundo\",\"zh\":null}', '{\"es\":\"<p>Cuenta con todos los permisos y certificaciones necesarios para exportar a la uni\\u00f3n europea, israel, suiza, rusia, hong kong, brasil y sud\\u00e1frica entre otros.<\\/p>\",\"zh\":null}', 'img/jkvdCfFLdNWbfgtw8BonaDO6fcsoRnqN0Ge8k26w.svg', '{\"es\":\"Nuestra carne es altamente demandada debido a su marmoleo natural, jugosidad, terneza y sabor\",\"zh\":null}', 'img/ynvw6xZgtIcr8wY32OUDpNAllDzYnpefjfleR5dx.png');
 
 -- --------------------------------------------------------
 
@@ -567,7 +574,7 @@ ALTER TABLE `etiquetado_corte`
 -- AUTO_INCREMENT de la tabla `exportacion`
 --
 ALTER TABLE `exportacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`

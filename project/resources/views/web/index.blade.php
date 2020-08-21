@@ -12,6 +12,10 @@
 			position: relative;
 			margin-bottom: 29px;
 		}
+
+		#h-seccion4 p{
+			color:#6E6F71;
+		}
     </style>
 @endsection
 
@@ -46,7 +50,7 @@
 		<div style="height: 100%" class="row justify-content-end align-items-center">
 				<div class="col-11 col-sm-8 col-md-7 col-lg-5 col-xl-3">
 					<h2 class="text-right">{{$inicio->seccio2_titulo}}<!--"Última generación en la producción de carnes"--></h2>
-					<p>{!! $inicio->seccion_2_parrafo !!}<!--Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío--></p>
+					{!! $inicio->seccion_2_parrafo !!}<!--Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío-->
 				</div>
 			</div>
 	</div>
@@ -54,10 +58,8 @@
 		<div class="col-7 col-lg-4 col-xl-2">
 			<div class="lineavertical">
 				<h2>{{$inicio->seccion3_titulo}}<!--Mercados en el Mundo--></h2>
-				<p style="color:#6E6F71">
 					{!! $inicio->seccion3_parrafo !!}
 					<!--Cuenta con todos los permisos y certificaciones necesarios para exportar a la unión europea, israel, suiza, rusia, hong kong, brasil y sudáfrica entre otros.-->
-				</p>
 			</div>
 		</div>
 		<div class="col">

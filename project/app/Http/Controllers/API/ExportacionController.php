@@ -26,62 +26,57 @@ class ExportacionController extends Controller
      */
     public function store(Request $request)
     {
+    	$exportacion = new Exportacion;
+
         if($request['id'] != null){
             return $this->update($request,$request['id']);
         }
 
         $image = $this->storeImagenes($request);
 
+        $exportacion->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
+            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
+            ->setTranslations('seccion1_parrafo', ['es' => $request['seccion1_parrafo'],'zh' =>$request['seccion1_parrafo_zh'] ])
+            ->setTranslations('seccion2_parrafo1', ['es' => $request['seccion2_parrafo1'],'zh' =>$request['seccion2_parrafo1_zh'] ])
+            ->setTranslations('seccion2_parrafo2', ['es' => $request['seccion2_parrafo2'],'zh' =>$request['seccion2_parrafo2_zh'] ])
+            ->setTranslations('seccion3_titulo', ['es' => $request['seccion3_titulo'],'zh' =>$request['seccion3_titulo_zh'] ]);
+
+
+            $exportacion->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
+
         if($image['encabezado_imagen_fondo'] !=null )
-            $encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
+            $exportacion->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
         else
-            $encabezado_imagen_fondo = null;
+            $exportacion->encabezado_imagen_fondo = null;
         
 
         if($image['logo_1_encabezado'] !=null )
-            $logo_1_encabezado = $image['logo_1_encabezado'];
+            $exportacion->logo_1_encabezado = $image['logo_1_encabezado'];
         else
-            $logo_1_encabezado = null;
+            $exportacion->logo_1_encabezado = null;
         
 
         if($image['logo_2_encabezado'] !=null )
-            $logo_2_encabezado = $image['logo_2_encabezado'];
+            $exportacion->logo_2_encabezado = $image['logo_2_encabezado'];
         else
-            $logo_2_encabezado = null;
+            $exportacion->logo_2_encabezado = null;
 
         if($image['seccion1_imagen'] !=null )
-            $seccion1_imagen = $image['seccion1_imagen'];
+            $exportacion->seccion1_imagen = $image['seccion1_imagen'];
         else
-            $seccion1_imagen = null;
+            $exportacion->seccion1_imagen = null;
 
         if($image['seccion2_imagen_fondo'] !=null )
-            $seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
+            $exportacion->seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
         else
-            $seccion2_imagen_fondo = null;
+            $exportacion->seccion2_imagen_fondo = null;
 
         if($image['seccion3_imagen_fondo'] !=null )
-            $seccion3_imagen_fondo = $image['seccion3_imagen_fondo'];
+            $exportacion->seccion3_imagen_fondo = $image['seccion3_imagen_fondo'];
         else
-            $seccion3_imagen_fondo = null;
+            $exportacion->seccion3_imagen_fondo = null;
         
-
-        $exportacion = Exportacion::create([
-           'encabezado_imagen_fondo' => $encabezado_imagen_fondo,
-           'logo_1_encabezado' => $logo_1_encabezado,
-           'logo_2_encabezado' => $logo_2_encabezado,
-           'texto_encabezado' => $request['texto_encabezado'],
-           'texto_encabezado_habilitado' => $request['texto_encabezado_habilitado'],
-           'seccion1_titulo' => $request['seccion1_titulo'],
-           'seccion1_parrafo' => $request['seccion1_parrafo'],
-           'seccion1_imagen' => $seccion1_imagen,
-           'seccion2_parrafo1' => $request['seccion2_parrafo1'],
-           'seccion2_parrafo2' => $request['seccion2_parrafo2'],
-           'seccion2_imagen_fondo' => $seccion2_imagen_fondo,
-           'seccion3_titulo' => $request['seccion3_titulo'],
-           'seccion3_imagen_fondo' => $seccion3_imagen_fondo,
-           
-
-        ]);
+        $exportacion->save();
 
         return $exportacion;
     }
@@ -109,14 +104,14 @@ class ExportacionController extends Controller
         $image = $this->storeImagenes($request);
 
         $exportacion = Exportacion::findOrFail($id);
-        $exportacion->texto_encabezado = $request['texto_encabezado'];
-        $exportacion->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
-        $exportacion->seccion1_titulo = $request['seccion1_titulo'];
-        $exportacion->seccion1_parrafo = $request['seccion1_parrafo'];
-        $exportacion->seccion2_parrafo1 = $request['seccion2_parrafo1'];
-        $exportacion->seccion2_parrafo2 = $request['seccion2_parrafo2'];
-        $exportacion->seccion3_titulo = $request['seccion3_titulo'];
+        $exportacion->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
+            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
+            ->setTranslations('seccion1_parrafo', ['es' => $request['seccion1_parrafo'],'zh' =>$request['seccion1_parrafo_zh'] ])
+            ->setTranslations('seccion2_parrafo1', ['es' => $request['seccion2_parrafo1'],'zh' =>$request['seccion2_parrafo1_zh'] ])
+            ->setTranslations('seccion2_parrafo2', ['es' => $request['seccion2_parrafo2'],'zh' =>$request['seccion2_parrafo2_zh'] ])
+            ->setTranslations('seccion3_titulo', ['es' => $request['seccion3_titulo'],'zh' =>$request['seccion3_titulo_zh'] ]);
 
+        $exportacion->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
 
         
         if($image['encabezado_imagen_fondo'] !=null )

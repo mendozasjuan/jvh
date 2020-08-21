@@ -28,6 +28,10 @@
 			color:#fff;
 			font-size: 40px;
 		}
+
+		#h-seccion4 p{
+			color:#6E6F71;
+		}
     </style>
 @endsection
 
@@ -43,10 +47,11 @@
 	<div id="h-seccion4" class="row">
 		<div class="col-7 col-lg-4 col-xl-2">
 			<div class="lineavertical">
-				<h2>Mercados en el Mundo</h2>
-				<p style="color:#6E6F71">
+				<h2>{!! $exportacion->seccion1_titulo !!}<!--Mercados en el Mundo--></h2>
+				{!! $exportacion->seccion1_parrafo !!}
+				<!--<p style="color:#6E6F71">
 					Cuenta con todos los permisos y certificaciones necesarios para exportar a la unión europea, israel, suiza, rusia, hong kong, brasil y sudáfrica entre otros.
-				</p>
+				</p>-->
 			</div>
 		</div>
 		<div class="col">
@@ -62,9 +67,12 @@
 		<div style="height: 100%; padding-top: 76px; padding-bottom: 70px;" class="row align-items-center" >
 			<div class="col">
 				<div class="row">
-					<div class="col">Paises a los que Exportamos</div>
+					<div class="col">
+						{!!$exportacion->seccion2_parrafo1!!}
+						<!--Paises a los que Exportamos-->
+					</div>
 				</div>
-				<div class="row">
+				<!--<div class="row">
 					<div class="col">
 						<ul>
 							<li>Angola</li>
@@ -92,13 +100,16 @@
 						</ul>
 
 					</div>
-				</div>
+				</div>-->
 			</div>
 			<div class="col">
 				<div class="row">
-					<div class="col">Paises Habilitados para Exportar</div>
+					<div class="col">
+						{!! $exportacion->seccion2_parrafo2 !!}
+						<!--Paises Habilitados para Exportar-->
+					</div>
 				</div>
-				<div class="row">
+				<!--<div class="row">
 					<div class="col">
 						<ul>
 							<li>Angola</li>
@@ -124,7 +135,7 @@
 							<li>Unión Europea</li>
 						</ul>
 					</div>
-				</div>
+				</div>-->
 			</div>
 		</div>
 	</div>
@@ -136,7 +147,10 @@
 		</div>
 		<div class="row" style="margin-right: auto;">
 			<div class="col-12 col-md-8 col-xl-6">
-				<h2>"Nos sentimos muy agradecidos de tener la oportunidad de contribuir al desarrollo social y económico en las comunidades donde trabajamos"</h2>
+				<h2>
+					{!! $exportacion->seccion3_titulo !!}
+					<!--"Nos sentimos muy agradecidos de tener la oportunidad de contribuir al desarrollo social y económico en las comunidades donde trabajamos"-->
+				</h2>
 			</div>
 		</div>
 	</div>
