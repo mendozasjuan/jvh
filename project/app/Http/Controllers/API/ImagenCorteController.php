@@ -64,7 +64,7 @@ class ImagenCorteController extends Controller
 
     public function saveImage(Request $request){
         if($request->file('imageproducto')){
-            $imageProducto = $request->file('imageproducto')->store('producto','public');
+            $imageProducto = $request->file('imageproducto')->store('img/producto','public');
             $imagencorte = ImagenCorte::create([
                 'imagen' => $imageProducto,
                 'corte_id' => $request['corteid']
