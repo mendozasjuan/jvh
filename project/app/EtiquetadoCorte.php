@@ -18,8 +18,4 @@ class EtiquetadoCorte extends Model
     {
         return $this->belongsTo(Corte::class,'corte_id');
     }
-
-    public function getEtiquetadoAttribute(){
-    	return \Storage::url($this->etiquetado);
-    }
 }

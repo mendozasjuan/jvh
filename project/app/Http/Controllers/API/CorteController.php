@@ -18,7 +18,11 @@ class CorteController extends Controller
      */
     public function index()
     {
-        return Corte::with('categoria')->paginate();
+        return Corte::with('categoria')
+                ->with('imagenes')
+                ->with('etiquetados')
+                ->with('packagings')
+                ->paginate();
     }
 
     /**
@@ -64,7 +68,7 @@ class CorteController extends Controller
           {
             $image['imagen_corte'] = $request->file('imagen_corte');
             // almacena y captura el nombre del archivo
-            $imagen_corte =  $image['imagen_corte']->store('producto','public');
+            $imagen_corte =  $image['imagen_corte']->store('img/producto','public');
             if($imagen_corte){
                 ImagenCorte::create([
                     'imagen' => $imagen_corte,
@@ -81,7 +85,7 @@ class CorteController extends Controller
           {
             $image['imagen_etiquetado'] = $request->file('imagen_etiquetado');
             // almacena y captura el nombre del archivo
-            $imagen_etiquetado =  $image['imagen_etiquetado']->store('etiquetado','public');
+            $imagen_etiquetado =  $image['imagen_etiquetado']->store('img/etiquetado','public');
             if($imagen_etiquetado){
                 EtiquetadoCorte::create([
                     'etiquetado' => $imagen_etiquetado,
@@ -98,7 +102,7 @@ class CorteController extends Controller
           {
             $image['imagen_packaging'] = $request->file('imagen_packaging');
             // almacena y captura el nombre del archivo
-            $imagen_packaging =  $image['imagen_packaging']->store('packaging','public');
+            $imagen_packaging =  $image['imagen_packaging']->store('img/packaging','public');
             if($imagen_packaging){
                 PackagingCorte::create([
                     'packaging' => $imagen_packaging,

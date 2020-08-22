@@ -31,4 +31,6 @@ Route::apiResources(['impactosocial' => 'API\ImpactoSocialController']);
 Route::apiResources(['paginaproductos' => 'API\PaginaProductosController']);
 Route::apiResources(['paginarecursoshumanos' => 'API\PaginaRecursosHumanosController']);
 Route::apiResources(['paginacontacto' => 'API\PaginaContactoController']);
+Route::post('saveimageproducto','API\ImagenCorteController@saveImage');
+Route::get('allimagesproducto/{idproducto}','API\ImagenCorteController@allImagesProducto');
 Route::get('storage/{filename}', 'InicioController@images');

@@ -2796,15 +2796,234 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       editMode: false,
       cortes: [],
+      imagenesproducto: [],
+      etiquetados: [],
+      packagings: [],
       categorias: {},
       picFile: '',
       idElement: '',
-      paginate: ['cortes'],
+      paginate: ['cortes', 'imagenesproducto', 'etiquetados', 'packagings'],
       form: new Form({
         id: '',
         nombre: '',
@@ -2819,7 +3038,8 @@ __webpack_require__.r(__webpack_exports__);
         imagen_corte: '',
         imagen_etiquetado: '',
         imagen_packaging: ''
-      })
+      }),
+      corte: {}
     };
   },
   methods: {
@@ -2829,6 +3049,22 @@ __webpack_require__.r(__webpack_exports__);
       this.form.reset();
       $('#addNew').modal('show');
       this.form.fill(corte);
+    },
+    addModalImagenesProductoWindow: function addModalImagenesProductoWindow(corte) {
+      this.imagenesproducto = corte.imagenes;
+      this.corte = corte;
+      console.log(this.corte);
+      $('#addNewImageProducto').modal('show');
+    },
+    addModalEtiquetadoProductoWindow: function addModalEtiquetadoProductoWindow(corte) {
+      this.etiquetados = corte.etiquetados;
+      console.log(this.etiquetados);
+      $('#addNewEtiquetadoProducto').modal('show');
+    },
+    addModalPackagingProductoWindow: function addModalPackagingProductoWindow(corte) {
+      this.packagings = corte.packagings;
+      console.log(this.packagings);
+      $('#addNewPackagingProducto').modal('show');
     },
     updateCorte: function updateCorte() {
       this.form.put('api/corte/' + this.form.id).then(function () {
@@ -2866,6 +3102,7 @@ __webpack_require__.r(__webpack_exports__);
       if (event) {
         this.idElement = event.target;
         this.picFile = this.idElement.files[0];
+        this.cargarMiniatura(this.idElement, this.picFile);
       }
 
       if (this.picFile) {
@@ -2885,8 +3122,60 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
     },
-    createCorte: function createCorte() {
+    cargarMiniatura: function cargarMiniatura(object, file) {
       var _this3 = this;
+
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        console.log($(_this3.idElement).parents('form').find('.miniatura')[0]);
+        $(_this3.idElement).parents('form').find('.miniatura')[0].src = e.target.result;
+        $(_this3.idElement).parents('form').find('.miniatura').addClass('d-block'); //return this.imagenMiniatura = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
+    uploadImageProduto: function uploadImageProduto(event) {
+      var _this4 = this;
+
+      console.log(event.target);
+      var formulario = event.target;
+      this.$Progress.start();
+      var formData = new FormData(formulario);
+      formData.append('corteid', this.corte.id);
+      axios.post('api/saveimageproducto', formData).then(function (data) {
+        console.log(data);
+        Toast.fire({
+          icon: 'success',
+          title: 'Pagina Calidad Actualizada con Exito'
+        });
+
+        _this4.$Progress.finish();
+
+        _this4.loadImagenesProducto(data.data.corte_id);
+      })["catch"](function () {
+        console.log("Error......");
+      });
+      $("#miniaturaImagenProducto").attr('src', "").removeClass('d-block').addClass('d-none');
+      $("#formImagenProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+    },
+    loadImagenesProducto: function loadImagenesProducto(corteid) {
+      var _this5 = this;
+
+      axios.get("api/allimagesproducto/" + corteid).then(function (data) {
+        console.log(data);
+        _this5.imagenesproducto = Array.from(data.data);
+      });
+    },
+    addNewImagenProducto: function addNewImagenProducto() {
+      $("#formImagenProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+    },
+    cancelAddImagenProducto: function cancelAddImagenProducto() {
+      $("#miniaturaImagenProducto").attr('src', "").removeClass('d-block').addClass('d-none');
+      $("#formImagenProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+    },
+    createCorte: function createCorte() {
+      var _this6 = this;
 
       this.$Progress.start();
       this.form.submit('post', 'api/corte', {
@@ -2902,7 +3191,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Corte Creado con Exito'
         });
 
-        _this3.$Progress.finish();
+        _this6.$Progress.finish();
 
         $('#addNew').modal('hide');
       })["catch"](function () {
@@ -2910,7 +3199,7 @@ __webpack_require__.r(__webpack_exports__);
       }); //this.loadUsers();
     },
     deleteCorte: function deleteCorte(id) {
-      var _this4 = this;
+      var _this7 = this;
 
       this.$Progress.start();
       Swal.fire({
@@ -2924,11 +3213,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           //Send Request to server
-          _this4.form["delete"]('api/corte/' + id).then(function () {
+          _this7.form["delete"]('api/corte/' + id).then(function () {
             Fire.$emit('AfterCreatedCorteLoadIt');
             Swal.fire('Eliminado!', 'Corte Eliminado con Exito', 'success');
 
-            _this4.$Progress.finish();
+            _this7.$Progress.finish();
           })["catch"](function () {
             Swal.fire({
               icon: 'error',
@@ -2937,22 +3226,22 @@ __webpack_require__.r(__webpack_exports__);
               footer: '<a href>Why do I have this issue?</a>'
             });
 
-            _this4.$Progress.fail();
+            _this7.$Progress.fail();
           });
         }
       });
     }
   },
   created: function created() {
-    var _this5 = this;
+    var _this8 = this;
 
     this.loadCortes();
     this.loadCategorias();
     Fire.$on('AfterCreatedCorteLoadIt', function () {
       //custom events fire on
-      _this5.loadCortes();
+      _this8.loadCortes();
 
-      _this5.loadCategorias();
+      _this8.loadCategorias();
     });
   }
 });
@@ -3240,6 +3529,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         this.form.seccion2_parrafo2_zh = _typeof(exportacion.seccion2_parrafo2) === 'object' ? exportacion.seccion2_parrafo2.zh : '';
         this.form.seccion3_titulo = _typeof(exportacion.seccion3_titulo) === 'object' ? exportacion.seccion3_titulo.es : '';
         this.form.seccion3_titulo_zh = _typeof(exportacion.seccion3_titulo) === 'object' ? exportacion.seccion3_titulo.zh : '';
+        this.form.seccion1_imagen = exportacion.seccion1_imagen;
+        this.form.seccion2_imagen_fondo = exportacion.seccion2_imagen_fondo;
+        this.form.seccion3_imagen_fondo = exportacion.seccion3_imagen_fondo;
       }
     },
     loadExportacion: function loadExportacion() {
@@ -4600,6 +4892,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         this.form.logo_2_encabezado = paginaproductos.logo_2_encabezado;
         this.form.seccion1_titulo = _typeof(paginaproductos.seccion1_titulo) === 'object' ? paginaproductos.seccion1_titulo.es : '';
         this.form.seccion1_titulo_zh = _typeof(paginaproductos.seccion1_titulo) === 'object' ? paginaproductos.seccion1_titulo.zh : '';
+        this.form.seccion1_imagen = paginaproductos.seccion1_imagen;
+        this.form.seccion1_imagen_fondo = paginaproductos.seccion1_imagen_fondo;
       }
     },
     loadPaginaProductos: function loadPaginaProductos() {
@@ -5367,6 +5661,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+//
+//
 //
 //
 //
@@ -63038,7 +63334,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.form.encabezado_imagen_fondo
-                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                          ? _vm.form.encabezado_imagen_fondo
                           : ""
                       }
                     })
@@ -63078,7 +63374,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_1_encabezado }
+                      attrs: {
+                        src: _vm.form.logo_1_encabezado
+                          ? _vm.form.logo_1_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -63116,7 +63416,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_2_encabezado }
+                      attrs: {
+                        src: _vm.form.logo_2_encabezado
+                          ? _vm.form.logo_2_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -63367,7 +63671,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo1 }
+                      attrs: {
+                        src: _vm.form.seccion1_logo1
+                          ? _vm.form.seccion1_logo1
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -63405,7 +63713,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo2 }
+                      attrs: {
+                        src: _vm.form.seccion1_logo2
+                          ? _vm.form.seccion1_logo2
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -63443,7 +63755,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo3 }
+                      attrs: {
+                        src: _vm.form.seccion1_logo3
+                          ? _vm.form.seccion1_logo3
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -63481,7 +63797,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo4 }
+                      attrs: {
+                        src: _vm.form.seccion1_logo4
+                          ? _vm.form.seccion1_logo4
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -63519,7 +63839,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo5 }
+                      attrs: {
+                        src: _vm.form.seccion1_logo5
+                          ? _vm.form.seccion1_logo5
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -63557,7 +63881,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo6 }
+                      attrs: {
+                        src: _vm.form.seccion1_logo6
+                          ? _vm.form.seccion1_logo6
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -63595,7 +63923,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo7 }
+                      attrs: {
+                        src: _vm.form.seccion1_logo7
+                          ? _vm.form.seccion1_logo7
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -63638,7 +63970,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: "storage/" + _vm.form.seccion2_imagen_fondo
+                        src: _vm.form.seccion2_imagen_fondo
+                          ? _vm.form.seccion2_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -64173,6 +64507,55 @@ var render = function() {
                             }
                           },
                           [_c("i", { staticClass: "fa fa-edit blue" })]
+                        ),
+                        _vm._v(
+                          "\n                            |\n                            "
+                        ),
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                return _vm.addModalImagenesProductoWindow(corte)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash red" })]
+                        ),
+                        _vm._v(
+                          "\n                            |\n                            "
+                        ),
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                return _vm.addModalEtiquetadoProductoWindow(
+                                  corte
+                                )
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash red" })]
+                        ),
+                        _vm._v(
+                          "\n                            |\n                            "
+                        ),
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                return _vm.addModalPackagingProductoWindow(
+                                  corte
+                                )
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash red" })]
                         ),
                         _vm._v(
                           "\n                            |\n                            "
@@ -64805,6 +65188,510 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addNewImageProducto",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addImageProductoLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success float-right mb-4",
+                      on: { click: _vm.addNewImagenProducto }
+                    },
+                    [
+                      _vm._v(" Nueva Imagen "),
+                      _c("i", { staticClass: "fas fa-user-plus fa-fw" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      staticClass: "d-none",
+                      attrs: {
+                        role: "form",
+                        enctype: "multipart/form-data",
+                        id: "formImagenProducto"
+                      },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.uploadImageProduto($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "imageproducto" } }, [
+                            _vm._v("Selecione Imagen")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control-file",
+                            attrs: {
+                              type: "file",
+                              name: "imageproducto",
+                              id: "imageproducto"
+                            },
+                            on: { change: _vm.onUploadImage }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("button", { staticClass: "btn btn-success" }, [
+                          _vm._v(
+                            "\n                       Guardar\n                     "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", value: "Cancelar" },
+                          on: { click: _vm.cancelAddImagenProducto }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    { staticClass: "table table-hover" },
+                    [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c(
+                        "paginate",
+                        {
+                          attrs: {
+                            name: "imagenesproducto",
+                            list: _vm.imagenesproducto,
+                            per: 5,
+                            tag: "tbody"
+                          }
+                        },
+                        _vm._l(_vm.paginated("imagenesproducto"), function(
+                          imagen
+                        ) {
+                          return _c("tr", { key: imagen.id }, [
+                            _c("td", [_vm._v(_vm._s(imagen.id))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("img", {
+                                attrs: { width: "50", src: imagen.imagen }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#", "data-id": "corte.id" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.editModalWindow(imagen)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fa fa-edit blue" })]
+                              ),
+                              _vm._v(
+                                " \n                                  |\n                                  "
+                              ),
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteCorte(imagen.id)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fa fa-trash red" })]
+                              )
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("paginate-links", {
+                    attrs: {
+                      for: "imagenesproducto",
+                      classes: {
+                        ul: "pagination",
+                        li: "page-item",
+                        a: "page-link"
+                      }
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(5)
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addNewEtiquetadoProducto",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addEtiquetadoProductoLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(6),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [
+                  _vm._m(7),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        role: "form",
+                        enctype: "multipart/form-data",
+                        id: "formImagenProducto"
+                      },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.uploadImageProduto($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "imageproducto" } }, [
+                            _vm._v("Selecione Imagen")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control-file",
+                            attrs: {
+                              type: "file",
+                              name: "imageproducto",
+                              id: "imageproducto"
+                            },
+                            on: { change: _vm.onUploadImage }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(8),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("button", { staticClass: "btn btn-success" }, [
+                          _vm._v(
+                            "\n                       Guardar\n                     "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", value: "Cancelar" },
+                          on: { click: _vm.cancelAddImagenProducto }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    { staticClass: "table table-hover" },
+                    [
+                      _vm._m(9),
+                      _vm._v(" "),
+                      _c(
+                        "paginate",
+                        {
+                          attrs: {
+                            name: "etiquetados",
+                            list: _vm.etiquetados,
+                            per: 5,
+                            tag: "tbody"
+                          }
+                        },
+                        _vm._l(_vm.paginated("etiquetados"), function(
+                          etiquetado
+                        ) {
+                          return _c("tr", { key: etiquetado.id }, [
+                            _c("td", [_vm._v(_vm._s(etiquetado.id))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(etiquetado.etiquetado))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#", "data-id": "corte.id" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.editModalWindow(etiquetado)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fa fa-edit blue" })]
+                              ),
+                              _vm._v(
+                                "\n                                  |\n                                  "
+                              ),
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteCorte(etiquetado.id)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fa fa-trash red" })]
+                              )
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("paginate-links", {
+                    attrs: {
+                      for: "etiquetados",
+                      classes: {
+                        ul: "pagination",
+                        li: "page-item",
+                        a: "page-link"
+                      }
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(10)
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addNewPackagingProducto",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addPackagingProductoLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(11),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [
+                  _vm._m(12),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        role: "form",
+                        enctype: "multipart/form-data",
+                        id: "formImagenProducto"
+                      },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.uploadImageProduto($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "imageproducto" } }, [
+                            _vm._v("Selecione Imagen")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control-file",
+                            attrs: {
+                              type: "file",
+                              name: "imageproducto",
+                              id: "imageproducto"
+                            },
+                            on: { change: _vm.onUploadImage }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(13),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("button", { staticClass: "btn btn-success" }, [
+                          _vm._v(
+                            "\n                       Guardar\n                     "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", value: "Cancelar" },
+                          on: { click: _vm.cancelAddImagenProducto }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    { staticClass: "table table-hover" },
+                    [
+                      _vm._m(14),
+                      _vm._v(" "),
+                      _c(
+                        "paginate",
+                        {
+                          attrs: {
+                            name: "packagings",
+                            list: _vm.packagings,
+                            per: 5,
+                            tag: "tbody"
+                          }
+                        },
+                        _vm._l(_vm.paginated("packagings"), function(
+                          packaging
+                        ) {
+                          return _c("tr", { key: packaging.id }, [
+                            _c("td", [_vm._v(_vm._s(packaging.id))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(packaging.packaging))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#", "data-id": "corte.id" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.editModalWindow(packaging)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fa fa-edit blue" })]
+                              ),
+                              _vm._v(
+                                "\n                                  |\n                                  "
+                              ),
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteCorte(packaging.id)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fa fa-trash red" })]
+                              )
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("paginate-links", {
+                    attrs: {
+                      for: "packagings",
+                      classes: {
+                        ul: "pagination",
+                        li: "page-item",
+                        a: "page-link"
+                      }
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(15)
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -64845,6 +65732,243 @@ var staticRenderFns = [
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "addImageProductoLabel" } },
+        [_vm._v("Agregar Imagenes del Producto")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("img", {
+        staticClass: "miniatura d-none",
+        attrs: {
+          id: "miniaturaImagenProducto",
+          width: "200",
+          height: "200",
+          src: "",
+          alt: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Imagen")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Accion")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Cerrar")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "addEtiquetadoProductoLabel" }
+        },
+        [_vm._v("Agregar Etiquetado del Producto")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", { staticClass: "btn btn-success float-right mb-4" }, [
+      _vm._v(" Nuevo Etiquetado "),
+      _c("i", { staticClass: "fas fa-user-plus fa-fw" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("img", {
+        staticClass: "miniatura d-none",
+        attrs: {
+          id: "miniaturaImagenProducto",
+          width: "200",
+          height: "200",
+          src: "",
+          alt: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Accion")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Cerrar")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "addPackagingProductoLabel" }
+        },
+        [_vm._v("Agregar Packaging del Producto")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", { staticClass: "btn btn-success float-right mb-4" }, [
+      _vm._v(" Nuevo Packaging "),
+      _c("i", { staticClass: "fas fa-user-plus fa-fw" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("img", {
+        staticClass: "miniatura d-none",
+        attrs: {
+          id: "miniaturaImagenProducto",
+          width: "200",
+          height: "200",
+          src: "",
+          alt: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Accion")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Cerrar")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -64975,7 +66099,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.form.encabezado_imagen_fondo
-                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                          ? _vm.form.encabezado_imagen_fondo
                           : ""
                       }
                     })
@@ -65015,7 +66139,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_1_encabezado }
+                      attrs: {
+                        src: _vm.form.logo_1_encabezado
+                          ? _vm.form.logo_1_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -65053,7 +66181,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_2_encabezado }
+                      attrs: {
+                        src: _vm.form.logo_2_encabezado
+                          ? _vm.form.logo_2_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -65304,7 +66436,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_imagen }
+                      attrs: {
+                        src: _vm.form.seccion1_imagen
+                          ? _vm.form.seccion1_imagen
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -65411,7 +66547,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: "storage/" + _vm.form.seccion2_imagen_fondo
+                        src: _vm.form.seccion2_imagen_fondo
+                          ? _vm.form.seccion2_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -65501,7 +66639,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: "storage/" + _vm.form.seccion3_imagen_fondo
+                        src: _vm.form.seccion3_imagen_fondo
+                          ? _vm.form.seccion3_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -65679,8 +66819,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.form.encabezado_imagen_fondo
-                          ? this.imagesRootPath +
-                            _vm.form.encabezado_imagen_fondo
+                          ? _vm.form.encabezado_imagen_fondo
                           : ""
                       }
                     })
@@ -65720,7 +66859,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_1_encabezado }
+                      attrs: {
+                        src: _vm.form.logo_1_encabezado
+                          ? _vm.form.logo_1_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -65759,7 +66902,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: this.imagesRootPath + _vm.form.logo_2_encabezado
+                        src: _vm.form.logo_2_encabezado
+                          ? _vm.form.logo_2_encabezado
+                          : ""
                       }
                     })
                   ])
@@ -66094,8 +67239,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src:
-                          this.imagesRootPath + _vm.form.seccion2_imagen_fondo
+                        src: _vm.form.seccion2_imagen_fondo
+                          ? _vm.form.seccion2_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -66253,7 +67399,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.data.encabezado_imagen_fondo
-                          ? "storage/" + _vm.data.encabezado_imagen_fondo
+                          ? _vm.data.encabezado_imagen_fondo
                           : ""
                       }
                     })
@@ -66295,7 +67441,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.data.logo_1_encabezado
-                          ? "storage/" + _vm.data.logo_1_encabezado
+                          ? _vm.data.logo_1_encabezado
                           : ""
                       }
                     })
@@ -66337,7 +67483,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.data.logo_2_encabezado
-                          ? "storage/" + _vm.data.logo_2_encabezado
+                          ? _vm.data.logo_2_encabezado
                           : ""
                       }
                     })
@@ -66584,7 +67730,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.data.seccion1_logo1
-                          ? "storage/" + _vm.data.seccion1_logo1
+                          ? _vm.data.seccion1_logo1
                           : ""
                       }
                     })
@@ -66626,7 +67772,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.data.seccion1_logo2
-                          ? "storage/" + _vm.data.seccion1_logo2
+                          ? _vm.data.seccion1_logo2
                           : ""
                       }
                     })
@@ -66668,7 +67814,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.data.seccion1_logo3
-                          ? "storage/" + _vm.data.seccion1_logo3
+                          ? _vm.data.seccion1_logo3
                           : ""
                       }
                     })
@@ -66788,7 +67934,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.data.seccion2_imagen_fondo
-                          ? "storage/" + _vm.data.seccion2_imagen_fondo
+                          ? _vm.data.seccion2_imagen_fondo
                           : ""
                       }
                     })
@@ -66908,7 +68054,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.data.seccion3_imagen
-                          ? "storage/" + _vm.data.seccion3_imagen
+                          ? _vm.data.seccion3_imagen
                           : ""
                       }
                     })
@@ -66998,7 +68144,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.data.seccion3_imagen
-                          ? "storage/" + _vm.data.seccion4_imagen_fondo
+                          ? _vm.data.seccion4_imagen_fondo
                           : ""
                       }
                     })
@@ -67207,7 +68353,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.form.encabezado_imagen_fondo
-                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                          ? _vm.form.encabezado_imagen_fondo
                           : ""
                       }
                     })
@@ -67840,7 +68986,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.form.encabezado_imagen_fondo
-                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                          ? _vm.form.encabezado_imagen_fondo
                           : ""
                       }
                     })
@@ -67932,7 +69078,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.form.seccion1_imagen
-                          ? "storage/" + _vm.form.seccion1_imagen
+                          ? _vm.form.seccion1_imagen
                           : ""
                       }
                     })
@@ -67974,7 +69120,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.form.seccion1_imagen_fondo
-                          ? "storage/" + _vm.form.seccion1_imagen_fondo
+                          ? _vm.form.seccion1_imagen_fondo
                           : ""
                       }
                     })
@@ -68123,7 +69269,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.form.encabezado_imagen_fondo
-                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                          ? _vm.form.encabezado_imagen_fondo
                           : ""
                       }
                     })
@@ -68336,7 +69482,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.form.encabezado_imagen_fondo
-                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                          ? _vm.form.encabezado_imagen_fondo
                           : ""
                       }
                     })
@@ -68376,7 +69522,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_1_encabezado }
+                      attrs: {
+                        src: _vm.form.logo_1_encabezado
+                          ? _vm.form.logo_1_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -68414,7 +69564,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_2_encabezado }
+                      attrs: {
+                        src: _vm.form.logo_2_encabezado
+                          ? _vm.form.logo_2_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -68665,7 +69819,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo1 }
+                      attrs: {
+                        src: _vm.form.seccion1_logo1
+                          ? _vm.form.seccion1_logo1
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -68703,7 +69861,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.seccion1_logo2 }
+                      attrs: {
+                        src: _vm.form.seccion1_logo2
+                          ? _vm.form.seccion1_logo2
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -68742,7 +69904,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: "storage/" + _vm.form.seccion1_imagen_fondo
+                        src: _vm.form.seccion1_imagen_fondo
+                          ? _vm.form.seccion1_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -68978,7 +70142,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: "storage/" + _vm.form.seccion3_imagen_fondo
+                        src: _vm.form.seccion3_imagen_fondo
+                          ? _vm.form.seccion3_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -69213,7 +70379,7 @@ var render = function() {
                       staticClass: "miniatura img-fluid",
                       attrs: {
                         src: _vm.form.encabezado_imagen_fondo
-                          ? "storage/" + _vm.form.encabezado_imagen_fondo
+                          ? _vm.form.encabezado_imagen_fondo
                           : ""
                       }
                     })
@@ -69253,7 +70419,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_1_encabezado }
+                      attrs: {
+                        src: _vm.form.logo_1_encabezado
+                          ? _vm.form.logo_1_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -69291,7 +70461,11 @@ var render = function() {
                   _c("figure", [
                     _c("img", {
                       staticClass: "miniatura img-fluid",
-                      attrs: { src: "storage/" + _vm.form.logo_2_encabezado }
+                      attrs: {
+                        src: _vm.form.logo_2_encabezado
+                          ? _vm.form.logo_2_encabezado
+                          : ""
+                      }
                     })
                   ])
                 ]),
@@ -69302,22 +70476,36 @@ var render = function() {
                   [
                     _c("label", [_vm._v("Texto")]),
                     _vm._v(" "),
-                    _c("ckeditor", {
-                      staticClass: "col-md-10 form-control",
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.texto_encabezado,
+                          expression: "form.texto_encabezado"
+                        }
+                      ],
+                      staticClass: "form-control",
                       class: {
                         "is-invalid": _vm.form.errors.has("texto_encabezado")
                       },
                       attrs: {
-                        "tag-name": "textarea",
-                        editor: _vm.editor,
-                        config: _vm.editorConfig
+                        type: "text",
+                        name: "texto_encabezado",
+                        placeholder: "Enter ..."
                       },
-                      model: {
-                        value: _vm.form.texto_encabezado,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "texto_encabezado", $$v)
-                        },
-                        expression: "form.texto_encabezado"
+                      domProps: { value: _vm.form.texto_encabezado },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "texto_encabezado",
+                            $event.target.value
+                          )
+                        }
                       }
                     }),
                     _vm._v(" "),
@@ -69579,7 +70767,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: "storage/" + _vm.form.seccion1_imagen_fondo
+                        src: _vm.form.seccion1_imagen_fondo
+                          ? _vm.form.seccion1_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -69701,7 +70891,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: "storage/" + _vm.form.seccion2_imagen_fondo
+                        src: _vm.form.seccion2_imagen_fondo
+                          ? _vm.form.seccion2_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -69941,7 +71133,9 @@ var render = function() {
                     _c("img", {
                       staticClass: "miniatura img-fluid",
                       attrs: {
-                        src: "storage/" + _vm.form.seccion4_imagen_fondo
+                        src: _vm.form.seccion4_imagen_fondo
+                          ? _vm.form.seccion4_imagen_fondo
+                          : ""
                       }
                     })
                   ])
@@ -86161,15 +87355,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ./resources/js/components/CorteComponent.vue ***!
   \****************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CorteComponent_vue_vue_type_template_id_00e92471___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CorteComponent.vue?vue&type=template&id=00e92471& */ "./resources/js/components/CorteComponent.vue?vue&type=template&id=00e92471&");
 /* harmony import */ var _CorteComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CorteComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CorteComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CorteComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CorteComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -86199,7 +87392,7 @@ component.options.__file = "resources/js/components/CorteComponent.vue"
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/CorteComponent.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87236,8 +88429,8 @@ var imagesRootPath = 'storage/';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\xampp\htdocs\jvhs\project\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\xampp\htdocs\jvhs\project\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/jvh/project/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/jvh/project/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

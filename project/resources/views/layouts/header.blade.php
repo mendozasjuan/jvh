@@ -75,8 +75,10 @@
 	@if ($text)
 		<div id="h-seccion1" class="row align-items-center">
 			<div class="col-12 col-md-4 col-lg-3 col-xl-2 text-center">
-				<img  src="img/Object-5209.svg">
-				<img  src="img/Object-1237.svg">
+				<!--<img  src="img/Object-5209.svg">
+				<img  src="img/Object-1237.svg">-->
+				<img  src="{{ asset($logo1) }}">
+				<img  src="{{ asset($logo2) }}">
 			</div>
 			<div class="col-12 col-md-7 col-xl-3 col-lg-3">
 				<h2>

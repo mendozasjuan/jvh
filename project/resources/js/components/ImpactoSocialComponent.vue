@@ -26,7 +26,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? this.imagesRootPath+form.encabezado_imagen_fondo : ''"/>
+                      <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? form.encabezado_imagen_fondo : ''"/>
                     </figure>
                     
                   </div>
@@ -42,7 +42,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.logo_1_encabezado"/>
+                      <img class="miniatura img-fluid" :src="form.logo_1_encabezado ? form.logo_1_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -57,7 +57,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="this.imagesRootPath+form.logo_2_encabezado"/>
+                      <img class="miniatura img-fluid" :src="form.logo_2_encabezado ? form.logo_2_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -114,7 +114,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="this.imagesRootPath+form.seccion2_imagen_fondo"/>
+                      <img class="miniatura img-fluid" :src="form.seccion2_imagen_fondo ? form.seccion2_imagen_fondo : ''"/>
                     </figure>
                   </div>
                  

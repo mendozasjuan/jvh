@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\ImagenCorte;
 class ImagenCorteController extends Controller
 {
     /**
@@ -60,5 +60,24 @@ class ImagenCorteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function saveImage(Request $request){
+        if($request->file('imageproducto')){
+            $imageProducto = $request->file('imageproducto')->store('producto','public');
+            $imagencorte = ImagenCorte::create([
+                'imagen' => $imageProducto,
+                'corte_id' => $request['corteid']
+            ]);
+
+            return $imagencorte;
+        }
+
+    }
+
+    public function allImagesProducto($corteid){
+        $imagencorte = ImagenCorte::where('corte_id',$corteid)->get();
+        return $imagencorte;
+
     }
 }

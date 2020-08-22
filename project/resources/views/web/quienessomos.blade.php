@@ -7,23 +7,45 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset('img/09.png') }}") no-repeat center center;
+			background: url("{{ asset($quienessomos->encabezado_imagen_fondo) }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
+		}
+
+		#h-seccion3{
+			height: 100%;
+			background: transparent url("{{ asset($quienessomos->seccion2_imagen_fondo) }}") no-repeat center center;
+			opacity:1;
+			color:#fff;
+			padding-right: 38px;
+			background-size: cover;
+			margin-right: auto;
+			position: relative;
+			width: 100%;
+		}
+
+		.qs-seccion1{
+			width: 100%;
+			opacity: 1;
+			position: relative;
+			
 		}
     </style>
 @endsection
 
 @section('header')
 	@include('layouts.header',[
-		'text' => false,
-		'activeLink' => 'quienessomos'
+		'text' => $quienessomos->texto_encabezado_habilitado,
+		'titulo' => $quienessomos->texto_encabezado,
+		'activeLink' => 'quienessomos',
+		'logo1'=> $quienessomos->logo_1_encabezado,
+		'logo2' => $quienessomos->logo_2_encabezado
 	])
 @endsection
 
 @section('secciones')
 		<!--<section>-->
-	<div id="qs-seccion1" >
+	<div id="qs-seccion1" style="height: 204px;background: transparent url({{ asset($quienessomos->seccion1_imagen_fondo) }}) 0% 0% no-repeat padding-box;background-size: cover;" class="qs-seccion1">
 				<div class="negro">
 
 				</div>
@@ -61,7 +83,7 @@
 			</div>
 
 
-			<div id="qs-seccion4">
+			<div id="qs-seccion4" style="background: transparent url({{ asset($quienessomos->seccion1_imagen_fondo) }}) 0% 0% no-repeat padding-box;background-size: cover;padding-top:50px;padding-bottom: 50px;" class="qs-seccion1">
 				<div class="negro"></div>
 				<div style="height: 100%" class="row align-items-center">
 					<div class="col-12 col-md-3 text-center">

@@ -26,7 +26,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="data.encabezado_imagen_fondo ? 'storage/'+data.encabezado_imagen_fondo : '' "/>
+                      <img class="miniatura img-fluid" :src="data.encabezado_imagen_fondo ? data.encabezado_imagen_fondo : '' "/>
                     </figure>
                     
                   </div>
@@ -42,7 +42,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="data.logo_1_encabezado ? 'storage/'+data.logo_1_encabezado :''"/>
+                      <img class="miniatura img-fluid" :src="data.logo_1_encabezado ? data.logo_1_encabezado :''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -57,7 +57,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="data.logo_2_encabezado ? 'storage/'+data.logo_2_encabezado : ''"/>
+                      <img class="miniatura img-fluid" :src="data.logo_2_encabezado ? data.logo_2_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -97,7 +97,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="data.seccion1_logo1 ? 'storage/'+data.seccion1_logo1 : ''"/>
+                      <img class="miniatura img-fluid" :src="data.seccion1_logo1 ? data.seccion1_logo1 : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -112,7 +112,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="data.seccion1_logo2 ? 'storage/'+data.seccion1_logo2 : ''"/>
+                      <img class="miniatura img-fluid" :src="data.seccion1_logo2 ? data.seccion1_logo2 : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -127,7 +127,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="data.seccion1_logo3 ? 'storage/'+data.seccion1_logo3 : ''"/>
+                      <img class="miniatura img-fluid" :src="data.seccion1_logo3 ? data.seccion1_logo3 : ''"/>
                     </figure>
                   </div>
 
@@ -155,7 +155,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="data.seccion2_imagen_fondo ? 'storage/'+data.seccion2_imagen_fondo : ''"/>
+                      <img class="miniatura img-fluid" :src="data.seccion2_imagen_fondo ? data.seccion2_imagen_fondo : ''"/>
                     </figure>
                   </div>
 
@@ -184,7 +184,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="data.seccion3_imagen ? 'storage/'+data.seccion3_imagen : ''"/>
+                      <img class="miniatura img-fluid" :src="data.seccion3_imagen ? data.seccion3_imagen : ''"/>
                     </figure>
                   </div>
 
@@ -207,7 +207,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="data.seccion3_imagen ? 'storage/'+data.seccion4_imagen_fondo : ''"/>
+                      <img class="miniatura img-fluid" :src="data.seccion3_imagen ? data.seccion4_imagen_fondo : ''"/>
                     </figure>
                   </div>
                   

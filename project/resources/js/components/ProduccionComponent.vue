@@ -26,7 +26,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? 'storage/'+form.encabezado_imagen_fondo : ''"/>
+                      <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? form.encabezado_imagen_fondo : ''"/>
                     </figure>
                     
                   </div>
@@ -42,7 +42,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.logo_1_encabezado"/>
+                      <img class="miniatura img-fluid" :src="form.logo_1_encabezado ? form.logo_1_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -57,7 +57,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.logo_2_encabezado"/>
+                      <img class="miniatura img-fluid" :src="form.logo_2_encabezado ? form.logo_2_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -97,7 +97,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo1"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_logo1 ? form.seccion1_logo1 : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -112,7 +112,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo2"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_logo2 ? form.seccion1_logo2 : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -127,7 +127,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_imagen_fondo"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_imagen_fondo ? form.seccion1_imagen_fondo : ''"/>
                     </figure>
                   </div>
 
@@ -176,7 +176,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion3_imagen_fondo"/>
+                      <img class="miniatura img-fluid" :src="form.seccion3_imagen_fondo ? form.seccion3_imagen_fondo : ''"/>
                     </figure>
                   </div>
                  

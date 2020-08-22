@@ -7,14 +7,14 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset('img/Black-Sheep-Restaurants-argentinian-steak-hong-kong.png') }}") no-repeat center center;
+			background: url("{{ asset($impactosocial->encabezado_imagen_fondo) }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
 			margin-bottom: 29px;
 		}
 		#i-seccion5 {
 			height: 100%;
-			background: transparent url("{{ asset('img/MOcowclf_12781.png') }}") no-repeat center center;
+			background: transparent url("{{ asset($impactosocial->seccion2_imagen_fondo) }}") no-repeat center center;
 			background-size: cover;
 			opacity:1;
 			position: relative;
@@ -36,8 +36,11 @@
 
 @section('header')
 	@include('layouts.header',[
-			'text' => false,
-			'activeLink' => 'impactosocial'
+		'text' => $impactosocial->texto_encabezado_habilitado,
+		'titulo' => $impactosocial->texto_encabezado,
+		'activeLink' => 'impactosocial',
+		'logo1'=> $impactosocial->logo_1_encabezado,
+		'logo2' => $impactosocial->logo_2_encabezado
 	])
 @endsection
 

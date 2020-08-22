@@ -7,7 +7,7 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset('img/WhatsApp Image 2020-06-18 at 12.17.53 PM (1).png') }}") no-repeat center center;
+			background: url("{{ asset($contacto->encabezado_imagen_fondo) }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
 			margin-bottom: 29px;

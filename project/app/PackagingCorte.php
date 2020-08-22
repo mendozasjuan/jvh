@@ -18,8 +18,4 @@ class PackagingCorte extends Model
     {
         return $this->belongsTo(Corte::class,'corte_id');
     }
-
-    public function getPackagingAttribute(){
-    	return \Storage::url($this->packaging);
-    }
 }

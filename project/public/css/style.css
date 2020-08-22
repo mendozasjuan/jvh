@@ -182,7 +182,7 @@ p{
 }
 
 
-#h-seccion3{
+/*#h-seccion3{
 	height: 100%;
 	background: transparent url('../img/WhatsApp Image 2020-06-18 at 12.17.52 PM (1).png') no-repeat center center;
 	opacity:1;
@@ -192,11 +192,8 @@ p{
 	margin-right: auto;
 	position: relative;
 	width: 100%;
-	/*background: url('../img/bg-black_angus-001-JAndrewPatronik.png') no-repeat center center;
-	background-size: cover;
-	position: relative;
-	margin-bottom: 29px;*/
-}
+	
+}*/
 
 #h-seccion3 h2{
 	margin-top: 135px;
@@ -217,6 +214,7 @@ p{
 	height: 100%;
 	width: 100%;
 	position: absolute;
+	top:0;
 }
 
 #h-seccion4 {
@@ -240,13 +238,13 @@ p{
 	width: 242px;
 }
 
-#h-seccion5 {
+/*#h-seccion5 {
 	height: 100%;
 	background: transparent url('../img/wagyu-de-kobe-y-black-angus-las-mejores-carnes-del-mundo.png') no-repeat center center;
 	background-size: cover;
 	opacity:1;
 	position: relative;
-}
+}*/
 
 #h-seccion5 h2{
 	margin-left: 38px;
@@ -257,7 +255,7 @@ p{
 }
 
 
-#qs-seccion1{
+/*#qs-seccion1{
 	width: 100%;
 	height: 204px;
 	background: transparent url('../img/10.png') 0% 0% no-repeat padding-box;
@@ -265,7 +263,7 @@ p{
 	position: relative;
 	background-size: cover;
 }
-
+*/
 #qs-seccion1 p{
 	color:#fff;
 	padding-left: 37px;
@@ -282,14 +280,14 @@ p{
 	font-size: 14px;
 }
 
-#qs-seccion4{
+/*#qs-seccion4{
 	width: 100%;
 	height: 286px;
 	background: transparent url('../img/10.png') 0% 0% no-repeat padding-box;
 	opacity: 1;
 	position: relative;
 	background-size: cover;
-}
+}*/
 
 #qs-seccion4 p{
 	color:#fff;
@@ -327,14 +325,14 @@ footer img{
     align-items: center;
 }
 
-#p-seccion1{
+/*#p-seccion1{
 	width: 100%;
 	background: transparent url('../img/10.png') 0% 0% no-repeat padding-box;
 	opacity: 1;
 	position: relative;
 	background-size: cover;
 	color:#fff;
-}
+}*/
 
 #p-seccion1 p{
 	color:#fff;

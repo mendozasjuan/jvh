@@ -18,8 +18,4 @@ class ImagenCorte extends Model
     {
         return $this->belongsTo(Corte::class,'corte_id');
     }
-
-    public function getImagenAttribute(){
-    	return \Storage::url($this->imagen);
-    }
 }

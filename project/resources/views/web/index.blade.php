@@ -7,7 +7,8 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset('img/bg-black_angus-001-JAndrewPatronik.png') }}") no-repeat center center;
+			/*background: url("{{ asset('img/bg-black_angus-001-JAndrewPatronik.png') }}") no-repeat center center;*/
+			background: url("{{ asset($inicio->encabezado_imagen_fondo) }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
 			margin-bottom: 29px;
@@ -16,11 +17,36 @@
 		#h-seccion4 p{
 			color:#6E6F71;
 		}
+
+		#h-seccion3{
+			height: 100%;
+			background: transparent url("{{ asset($inicio->seccion2_imagen_fondo) }}") no-repeat center center;
+			opacity:1;
+			color:#fff;
+			padding-right: 38px;
+			background-size: cover;
+			margin-right: auto;
+			position: relative;
+			width: 100%;
+		}
+
+		#h-seccion5 {
+			height: 100%;
+			background: transparent url("{{ asset($inicio->seccion4_imagen_fondo) }}") no-repeat center center;
+			background-size: cover;
+			opacity:1;
+			position: relative;
+		}
     </style>
 @endsection
 
 @section('header')
-	@include('layouts.header',['text' => true,'titulo'=>$inicio->texto_encabezado])
+	@include('layouts.header',[
+		'text' => $inicio->texto_encabezado_habilitado,
+		'titulo'=> $inicio->texto_encabezado,
+		'logo1'=> $inicio->logo_1_encabezado,
+		'logo2' => $inicio->logo_2_encabezado
+		])
 @endsection
 
 @section('secciones')
@@ -35,9 +61,12 @@
 		</div>
 		<div class="col">
 			<div class="row align-items-center" style="width: 100%;height: 100%">
-				<img style="width: 100px; height: 119px; margin-right: 33px;" src="img/logo-3.png">
+				<!--<img style="width: 100px; height: 119px; margin-right: 33px;" src="img/logo-3.png">
 				<img style="width: 87px; height: 87px; margin-right: 43px;" src="img/27201_sello islamic center halal argentina_big.png">
-				<img style="width: 94px; height: 94px;" src="img/qué-es-kosher@2x.png">
+				<img style="width: 94px; height: 94px;" src="img/qué-es-kosher@2x.png">-->
+				<img style="width: 100px; height: 119px; margin-right: 33px;" src="{{ asset($inicio->seccion1_logo1) }}">
+				<img style="width: 87px; height: 87px; margin-right: 43px;" src="{{ asset($inicio->seccion1_logo2) }}">
+				<img style="width: 94px; height: 94px;" src="{{ asset($inicio->seccion1_logo3) }}">
 			</div>
 		</div>
 
@@ -63,7 +92,8 @@
 			</div>
 		</div>
 		<div class="col">
-			<img class="float-right" src="img/map.svg">
+			<!--<img class="float-right" src="img/map.svg">-->
+			<img class="float-right" src="{{ asset($inicio->seccion3_imagen) }}">
 		</div>
 
 	</div>

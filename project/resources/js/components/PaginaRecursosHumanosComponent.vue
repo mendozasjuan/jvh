@@ -26,7 +26,7 @@
                         </div>
                       </div>
                       <figure>
-                        <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? 'storage/'+form.encabezado_imagen_fondo : ''"/>
+                        <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? form.encabezado_imagen_fondo : ''"/>
                       </figure>
 
                   </div>

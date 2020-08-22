@@ -26,7 +26,7 @@
                         </div>
                       </div>
                       <figure>
-                        <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? 'storage/'+form.encabezado_imagen_fondo : ''"/>
+                        <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? form.encabezado_imagen_fondo : ''"/>
                       </figure>
 
                   </div>
@@ -53,7 +53,7 @@
                         </div>
                       </div>
                       <figure>
-                        <img class="miniatura img-fluid" :src="form.seccion1_imagen ? 'storage/'+form.seccion1_imagen : ''"/>
+                        <img class="miniatura img-fluid" :src="form.seccion1_imagen ? form.seccion1_imagen : ''"/>
                       </figure>
 
                   </div>
@@ -72,7 +72,7 @@
                         </div>
                       </div>
                       <figure>
-                        <img class="miniatura img-fluid" :src="form.seccion1_imagen_fondo ? 'storage/'+form.seccion1_imagen_fondo : ''"/>
+                        <img class="miniatura img-fluid" :src="form.seccion1_imagen_fondo ? form.seccion1_imagen_fondo : ''"/>
                       </figure>
 
                   </div>
@@ -133,6 +133,8 @@
 
     				this.form.seccion1_titulo= typeof paginaproductos.seccion1_titulo === 'object' ? paginaproductos.seccion1_titulo.es : '';
     				this.form.seccion1_titulo_zh= typeof paginaproductos.seccion1_titulo === 'object' ? paginaproductos.seccion1_titulo.zh : '';
+            this.form.seccion1_imagen= paginaproductos.seccion1_imagen;
+            this.form.seccion1_imagen_fondo= paginaproductos.seccion1_imagen_fondo;
 
 
         	}

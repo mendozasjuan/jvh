@@ -7,7 +7,7 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset('img/188687997.jpg.gallery.png') }}") no-repeat center center;
+			background: url("{{ asset($produccion->encabezado_imagen_fondo) }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
 		}
@@ -15,13 +15,38 @@
 		#p-seccion2 p{
 			color:#6E6F71;
 		}
+
+		#h-seccion3{
+			height: 100%;
+			background: transparent url("{{ asset($produccion->seccion3_imagen_fondo) }}") no-repeat center center;
+			opacity:1;
+			color:#fff;
+			padding-right: 38px;
+			background-size: cover;
+			margin-right: auto;
+			position: relative;
+			width: 100%;
+		}
+
+		#p-seccion1{
+			width: 100%;
+			background: transparent url('{{ asset($produccion->seccion1_imagen_fondo) }}') 0% 0% no-repeat padding-box;
+			opacity: 1;
+			position: relative;
+			background-size: cover;
+			color:#fff;
+		}
+
     </style>
 @endsection
 
 @section('header')
 	@include('layouts.header',[
-		'text' => false,
-		'activeLink' => 'produccion'
+		'text' => $produccion->texto_encabezado_habilitado,
+		'titulo' => $produccion->texto_encabezado,
+		'activeLink' => 'produccion',
+		'logo1'=> $produccion->logo_1_encabezado,
+		'logo2' => $produccion->logo_2_encabezado
 	])
 @endsection
 
@@ -41,8 +66,10 @@
 						</p>-->
 					</div>
 					<div class="col">
-						<img width="120" height="120" style="margin-right: 33px;" src="img/Object-5209.svg">
-						<img width="120" height="120" src="img/Object-1237.svg">
+						<!--<img width="120" height="120" style="margin-right: 33px;" src="img/Object-5209.svg">-->
+						<!--<img width="120" height="120" src="img/Object-1237.svg">-->
+						<img width="120" height="120" style="margin-right: 33px;" src="{{ asset($produccion->seccion1_logo1) }}">
+						<img width="120" height="120" src="{{ asset($produccion->seccion1_logo2) }}">
 					</div>
 				</div>
 			</div>

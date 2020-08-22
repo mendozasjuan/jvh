@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Corte;
 use App\CategoriaCorte;
+use App\PaginaProductos;
 
 class ProductosDetalleController extends Controller
 {
@@ -29,10 +30,12 @@ class ProductosDetalleController extends Controller
     {
         $corte = Corte::find($id);
         $categoriascorte=CategoriaCorte::all();
+        $img_fondo = PaginaProductos::first()->encabezado_imagen_fondo;
        return view('web.productosdetalle')->with(
             [
                 'producto' => $corte,
-                'categorias' => $categoriascorte
+                'categorias' => $categoriascorte,
+                'img_fondo' => $img_fondo,
             ]);
     }
 }

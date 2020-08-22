@@ -7,7 +7,7 @@
 		.hero-img{
 			height: 300px;
 			width: 100%;
-			background: url("{{ asset('img/wagyu-de-kobe-y-black-angus-las-mejores-carnes-del-mundo.png') }}") no-repeat center center;
+			background: url("{{ asset($productos->encabezado_imagen_fondo) }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
 		}
@@ -15,7 +15,7 @@
 		#p-seccion1{
 			width: 100%;
 			height: 376px;
-			background: transparent url("{{ asset('img/10.png') }}") 0% 0% no-repeat padding-box;
+			background: transparent url("{{ asset($productos->seccion1_imagen_fondo) }}") 0% 0% no-repeat padding-box;
 			opacity: 1;
 			position: relative;
 			background-size: cover;
@@ -56,6 +56,10 @@
 
 		.item-product:hover img { border: 0px; }
 
+		.item-product:hover {
+			cursor: pointer;
+		}
+
     </style>
 @endsection
 
@@ -68,8 +72,9 @@
 					<div class="negro"></div>
 					<div style="height: 100%; padding-top: 38px;" class="row" >
 						<div class="col-12 col-md-4 text-center" >
-							<h2 style="margin-left: 170px; padding-left: 20px; border-left: 3px solid #fff;">{!! $productos->seccion1_titulo!!}<!--Catálogo de cortes--></h2>
-							<img src="{{ asset('img/vaca-1.png') }}" alt="">
+							<h2 style="margin-left: 90px; padding-left: 20px; border-left: 3px solid #fff;">{!! $productos->seccion1_titulo!!}<!--Catálogo de cortes--></h2>
+							<!--<img src="{{ asset('img/vaca-1.png') }}" alt="">-->
+							<img src="{{ asset($productos->seccion1_imagen) }}" alt="">
 						</div>
 						@foreach ($categorias as $categoria)
 							<div class="col-12 col-md-4 text-center">

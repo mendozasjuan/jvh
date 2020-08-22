@@ -131,35 +131,35 @@ class QuienesSomosController extends Controller
 
         if($image['encabezado_imagen_fondo'] !=null ){
             $quienessomos->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
-        }else{
+        }/*else{
             $quienessomos->encabezado_imagen_fondo = null;
-        }
+        }*/
 
         if($image['logo_1_encabezado'] !=null ){
             $quienessomos->logo_1_encabezado = $image['logo_1_encabezado'];
-        }else{
+        }/*else{
             $quienessomos->logo_1_encabezado = null;
-        }
+        }*/
 
         if($image['logo_2_encabezado'] !=null )
             $quienessomos->logo_2_encabezado = $image['logo_2_encabezado'];
-        else
-            $quienessomos->logo_2_encabezado = null;
+        /*else
+            $quienessomos->logo_2_encabezado = null;*/
 
         if($image['seccion1_imagen_fondo'] !=null )
             $quienessomos->seccion1_imagen_fondo = $image['seccion1_imagen_fondo'];
-        else
-            $quienessomos->seccion1_imagen_fondo = null;
+        /*else
+            $quienessomos->seccion1_imagen_fondo = null;*/
 
         if($image['seccion2_imagen_fondo'] !=null )
             $quienessomos->seccion2_imagen_fondo = $image['seccion2_imagen_fondo'];
-        else
-            $quienessomos->seccion2_imagen_fondo = null;
+        /*else
+            $quienessomos->seccion2_imagen_fondo = null;*/
 
         if($image['seccion4_imagen_fondo'] !=null )
             $quienessomos->seccion4_imagen_fondo = $image['seccion4_imagen_fondo'];
-        else
-            $quienessomos->seccion4_imagen_fondo = null;
+        /*else
+            $quienessomos->seccion4_imagen_fondo = null;*/
 
         
 
@@ -179,6 +179,7 @@ class QuienesSomosController extends Controller
 
     public function storeImagenes($request)
     {
+
         if ($request->file('encabezado_imagen_fondo')==null)
           {
             $image['encabezado_imagen_fondo'] = null;
@@ -189,7 +190,6 @@ class QuienesSomosController extends Controller
             // almacena y captura el nombre del archivo
             //$encabezado_imagen_fondo =  $image['encabezado_imagen_fondo']->store('img','public');
           }
-
 
           if ($request->file('logo_1_encabezado')==null)
           {

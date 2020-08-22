@@ -7,15 +7,28 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset('img/msc-rifaya-container-ships-cap-san-nicolas-evening-seaport.png') }}") no-repeat center center;
+			background: url("{{ asset($exportacion->encabezado_imagen_fondo) }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
 			margin-bottom: 29px;
 		}
 
+		#h-seccion4 p{
+			color:#6E6F71;
+		}
+
+		#p-seccion1{
+			width: 100%;
+			background: transparent url("{{ asset($exportacion->seccion2_imagen_fondo) }}") 0% 0% no-repeat padding-box;
+			opacity: 1;
+			position: relative;
+			background-size: cover;
+			color:#fff;
+		}
+
 		#p-seccion5 {
 			height: 100%;
-			background: transparent url("{{ asset('img/DSC_0611-Copiar.png') }}") no-repeat center center;
+			background: transparent url("{{ asset($exportacion->seccion3_imagen_fondo) }}") no-repeat center center;
 			background-size: cover;
 			opacity:1;
 			position: relative;
@@ -28,17 +41,16 @@
 			color:#fff;
 			font-size: 40px;
 		}
-
-		#h-seccion4 p{
-			color:#6E6F71;
-		}
     </style>
 @endsection
 
 @section('header')
 	@include('layouts.header',[
-			'text' => false,
-			'activeLink' => 'exportacion'
+		'text' => $exportacion->texto_encabezado_habilitado,
+		'titulo' => $exportacion->texto_encabezado,
+		'activeLink' => 'exportacion',
+		'logo1'=> $exportacion->logo_1_encabezado,
+		'logo2' => $exportacion->logo_2_encabezado
 	])
 @endsection
 
@@ -55,7 +67,8 @@
 			</div>
 		</div>
 		<div class="col">
-			<img class="float-right" src="img/map.svg">
+			<!--<img class="float-right" src="img/map.svg">-->
+			<img class="float-right" src="{{ asset($exportacion->seccion1_imagen) }}">
 		</div>
 
 	</div>	

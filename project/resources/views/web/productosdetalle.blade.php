@@ -7,7 +7,7 @@
 		.hero-img{
 			height: 300px;
 			width: 100%;
-			background: url("{{ asset('img/wagyu-de-kobe-y-black-angus-las-mejores-carnes-del-mundo.png') }}") no-repeat center center;
+			background: url("{{ asset($img_fondo) }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
 		}

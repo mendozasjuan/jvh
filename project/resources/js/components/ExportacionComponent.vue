@@ -26,7 +26,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? 'storage/'+form.encabezado_imagen_fondo : ''"/>
+                      <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? form.encabezado_imagen_fondo : ''"/>
                     </figure>
                     
                   </div>
@@ -42,7 +42,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.logo_1_encabezado"/>
+                      <img class="miniatura img-fluid" :src="form.logo_1_encabezado ? form.logo_1_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -57,7 +57,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.logo_2_encabezado"/>
+                      <img class="miniatura img-fluid" :src="form.logo_2_encabezado ? form.logo_2_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -98,7 +98,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_imagen"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_imagen ? form.seccion1_imagen : ''"/>
                     </figure>
                   </div>
 
@@ -128,7 +128,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion2_imagen_fondo"/>
+                      <img class="miniatura img-fluid" :src="form.seccion2_imagen_fondo ? form.seccion2_imagen_fondo : ''"/>
                     </figure>
                   </div>
 
@@ -152,7 +152,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion3_imagen_fondo"/>
+                      <img class="miniatura img-fluid" :src="form.seccion3_imagen_fondo ? form.seccion3_imagen_fondo : ''"/>
                     </figure>
                   </div>
                  
@@ -232,17 +232,21 @@
 				this.form.texto_encabezado_habilitado= exportacion.texto_encabezado_habilitado;
 
 				this.form.seccion1_titulo = typeof exportacion.seccion1_titulo === 'object' ? exportacion.seccion1_titulo.es : '';
-                this.form.seccion1_parrafo = typeof exportacion.seccion1_parrafo === 'object' ? exportacion.seccion1_parrafo.es : '';
-                this.form.seccion1_titulo_zh = typeof exportacion.seccion1_titulo === 'object' ? exportacion.seccion1_titulo.zh : '';
-                this.form.seccion1_parrafo_zh = typeof exportacion.seccion1_parrafo === 'object' ? exportacion.seccion1_parrafo.zh : '';
+        this.form.seccion1_parrafo = typeof exportacion.seccion1_parrafo === 'object' ? exportacion.seccion1_parrafo.es : '';
+        this.form.seccion1_titulo_zh = typeof exportacion.seccion1_titulo === 'object' ? exportacion.seccion1_titulo.zh : '';
+        this.form.seccion1_parrafo_zh = typeof exportacion.seccion1_parrafo === 'object' ? exportacion.seccion1_parrafo.zh : '';
 
-                this.form.seccion2_parrafo1 = typeof exportacion.seccion2_parrafo1 === 'object' ? exportacion.seccion2_parrafo1.es : '';
-                this.form.seccion2_parrafo2 = typeof exportacion.seccion2_parrafo2 === 'object' ? exportacion.seccion2_parrafo2.es : '';
-                this.form.seccion2_parrafo1_zh = typeof exportacion.seccion2_parrafo1 === 'object' ? exportacion.seccion2_parrafo1.zh : '';
-                this.form.seccion2_parrafo2_zh = typeof exportacion.seccion2_parrafo2 === 'object' ? exportacion.seccion2_parrafo2.zh : '';
+        this.form.seccion2_parrafo1 = typeof exportacion.seccion2_parrafo1 === 'object' ? exportacion.seccion2_parrafo1.es : '';
+        this.form.seccion2_parrafo2 = typeof exportacion.seccion2_parrafo2 === 'object' ? exportacion.seccion2_parrafo2.es : '';
+        this.form.seccion2_parrafo1_zh = typeof exportacion.seccion2_parrafo1 === 'object' ? exportacion.seccion2_parrafo1.zh : '';
+        this.form.seccion2_parrafo2_zh = typeof exportacion.seccion2_parrafo2 === 'object' ? exportacion.seccion2_parrafo2.zh : '';
 
-                this.form.seccion3_titulo = typeof exportacion.seccion3_titulo === 'object' ? exportacion.seccion3_titulo.es : '';
-                this.form.seccion3_titulo_zh = typeof exportacion.seccion3_titulo === 'object' ? exportacion.seccion3_titulo.zh : '';
+        this.form.seccion3_titulo = typeof exportacion.seccion3_titulo === 'object' ? exportacion.seccion3_titulo.es : '';
+        this.form.seccion3_titulo_zh = typeof exportacion.seccion3_titulo === 'object' ? exportacion.seccion3_titulo.zh : '';
+
+        this.form.seccion1_imagen = exportacion.seccion1_imagen;
+        this.form.seccion2_imagen_fondo= exportacion.seccion2_imagen_fondo;
+        this.form.seccion3_imagen_fondo= exportacion.seccion3_imagen_fondo;
         	}
         },
         loadExportacion() {
@@ -338,13 +342,13 @@
 
             this.$Progress.start()
             let formData =  new FormData(event.target)
-			formData.append('seccion1_parrafo',this.form.seccion1_parrafo);
-			formData.append('seccion1_parrafo_zh',this.form.seccion1_parrafo_zh);
+      			formData.append('seccion1_parrafo',this.form.seccion1_parrafo);
+      			formData.append('seccion1_parrafo_zh',this.form.seccion1_parrafo_zh);
 
-			formData.append('seccion2_parrafo1',this.form.seccion2_parrafo1);
-			formData.append('seccion2_parrafo2',this.form.seccion2_parrafo2);
-			formData.append('seccion2_parrafo1_zh',this.form.seccion2_parrafo1_zh);
-			formData.append('seccion2_parrafo2_zh',this.form.seccion2_parrafo2_zh);
+      			formData.append('seccion2_parrafo1',this.form.seccion2_parrafo1);
+      			formData.append('seccion2_parrafo2',this.form.seccion2_parrafo2);
+      			formData.append('seccion2_parrafo1_zh',this.form.seccion2_parrafo1_zh);
+      			formData.append('seccion2_parrafo2_zh',this.form.seccion2_parrafo2_zh);
 
              axios.post('api/exportacion',formData)
                 .then(() => {

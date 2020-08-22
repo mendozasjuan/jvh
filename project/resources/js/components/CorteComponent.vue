@@ -38,6 +38,18 @@
                                     <i class="fa fa-edit blue"></i>
                                 </a>
                                 |
+                                <a href="#" @click="addModalImagenesProductoWindow(corte)">
+                                    <i class="fa fa-trash red"></i>
+                                </a>
+                                |
+                                <a href="#" @click="addModalEtiquetadoProductoWindow(corte)">
+                                    <i class="fa fa-trash red"></i>
+                                </a>
+                                |
+                                <a href="#" @click="addModalPackagingProductoWindow(corte)">
+                                    <i class="fa fa-trash red"></i>
+                                </a>
+                                |
                                 <a href="#" @click="deleteCorte(corte.id)">
                                     <i class="fa fa-trash red"></i>
                                 </a>
@@ -45,27 +57,7 @@
                             </td>
                           <!--</tr>-->
                       </tr>
-                  </paginate>
-
-                  <!--<tr v-for="corte in cortes.data" :key="corte.id">
-                    <td>{{ corte.id }}</td>
-                    <td>{{ corte.nombre }}</td>
-                    <td>{{ corte.descripcion }}</td>
-                    <td>{{ corte.categoria.categoria.es }}</td>
-                    <td>{{ corte.tamano_caja }}</td>
-
-                    <td>
-                        <a href="#" data-id="corte.id" @click="editModalWindow(corte)">
-                            <i class="fa fa-edit blue"></i>
-                        </a>
-                        |
-                        <a href="#" @click="deleteCorte(corte.id)">
-                            <i class="fa fa-trash red"></i>
-                        </a>
-
-                    </td>
-                  </tr>-->
-                <!--</tbody>--></table>
+                  </paginate></table>
                 
               </div>
             
@@ -178,6 +170,230 @@
                 </div>
             </div>
             </div>
+
+
+            <!--Modal Imagenes Producto-->
+
+            <div class="modal fade" id="addNewImageProducto" tabindex="-1" role="dialog" aria-labelledby="addImageProductoLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="addImageProductoLabel">Agregar Imagenes del Producto</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      <button class="btn btn-success float-right mb-4" v-on:click="addNewImagenProducto"> Nueva Imagen <i class="fas fa-user-plus fa-fw"></i></button>
+                      <form class="d-none" role="form" @submit.prevent="uploadImageProduto" enctype="multipart/form-data" id='formImagenProducto'>
+                        <div class="row">
+                          <div class="form-group">
+                            <label for="imageproducto">Selecione Imagen</label>
+                            <input type="file" class="form-control-file" name="imageproducto" id="imageproducto" v-on:change="onUploadImage">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <img id="miniaturaImagenProducto" class="miniatura d-none" width="200" height="200" src="" alt="">
+                        </div>
+                        <div class="row">
+                         <button class="btn btn-success">
+                           Guardar
+                         </button>
+                         <input type="button" v-on:click="cancelAddImagenProducto" class="btn btn-danger" value="Cancelar">
+                           
+                         </input>
+                        </div>
+                      </form>
+                       <table class="table table-hover">
+                          <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Imagen</th>
+                                <th>Accion</th>
+                          </tr> 
+                        </thead>
+                        <paginate name="imagenesproducto" :list="imagenesproducto" :per="5" tag="tbody">
+                            <tr v-for="imagen in paginated('imagenesproducto')" :key="imagen.id">
+                                <!--<tr v-for="corte in cortes.data" :key="corte.id">-->
+                                  <td>{{ imagen.id }}</td>
+                                  <td><img width="50" :src="imagen.imagen"></td>
+
+                                  <td>
+                                      <a href="#" data-id="corte.id" @click="editModalWindow(imagen)">
+                                          <i class="fa fa-edit blue"></i>
+                                      </a> 
+                                      |
+                                      <a href="#" @click="deleteCorte(imagen.id)">
+                                          <i class="fa fa-trash red"></i>
+                                      </a>
+
+                                  </td>
+                                <!--</tr>-->
+                            </tr>
+                        </paginate>
+
+                      </table>
+                      <paginate-links for="imagenesproducto" :classes="{'ul': 'pagination', 'li': 'page-item', 'a': 'page-link'}"></paginate-links>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    </div>
+
+                  </div>
+              </div>
+            </div>
+
+
+            <!--Modal Imagenes Etiquetados-->
+
+            <div class="modal fade" id="addNewEtiquetadoProducto" tabindex="-1" role="dialog" aria-labelledby="addEtiquetadoProductoLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="addEtiquetadoProductoLabel">Agregar Etiquetado del Producto</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      <button class="btn btn-success float-right mb-4" > Nuevo Etiquetado <i class="fas fa-user-plus fa-fw"></i></button>
+                      <form role="form" @submit.prevent="uploadImageProduto" enctype="multipart/form-data" id='formImagenProducto'>
+                        <div class="row">
+                          <div class="form-group">
+                            <label for="imageproducto">Selecione Imagen</label>
+                            <input type="file" class="form-control-file" name="imageproducto" id="imageproducto" v-on:change="onUploadImage">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <img id="miniaturaImagenProducto" class="miniatura d-none" width="200" height="200" src="" alt="">
+                        </div>
+                        <div class="row">
+                         <button class="btn btn-success">
+                           Guardar
+                         </button>
+                         <input type="button" v-on:click="cancelAddImagenProducto" class="btn btn-danger" value="Cancelar">
+                           
+                         </input>
+                        </div>
+                      </form>
+                       <table class="table table-hover">
+                          <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Accion</th>
+                          </tr> 
+                        </thead>
+                        <paginate name="etiquetados" :list="etiquetados" :per="5" tag="tbody">
+                            <tr v-for="etiquetado in paginated('etiquetados')" :key="etiquetado.id">
+                                <!--<tr v-for="corte in cortes.data" :key="corte.id">-->
+                                  <td>{{ etiquetado.id }}</td>
+                                  <td>{{ etiquetado.etiquetado }}</td>
+
+                                  <td>
+                                      <a href="#" data-id="corte.id" @click="editModalWindow(etiquetado)">
+                                          <i class="fa fa-edit blue"></i>
+                                      </a>
+                                      |
+                                      <a href="#" @click="deleteCorte(etiquetado.id)">
+                                          <i class="fa fa-trash red"></i>
+                                      </a>
+
+                                  </td>
+                                <!--</tr>-->
+                            </tr>
+                        </paginate>
+
+                      </table>
+                      <paginate-links for="etiquetados" :classes="{'ul': 'pagination', 'li': 'page-item', 'a': 'page-link'}"></paginate-links>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    </div>
+
+                  </div>
+              </div>
+            </div>
+
+            <!--Modal Imagenes Packagings-->
+
+            <div class="modal fade" id="addNewPackagingProducto" tabindex="-1" role="dialog" aria-labelledby="addPackagingProductoLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="addPackagingProductoLabel">Agregar Packaging del Producto</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      <button class="btn btn-success float-right mb-4" > Nuevo Packaging <i class="fas fa-user-plus fa-fw"></i></button>
+                      <form role="form" @submit.prevent="uploadImageProduto" enctype="multipart/form-data" id='formImagenProducto'>
+                        <div class="row">
+                          <div class="form-group">
+                            <label for="imageproducto">Selecione Imagen</label>
+                            <input type="file" class="form-control-file" name="imageproducto" id="imageproducto" v-on:change="onUploadImage">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <img id="miniaturaImagenProducto" class="miniatura d-none" width="200" height="200" src="" alt="">
+                        </div>
+                        <div class="row">
+                         <button class="btn btn-success">
+                           Guardar
+                         </button>
+                         <input type="button" v-on:click="cancelAddImagenProducto" class="btn btn-danger" value="Cancelar">
+                           
+                         </input>
+                        </div>
+                      </form>
+                       <table class="table table-hover">
+                          <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Accion</th>
+                          </tr> 
+                        </thead>
+                        <paginate name="packagings" :list="packagings" :per="5" tag="tbody">
+                            <tr v-for="packaging in paginated('packagings')" :key="packaging.id">
+                                <!--<tr v-for="corte in cortes.data" :key="corte.id">-->
+                                  <td>{{ packaging.id }}</td>
+                                  <td>{{ packaging.packaging }}</td>
+
+                                  <td>
+                                      <a href="#" data-id="corte.id" @click="editModalWindow(packaging)">
+                                          <i class="fa fa-edit blue"></i>
+                                      </a>
+                                      |
+                                      <a href="#" @click="deleteCorte(packaging.id)">
+                                          <i class="fa fa-trash red"></i>
+                                      </a>
+
+                                  </td>
+                                <!--</tr>-->
+                            </tr>
+                        </paginate>
+
+                      </table>
+                      <paginate-links for="packagings" :classes="{'ul': 'pagination', 'li': 'page-item', 'a': 'page-link'}"></paginate-links>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    </div>
+
+                  </div>
+              </div>
+            </div>
     </div>
 
 </template>
@@ -188,10 +404,13 @@
             return {
                 editMode: false,
                 cortes: [],
+                imagenesproducto: [],
+                etiquetados: [],
+                packagings: [],
                 categorias:{},
                 picFile:'',
                 idElement:'',
-                paginate: ['cortes'],
+                paginate: ['cortes','imagenesproducto','etiquetados','packagings'],
                 form: new Form({
                     id: '',
                     nombre : '',
@@ -207,7 +426,8 @@
                     imagen_etiquetado:'',
                     imagen_packaging:'',
 
-                })
+                }),
+                corte: {}
             }
         },
         methods: {
@@ -219,6 +439,26 @@
            $('#addNew').modal('show');
            this.form.fill(corte)
         },
+
+        addModalImagenesProductoWindow(corte){
+          this.imagenesproducto = corte.imagenes
+          this.corte = corte
+          console.log(this.corte);
+          $('#addNewImageProducto').modal('show');
+        },
+
+        addModalEtiquetadoProductoWindow(corte){
+          this.etiquetados = corte.etiquetados
+          console.log(this.etiquetados);
+          $('#addNewEtiquetadoProducto').modal('show');
+        },
+
+        addModalPackagingProductoWindow(corte){
+          this.packagings = corte.packagings
+          console.log(this.packagings);
+          $('#addNewPackagingProducto').modal('show');
+        },
+
         updateCorte(){
            this.form.put('api/corte/'+this.form.id)
                .then(()=>{
@@ -263,6 +503,7 @@
           if (event) {
             this.idElement = event.target
             this.picFile = this.idElement.files[0];
+            this.cargarMiniatura(this.idElement,this.picFile);
           }
             if (this.picFile) {
               if(this.idElement.id == 'imagenCorte'){
@@ -280,6 +521,57 @@
                 console.log(this.form.imagen_packaging);
               }
             }
+        },
+        cargarMiniatura(object,file){
+          let reader = new FileReader();
+          reader.onload = (e) => {
+            console.log($(this.idElement).parents('form').find('.miniatura')[0]);
+            $(this.idElement).parents('form').find('.miniatura')[0].src = e.target.result;
+            $(this.idElement).parents('form').find('.miniatura').addClass('d-block')
+            //return this.imagenMiniatura = e.target.result;
+          }
+          reader.readAsDataURL(file);
+        },
+        uploadImageProduto(event){
+          console.log(event.target)
+          var formulario = event.target;
+          this.$Progress.start()
+          let formData =  new FormData(formulario)
+          formData.append('corteid',this.corte.id);
+
+          axios.post('api/saveimageproducto',formData)
+          .then((data) => {
+            console.log(data);
+            Toast.fire({
+              icon: 'success',
+              title: 'Pagina Calidad Actualizada con Exito'
+            })
+
+            this.$Progress.finish()
+            this.loadImagenesProducto(data.data.corte_id);
+
+            
+
+          })
+          .catch(() => {
+            console.log("Error......")
+          })
+
+            $("#miniaturaImagenProducto").attr('src',"").removeClass('d-block').addClass('d-none');
+            $("#formImagenProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+        },
+        loadImagenesProducto(corteid){
+          axios.get("api/allimagesproducto/"+corteid).then( data => {
+            console.log(data);
+            this.imagenesproducto = Array.from(data.data)
+          })
+        },
+        addNewImagenProducto(){
+            $("#formImagenProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+        },
+        cancelAddImagenProducto(){
+            $("#miniaturaImagenProducto").attr('src',"").removeClass('d-block').addClass('d-none');
+            $("#formImagenProducto").trigger("reset").removeClass('d-block').addClass('d-none');
         },
 
         createCorte(){

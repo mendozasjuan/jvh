@@ -7,7 +7,7 @@
 		.hero-img{
 			height: 400px;
 			width: 100%;
-			background: url("{{ asset('img/Black-Sheep-Restaurants-argentinian-steak-hong-kong.png') }}") no-repeat center center;
+			background: url("{{ asset($recursoshumanos->encabezado_imagen_fondo) }}") no-repeat center center;
 			background-size: cover;
 			position: relative;
 		}

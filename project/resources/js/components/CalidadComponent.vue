@@ -26,7 +26,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? 'storage/'+form.encabezado_imagen_fondo : ''"/>
+                      <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? form.encabezado_imagen_fondo : ''"/>
                     </figure>
                     
                   </div>
@@ -42,7 +42,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.logo_1_encabezado"/>
+                      <img class="miniatura img-fluid" :src="form.logo_1_encabezado ? form.logo_1_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -57,7 +57,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.logo_2_encabezado"/>
+                      <img class="miniatura img-fluid" :src="form.logo_2_encabezado ? form.logo_2_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -98,7 +98,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo1"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_logo1 ? form.seccion1_logo1 : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -113,7 +113,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo2"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_logo2 ? form.seccion1_logo2 : ''"/>
                     </figure>
                   </div>
 
@@ -129,7 +129,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo3"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_logo3 ? form.seccion1_logo3 : ''"/>
                     </figure>
                   </div>
 
@@ -145,7 +145,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo4"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_logo4 ? form.seccion1_logo4 : ''"/>
                     </figure>
                   </div>
 
@@ -161,7 +161,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo5"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_logo5 ? form.seccion1_logo5 : ''"/>
                     </figure>
                   </div>
 
@@ -177,7 +177,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo6"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_logo6 ? form.seccion1_logo6 : ''"/>
                     </figure>
                   </div>
 
@@ -193,7 +193,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_logo7"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_logo7 ? form.seccion1_logo7 : ''"/>
                     </figure>
                   </div>
 
@@ -211,7 +211,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion2_imagen_fondo"/>
+                      <img class="miniatura img-fluid" :src="form.seccion2_imagen_fondo ? form.seccion2_imagen_fondo : ''"/>
                     </figure>
                   </div>
                  
@@ -320,10 +320,10 @@
 
            this.$Progress.start()
            let formData =  new FormData(event.target)
-			formData.append('seccion1_parrafo',this.form.seccion1_parrafo);
-			formData.append('seccion1_parrafo_zh',this.form.seccion1_parrafo_zh);
+      			formData.append('seccion1_parrafo',this.form.seccion1_parrafo);
+      			formData.append('seccion1_parrafo_zh',this.form.seccion1_parrafo_zh);
 
-			formData.append('_method', 'PUT');
+      			formData.append('_method', 'PUT');
             //this.form.submit('put','api/inicio/'+this.form.id,{
               axios.post('api/calidad/'+this.form.id,formData)
                .then(()=>{

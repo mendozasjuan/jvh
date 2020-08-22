@@ -26,7 +26,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? 'storage/'+form.encabezado_imagen_fondo : ''"/>
+                      <img class="miniatura img-fluid" :src="form.encabezado_imagen_fondo ? form.encabezado_imagen_fondo : ''"/>
                     </figure>
                     
                   </div>
@@ -42,7 +42,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.logo_1_encabezado"/>
+                      <img class="miniatura img-fluid" :src="form.logo_1_encabezado ? form.logo_1_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
@@ -57,12 +57,14 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.logo_2_encabezado"/>
+                      <img class="miniatura img-fluid" :src="form.logo_2_encabezado ? form.logo_2_encabezado : ''"/>
                     </figure>
                   </div>
                   <div class="form-group">
                         <label>Texto</label>
-                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }" tag-name="textarea"  :editor="editor" v-model="form.texto_encabezado" :config="editorConfig"></ckeditor>
+                        <input v-model="form.texto_encabezado" type="text" class="form-control" name="texto_encabezado" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('texto_encabezado') }">
+
+                        <!--<ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }" tag-name="textarea"  :editor="editor" v-model="form.texto_encabezado" :config="editorConfig"></ckeditor>-->
                         <!--<textarea v-model="form.texto_encabezado" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('texto_encabezado') }"></textarea>-->
                         <has-error :form="form" field="texto_encabezado"></has-error>
                   </div>
@@ -110,7 +112,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion1_imagen_fondo"/>
+                      <img class="miniatura img-fluid" :src="form.seccion1_imagen_fondo ? form.seccion1_imagen_fondo : ''"/>
                     </figure>
                   </div>
 
@@ -139,7 +141,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion2_imagen_fondo"/>
+                      <img class="miniatura img-fluid" :src="form.seccion2_imagen_fondo ? form.seccion2_imagen_fondo : ''"/>
                     </figure>
                   </div>
 
@@ -196,7 +198,7 @@
                       </div>
                     </div>
                     <figure>
-                      <img class="miniatura img-fluid" :src="'storage/'+form.seccion4_imagen_fondo"/>
+                      <img class="miniatura img-fluid" :src="form.seccion4_imagen_fondo ? form.seccion4_imagen_fondo : ''"/>
                     </figure>
                   </div>
                   
@@ -337,36 +339,36 @@
 
            this.$Progress.start()
            let formData =  new FormData(event.target)
-			formData.append('texto_encabezado',this.form.texto_encabezado);
-			formData.append('texto_encabezado_zh',this.form.texto_encabezado_zh);
-			
-			formData.append('seccio1_parrafo1',this.form.seccio1_parrafo1);
-			formData.append('seccio1_parrafo2',this.form.seccio1_parrafo2);
-			formData.append('seccio1_parrafo3',this.form.seccio1_parrafo3);
-			formData.append('seccio1_parrafo4',this.form.seccio1_parrafo4);
-			formData.append('seccio1_parrafo1_zh',this.form.seccio1_parrafo1_zh);
-			formData.append('seccio1_parrafo2_zh',this.form.seccio1_parrafo2_zh);
-			formData.append('seccio1_parrafo3_zh',this.form.seccio1_parrafo3_zh);
-			formData.append('seccio1_parrafo4_zh',this.form.seccio1_parrafo4_zh);
+      			formData.append('texto_encabezado',this.form.texto_encabezado);
+      			formData.append('texto_encabezado_zh',this.form.texto_encabezado_zh);
+      			
+      			formData.append('seccio1_parrafo1',this.form.seccio1_parrafo1);
+      			formData.append('seccio1_parrafo2',this.form.seccio1_parrafo2);
+      			formData.append('seccio1_parrafo3',this.form.seccio1_parrafo3);
+      			formData.append('seccio1_parrafo4',this.form.seccio1_parrafo4);
+      			formData.append('seccio1_parrafo1_zh',this.form.seccio1_parrafo1_zh);
+      			formData.append('seccio1_parrafo2_zh',this.form.seccio1_parrafo2_zh);
+      			formData.append('seccio1_parrafo3_zh',this.form.seccio1_parrafo3_zh);
+      			formData.append('seccio1_parrafo4_zh',this.form.seccio1_parrafo4_zh);
 
-			formData.append('seccion2_titulo',this.form.seccion2_titulo);
-			formData.append('seccion2_parrafo',this.form.seccion2_parrafo);
-			formData.append('seccion2_titulo_zh',this.form.seccion2_titulo_zh);
-			formData.append('seccion2_parrafo_zh',this.form.seccion2_parrafo_zh);
+      			formData.append('seccion2_titulo',this.form.seccion2_titulo);
+      			formData.append('seccion2_parrafo',this.form.seccion2_parrafo);
+      			formData.append('seccion2_titulo_zh',this.form.seccion2_titulo_zh);
+      			formData.append('seccion2_parrafo_zh',this.form.seccion2_parrafo_zh);
 
 
-			formData.append('seccion3_parrafo1',this.form.seccion3_parrafo1);
-			formData.append('seccion3_parrafo2',this.form.seccion3_parrafo2);
-			formData.append('seccion3_parrafo1_zh',this.form.seccion3_parrafo1_zh);
-			formData.append('seccion3_parrafo2_zh',this.form.seccion3_parrafo2_zh);
-			formData.append('seccion4_parrafo1',this.form.seccion4_parrafo1);
-			formData.append('seccion4_parrafo2',this.form.seccion4_parrafo2);
-			formData.append('seccion4_parrafo3',this.form.seccion4_parrafo3);
-			formData.append('seccion4_parrafo4',this.form.seccion4_parrafo4);
-			formData.append('seccion4_parrafo1_zh',this.form.seccion4_parrafo1_zh);
-			formData.append('seccion4_parrafo2_zh',this.form.seccion4_parrafo2_zh);
-			formData.append('seccion4_parrafo3_zh',this.form.seccion4_parrafo3_zh);
-			formData.append('seccion4_parrafo4_zh',this.form.seccion4_parrafo4_zh);
+      			formData.append('seccion3_parrafo1',this.form.seccion3_parrafo1);
+      			formData.append('seccion3_parrafo2',this.form.seccion3_parrafo2);
+      			formData.append('seccion3_parrafo1_zh',this.form.seccion3_parrafo1_zh);
+      			formData.append('seccion3_parrafo2_zh',this.form.seccion3_parrafo2_zh);
+      			formData.append('seccion4_parrafo1',this.form.seccion4_parrafo1);
+      			formData.append('seccion4_parrafo2',this.form.seccion4_parrafo2);
+      			formData.append('seccion4_parrafo3',this.form.seccion4_parrafo3);
+      			formData.append('seccion4_parrafo4',this.form.seccion4_parrafo4);
+      			formData.append('seccion4_parrafo1_zh',this.form.seccion4_parrafo1_zh);
+      			formData.append('seccion4_parrafo2_zh',this.form.seccion4_parrafo2_zh);
+      			formData.append('seccion4_parrafo3_zh',this.form.seccion4_parrafo3_zh);
+      			formData.append('seccion4_parrafo4_zh',this.form.seccion4_parrafo4_zh);
 
              formData.append('_method', 'PUT');
             //this.form.submit('put','api/inicio/'+this.form.id,{
