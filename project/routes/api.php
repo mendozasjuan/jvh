@@ -33,4 +33,17 @@ Route::apiResources(['paginarecursoshumanos' => 'API\PaginaRecursosHumanosContro
 Route::apiResources(['paginacontacto' => 'API\PaginaContactoController']);
 Route::post('saveimageproducto','API\ImagenCorteController@saveImage');
 Route::get('allimagesproducto/{idproducto}','API\ImagenCorteController@allImagesProducto');
+Route::post('updateimageproducto/{idimagen}','API\ImagenCorteController@updateImage');
+Route::post('deleteimageproducto/{idimagen}','API\ImagenCorteController@deleteImage');
+
+Route::post('saveetiquetadoproducto','API\EtiquetadoCorteController@saveEtiquetado');
+Route::get('alletiquetadosproducto/{idproducto}','API\EtiquetadoCorteController@allEtiquetadosProducto');
+Route::post('updateetiquetadoproducto/{idimagen}','API\EtiquetadoCorteController@updateEtiquetado');
+Route::post('deleteetiquetadoproducto/{idimagen}','API\EtiquetadoCorteController@deleteEtiquetado');
+
+Route::post('savepackagingproducto','API\PackagingCorteController@savePackaging');
+Route::get('allpackagingsproducto/{idproducto}','API\PackagingCorteController@allPackagingsProducto');
+Route::post('updatepackagingproducto/{idimagen}','API\PackagingCorteController@updatePackaging');
+Route::post('deletepackagingproducto/{idimagen}','API\PackagingCorteController@deletePackaging');
+
 Route::get('storage/{filename}', 'InicioController@images');

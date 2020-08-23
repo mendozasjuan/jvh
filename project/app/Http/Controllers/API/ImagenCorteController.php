@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\ImagenCorte;
 class ImagenCorteController extends Controller
 {
@@ -73,6 +74,42 @@ class ImagenCorteController extends Controller
             return $imagencorte;
         }
 
+    }
+
+    public function updateImage(Request $request,$id){
+        $imagen = ImagenCorte::find($id);
+        $imageOld = $imagen->imagen;
+
+        if($request->file('imageproducto')){
+            $imageNew = $request->file('imageproducto')->store('img/producto','public');
+            $imagen->imagen = $imageNew;
+            $imagen->update();
+
+            $exists = Storage::disk('public')->exists($imageOld);
+
+            if($exists){
+                Storage::disk('public')->delete($imageOld);
+            }
+
+            return $imagen;
+        }
+
+    }
+
+    public function deleteImage($id){
+        $imagen = ImagenCorte::find($id);
+        
+        $exists = Storage::disk('public')->exists($imagen->imagen);
+
+        if($exists){
+            Storage::disk('public')->delete($imagen->imagen);
+        }
+
+        $imagen->delete();
+
+        return response()->json([
+         'message' => 'imagen borrada con exito'
+        ]);
     }
 
     public function allImagesProducto($corteid){

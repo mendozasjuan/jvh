@@ -12,8 +12,8 @@
                 </div>
               </div>
              
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover">
+              <div class="card-body  p-0">
+                <table class="table table-hover table-responsive">
                   <thead>
                     <tr>
                         <th>ID</th>
@@ -21,7 +21,7 @@
                         <th>Descripcion</th>
                         <th>Categoria de Corte</th>
                         <th>Tamaño de Caja</th>
-                        <th>Accion</th>
+                        <th style="width: 13%">Accion</th>
                   </tr> 
                 </thead>
                   <paginate name="cortes" :list="cortes" :per="10" tag="tbody">
@@ -179,7 +179,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
 
-                        <h5 class="modal-title" id="addImageProductoLabel">Agregar Imagenes del Producto</h5>
+                        <h5 class="modal-title" id="addImageProductoLabel">Listado de Imagenes del Producto</h5>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -221,11 +221,11 @@
                                   <td><img width="50" :src="imagen.imagen"></td>
 
                                   <td>
-                                      <a href="#" data-id="corte.id" @click="editModalWindow(imagen)">
+                                      <a href="#" data-id="corte.id" @click="editImagenProducto(imagen)">
                                           <i class="fa fa-edit blue"></i>
                                       </a> 
                                       |
-                                      <a href="#" @click="deleteCorte(imagen.id)">
+                                      <a href="#" @click="deleteImagenProducto(imagen.id)">
                                           <i class="fa fa-trash red"></i>
                                       </a>
 
@@ -254,29 +254,29 @@
                   <div class="modal-content">
                     <div class="modal-header">
 
-                        <h5 class="modal-title" id="addEtiquetadoProductoLabel">Agregar Etiquetado del Producto</h5>
+                        <h5 class="modal-title" id="addEtiquetadoProductoLabel">Listado Etiquetado del Producto</h5>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                      <button class="btn btn-success float-right mb-4" > Nuevo Etiquetado <i class="fas fa-user-plus fa-fw"></i></button>
-                      <form role="form" @submit.prevent="uploadImageProduto" enctype="multipart/form-data" id='formImagenProducto'>
+                      <button class="btn btn-success float-right mb-4" v-on:click="addNewEtiquetadoProducto"> Nuevo Etiquetado <i class="fas fa-user-plus fa-fw"></i></button>
+                     <form class="d-none" role="form" @submit.prevent="uploadEtiquetadoProduto" enctype="multipart/form-data" id='formEtiquetadoProducto'>
                         <div class="row">
                           <div class="form-group">
-                            <label for="imageproducto">Selecione Imagen</label>
-                            <input type="file" class="form-control-file" name="imageproducto" id="imageproducto" v-on:change="onUploadImage">
+                            <label for="etiquetadoproducto">Selecione Imagen</label>
+                            <input type="file" class="form-control-file" name="etiquetadoproducto" id="etiquetadoproducto" v-on:change="onUploadImage">
                           </div>
                         </div>
                         <div class="row">
-                          <img id="miniaturaImagenProducto" class="miniatura d-none" width="200" height="200" src="" alt="">
+                          <img id="miniaturaEtiquetadoProducto" class="miniatura d-none" width="200" height="200" src="" alt="">
                         </div>
                         <div class="row">
                          <button class="btn btn-success">
                            Guardar
                          </button>
-                         <input type="button" v-on:click="cancelAddImagenProducto" class="btn btn-danger" value="Cancelar">
+                         <input type="button" v-on:click="cancelAddEtiquetadoProducto" class="btn btn-danger" value="Cancelar">
                            
                          </input>
                         </div>
@@ -293,14 +293,14 @@
                             <tr v-for="etiquetado in paginated('etiquetados')" :key="etiquetado.id">
                                 <!--<tr v-for="corte in cortes.data" :key="corte.id">-->
                                   <td>{{ etiquetado.id }}</td>
-                                  <td>{{ etiquetado.etiquetado }}</td>
+                                  <td><img width="50" :src="etiquetado.etiquetado"></td>
 
                                   <td>
-                                      <a href="#" data-id="corte.id" @click="editModalWindow(etiquetado)">
+                                      <a href="#" data-id="corte.id" @click="editEtiquetadoProducto(etiquetado)">
                                           <i class="fa fa-edit blue"></i>
                                       </a>
                                       |
-                                      <a href="#" @click="deleteCorte(etiquetado.id)">
+                                      <a href="#" @click="deleteEtiquetadoProducto(etiquetado.id)">
                                           <i class="fa fa-trash red"></i>
                                       </a>
 
@@ -328,29 +328,29 @@
                   <div class="modal-content">
                     <div class="modal-header">
 
-                        <h5 class="modal-title" id="addPackagingProductoLabel">Agregar Packaging del Producto</h5>
+                        <h5 class="modal-title" id="addPackagingProductoLabel">Listado Packaging del Producto</h5>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                      <button class="btn btn-success float-right mb-4" > Nuevo Packaging <i class="fas fa-user-plus fa-fw"></i></button>
-                      <form role="form" @submit.prevent="uploadImageProduto" enctype="multipart/form-data" id='formImagenProducto'>
+                      <button class="btn btn-success float-right mb-4" v-on:click="addNewPackagingProducto"> Nuevo Packaging <i class="fas fa-user-plus fa-fw"></i></button>
+                      <form class="d-none" role="form" @submit.prevent="uploadPackagingProduto" enctype="multipart/form-data" id='formPackagingProducto'>
                         <div class="row">
                           <div class="form-group">
-                            <label for="imageproducto">Selecione Imagen</label>
-                            <input type="file" class="form-control-file" name="imageproducto" id="imageproducto" v-on:change="onUploadImage">
+                            <label for="packagingproducto">Selecione Imagen</label>
+                            <input type="file" class="form-control-file" name="packagingproducto" id="packagingproducto" v-on:change="onUploadImage">
                           </div>
                         </div>
                         <div class="row">
-                          <img id="miniaturaImagenProducto" class="miniatura d-none" width="200" height="200" src="" alt="">
+                          <img id="miniaturaPackagingProducto" class="miniatura d-none" width="200" height="200" src="" alt="">
                         </div>
                         <div class="row">
                          <button class="btn btn-success">
                            Guardar
                          </button>
-                         <input type="button" v-on:click="cancelAddImagenProducto" class="btn btn-danger" value="Cancelar">
+                         <input type="button" v-on:click="cancelAddPackagingProducto" class="btn btn-danger" value="Cancelar">
                            
                          </input>
                         </div>
@@ -367,14 +367,14 @@
                             <tr v-for="packaging in paginated('packagings')" :key="packaging.id">
                                 <!--<tr v-for="corte in cortes.data" :key="corte.id">-->
                                   <td>{{ packaging.id }}</td>
-                                  <td>{{ packaging.packaging }}</td>
+                                  <td><img width="50" :src="packaging.packaging"></td>
 
                                   <td>
-                                      <a href="#" data-id="corte.id" @click="editModalWindow(packaging)">
+                                      <a href="#" data-id="corte.id" @click="editPackagingProducto(packaging)">
                                           <i class="fa fa-edit blue"></i>
                                       </a>
                                       |
-                                      <a href="#" @click="deleteCorte(packaging.id)">
+                                      <a href="#" @click="deletePackagingProducto(packaging.id)">
                                           <i class="fa fa-trash red"></i>
                                       </a>
 
@@ -403,10 +403,14 @@
         data() {
             return {
                 editMode: false,
+                editImagenMode : false,
                 cortes: [],
                 imagenesproducto: [],
+                imagenproducto:{},
                 etiquetados: [],
+                etiquetadoproducto:{},
                 packagings: [],
+                packagingproducto:{},
                 categorias:{},
                 picFile:'',
                 idElement:'',
@@ -441,20 +445,22 @@
         },
 
         addModalImagenesProductoWindow(corte){
-          this.imagenesproducto = corte.imagenes
+          this.loadImagenesProducto(corte.id)
           this.corte = corte
           console.log(this.corte);
           $('#addNewImageProducto').modal('show');
         },
 
         addModalEtiquetadoProductoWindow(corte){
-          this.etiquetados = corte.etiquetados
+          this.loadEtiquetadosProducto(corte.id)
+          this.corte = corte
           console.log(this.etiquetados);
           $('#addNewEtiquetadoProducto').modal('show');
         },
 
         addModalPackagingProductoWindow(corte){
-          this.packagings = corte.packagings
+          this.loadPackagingsProducto(corte.id)
+          this.corte = corte
           console.log(this.packagings);
           $('#addNewPackagingProducto').modal('show');
         },
@@ -533,6 +539,9 @@
           reader.readAsDataURL(file);
         },
         uploadImageProduto(event){
+          if(this.editImagenMode)
+            return this.updateImagenProducto(event);
+
           console.log(event.target)
           var formulario = event.target;
           this.$Progress.start()
@@ -572,6 +581,295 @@
         cancelAddImagenProducto(){
             $("#miniaturaImagenProducto").attr('src',"").removeClass('d-block').addClass('d-none');
             $("#formImagenProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+        },
+        editImagenProducto(imagen){
+          this.imagenproducto = imagen;
+          this.editImagenMode = true;
+          console.log(this.editImagenMode)
+          $("#formImagenProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+        },
+        updateImagenProducto(event){
+          var formulario = event.target;
+          this.$Progress.start()
+          let formData =  new FormData(formulario)
+          formData.append('imageid',this.imagenproducto.id);
+          formData.append('corteid',this.corte.id);
+
+          axios.post('api/updateimageproducto/'+this.imagenproducto.id,formData)
+          .then((data) => {
+            console.log(data);
+            Toast.fire({
+              icon: 'success',
+              title: 'Imagen del Producto Actualizada con Exito'
+            })
+
+            this.$Progress.finish()
+            this.loadImagenesProducto(data.data.corte_id);
+            this.editImagenMode = false;
+            
+
+          })
+          .catch(() => {
+            console.log("Error......")
+          })
+
+            $("#miniaturaImagenProducto").attr('src',"").removeClass('d-block').addClass('d-none');
+            $("#formImagenProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+        },
+        deleteImagenProducto(imagenid){
+          Swal.fire({
+              title: 'Estas segur@?',
+              text: "Esta accion no se puede deshacer!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Si, Eliminar!'
+            }).then((result) => {
+
+              if (result.value) {
+
+                axios.post('api/deleteimageproducto/'+imagenid)
+                .then((data) => {
+                  console.log(data);
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Imagen Eliminada con Exito'
+                  })
+
+                  this.$Progress.finish()
+                  this.loadImagenesProducto(this.corte.id);
+
+                })
+                .catch(() => {
+                  console.log("Error......")
+                })
+              }
+
+            })
+        },
+        uploadEtiquetadoProduto(event){
+          if(this.editImagenMode)
+            return this.updateEtiquetadoProducto(event);
+
+          console.log(event.target)
+          var formulario = event.target;
+          this.$Progress.start()
+          let formData =  new FormData(formulario)
+          formData.append('corteid',this.corte.id);
+
+          axios.post('api/saveetiquetadoproducto',formData)
+          .then((data) => {
+            console.log(data);
+            Toast.fire({
+              icon: 'success',
+              title: 'Etiquetado Guardado con Exito'
+            })
+
+            this.$Progress.finish()
+            this.loadEtiquetadosProducto(data.data.corte_id);
+
+            
+
+          })
+          .catch(() => {
+            console.log("Error......")
+          })
+
+            $("#miniaturaEtiquetadoProducto").attr('src',"").removeClass('d-block').addClass('d-none');
+            $("#formEtiquetadoProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+        },
+
+        loadEtiquetadosProducto(corteid){
+          axios.get("api/alletiquetadosproducto/"+corteid).then( data => {
+            console.log(data);
+            this.etiquetados = Array.from(data.data)
+          })
+        },
+        addNewEtiquetadoProducto(){
+            $("#formEtiquetadoProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+        },
+        cancelAddEtiquetadoProducto(){
+            $("#miniaturaEtiquetadoProducto").attr('src',"").removeClass('d-block').addClass('d-none');
+            $("#formEtiquetadoProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+        },
+        editEtiquetadoProducto(etiquetado){
+          this.etiquetadoproducto = etiquetado;
+          this.editImagenMode = true;
+          console.log(this.editImagenMode)
+          $("#formEtiquetadoProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+        },
+        updateEtiquetadoProducto(event){
+          var formulario = event.target;
+          this.$Progress.start()
+          let formData =  new FormData(formulario)
+          formData.append('etiquetadoid',this.etiquetadoproducto.id);
+          formData.append('corteid',this.corte.id);
+
+          axios.post('api/updateetiquetadoproducto/'+this.etiquetadoproducto.id,formData)
+          .then((data) => {
+            console.log(data);
+            Toast.fire({
+              icon: 'success',
+              title: 'Etiquetado del Producto Actualizado con Exito'
+            })
+
+            this.$Progress.finish()
+            this.loadEtiquetadosProducto(this.corte.id);
+            this.editImagenMode = false;
+            
+
+          })
+          .catch(() => {
+            console.log("Error......")
+          })
+
+            $("#miniaturaEtiquetadoProducto").attr('src',"").removeClass('d-block').addClass('d-none');
+            $("#formEtiquetadoProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+        },
+        deleteEtiquetadoProducto(etiquetadoid){
+          Swal.fire({
+              title: 'Estas segur@?',
+              text: "Esta accion no se puede deshacer!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Si, Eliminar!'
+            }).then((result) => {
+
+              if (result.value) {
+
+                axios.post('api/deleteetiquetadoproducto/'+etiquetadoid)
+                .then((data) => {
+                  console.log(data);
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Imagen Eliminada con Exito'
+                  })
+
+                  this.$Progress.finish()
+                  this.loadEtiquetadosProducto(this.corte.id);
+
+                })
+                .catch(() => {
+                  console.log("Error......")
+                })
+              }
+
+            })
+        },
+
+        uploadPackagingProduto(event){
+          if(this.editImagenMode)
+            return this.updatePackagingProducto(event);
+
+          console.log(event.target)
+          var formulario = event.target;
+          this.$Progress.start()
+          let formData =  new FormData(formulario)
+          formData.append('corteid',this.corte.id);
+
+          axios.post('api/savepackagingproducto',formData)
+          .then((data) => {
+            console.log(data);
+            Toast.fire({
+              icon: 'success',
+              title: 'Packaging Guardado con Exito'
+            })
+
+            this.$Progress.finish()
+            this.loadPackagingsProducto(this.corte.id);
+
+            
+
+          })
+          .catch(() => {
+            console.log("Error......")
+          })
+
+            $("#miniaturaPackagingProducto").attr('src',"").removeClass('d-block').addClass('d-none');
+            $("#formPackagingProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+        },
+
+        loadPackagingsProducto(corteid){
+          axios.get("api/allpackagingsproducto/"+corteid).then( data => {
+            console.log(data);
+            this.packagings = Array.from(data.data)
+          })
+        },
+        addNewPackagingProducto(){
+            $("#formPackagingProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+        },
+        cancelAddPackagingProducto(){
+            $("#miniaturaPackagingProducto").attr('src',"").removeClass('d-block').addClass('d-none');
+            $("#formPackagingProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+        },
+        editPackagingProducto(packaging){
+          this.packagingproducto = packaging;
+          this.editImagenMode = true;
+          console.log(this.editImagenMode)
+          $("#formPackagingProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+        },
+        updatePackagingProducto(event){
+          var formulario = event.target;
+          this.$Progress.start()
+          let formData =  new FormData(formulario)
+          formData.append('packagingid',this.packagingproducto.id);
+          formData.append('corteid',this.corte.id);
+
+          axios.post('api/updatepackagingproducto/'+this.packagingproducto.id,formData)
+          .then((data) => {
+            console.log(data);
+            Toast.fire({
+              icon: 'success',
+              title: 'Packaging del Producto Actualizado con Exito'
+            })
+
+            this.$Progress.finish()
+            this.loadPackagingsProducto(this.corte.id);
+            this.editImagenMode = false;
+            
+
+          })
+          .catch(() => {
+            console.log("Error......")
+          })
+
+            $("#miniaturaPackagingProducto").attr('src',"").removeClass('d-block').addClass('d-none');
+            $("#formPackagingProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+        },
+        deletePackagingProducto(packagingid){
+          Swal.fire({
+              title: 'Estas segur@?',
+              text: "Esta accion no se puede deshacer!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Si, Eliminar!'
+            }).then((result) => {
+
+              if (result.value) {
+
+                axios.post('api/deletepackagingproducto/'+packagingid)
+                .then((data) => {
+                  console.log(data);
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Packaging Eliminada con Exito'
+                  })
+
+                  this.$Progress.finish()
+                  this.loadPackagingsProducto(this.corte.id);
+
+                })
+                .catch(() => {
+                  console.log("Error......")
+                })
+              }
+
+            })
         },
 
         createCorte(){

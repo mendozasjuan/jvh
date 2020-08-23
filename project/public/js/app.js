@@ -3016,10 +3016,14 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       editMode: false,
+      editImagenMode: false,
       cortes: [],
       imagenesproducto: [],
+      imagenproducto: {},
       etiquetados: [],
+      etiquetadoproducto: {},
       packagings: [],
+      packagingproducto: {},
       categorias: {},
       picFile: '',
       idElement: '',
@@ -3051,18 +3055,20 @@ __webpack_require__.r(__webpack_exports__);
       this.form.fill(corte);
     },
     addModalImagenesProductoWindow: function addModalImagenesProductoWindow(corte) {
-      this.imagenesproducto = corte.imagenes;
+      this.loadImagenesProducto(corte.id);
       this.corte = corte;
       console.log(this.corte);
       $('#addNewImageProducto').modal('show');
     },
     addModalEtiquetadoProductoWindow: function addModalEtiquetadoProductoWindow(corte) {
-      this.etiquetados = corte.etiquetados;
+      this.loadEtiquetadosProducto(corte.id);
+      this.corte = corte;
       console.log(this.etiquetados);
       $('#addNewEtiquetadoProducto').modal('show');
     },
     addModalPackagingProductoWindow: function addModalPackagingProductoWindow(corte) {
-      this.packagings = corte.packagings;
+      this.loadPackagingsProducto(corte.id);
+      this.corte = corte;
       console.log(this.packagings);
       $('#addNewPackagingProducto').modal('show');
     },
@@ -3138,6 +3144,7 @@ __webpack_require__.r(__webpack_exports__);
     uploadImageProduto: function uploadImageProduto(event) {
       var _this4 = this;
 
+      if (this.editImagenMode) return this.updateImagenProducto(event);
       console.log(event.target);
       var formulario = event.target;
       this.$Progress.start();
@@ -3174,8 +3181,271 @@ __webpack_require__.r(__webpack_exports__);
       $("#miniaturaImagenProducto").attr('src', "").removeClass('d-block').addClass('d-none');
       $("#formImagenProducto").trigger("reset").removeClass('d-block').addClass('d-none');
     },
-    createCorte: function createCorte() {
+    editImagenProducto: function editImagenProducto(imagen) {
+      this.imagenproducto = imagen;
+      this.editImagenMode = true;
+      console.log(this.editImagenMode);
+      $("#formImagenProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+    },
+    updateImagenProducto: function updateImagenProducto(event) {
       var _this6 = this;
+
+      var formulario = event.target;
+      this.$Progress.start();
+      var formData = new FormData(formulario);
+      formData.append('imageid', this.imagenproducto.id);
+      formData.append('corteid', this.corte.id);
+      axios.post('api/updateimageproducto/' + this.imagenproducto.id, formData).then(function (data) {
+        console.log(data);
+        Toast.fire({
+          icon: 'success',
+          title: 'Imagen del Producto Actualizada con Exito'
+        });
+
+        _this6.$Progress.finish();
+
+        _this6.loadImagenesProducto(data.data.corte_id);
+
+        _this6.editImagenMode = false;
+      })["catch"](function () {
+        console.log("Error......");
+      });
+      $("#miniaturaImagenProducto").attr('src', "").removeClass('d-block').addClass('d-none');
+      $("#formImagenProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+    },
+    deleteImagenProducto: function deleteImagenProducto(imagenid) {
+      var _this7 = this;
+
+      Swal.fire({
+        title: 'Estas segur@?',
+        text: "Esta accion no se puede deshacer!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+      }).then(function (result) {
+        if (result.value) {
+          axios.post('api/deleteimageproducto/' + imagenid).then(function (data) {
+            console.log(data);
+            Toast.fire({
+              icon: 'success',
+              title: 'Imagen Eliminada con Exito'
+            });
+
+            _this7.$Progress.finish();
+
+            _this7.loadImagenesProducto(_this7.corte.id);
+          })["catch"](function () {
+            console.log("Error......");
+          });
+        }
+      });
+    },
+    uploadEtiquetadoProduto: function uploadEtiquetadoProduto(event) {
+      var _this8 = this;
+
+      if (this.editImagenMode) return this.updateEtiquetadoProducto(event);
+      console.log(event.target);
+      var formulario = event.target;
+      this.$Progress.start();
+      var formData = new FormData(formulario);
+      formData.append('corteid', this.corte.id);
+      axios.post('api/saveetiquetadoproducto', formData).then(function (data) {
+        console.log(data);
+        Toast.fire({
+          icon: 'success',
+          title: 'Etiquetado Guardado con Exito'
+        });
+
+        _this8.$Progress.finish();
+
+        _this8.loadEtiquetadosProducto(data.data.corte_id);
+      })["catch"](function () {
+        console.log("Error......");
+      });
+      $("#miniaturaEtiquetadoProducto").attr('src', "").removeClass('d-block').addClass('d-none');
+      $("#formEtiquetadoProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+    },
+    loadEtiquetadosProducto: function loadEtiquetadosProducto(corteid) {
+      var _this9 = this;
+
+      axios.get("api/alletiquetadosproducto/" + corteid).then(function (data) {
+        console.log(data);
+        _this9.etiquetados = Array.from(data.data);
+      });
+    },
+    addNewEtiquetadoProducto: function addNewEtiquetadoProducto() {
+      $("#formEtiquetadoProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+    },
+    cancelAddEtiquetadoProducto: function cancelAddEtiquetadoProducto() {
+      $("#miniaturaEtiquetadoProducto").attr('src', "").removeClass('d-block').addClass('d-none');
+      $("#formEtiquetadoProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+    },
+    editEtiquetadoProducto: function editEtiquetadoProducto(etiquetado) {
+      this.etiquetadoproducto = etiquetado;
+      this.editImagenMode = true;
+      console.log(this.editImagenMode);
+      $("#formEtiquetadoProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+    },
+    updateEtiquetadoProducto: function updateEtiquetadoProducto(event) {
+      var _this10 = this;
+
+      var formulario = event.target;
+      this.$Progress.start();
+      var formData = new FormData(formulario);
+      formData.append('etiquetadoid', this.etiquetadoproducto.id);
+      formData.append('corteid', this.corte.id);
+      axios.post('api/updateetiquetadoproducto/' + this.etiquetadoproducto.id, formData).then(function (data) {
+        console.log(data);
+        Toast.fire({
+          icon: 'success',
+          title: 'Etiquetado del Producto Actualizado con Exito'
+        });
+
+        _this10.$Progress.finish();
+
+        _this10.loadEtiquetadosProducto(_this10.corte.id);
+
+        _this10.editImagenMode = false;
+      })["catch"](function () {
+        console.log("Error......");
+      });
+      $("#miniaturaEtiquetadoProducto").attr('src', "").removeClass('d-block').addClass('d-none');
+      $("#formEtiquetadoProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+    },
+    deleteEtiquetadoProducto: function deleteEtiquetadoProducto(etiquetadoid) {
+      var _this11 = this;
+
+      Swal.fire({
+        title: 'Estas segur@?',
+        text: "Esta accion no se puede deshacer!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+      }).then(function (result) {
+        if (result.value) {
+          axios.post('api/deleteetiquetadoproducto/' + etiquetadoid).then(function (data) {
+            console.log(data);
+            Toast.fire({
+              icon: 'success',
+              title: 'Imagen Eliminada con Exito'
+            });
+
+            _this11.$Progress.finish();
+
+            _this11.loadEtiquetadosProducto(_this11.corte.id);
+          })["catch"](function () {
+            console.log("Error......");
+          });
+        }
+      });
+    },
+    uploadPackagingProduto: function uploadPackagingProduto(event) {
+      var _this12 = this;
+
+      if (this.editImagenMode) return this.updatePackagingProducto(event);
+      console.log(event.target);
+      var formulario = event.target;
+      this.$Progress.start();
+      var formData = new FormData(formulario);
+      formData.append('corteid', this.corte.id);
+      axios.post('api/savepackagingproducto', formData).then(function (data) {
+        console.log(data);
+        Toast.fire({
+          icon: 'success',
+          title: 'Packaging Guardado con Exito'
+        });
+
+        _this12.$Progress.finish();
+
+        _this12.loadPackagingsProducto(_this12.corte.id);
+      })["catch"](function () {
+        console.log("Error......");
+      });
+      $("#miniaturaPackagingProducto").attr('src', "").removeClass('d-block').addClass('d-none');
+      $("#formPackagingProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+    },
+    loadPackagingsProducto: function loadPackagingsProducto(corteid) {
+      var _this13 = this;
+
+      axios.get("api/allpackagingsproducto/" + corteid).then(function (data) {
+        console.log(data);
+        _this13.packagings = Array.from(data.data);
+      });
+    },
+    addNewPackagingProducto: function addNewPackagingProducto() {
+      $("#formPackagingProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+    },
+    cancelAddPackagingProducto: function cancelAddPackagingProducto() {
+      $("#miniaturaPackagingProducto").attr('src', "").removeClass('d-block').addClass('d-none');
+      $("#formPackagingProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+    },
+    editPackagingProducto: function editPackagingProducto(packaging) {
+      this.packagingproducto = packaging;
+      this.editImagenMode = true;
+      console.log(this.editImagenMode);
+      $("#formPackagingProducto").trigger("reset").removeClass('d-none').addClass('d-block');
+    },
+    updatePackagingProducto: function updatePackagingProducto(event) {
+      var _this14 = this;
+
+      var formulario = event.target;
+      this.$Progress.start();
+      var formData = new FormData(formulario);
+      formData.append('packagingid', this.packagingproducto.id);
+      formData.append('corteid', this.corte.id);
+      axios.post('api/updatepackagingproducto/' + this.packagingproducto.id, formData).then(function (data) {
+        console.log(data);
+        Toast.fire({
+          icon: 'success',
+          title: 'Packaging del Producto Actualizado con Exito'
+        });
+
+        _this14.$Progress.finish();
+
+        _this14.loadPackagingsProducto(_this14.corte.id);
+
+        _this14.editImagenMode = false;
+      })["catch"](function () {
+        console.log("Error......");
+      });
+      $("#miniaturaPackagingProducto").attr('src', "").removeClass('d-block').addClass('d-none');
+      $("#formPackagingProducto").trigger("reset").removeClass('d-block').addClass('d-none');
+    },
+    deletePackagingProducto: function deletePackagingProducto(packagingid) {
+      var _this15 = this;
+
+      Swal.fire({
+        title: 'Estas segur@?',
+        text: "Esta accion no se puede deshacer!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+      }).then(function (result) {
+        if (result.value) {
+          axios.post('api/deletepackagingproducto/' + packagingid).then(function (data) {
+            console.log(data);
+            Toast.fire({
+              icon: 'success',
+              title: 'Packaging Eliminada con Exito'
+            });
+
+            _this15.$Progress.finish();
+
+            _this15.loadPackagingsProducto(_this15.corte.id);
+          })["catch"](function () {
+            console.log("Error......");
+          });
+        }
+      });
+    },
+    createCorte: function createCorte() {
+      var _this16 = this;
 
       this.$Progress.start();
       this.form.submit('post', 'api/corte', {
@@ -3191,7 +3461,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Corte Creado con Exito'
         });
 
-        _this6.$Progress.finish();
+        _this16.$Progress.finish();
 
         $('#addNew').modal('hide');
       })["catch"](function () {
@@ -3199,7 +3469,7 @@ __webpack_require__.r(__webpack_exports__);
       }); //this.loadUsers();
     },
     deleteCorte: function deleteCorte(id) {
-      var _this7 = this;
+      var _this17 = this;
 
       this.$Progress.start();
       Swal.fire({
@@ -3213,11 +3483,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           //Send Request to server
-          _this7.form["delete"]('api/corte/' + id).then(function () {
+          _this17.form["delete"]('api/corte/' + id).then(function () {
             Fire.$emit('AfterCreatedCorteLoadIt');
             Swal.fire('Eliminado!', 'Corte Eliminado con Exito', 'success');
 
-            _this7.$Progress.finish();
+            _this17.$Progress.finish();
           })["catch"](function () {
             Swal.fire({
               icon: 'error',
@@ -3226,22 +3496,22 @@ __webpack_require__.r(__webpack_exports__);
               footer: '<a href>Why do I have this issue?</a>'
             });
 
-            _this7.$Progress.fail();
+            _this17.$Progress.fail();
           });
         }
       });
     }
   },
   created: function created() {
-    var _this8 = this;
+    var _this18 = this;
 
     this.loadCortes();
     this.loadCategorias();
     Fire.$on('AfterCreatedCorteLoadIt', function () {
       //custom events fire on
-      _this8.loadCortes();
+      _this18.loadCortes();
 
-      _this8.loadCategorias();
+      _this18.loadCategorias();
     });
   }
 });
@@ -64466,10 +64736,10 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+          _c("div", { staticClass: "card-body  p-0" }, [
             _c(
               "table",
-              { staticClass: "table table-hover" },
+              { staticClass: "table table-hover table-responsive" },
               [
                 _vm._m(0),
                 _vm._v(" "),
@@ -65317,7 +65587,7 @@ var render = function() {
                                   attrs: { href: "#", "data-id": "corte.id" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.editModalWindow(imagen)
+                                      return _vm.editImagenProducto(imagen)
                                     }
                                   }
                                 },
@@ -65332,7 +65602,7 @@ var render = function() {
                                   attrs: { href: "#" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.deleteCorte(imagen.id)
+                                      return _vm.deleteImagenProducto(imagen.id)
                                     }
                                   }
                                 },
@@ -65395,43 +65665,56 @@ var render = function() {
                 "div",
                 { staticClass: "modal-body" },
                 [
-                  _vm._m(7),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success float-right mb-4",
+                      on: { click: _vm.addNewEtiquetadoProducto }
+                    },
+                    [
+                      _vm._v(" Nuevo Etiquetado "),
+                      _c("i", { staticClass: "fas fa-user-plus fa-fw" })
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "form",
                     {
+                      staticClass: "d-none",
                       attrs: {
                         role: "form",
                         enctype: "multipart/form-data",
-                        id: "formImagenProducto"
+                        id: "formEtiquetadoProducto"
                       },
                       on: {
                         submit: function($event) {
                           $event.preventDefault()
-                          return _vm.uploadImageProduto($event)
+                          return _vm.uploadEtiquetadoProduto($event)
                         }
                       }
                     },
                     [
                       _c("div", { staticClass: "row" }, [
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "imageproducto" } }, [
-                            _vm._v("Selecione Imagen")
-                          ]),
+                          _c(
+                            "label",
+                            { attrs: { for: "etiquetadoproducto" } },
+                            [_vm._v("Selecione Imagen")]
+                          ),
                           _vm._v(" "),
                           _c("input", {
                             staticClass: "form-control-file",
                             attrs: {
                               type: "file",
-                              name: "imageproducto",
-                              id: "imageproducto"
+                              name: "etiquetadoproducto",
+                              id: "etiquetadoproducto"
                             },
                             on: { change: _vm.onUploadImage }
                           })
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(8),
+                      _vm._m(7),
                       _vm._v(" "),
                       _c("div", { staticClass: "row" }, [
                         _c("button", { staticClass: "btn btn-success" }, [
@@ -65443,7 +65726,7 @@ var render = function() {
                         _c("input", {
                           staticClass: "btn btn-danger",
                           attrs: { type: "button", value: "Cancelar" },
-                          on: { click: _vm.cancelAddImagenProducto }
+                          on: { click: _vm.cancelAddEtiquetadoProducto }
                         })
                       ])
                     ]
@@ -65453,7 +65736,7 @@ var render = function() {
                     "table",
                     { staticClass: "table table-hover" },
                     [
-                      _vm._m(9),
+                      _vm._m(8),
                       _vm._v(" "),
                       _c(
                         "paginate",
@@ -65471,7 +65754,14 @@ var render = function() {
                           return _c("tr", { key: etiquetado.id }, [
                             _c("td", [_vm._v(_vm._s(etiquetado.id))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(etiquetado.etiquetado))]),
+                            _c("td", [
+                              _c("img", {
+                                attrs: {
+                                  width: "50",
+                                  src: etiquetado.etiquetado
+                                }
+                              })
+                            ]),
                             _vm._v(" "),
                             _c("td", [
                               _c(
@@ -65480,7 +65770,9 @@ var render = function() {
                                   attrs: { href: "#", "data-id": "corte.id" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.editModalWindow(etiquetado)
+                                      return _vm.editEtiquetadoProducto(
+                                        etiquetado
+                                      )
                                     }
                                   }
                                 },
@@ -65495,7 +65787,9 @@ var render = function() {
                                   attrs: { href: "#" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.deleteCorte(etiquetado.id)
+                                      return _vm.deleteEtiquetadoProducto(
+                                        etiquetado.id
+                                      )
                                     }
                                   }
                                 },
@@ -65524,7 +65818,7 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _vm._m(10)
+              _vm._m(9)
             ])
           ]
         )
@@ -65552,33 +65846,44 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(11),
+              _vm._m(10),
               _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "modal-body" },
                 [
-                  _vm._m(12),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success float-right mb-4",
+                      on: { click: _vm.addNewPackagingProducto }
+                    },
+                    [
+                      _vm._v(" Nuevo Packaging "),
+                      _c("i", { staticClass: "fas fa-user-plus fa-fw" })
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "form",
                     {
+                      staticClass: "d-none",
                       attrs: {
                         role: "form",
                         enctype: "multipart/form-data",
-                        id: "formImagenProducto"
+                        id: "formPackagingProducto"
                       },
                       on: {
                         submit: function($event) {
                           $event.preventDefault()
-                          return _vm.uploadImageProduto($event)
+                          return _vm.uploadPackagingProduto($event)
                         }
                       }
                     },
                     [
                       _c("div", { staticClass: "row" }, [
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "imageproducto" } }, [
+                          _c("label", { attrs: { for: "packagingproducto" } }, [
                             _vm._v("Selecione Imagen")
                           ]),
                           _vm._v(" "),
@@ -65586,15 +65891,15 @@ var render = function() {
                             staticClass: "form-control-file",
                             attrs: {
                               type: "file",
-                              name: "imageproducto",
-                              id: "imageproducto"
+                              name: "packagingproducto",
+                              id: "packagingproducto"
                             },
                             on: { change: _vm.onUploadImage }
                           })
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(13),
+                      _vm._m(11),
                       _vm._v(" "),
                       _c("div", { staticClass: "row" }, [
                         _c("button", { staticClass: "btn btn-success" }, [
@@ -65606,7 +65911,7 @@ var render = function() {
                         _c("input", {
                           staticClass: "btn btn-danger",
                           attrs: { type: "button", value: "Cancelar" },
-                          on: { click: _vm.cancelAddImagenProducto }
+                          on: { click: _vm.cancelAddPackagingProducto }
                         })
                       ])
                     ]
@@ -65616,7 +65921,7 @@ var render = function() {
                     "table",
                     { staticClass: "table table-hover" },
                     [
-                      _vm._m(14),
+                      _vm._m(12),
                       _vm._v(" "),
                       _c(
                         "paginate",
@@ -65634,7 +65939,11 @@ var render = function() {
                           return _c("tr", { key: packaging.id }, [
                             _c("td", [_vm._v(_vm._s(packaging.id))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(packaging.packaging))]),
+                            _c("td", [
+                              _c("img", {
+                                attrs: { width: "50", src: packaging.packaging }
+                              })
+                            ]),
                             _vm._v(" "),
                             _c("td", [
                               _c(
@@ -65643,7 +65952,9 @@ var render = function() {
                                   attrs: { href: "#", "data-id": "corte.id" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.editModalWindow(packaging)
+                                      return _vm.editPackagingProducto(
+                                        packaging
+                                      )
                                     }
                                   }
                                 },
@@ -65658,7 +65969,9 @@ var render = function() {
                                   attrs: { href: "#" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.deleteCorte(packaging.id)
+                                      return _vm.deletePackagingProducto(
+                                        packaging.id
+                                      )
                                     }
                                   }
                                 },
@@ -65687,7 +66000,7 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _vm._m(15)
+              _vm._m(13)
             ])
           ]
         )
@@ -65712,7 +66025,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Tamaño de Caja")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Accion")])
+        _c("th", { staticStyle: { width: "13%" } }, [_vm._v("Accion")])
       ])
     ])
   },
@@ -65741,7 +66054,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "addImageProductoLabel" } },
-        [_vm._v("Agregar Imagenes del Producto")]
+        [_vm._v("Listado de Imagenes del Producto")]
       ),
       _vm._v(" "),
       _c(
@@ -65815,7 +66128,7 @@ var staticRenderFns = [
           staticClass: "modal-title",
           attrs: { id: "addEtiquetadoProductoLabel" }
         },
-        [_vm._v("Agregar Etiquetado del Producto")]
+        [_vm._v("Listado Etiquetado del Producto")]
       ),
       _vm._v(" "),
       _c(
@@ -65836,20 +66149,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "btn btn-success float-right mb-4" }, [
-      _vm._v(" Nuevo Etiquetado "),
-      _c("i", { staticClass: "fas fa-user-plus fa-fw" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
       _c("img", {
         staticClass: "miniatura d-none",
         attrs: {
-          id: "miniaturaImagenProducto",
+          id: "miniaturaEtiquetadoProducto",
           width: "200",
           height: "200",
           src: "",
@@ -65898,7 +66202,7 @@ var staticRenderFns = [
           staticClass: "modal-title",
           attrs: { id: "addPackagingProductoLabel" }
         },
-        [_vm._v("Agregar Packaging del Producto")]
+        [_vm._v("Listado Packaging del Producto")]
       ),
       _vm._v(" "),
       _c(
@@ -65919,20 +66223,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "btn btn-success float-right mb-4" }, [
-      _vm._v(" Nuevo Packaging "),
-      _c("i", { staticClass: "fas fa-user-plus fa-fw" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
       _c("img", {
         staticClass: "miniatura d-none",
         attrs: {
-          id: "miniaturaImagenProducto",
+          id: "miniaturaPackagingProducto",
           width: "200",
           height: "200",
           src: "",
