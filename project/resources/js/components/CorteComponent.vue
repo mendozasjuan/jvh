@@ -142,7 +142,7 @@
                         <has-error :form="form" field="categoria_corte_id"></has-error>
                     </div>
 
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label for="imagenCorte">Imagen Corte</label>
                         <input type="file" class="form-control" id="imagenCorte" ref="file" name="imagenCorte" v-on:change="onUploadImage" >
                     </div>
@@ -155,7 +155,17 @@
                     <div class="form-group">
                         <label for="imagenPackaging">Imagen Packaging</label>
                         <input type="file" class="form-control" id="imagenPackaging" ref="file" name="imagenPackaging" v-on:change="onUploadImage" >
+                    </div>-->
+                    <label for="imagenPackaging">Cargar Imagenes</label>
+
+                    <div v-show="editMode" class="form-group">
+                        
+                        <button type="button" class="btn btn-success" >Producto</button>
+                        <button type="button" class="btn btn-success" >Etiquetado</button>
+                        <button type="button" class="btn btn-success" >Packaging</button>
                     </div>
+
+
 
 
                 </div>
@@ -553,7 +563,7 @@
             console.log(data);
             Toast.fire({
               icon: 'success',
-              title: 'Pagina Calidad Actualizada con Exito'
+              title: 'Datos Actualizados con Exito'
             })
 
             this.$Progress.finish()

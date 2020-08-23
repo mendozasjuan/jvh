@@ -3244,6 +3244,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3386,7 +3396,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(data);
         Toast.fire({
           icon: 'success',
-          title: 'Pagina Calidad Actualizada con Exito'
+          title: 'Datos Actualizados con Exito'
         });
 
         _this4.$Progress.finish();
@@ -66339,56 +66349,52 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "imagenCorte" } }, [
-                        _vm._v("Imagen Corte")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        ref: "file",
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "file",
-                          id: "imagenCorte",
-                          name: "imagenCorte"
-                        },
-                        on: { change: _vm.onUploadImage }
-                      })
+                    _c("label", { attrs: { for: "imagenPackaging" } }, [
+                      _vm._v("Cargar Imagenes")
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "imagenEtiquetado" } }, [
-                        _vm._v("Imagen Etiquetado")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        ref: "file",
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "file",
-                          id: "imagenEtiquetado",
-                          name: "imagenEtiquetado"
-                        },
-                        on: { change: _vm.onUploadImage }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "imagenPackaging" } }, [
-                        _vm._v("Imagen Packaging")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        ref: "file",
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "file",
-                          id: "imagenPackaging",
-                          name: "imagenPackaging"
-                        },
-                        on: { change: _vm.onUploadImage }
-                      })
-                    ])
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.editMode,
+                            expression: "editMode"
+                          }
+                        ],
+                        staticClass: "form-group"
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            attrs: { type: "button" }
+                          },
+                          [_vm._v("Producto")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            attrs: { type: "button" }
+                          },
+                          [_vm._v("Etiquetado")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            attrs: { type: "button" }
+                          },
+                          [_vm._v("Packaging")]
+                        )
+                      ]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-footer" }, [
