@@ -33,6 +33,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/recursoshumanos','PaginaRecursosHumanosController@index')->name('recursoshumanos');
     Route::get('/contacto','PaginaContactoController@index')->name('contacto');
     Route::get('/productosdetalle/{id}','ProductosDetalleController@detalle')->name('productosdetalle');
+    Route::post('/recursoshumanos','PaginaRecursosHumanosController@saveForm')->name('recursoshumanosform');
+    Route::get('/getnacionalidad/{id}','PaginaRecursosHumanosController@getNacionalidadFromPais')->name('getnacionalidad');
+    Route::post('/contacto','PaginaContactoController@saveForm')->name('contactoform');
 
 
     /*Route::get('/quienessomos', function () {

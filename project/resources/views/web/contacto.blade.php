@@ -135,26 +135,32 @@
 				</div>
 			</div>
 			<div class="col">
-				<form action="contacto_submit" method="get" accept-charset="utf-8">
+				<form action="{{route('contactoform')}}" method="post" accept-charset="utf-8">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="form-row mb-3">
 						<div class="form-group col mr-3">
-					      <input type="text" name="nombre" class="rounded-sm form-control" id="nombre" placeholder="Nombre">
+					      <input type="text" name="nombre" class="rounded-sm form-control" id="nombre" placeholder="Nombre" value="{{old('nombre')}}">
+					      <small  class="form-text text-danger">{{ $errors->first('nombre',':message') }}</small>
 					    </div>
 					    <div class="form-group col">
-					      <input type="text" name="apellido" class="rounded-sm form-control" id="apellido" placeholder="Apellido">
+					      <input type="text" name="apellido" class="rounded-sm form-control" id="apellido" placeholder="Apellido" value="{{old('apellido')}}">
+					      <small  class="form-text text-danger">{{ $errors->first('apellido',':message') }}</small>
 					    </div>
 					</div>
 					<div class="form-row mb-3">
 					    <div class="form-group col mr-3">
-					      <input type="email" name="email" class="rounded-sm form-control" id="email" placeholder="Correo Electronico">
+					      <input type="email" name="correo" class="rounded-sm form-control" id="correo" placeholder="Correo Electronico" value="{{old('correo')}}">
+					      <small  class="form-text text-danger">{{ $errors->first('correo',':message') }}</small>
 					    </div>
 					    <div class="form-group col">
-					      <input type="text" name="telefono" class="rounded-sm form-control" id="telefono" placeholder="Teléfono">
+					      <input type="text" name="telefono" class="rounded-sm form-control" id="telefono" placeholder="Teléfono" value="{{old('telefono')}}">
+					      <small  class="form-text text-danger">{{ $errors->first('telefono',':message') }}</small>
 					    </div>
 					</div>
 					<div class="form-row mb-3">
 					    <div class="form-group col">
-					      <textarea name="mensaje" class="rounded-sm form-control">Mensaje</textarea>
+					      <textarea name="mensaje" class="rounded-sm form-control">{{old('mensaje') ? old('mensaje') : 'Mensaje' }}</textarea>
+					      <small  class="form-text text-danger">{{ $errors->first('mensaje',':message') }}</small>
 					    </div>
 					</div>
 					<div class="form-row">
