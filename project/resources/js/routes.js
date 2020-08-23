@@ -12,6 +12,7 @@ import ImpactoSocial from './components/ImpactoSocialComponent.vue'
 import PaginaProductos from './components/PaginaProductosComponent.vue'
 import PaginaRecursosHumanos from './components/PaginaRecursosHumanosComponent.vue'
 import PaginaContacto from './components/PaginaContactoComponent.vue'
+import ContactoFooter from './components/ContactoFooterComponent.vue'
 
 export const routes = [
     {
@@ -69,6 +70,10 @@ export const routes = [
     { 
         path:'/paginacontacto',
         component:PaginaContacto
+    },
+    { 
+        path:'/contactofooter',
+        component:ContactoFooter
     },
  
  

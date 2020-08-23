@@ -252,7 +252,7 @@
 						<strong style="font-size: 17px;">Packaging</strong>
 						<hr style="margin-top: 12px;">
 						@foreach ($producto->etiquetados as $etiquetado)
-								<img style="width:410px" src="{{ asset('img/packaging.png')}}" alt="">
+								<img style="width:200px" src="{{ asset($etiquetado->etiquetado)}}" alt="">
 						@endforeach
 						
 					</div>
@@ -260,7 +260,7 @@
 						<strong style="font-size: 17px;">Etiquetado</strong>
 						<hr style="margin-top: 12px;">
 						@foreach ($producto->packagings as $packaging)
-								<img style="margin-right:12px; width: 200px;" src="{{ asset('img/etiqueta-1.png')}}" alt="">
+								<img style="margin-right:12px; width: 200px;" src="{{ asset($packaging->packaging)}}" alt="">
 						@endforeach
 					</div>
 				</div>

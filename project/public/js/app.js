@@ -2603,6 +2603,238 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ContactoFooterComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ContactoFooterComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      editMode: false,
+      picFile: '',
+      idElement: '',
+      inicio: '',
+      imagenMiniatura: '',
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default.a,
+      editorData: '',
+      editorConfig: {},
+      form: new Form({
+        id: '',
+        ciudad1: '',
+        direccion1: '',
+        ciudad1_zh: '',
+        direccion1_zh: '',
+        telefonos1: '',
+        ciudad2: '',
+        direccion2: '',
+        ciudad2_zh: '',
+        direccion2_zh: '',
+        telefonos2: '',
+        contacto_titulo: '',
+        contacto_titulo_zh: '',
+        comercio_exterior: '',
+        area_comercial: '',
+        _method: ''
+      })
+    };
+  },
+  methods: {
+    editWindow: function editWindow(contactofooter) {
+      if (contactofooter) {
+        this.editMode = true;
+        this.form.clear();
+        this.form.reset();
+        this.form.id = contactofooter.id;
+        this.form.ciudad1 = _typeof(contactofooter.ciudad1) === 'object' ? contactofooter.ciudad1.es : '';
+        this.form.direccion1 = _typeof(contactofooter.direccion1) === 'object' ? contactofooter.direccion1.es : '';
+        this.form.ciudad1_zh = _typeof(contactofooter.ciudad1) === 'object' ? contactofooter.ciudad1.zh : '';
+        this.form.direccion1_zh = _typeof(contactofooter.direccion1) === 'object' ? contactofooter.direccion1.zh : '';
+        this.form.ciudad2 = _typeof(contactofooter.ciudad2) === 'object' ? contactofooter.ciudad2.es : '';
+        this.form.direccion2 = _typeof(contactofooter.direccion2) === 'object' ? contactofooter.direccion2.es : '';
+        this.form.ciudad2_zh = _typeof(contactofooter.ciudad2) === 'object' ? contactofooter.ciudad2.zh : '';
+        this.form.direccion2_zh = _typeof(contactofooter.direccion2) === 'object' ? contactofooter.direccion2.zh : '';
+        this.form.contacto_titulo = _typeof(contactofooter.contacto_titulo) === 'object' ? contactofooter.contacto_titulo.es : '';
+        this.form.contacto_titulo_zh = _typeof(contactofooter.contacto_titulo) === 'object' ? contactofooter.contacto_titulo.zh : '';
+        this.form.telefonos1 = contactofooter.telefonos1;
+        this.form.telefonos2 = contactofooter.telefonos2;
+        this.form.comercio_exterior = contactofooter.comercio_exterior;
+        this.form.area_comercial = contactofooter.area_comercial;
+      }
+    },
+    loadContactoFooter: function loadContactoFooter() {
+      var _this = this;
+
+      axios.get("api/contactofooter").then(function (data) {
+        return _this.editWindow(data.data);
+      }); //pick data from controller and push it into users object
+    },
+    updateContactoFooter: function updateContactoFooter(event) {
+      var _this2 = this;
+
+      if (!this.editMode) return this.createContactoFooter(event);
+      this.$Progress.start();
+      var formData = new FormData(event.target);
+      formData.append('direccion1', this.form.direccion1);
+      formData.append('direccion1_zh', this.form.direccion1_zh);
+      formData.append('direccion2', this.form.direccion2);
+      formData.append('direccion2_zh', this.form.direccion2_zh);
+      formData.append('telefonos1', this.form.telefonos1);
+      formData.append('telefonos2', this.form.telefonos2);
+      formData.append('_method', 'PUT'); //this.form.submit('put','api/inicio/'+this.form.id,{
+
+      axios.post('api/contactofooter/' + this.form.id, formData).then(function () {
+        Fire.$emit('AfterCreatedContactoFooterLoadIt');
+        Toast.fire({
+          icon: 'success',
+          title: 'Contacto Footer Actualizado con Exito'
+        });
+
+        _this2.$Progress.finish();
+      })["catch"](function () {
+        console.log("Error.....");
+      });
+    },
+    createContactoFooter: function createContactoFooter(event) {
+      var _this3 = this;
+
+      this.$Progress.start();
+      var formData = new FormData(event.target);
+      formData.append('direccion1', this.form.direccion1);
+      formData.append('direccion1_zh', this.form.direccion1_zh);
+      formData.append('direccion2', this.form.direccion2);
+      formData.append('direccion2_zh', this.form.direccion2_zh);
+      formData.append('telefonos1', this.form.telefonos1);
+      formData.append('telefonos2', this.form.telefonos2);
+      axios.post('api/contactofooter', formData).then(function () {
+        Fire.$emit('AfterCreatedContactoFooterLoadIt'); //custom events
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Contacto Footer Actualizado con Exito'
+        });
+
+        _this3.$Progress.finish();
+      })["catch"](function () {
+        console.log("Error......");
+      }); //this.loadUsers();
+    }
+  },
+  created: function created() {
+    var _this4 = this;
+
+    this.loadContactoFooter();
+    Fire.$on('AfterCreatedContactoFooterLoadIt', function () {
+      //custom events fire on
+      _this4.loadContactoFooter();
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CorteComponent.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CorteComponent.vue?vue&type=script&lang=js& ***!
@@ -64698,6 +64930,427 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ContactoFooterComponent.vue?vue&type=template&id=61218338&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ContactoFooterComponent.vue?vue&type=template&id=61218338& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row mt-5" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-primary" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: {
+                role: "form",
+                enctype: "multipart/form-data",
+                id: "form"
+              },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.updateContactoFooter($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Ciudad 1")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.ciudad1,
+                          expression: "form.ciudad1"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": _vm.form.errors.has("ciudad1") },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "ciudad1"
+                      },
+                      domProps: { value: _vm.form.ciudad1 },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "ciudad1", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "ciudad1" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Direccion 1")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("direccion1")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.direccion1,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "direccion1", $$v)
+                        },
+                        expression: "form.direccion1"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "direccion1" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Telefono 1")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("telefonos1")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.telefonos1,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "telefonos1", $$v)
+                        },
+                        expression: "form.telefonos1"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "telefonos1" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Ciudad 2")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.ciudad2,
+                          expression: "form.ciudad2"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": _vm.form.errors.has("ciudad2") },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "ciudad2"
+                      },
+                      domProps: { value: _vm.form.ciudad2 },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "ciudad2", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "ciudad2" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Direccion 2")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("direccion2")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.direccion2,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "direccion2", $$v)
+                        },
+                        expression: "form.direccion2"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "direccion2" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Telefono 2")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      staticClass: "col-md-10 form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("telefonos2")
+                      },
+                      attrs: {
+                        "tag-name": "textarea",
+                        editor: _vm.editor,
+                        config: _vm.editorConfig
+                      },
+                      model: {
+                        value: _vm.form.telefonos2,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "telefonos2", $$v)
+                        },
+                        expression: "form.telefonos2"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "telefonos2" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Contacto Titulo")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.contacto_titulo,
+                          expression: "form.contacto_titulo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("contacto_titulo")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "contacto_titulo"
+                      },
+                      domProps: { value: _vm.form.contacto_titulo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "contacto_titulo",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "contacto_titulo" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Comercio Exterior")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.comercio_exterior,
+                          expression: "form.comercio_exterior"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("comercio_exterior")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "comercio_exterior"
+                      },
+                      domProps: { value: _vm.form.comercio_exterior },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "comercio_exterior",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "comercio_exterior" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Area Comercial")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.area_comercial,
+                          expression: "form.area_comercial"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("area_comercial")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Ingrese el Titulo",
+                        name: "area_comercial"
+                      },
+                      domProps: { value: _vm.form.area_comercial },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "area_comercial",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "area_comercial" }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(1)
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Contacto Footer")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Guardar")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CorteComponent.vue?vue&type=template&id=00e92471&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CorteComponent.vue?vue&type=template&id=00e92471& ***!
@@ -87646,6 +88299,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/ContactoFooterComponent.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/ContactoFooterComponent.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ContactoFooterComponent_vue_vue_type_template_id_61218338___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ContactoFooterComponent.vue?vue&type=template&id=61218338& */ "./resources/js/components/ContactoFooterComponent.vue?vue&type=template&id=61218338&");
+/* harmony import */ var _ContactoFooterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ContactoFooterComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ContactoFooterComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ContactoFooterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ContactoFooterComponent_vue_vue_type_template_id_61218338___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ContactoFooterComponent_vue_vue_type_template_id_61218338___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ContactoFooterComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ContactoFooterComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/ContactoFooterComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactoFooterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ContactoFooterComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ContactoFooterComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactoFooterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ContactoFooterComponent.vue?vue&type=template&id=61218338&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/ContactoFooterComponent.vue?vue&type=template&id=61218338& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactoFooterComponent_vue_vue_type_template_id_61218338___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ContactoFooterComponent.vue?vue&type=template&id=61218338& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ContactoFooterComponent.vue?vue&type=template&id=61218338&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactoFooterComponent_vue_vue_type_template_id_61218338___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactoFooterComponent_vue_vue_type_template_id_61218338___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/CorteComponent.vue":
 /*!****************************************************!*\
   !*** ./resources/js/components/CorteComponent.vue ***!
@@ -88632,6 +89354,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PaginaProductosComponent_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/PaginaProductosComponent.vue */ "./resources/js/components/PaginaProductosComponent.vue");
 /* harmony import */ var _components_PaginaRecursosHumanosComponent_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/PaginaRecursosHumanosComponent.vue */ "./resources/js/components/PaginaRecursosHumanosComponent.vue");
 /* harmony import */ var _components_PaginaContactoComponent_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/PaginaContactoComponent.vue */ "./resources/js/components/PaginaContactoComponent.vue");
+/* harmony import */ var _components_ContactoFooterComponent_vue__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/ContactoFooterComponent.vue */ "./resources/js/components/ContactoFooterComponent.vue");
+
 
 
 
@@ -88688,6 +89412,9 @@ var routes = [{
 }, {
   path: '/paginacontacto',
   component: _components_PaginaContactoComponent_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
+}, {
+  path: '/contactofooter',
+  component: _components_ContactoFooterComponent_vue__WEBPACK_IMPORTED_MODULE_14__["default"]
 }];
 
 /***/ }),

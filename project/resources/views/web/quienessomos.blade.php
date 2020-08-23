@@ -30,6 +30,36 @@
 			position: relative;
 			
 		}
+
+		.estrellaabajo{
+			color: #fff;
+		    width: 60px;
+		    border-top: 1px solid #fff;
+		    margin-top: 10px;
+		    font-size: 8px;
+		}
+
+		.estrellaabajo i{
+		    margin-top: 10px;
+		}
+
+		.estrellarriba{
+			color: #fff;
+		    width: 60px;
+		    border-bottom: 1px solid #fff;
+		    margin-bottom: 10px;
+		    font-size: 8px;
+		}
+
+		.estrellarriba i{
+		    margin-bottom: 10px;
+		}
+
+		.titulo-parrafo p:first-of-type {
+			font-weight: 600;
+			font-size: 16px;
+			margin-bottom: 15px;
+		}
     </style>
 @endsection
 
@@ -45,15 +75,48 @@
 
 @section('secciones')
 		<!--<section>-->
-	<div id="qs-seccion1" style="height: 204px;background: transparent url({{ asset($quienessomos->seccion1_imagen_fondo) }}) 0% 0% no-repeat padding-box;background-size: cover;" class="qs-seccion1">
+	<div id="qs-seccion1" style="background: transparent url({{ asset($quienessomos->seccion1_imagen_fondo) }}) 0% 0% no-repeat padding-box;background-size: cover;padding-bottom: 40px;padding-top: 40px;" class="qs-seccion1">
 				<div class="negro">
 
 				</div>
 				<div style="height: 100%" class="row align-items-center">
-					<div class="col-12 col-md-3 text-center">{!! $quienessomos->seccio1_parrafo1 !!}<!--Frigorífico vh cuenta con una Planta 35.000 M2--></div>
-					<div class="col-12 col-md-3 text-center">{!! $quienessomos->seccio1_parrafo2 !!}<!--Frigorífico vh cuenta con Corrales 1200 M2--></div>
-					<div class="col-12 col-md-3 text-center">{!! $quienessomos->seccio1_parrafo3 !!}<!--Capacidad de faena por día 700 animales</p>--></div>
-					<div class="col-12 col-md-3 text-center">{!! $quienessomos->seccio1_parrafo4 !!}<!--Capacidad de almacenaje enfriado y congelado 300 tons</p>--></div>
+					<div class="col-12 col-md-3 text-center d-flex flex-column align-items-center">
+						<div class="estrellarriba">
+							<i class="fas fa-star"></i>
+						</div>
+						{!! $quienessomos->seccio1_parrafo1 !!}<!--Frigorífico vh cuenta con una Planta 35.000 M2-->
+						<div class="estrellaabajo">
+							<i class="fas fa-star"></i>
+						</div>
+					</div>
+					<div class="col-12 col-md-3 text-center d-flex flex-column align-items-center">
+						<div class="estrellarriba">
+							<i class="fas fa-star"></i>
+						</div>
+						{!! $quienessomos->seccio1_parrafo2 !!}<!--Frigorífico vh cuenta con Corrales 1200 M2-->
+						<div class="estrellaabajo">
+							<i class="fas fa-star"></i>
+						</div>
+					</div>
+					<div class="col-12 col-md-3 text-center d-flex flex-column align-items-center">
+						<div class="estrellarriba">
+							<i class="fas fa-star"></i>
+						</div>
+						{!! $quienessomos->seccio1_parrafo3 !!}<!--Capacidad de faena por día 700 animales</p>-->
+						<div class="estrellaabajo">
+							<i class="fas fa-star"></i>
+						</div>	
+					</div>
+					<div class="col-12 col-md-3 text-center d-flex flex-column align-items-center">
+						<div class="estrellarriba">
+							<i class="fas fa-star"></i>
+						</div>
+						{!! $quienessomos->seccio1_parrafo4 !!}<!--Capacidad de almacenaje enfriado y congelado 300 tons</p>-->
+						<div class="estrellaabajo">
+							<i class="fas fa-star"></i>
+						</div>
+							
+					</div>
 				</div>
 			</div>
 			<div  id="h-seccion3" >
@@ -86,23 +149,55 @@
 			<div id="qs-seccion4" style="background: transparent url({{ asset($quienessomos->seccion1_imagen_fondo) }}) 0% 0% no-repeat padding-box;background-size: cover;padding-top:50px;padding-bottom: 50px;" class="qs-seccion1">
 				<div class="negro"></div>
 				<div style="height: 100%" class="row align-items-center">
-					<div class="col-12 col-md-3 text-center">
+					<div class="col-12 col-md-3 text-center d-flex flex-column align-items-center titulo-parrafo">
+						<div class="estrellarriba">
+							<i class="fas fa-star"></i>
+						</div>
+
 						{!! $quienessomos->seccion4_parrafo1 !!}
+
+						<div class="estrellaabajo">
+							<i class="fas fa-star"></i>
+						</div>
 						<!--<p style="font-size: 16px">Visión</p>
 						<p>Liderar e innovar la industria de carne vacuna superando las expectativas de nuestros clientes fortaleciendo y respetando nuestro equipo de trabajo</p>-->
 					</div>
-					<div class="col-12 col-md-3 text-center">
+					<div class="col-12 col-md-3 text-center d-flex flex-column align-items-center titulo-parrafo">
+						<div class="estrellarriba">
+							<i class="fas fa-star"></i>
+						</div>
+
 						{!! $quienessomos->seccion4_parrafo2 !!}
+
+						<div class="estrellaabajo">
+							<i class="fas fa-star"></i>
+						</div>
 						<!--<p style="font-size: 16px">Misión</p>
 						<p>Desarrollar y ofrecer productos de carne vacuna nutritivos, saludables y de alta calidad con un compromiso sostenible en todos nuestros procesos productivos.</p>-->
 					</div>
-					<div class="col-12 col-md-3 text-center">
+					<div class="col-12 col-md-3 text-center d-flex flex-column align-items-center titulo-parrafo">
+						<div class="estrellarriba">
+							<i class="fas fa-star"></i>
+						</div>
+
 						{!! $quienessomos->seccion4_parrafo3 !!}
+
+						<div class="estrellaabajo">
+							<i class="fas fa-star"></i>
+						</div>
 						<!--<p style="font-size: 16px">Nuestro Compromiso</p>
 						<p>Honestidad, integridad, respeto, responsabilidad y dedicación a la excelencia. Desarrollar y ofrecer productos de carne vacuna nutritivos</p>-->
 					</div>
-					<div class="col-12 col-md-3 text-center">
+					<div class="col-12 col-md-3 text-center d-flex flex-column align-items-center titulo-parrafo">
+						<div class="estrellarriba">
+							<i class="fas fa-star"></i>
+						</div>
+
 						{!! $quienessomos->seccion4_parrafo4 !!}
+
+						<div class="estrellaabajo">
+							<i class="fas fa-star"></i>
+						</div>
 						<!--<p style="font-size: 16px">Recursos Humanos</p>
 						<p>Desarrollar y ofrecer productos de carne vacuna nutritivos, saludables y de alta calidad con un compromiso sostenible en todos nuestros procesos productivos.</p>-->
 					</div>

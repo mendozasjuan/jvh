@@ -41,6 +41,24 @@
 			color:#fff;
 			font-size: 40px;
 		}
+
+		.dividir p{
+			font-weight: 600;
+    		margin-bottom: 30px;		
+		}
+
+		.dividir ul {
+			list-style: none;
+			columns: 2;
+		}
+
+		.lineagris{
+			border-top: 3px solid #CCC;
+			width: 40px;
+			position: absolute;
+		    margin-top: 25px;
+		    margin-left: 19px;
+		}
     </style>
 @endsection
 
@@ -80,8 +98,10 @@
 		<div style="height: 100%; padding-top: 76px; padding-bottom: 70px;" class="row align-items-center" >
 			<div class="col">
 				<div class="row">
-					<div class="col">
+					<div class="col dividir">
+						<div class="lineagris"></div>
 						{!!$exportacion->seccion2_parrafo1!!}
+						
 						<!--Paises a los que Exportamos-->
 					</div>
 				</div>
@@ -117,8 +137,10 @@
 			</div>
 			<div class="col">
 				<div class="row">
-					<div class="col">
+					<div class="col dividir">
+						<div class="lineagris"></div>
 						{!! $exportacion->seccion2_parrafo2 !!}
+						
 						<!--Paises Habilitados para Exportar-->
 					</div>
 				</div>
