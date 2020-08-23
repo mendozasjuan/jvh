@@ -37,7 +37,8 @@
 		'titulo' => $calidad->texto_encabezado,
 		'activeLink' => 'calidad',
 		'logo1'=> $calidad->logo_1_encabezado,
-		'logo2' => $calidad->logo_2_encabezado
+		'logo2' => $calidad->logo_2_encabezado,
+		'logotipo' => $logo,
 	])
 @endsection
 
@@ -88,4 +89,8 @@
 				
 		</div>
 	</div>
+@endsection
+
+@section('footer')
+	@include('layouts.footer',['footer'=>$footer,'redessociales' => $redessociales,'logo' => $logo,])
 @endsection

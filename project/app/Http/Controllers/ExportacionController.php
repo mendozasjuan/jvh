@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Exportacion;
+use App\ContactoFooter;
+Use App\RedesSociales;
+Use App\Logo;
 
 class ExportacionController extends Controller
 {
@@ -15,6 +18,16 @@ class ExportacionController extends Controller
     public function index()
     {
         $exportacion = Exportacion::first();
-        return view('web.exportacion')->with('exportacion', $exportacion);
+        $footer = ContactoFooter::first();
+        $redessociales = RedesSociales::first();
+        $logo = Logo::first();
+        return view('web.exportacion')->with(
+            [
+                'exportacion' => $exportacion,
+                'footer' => $footer,
+                'redessociales' => $redessociales,
+                'logo' => $logo,
+            ]
+        );
     }
 }

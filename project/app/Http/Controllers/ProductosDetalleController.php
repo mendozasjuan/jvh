@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Corte;
 use App\CategoriaCorte;
 use App\PaginaProductos;
+use App\ContactoFooter;
+Use App\RedesSociales;
+Use App\Logo;
 
 class ProductosDetalleController extends Controller
 {
@@ -18,10 +21,15 @@ class ProductosDetalleController extends Controller
     {
         $productos = Corte::first();
         $categoriascorte=CategoriaCorte::all();
+        $footer = ContactoFooter::first();
+        $redessociales = RedesSociales::first();
+        $logo = Logo::first();
         return view('web.productos')->with(
             [
                 'productos' => $productos,
-                'categorias' => $categoriascorte
+                'categorias' => $categoriascorte,
+                'footer' => $footer,
+                'logo' => $logo,
             ]);
     }
 
@@ -31,11 +39,17 @@ class ProductosDetalleController extends Controller
         $corte = Corte::find($id);
         $categoriascorte=CategoriaCorte::all();
         $img_fondo = PaginaProductos::first()->encabezado_imagen_fondo;
+        $footer = ContactoFooter::first();
+        $redessociales = RedesSociales::first();
+        $logo = Logo::first();
        return view('web.productosdetalle')->with(
             [
                 'producto' => $corte,
                 'categorias' => $categoriascorte,
                 'img_fondo' => $img_fondo,
+                'footer' => $footer,
+                'redessociales' => $redessociales,
+                'logo' => $logo,
             ]);
     }
 }

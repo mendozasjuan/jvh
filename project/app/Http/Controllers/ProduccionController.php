@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produccion;
+use App\ContactoFooter;
+Use App\RedesSociales;
+Use App\Logo;
 
 class ProduccionController extends Controller
 {
@@ -15,6 +18,15 @@ class ProduccionController extends Controller
     public function index()
     {
         $produccion = Produccion::first();
-        return view('web.produccion')->with('produccion', $produccion);
+        $footer = ContactoFooter::first();
+        $redessociales = RedesSociales::first();
+        $logo = Logo::first();
+        return view('web.produccion')->with(
+            [
+                'produccion' => $produccion,
+                'footer' => $footer,
+                'redessociales' => $redessociales,
+                'logo' => $logo,
+            ]);
     }
 }

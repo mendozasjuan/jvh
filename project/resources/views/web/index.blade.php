@@ -45,7 +45,8 @@
 		'text' => $inicio->texto_encabezado_habilitado,
 		'titulo'=> $inicio->texto_encabezado,
 		'logo1'=> $inicio->logo_1_encabezado,
-		'logo2' => $inicio->logo_2_encabezado
+		'logo2' => $inicio->logo_2_encabezado,
+		'logotipo' => $logo
 		])
 @endsection
 
@@ -112,4 +113,8 @@
 			</div>
 		</div>
 	</div>
+@endsection
+
+@section('footer')
+	@include('layouts.footer',['footer'=>$footer,'redessociales' => $redessociales,'logo' => $logo])
 @endsection

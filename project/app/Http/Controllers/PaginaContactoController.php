@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\PaginaContacto;
 use App\Http\Requests\ContactoCreateRequest;
 use App\Contacto;
+use App\ContactoFooter;
+Use App\RedesSociales;
+Use App\Logo;
 
 class PaginaContactoController extends Controller
 {
@@ -17,7 +20,17 @@ class PaginaContactoController extends Controller
     public function index()
     {
         $contacto = PaginaContacto::first();
-        return view('web.contacto')->with('contacto', $contacto);
+        $footer = ContactoFooter::first();
+        $redessociales = RedesSociales::first();
+        $logo = Logo::first();
+        return view('web.contacto')->with(
+            [
+                'contacto' => $contacto,
+                'footer' => $footer,
+                'redessociales' => $redessociales,
+                'logo' => $logo,
+            ]
+        );
     }
 
     public function saveForm(ContactoCreateRequest $request){

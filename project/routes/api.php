@@ -32,6 +32,8 @@ Route::apiResources(['paginaproductos' => 'API\PaginaProductosController']);
 Route::apiResources(['paginarecursoshumanos' => 'API\PaginaRecursosHumanosController']);
 Route::apiResources(['paginacontacto' => 'API\PaginaContactoController']);
 Route::apiResources(['contactofooter' => 'API\ContactoFooterController']);
+Route::apiResources(['redessociales' => 'API\RedesSocialesController']);
+Route::apiResources(['logo' => 'API\LogoController']);
 
 Route::post('saveimageproducto','API\ImagenCorteController@saveImage');
 Route::get('allimagesproducto/{idproducto}','API\ImagenCorteController@allImagesProducto');

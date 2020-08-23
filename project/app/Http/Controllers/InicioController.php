@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Inicio;
+Use App\ContactoFooter;
+Use App\RedesSociales;
+Use App\Logo;
 
 class InicioController extends Controller
 {
@@ -15,6 +18,16 @@ class InicioController extends Controller
     public function index()
     {
         $inicio = Inicio::first();
-        return view('web.index')->with('inicio', $inicio);
+        $footer = ContactoFooter::first();
+        $redessociales = RedesSociales::first();
+        $logo = Logo::first();
+        return view('web.index')->with(
+            [
+                'inicio' => $inicio,
+                'footer' => $footer,
+                'redessociales' => $redessociales,
+                'logo' => $logo
+            ]
+        );
     }
 }

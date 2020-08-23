@@ -46,7 +46,8 @@
 		'titulo' => $produccion->texto_encabezado,
 		'activeLink' => 'produccion',
 		'logo1'=> $produccion->logo_1_encabezado,
-		'logo2' => $produccion->logo_2_encabezado
+		'logo2' => $produccion->logo_2_encabezado,
+		'logotipo' => $logo,
 	])
 @endsection
 
@@ -105,4 +106,8 @@
 						</div>
 					</div>
 			</div>
+@endsection
+
+@section('footer')
+	@include('layouts.footer',['footer'=>$footer,'redessociales' => $redessociales,'logo' => $logo])
 @endsection

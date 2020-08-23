@@ -33,6 +33,10 @@ p{
 	color: #060505;
 }
 
+footer p{
+	color:#fff;
+	font-size: 13px;
+}
 .container-fluid{
 	padding-left: 0px;
 	padding-right: 0px;

@@ -13,6 +13,8 @@ import PaginaProductos from './components/PaginaProductosComponent.vue'
 import PaginaRecursosHumanos from './components/PaginaRecursosHumanosComponent.vue'
 import PaginaContacto from './components/PaginaContactoComponent.vue'
 import ContactoFooter from './components/ContactoFooterComponent.vue'
+import RedesSociales from './components/RedesSocialesComponent.vue'
+import Logo from './components/LogoComponent.vue'
 
 export const routes = [
     {
@@ -74,6 +76,14 @@ export const routes = [
     { 
         path:'/contactofooter',
         component:ContactoFooter
+    },
+    { 
+        path:'/redessociales',
+        component:RedesSociales
+    },
+    { 
+        path:'/logo',
+        component:Logo
     },
  
  

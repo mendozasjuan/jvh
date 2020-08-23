@@ -68,7 +68,8 @@
 		'titulo' => $exportacion->texto_encabezado,
 		'activeLink' => 'exportacion',
 		'logo1'=> $exportacion->logo_1_encabezado,
-		'logo2' => $exportacion->logo_2_encabezado
+		'logo2' => $exportacion->logo_2_encabezado,
+		'logotipo' => $logo,
 	])
 @endsection
 
@@ -189,4 +190,8 @@
 			</div>
 		</div>
 	</div>
+@endsection
+
+@section('footer')
+	@include('layouts.footer',['footer'=>$footer,'redessociales' => $redessociales,'logo' => $logo,])
 @endsection

@@ -40,7 +40,8 @@
 		'titulo' => $impactosocial->texto_encabezado,
 		'activeLink' => 'impactosocial',
 		'logo1'=> $impactosocial->logo_1_encabezado,
-		'logo2' => $impactosocial->logo_2_encabezado
+		'logo2' => $impactosocial->logo_2_encabezado,
+		'logotipo' => $logo,
 	])
 @endsection
 
@@ -77,4 +78,8 @@
 			</div>
 		</div>
 	</div>
+@endsection
+
+@section('footer')
+	@include('layouts.footer',['footer'=>$footer,'redessociales' => $redessociales,'logo' => $logo,])
 @endsection

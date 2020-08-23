@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PaginaProductos;
 use App\CategoriaCorte;
+use App\ContactoFooter;
+Use App\RedesSociales;
+Use App\Logo;
 
 class PaginaProductosController extends Controller
 {
@@ -17,10 +20,16 @@ class PaginaProductosController extends Controller
     {
         $productos = PaginaProductos::first();
         $categoriascorte=CategoriaCorte::all();
+        $footer = ContactoFooter::first();
+        $redessociales = RedesSociales::first();
+        $logo = Logo::first();
         return view('web.productos')->with(
             [
                 'productos' => $productos,
-                'categorias' => $categoriascorte
+                'categorias' => $categoriascorte,
+                'footer' => $footer,
+                'redessociales' => $redessociales,
+                'logo' => $logo,
             ]);
     }
 }

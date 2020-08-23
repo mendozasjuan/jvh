@@ -39,7 +39,8 @@
 
 @section('header')
 	@include('layouts.header',[
-			'text' => false
+			'text' => false,
+			'logotipo' => $logo,
 	])
 @endsection
 
@@ -171,4 +172,8 @@
 				</form>
 			</div>
 		</div>
+@endsection
+
+@section('footer')
+	@include('layouts.footer',['footer'=>$footer,'redessociales' => $redessociales,'logo' => $logo,])
 @endsection

@@ -2,7 +2,7 @@
 	<section id="nav">
 		<div class="row justify-content-center topnavbar-desktop__row">
 			<div class="col-12 col-sm-2">
-				<a href="{{ url('/') }}"><img src="{{ asset('img/Capa_1.svg') }}"></a>
+				<a href="{{ url('/') }}"><img src="{{ asset($logotipo->logo) }}"></a>
 			</div>
 			<div class="col col-sm-10">
 				<div class="row contacto justify-content-center justify-content-sm-end mr-3">
@@ -93,7 +93,7 @@
 		{{ strtoupper('es') }} <i class="fas fa-caret-down"></i>
 	</div>
 	<a class="topnavbar-mobile__logo" href="{{ url('/') }}">
-		<img src="{{ asset('img/Capa_1.svg') }}">
+		<img src="{{ asset($logotipo->logo) }}">
 	</a>
 	<div class="topnavbar-mobile__button" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu">
 		<i class="fas fa-bars" style="font-size: 2em;"></i>

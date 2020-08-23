@@ -45,7 +45,8 @@
 @section('header')
 	@include('layouts.header',[
 			'text' => false,
-			'activeLink' => 'recursoshumanos'
+			'activeLink' => 'recursoshumanos',
+			'logotipo' => $logo,
 	])
 @endsection
 
@@ -212,4 +213,8 @@
         }
 	});
 </script>
+@endsection
+
+@section('footer')
+	@include('layouts.footer',['footer'=>$footer,'redessociales' => $redessociales,'logo' => $logo,])
 @endsection

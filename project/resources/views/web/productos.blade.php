@@ -64,7 +64,7 @@
 @endsection
 
 @section('header')
-	@include('layouts.header',['text' => false,'titulo'=>$inicio->texto_encabezado ?? '','activeLink' => 'productos'])
+	@include('layouts.header',['text' => false,'titulo'=>$inicio->texto_encabezado ?? '','activeLink' => 'productos','logotipo' => $logo,])
 @endsection
 
 @section('secciones')
@@ -201,4 +201,8 @@
 		});
 	});
 </script>
+@endsection
+
+@section('footer')
+	@include('layouts.footer',['footer'=>$footer,'redessociales' => $redessociales,'logo' => $logo,])
 @endsection

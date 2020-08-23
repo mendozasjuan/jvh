@@ -34,8 +34,8 @@
 		
 		@yield('secciones')
 		<!--</section>-->
-		@section('footer')
-			<footer>
+		@yield('footer')
+			<!--<footer>
 				<div class="row align-items-center" style="margin-right: auto;">
 					<div class="col">
 						<div class="row">
@@ -77,7 +77,7 @@
 						</div>
 					</div>
 				</div>
-			</footer>
+			</footer>-->
 		@show
 	</div>
 

@@ -9,6 +9,9 @@ use App\RecursosHumanos;
 use Carbon\Carbon;
 use App\Nacionalidad;
 use App\Http\Requests\RecursosHumanosCreateRequest;
+use App\ContactoFooter;
+Use App\RedesSociales;
+Use App\Logo;
 
 class PaginaRecursosHumanosController extends Controller
 {
@@ -21,9 +24,15 @@ class PaginaRecursosHumanosController extends Controller
     {
         $recursoshumanos = PaginaRecursosHumanos::first();
         $paises = Nacionalidad::all();
+        $footer = ContactoFooter::first();
+        $redessociales = RedesSociales::first();
+        $logo = Logo::first();
         return view('web.recursoshumanos')->with([
             'recursoshumanos' => $recursoshumanos,
-            'paises' => $paises
+            'paises' => $paises,
+            'footer' => $footer,
+            'redessociales' => $redessociales,
+            'logo' => $logo,
         ]);
     }
 
