@@ -7,8 +7,8 @@
 			<div class="col col-sm-10">
 				<div class="row contacto justify-content-center justify-content-sm-end mr-3">
 					<a href="{{ url('contacto') }}">Contacto</a>
-					<a href="{{ url('lang', ['es']) }}">Es</a>
-					<a href="{{ url('lang', ['zh']) }}">独</a>
+					<a class="{{ App::isLocale('es') ? 'localeActive' : ''}}" href="{{ url('lang', ['es']) }}">Es</a>
+					<a class="{{ App::isLocale('zh') ? 'localeActive' :''}}" href="{{ url('lang', ['zh']) }}">独</a>
 				</div>
 				<div class="row">
 					<div class="col ">

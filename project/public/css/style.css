@@ -123,12 +123,17 @@ footer p{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-decoration: none;
 }
 
 .contacto a:first-child{
 	padding: 6px 18px 6px 18px;
 	border-radius: 50px;
 	opacity: 1;
+}
+
+.localeActive{
+	background-color: #E51D2A;
 }
 
 .nav .linea{
@@ -327,6 +332,9 @@ footer img{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.redes-sociales a{
+	text-decoration: none;
 }
 
 /*#p-seccion1{

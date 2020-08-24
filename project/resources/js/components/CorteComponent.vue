@@ -509,7 +509,7 @@
         loadCortes() {
 
           axios.get("api/corte").then( data => {
-            this.cortes = Array.from(data.data.data)
+            this.cortes = Array.from(data.data)
           }
             
             );

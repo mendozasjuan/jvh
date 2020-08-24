@@ -3525,7 +3525,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("api/corte").then(function (data) {
-        _this.cortes = Array.from(data.data.data);
+        _this.cortes = Array.from(data.data);
       });
       console.log(this.cortes); //pick data from controller and push it into users object
     },

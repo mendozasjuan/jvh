@@ -22,7 +22,7 @@ class CorteController extends Controller
                 ->with('imagenes')
                 ->with('etiquetados')
                 ->with('packagings')
-                ->paginate();
+                ->get();
     }
 
     /**
