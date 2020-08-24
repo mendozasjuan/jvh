@@ -210,7 +210,7 @@
 									<div class="prev">
 										<i class="far fa-arrow-alt-circle-left"></i>
 									</div>
-									<div style="width: 260px; height:60px;overflow: hidden;" class="slide">
+									<div style="width: 260px; height:60px;overflow: hidden;">
 										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/02.png') }}">
 										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/03.png') }}">
 										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/04.png') }}">
@@ -309,10 +309,7 @@
 
 	    // total slides
 	    let slides = document.querySelectorAll(".slider ul li");
-	    let slide1 = document.querySelectorAll(".slide img");
-	    active= $('.slide img:visible:first');
 	    total = slides.length;
-	    console.log(active);
 
 	    // show first side
 	    showSlide(1);
