@@ -33,8 +33,13 @@
 		}
 
 		.product-title-img{
+			/*
+			*/
 			padding-top: 13px;
 			font-size: 16px;
+			padding-bottom: 20px;
+			padding-left: 20px;
+			padding-right: 20px;
 		}
 
 		.fondo {
@@ -107,7 +112,7 @@
 			<!--CUARTO TRASERO-->
 			<div class="row alig-items-center" style="margin-top: 34px;">
 				
-					@foreach ($categoria->cortes->take(4) as $corte)
+					@foreach ($categoria->cortes->take(20) as $corte)
 						<div class="col-12 col-md-6 col-xl-3 mb-4" >
 							<div class='item-product' data-url="{{route('productosdetalle',['id' => $corte->id])}}" >
 								<div class="fondo"></div>
