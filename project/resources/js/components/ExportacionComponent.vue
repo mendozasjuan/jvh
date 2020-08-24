@@ -61,11 +61,18 @@
                     </figure>
                   </div>
                   <div class="form-group">
-                        <label>Texto</label>
+                        <label>Texto (Español)</label>
                         <input v-model="form.texto_encabezado" type="text" class="form-control" name="texto_encabezado" placeholder="Ingrese Texto" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }">
 
                         <!--<ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }" tag-name="textarea"  :editor="editor" v-model="form.texto_encabezado" :config="editorConfig"></ckeditor>-->
                         <has-error :form="form" field="texto_encabezado"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Texto (Chino)</label>
+                        <input v-model="form.texto_encabezado_zh" type="text" class="form-control" name="texto_encabezado_zh" placeholder="Ingrese Texto" :class="{ 'is-invalid': form.errors.has('texto_encabezado_zh') }">
+
+                        <!--<ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }" tag-name="textarea"  :editor="editor" v-model="form.texto_encabezado" :config="editorConfig"></ckeditor>-->
+                        <has-error :form="form" field="texto_encabezado_zh"></has-error>
                   </div>
                   <div class="form-check">
                     <input v-model="form.texto_encabezado_habilitado" type="checkbox" class="form-check-input" id="texto_encabezado_habilitado" name="texto_encabezado_habilitado" :class="{ 'is-invalid': form.errors.has('texto_encabezado_habilitado') }">
@@ -76,15 +83,26 @@
                   <h3 style="margin-top: 30px">Seccion 1</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
+                        <label>Titulo (Español)</label>
                         <input v-model="form.seccion1_titulo" type="text" class="form-control" name="seccion1_titulo" placeholder="Ingrese Titulo" :class="{ 'is-invalid': form.errors.has('seccion1_titulo') }">
                         <has-error :form="form" field="seccion1_titulo"></has-error>
                   </div>
                   <div class="form-group">
-                        <label>Parrafo</label>
+                        <label>Titulo (Chino)</label>
+                        <input v-model="form.seccion1_titulo_zh" type="text" class="form-control" name="seccion1_titulo_zh" placeholder="Ingrese Titulo" :class="{ 'is-invalid': form.errors.has('seccion1_titulo_zh') }">
+                        <has-error :form="form" field="seccion1_titulo_zh"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Español)</label>
                         <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }" tag-name="textarea" :editor="editor" v-model="form.seccion1_parrafo" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="seccion1_parrafo"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Chino)</label>
+                        <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion1_parrafo_zh') }" tag-name="textarea" :editor="editor" v-model="form.seccion1_parrafo_zh" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion1_parrafo_zh"></has-error>
                   </div>
                   <div class="form-group">
                     <label for="seccion1_imagen">Imagen</label>
@@ -105,16 +123,28 @@
                   <h3 style="margin-top: 30px">Seccion 2</h3>
 
                   <div class="form-group">
-                        <label>Parrafo 1</label>
+                        <label>Parrafo 1 (Español)</label>
                         <!--<textarea v-model="form.seccion2_parrafo1" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion2_parrafo1') }"></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion2_parrafo1') }" tag-name="textarea" :editor="editor" v-model="form.seccion2_parrafo1" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="seccion2_parrafo1"></has-error>
                   </div>
                   <div class="form-group">
-                        <label>Parrafo 2</label>
+                        <label>Parrafo 1 (Chino) </label>
+                        <!--<textarea v-model="form.seccion2_parrafo1" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion2_parrafo1') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion2_parrafo1_zh') }" tag-name="textarea" :editor="editor" v-model="form.seccion2_parrafo1_zh" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion2_parrafo1_zh"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo 2 (Español)</label>
                         <!--<textarea v-model="form.seccion2_parrafo2" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion2_parrafo2') }"></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion2_parrafo2') }" tag-name="textarea"  :editor="editor" v-model="form.seccion2_parrafo2" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="seccion2_parrafo2"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo 2 (Chino)</label>
+                        <!--<textarea v-model="form.seccion2_parrafo2" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion2_parrafo2') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion2_parrafo2_zh') }" tag-name="textarea"  :editor="editor" v-model="form.seccion2_parrafo2_zh" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion2_parrafo2_zh"></has-error>
                   </div>
                   <div class="form-group">
                     <label for="seccion2_imagen_fondo">Imagen de Fondo</label>
@@ -135,9 +165,14 @@
                   <h3 style="margin-top: 30px">Seccion 3</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
+                        <label>Titulo (Español)</label>
                         <input v-model="form.seccion3_titulo" type="text" class="form-control" name="seccion3_titulo" placeholder="Ingrese Titulo" :class="{ 'is-invalid': form.errors.has('seccion3_titulo') }">
                         <has-error :form="form" field="seccion3_titulo"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Titulo (Chino)</label>
+                        <input v-model="form.seccion3_titulo_zh" type="text" class="form-control" name="seccion3_titulo_zh" placeholder="Ingrese Titulo" :class="{ 'is-invalid': form.errors.has('seccion3_titulo_zh') }">
+                        <has-error :form="form" field="seccion3_titulo_zh"></has-error>
                   </div>
                   
                   <div class="form-group">

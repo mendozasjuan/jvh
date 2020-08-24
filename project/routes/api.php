@@ -50,4 +50,10 @@ Route::get('allpackagingsproducto/{idproducto}','API\PackagingCorteController@al
 Route::post('updatepackagingproducto/{idimagen}','API\PackagingCorteController@updatePackaging');
 Route::post('deletepackagingproducto/{idimagen}','API\PackagingCorteController@deletePackaging');
 
+Route::get('listcurriculums','API\PaginaRecursosHumanosController@listCurriculums');
+Route::post('deletecurriculum/{id}','API\PaginaRecursosHumanosController@deleteCurriculum');
+
+Route::get('listcontactos','API\PaginaContactoController@listContactos');
+Route::post('deletecontacto/{id}','API\PaginaContactoController@deleteContacto');
+
 Route::get('storage/{filename}', 'InicioController@images');

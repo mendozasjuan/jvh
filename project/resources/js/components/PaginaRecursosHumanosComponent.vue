@@ -34,16 +34,27 @@
                   <h3 style="margin-top: 30px">Seccion 1</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
+                        <label>Titulo (Español)</label>
                         <input v-model="form.seccion1_titulo" type="text" class="form-control" placeholder="Ingrese el Titulo" name="seccion1_titulo" :class="{ 'is-invalid': form.errors.has('seccion1_titulo') }">
                         <has-error :form="form" field="seccion1_titulo"></has-error>
                   </div>
+                  <div class="form-group">
+                        <label>Titulo (Chino)</label>
+                        <input v-model="form.seccion1_titulo_zh" type="text" class="form-control" placeholder="Ingrese el Titulo" name="seccion1_titulo_zh" :class="{ 'is-invalid': form.errors.has('seccion1_titulo_zh') }">
+                        <has-error :form="form" field="seccion1_titulo_zh"></has-error>
+                  </div>
 
                   <div class="form-group">
-                        <label>Parrafo</label>
+                        <label>Parrafo (Español)</label>
                         <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }" tag-name="textarea"  :editor="editor" v-model="form.seccion1_parrafo" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="seccion1_parrafo"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Chino)</label>
+                        <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion1_parrafo_zh') }" tag-name="textarea"  :editor="editor" v-model="form.seccion1_parrafo_zh" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion1_parrafo_zh"></has-error>
                   </div>
 
                 </div>

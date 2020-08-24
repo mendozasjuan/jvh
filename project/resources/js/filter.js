@@ -13,3 +13,10 @@ Vue.filter("formatDate", function(date) {
 	return moment(date).format('MMMM Do YYYY');
 
 }); 
+
+Vue.filter("strippedContent", function(text) {
+
+	let regex = /(<([^>]+)>)/ig;
+  return text.replace(regex, "");
+
+});

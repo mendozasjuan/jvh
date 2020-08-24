@@ -26,18 +26,27 @@ class InicioController extends Controller
      */
     public function store(Request $request)
     {
-        /*$this->validate($request, [
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'tamano_caja' => 'required',
-            'medidas' => 'required',
-            'envasado' => 'required',
-            'piezas_por_caja' => 'required',
-            'condiciones_termicas' => 'required',
-            'especificaciones' => 'required',
-            'categoria_corte_id' => 'required'
+        $this->validate($request, [
+            'encabezado_imagen_fondo' => 'required',
+            'logo_1_encabezado' => 'required',
+            'logo_2_encabezado' => 'required',
+            'texto_encabezado' => 'required',
+            'texto_encabezado_habilitado' => 'required',
+            'seccion1_titulo' => 'required',
+            'seccion_1_parrafo' => 'required',
+            'seccion1_logo1' => 'required',
+            'seccion1_logo2' => 'required',
+            'seccion1_logo3' => 'required',
+            'seccion2_imagen_fondo' => 'required',
+            'seccio2_titulo' => 'required',
+            'seccion_2_parrafo' => 'required',
+            'seccion3_titulo' => 'required',
+            'seccion3_parrafo' => 'required',
+            'seccion3_imagen' => 'required',
+            'seccion4_titulo' => 'required',
+            'seccion4_imagen_fondo' => 'required'
 
-        ]);*/
+        ]);
         $inicio = new Inicio;
 
         if($request['id'] != null){

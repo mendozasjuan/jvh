@@ -26,6 +26,21 @@ class CalidadController extends Controller
      */
     public function store(Request $request)
     {
+      $this->validate($request, [
+            'encabezado_imagen_fondo' => 'required',
+            'seccion1_titulo' => 'required',
+            'seccion1_parrafo' => 'required',
+            'seccion1_logo1' => 'required',
+            'seccion1_logo2' => 'required',
+            'seccion1_logo3' => 'required',
+            'seccion1_logo4' => 'required',
+            'seccion1_logo5' => 'required',
+            'seccion1_logo6' => 'required',
+            'seccion1_logo7' => 'required',
+            'seccion2_imagen_fondo' => 'required',
+
+        ]);
+
     	$calidad = new Calidad;
 
         if($request['id'] != null){

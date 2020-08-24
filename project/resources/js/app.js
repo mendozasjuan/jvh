@@ -66,6 +66,15 @@ const router = new VueRouter({
 
 })
 
+import * as VueGoogleMaps from "vue2-google-maps";
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyDSHwvcanMx6o5Lr1KWqL7sPMFVeKGBnUg",
+    libraries: "places" // necessary for places input
+  }
+});
+
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 const app = new Vue({

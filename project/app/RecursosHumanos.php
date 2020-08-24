@@ -23,6 +23,10 @@ class RecursosHumanos extends Model
         'fecha_nacimiento',
         'foto',
         'curriculum',
-            
     ];
+
+    public function pais()
+    {
+        return $this->belongsTo(Nacionalidad::class,'pais');
+    }
 }

@@ -26,6 +26,21 @@ class ProduccionController extends Controller
      */
     public function store(Request $request)
     {
+      $this->validate($request, [
+            'encabezado_imagen_fondo' => 'required',
+            'seccion1_titulo' => 'required',
+            'seccion1_parrafo' => 'required',
+            'seccion1_logo1' => 'required',
+            'seccion1_logo2' => 'required',
+            'seccion1_imagen_fondo' => 'required',
+            'seccion2_titulo' => 'required',
+            'seccion2_parrafo1' => 'required',
+            'seccion2_parrafo2' => 'required',
+            'seccion3_titulo' => 'required',
+            'seccion3_parrafo' => 'required',
+            'seccion3_imagen_fondo' => 'required'
+
+        ]);
     	$produccion = new Produccion;
 
         if($request['id'] != null){

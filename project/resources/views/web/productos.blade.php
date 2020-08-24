@@ -111,7 +111,10 @@
 						<div class="col-12 col-md-6 col-xl-3 mb-4" >
 							<div class='item-product' data-url="{{route('productosdetalle',['id' => $corte->id])}}" >
 								<div class="fondo"></div>
-								<img class="product-img" src="{{ asset($corte->imagenes->first()->imagen) }}" alt="">
+								
+								@if($corte->imagenes->first())
+									<img class="product-img" src="{{ asset($corte->imagenes->first()->imagen) }}" alt="">
+								@endif
 								<p class="product-title-img">{{ $corte->nombre }}</p>
 							</div>
 						</div>

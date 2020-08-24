@@ -26,6 +26,15 @@ class ImpactoSocialController extends Controller
      */
     public function store(Request $request)
     {
+      $this->validate($request, [
+            'encabezado_imagen_fondo' => 'required',
+            'seccion1_titulo' => 'required',
+            'seccion1_parrafo1' => 'required',
+            'seccion1_parrafo2' => 'required',
+            'seccion2_titulo' => 'required',
+            'seccion2_imagen_fondo' => 'required'
+
+        ]);
     	$impactosocial = new ImpactoSocial;
 
         if($request['id'] != null){
@@ -92,6 +101,7 @@ class ImpactoSocialController extends Controller
      */
     public function update(Request $request, $id)
     {
+      
         $image = $this->storeImagenes($request);
 
         $impactosocial = ImpactoSocial::findOrFail($id);

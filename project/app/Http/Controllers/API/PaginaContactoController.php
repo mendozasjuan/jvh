@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 Use App\PaginaContacto;
-
+use App\Contacto;
 class PaginaContactoController extends Controller
 {
     /**
@@ -26,6 +26,22 @@ class PaginaContactoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'encabezado_imagen_fondo' => 'required',
+            'ciudad1' => 'required',
+            'direccion1' => 'required',
+            'telefonos1' => 'required',
+            'ciudad2' => 'required',
+            'direccion2' => 'required',
+            'telefonos2' => 'required',
+            'contacto_titulo' => 'required',
+            'contacto_descripcion' => 'required',
+            'comercio_exterior' => 'required',
+            'area_comercial' => 'required',
+            'coordenadas1' => 'required',
+            'coordenadas2' => 'required'
+
+        ]);
     	$paginacontacto = new PaginaContacto;
 
         if($request['id'] != null){
@@ -78,6 +94,7 @@ class PaginaContactoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $image = $this->storeImagenes($request);
 
         $paginacontacto = PaginaContacto::findOrFail($id);
@@ -97,8 +114,6 @@ class PaginaContactoController extends Controller
 
         if($image['encabezado_imagen_fondo'] !=null )
             $paginacontacto->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
-        else
-            $paginacontacto->encabezado_imagen_fondo = null;
 
         $paginacontacto->update();
     }
@@ -126,5 +141,17 @@ class PaginaContactoController extends Controller
           }
 
           return $image;
+    }
+
+    public function listContactos(){
+        return Contacto::all();
+    }
+
+    public function deleteContacto($id){
+         $contacto = Contacto::findOrFail($id);
+        $contacto->delete();
+        return response()->json([
+         'message' => 'mensaje deleted successfully'
+        ]);
     }
 }

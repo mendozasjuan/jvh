@@ -61,9 +61,14 @@
                     </figure>
                   </div>
                   <div class="form-group">
-                        <label>Texto</label>
+                        <label>Texto (Español)</label>
                         <input v-model="data.texto_encabezado" type="text" name="texto_encabezado" class="form-control" placeholder="Ingrese el Texto" :class="{ 'is-invalid': '' }">
                         <has-error :form="data" field="texto_encabezado"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Texto (Chino)</label>
+                        <input v-model="data.texto_encabezado_zh" type="text" name="texto_encabezado_zh" class="form-control" placeholder="Ingrese el Texto" :class="{ 'is-invalid': '' }">
+                        <has-error :form="data" field="texto_encabezado_zh"></has-error>
                   </div>
                   <div class="form-check">
                     <input v-model="data.texto_encabezado_habilitado" type="checkbox" class="form-check-input" name="texto_encabezado_habilitado" id="exampleCheck1" :class="{ 'is-invalid': '' }">
@@ -74,16 +79,28 @@
                   <h3 style="margin-top: 30px">Seccion 1</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
+                        <label>Titulo (Español)</label>
                         <input v-model="data.seccion1_titulo" type="text"  class="form-control" name="seccion1_titulo" placeholder="Ingrese Titulo" :class="{ 'is-invalid': ''}">
                         <has-error :form="data" field="seccion1_titulo"></has-error>
                   </div>
                   <div class="form-group">
-                        <label>Parrafo</label>
+                        <label>Titulo (Chino)</label>
+                        <input v-model="data.seccion1_titulo_zh" type="text"  class="form-control" name="seccion1_titulo_zh" placeholder="Ingrese Titulo" :class="{ 'is-invalid': ''}">
+                        <has-error :form="data" field="seccion1_titulo_zh"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Español)</label>
                         <!--<textarea v-model="data.seccion_1_parrafo" style="display:none" class="form-control" rows="3" placeholder="Enter ..." ></textarea>-->
 
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': data.errors.has('seccion_1_parrafo') }" tag-name="textarea"  :editor="editor" v-model="data.seccion_1_parrafo" :config="editorConfig"></ckeditor>
                         <has-error :form="data" field="seccion_1_parrafo"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Chino)</label>
+                        <!--<textarea v-model="data.seccion_1_parrafo" style="display:none" class="form-control" rows="3" placeholder="Enter ..." ></textarea>-->
+
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': data.errors.has('seccion_1_parrafo_zh') }" tag-name="textarea"  :editor="editor" v-model="data.seccion_1_parrafo_zh" :config="editorConfig"></ckeditor>
+                        <has-error :form="data" field="seccion_1_parrafo_zh"></has-error>
                   </div>
                   <div class="form-group">
                     <label for="seccion1_logo1">Logo 1</label>
@@ -134,14 +151,24 @@
                   <h3 style="margin-top: 30px">Seccion 2</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
+                        <label>Titulo (Español)</label>
                         <input v-model="data.seccio2_titulo" type="text" class="form-control" name="seccio2_titulo" placeholder="Ingrese Titulo" :class="{ 'is-invalid': '' }">
                         <has-error :form="data" field="seccio2_titulo"></has-error>
                   </div>
                   <div class="form-group">
-                        <label>Parrafo</label>
+                        <label>Titulo (Chino)</label>
+                        <input v-model="data.seccio2_titulo_zh" type="text" class="form-control" name="seccio2_titulo_zh" placeholder="Ingrese Titulo" :class="{ 'is-invalid': '' }">
+                        <has-error :form="data" field="seccio2_titulo_zh"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Español)</label>
                         <ckeditor class="col-md-10 form-control"  :class="{ 'is-invalid': '' }" tag-name="textarea"  :editor="editor" v-model="data.seccion_2_parrafo" :config="editorConfig"></ckeditor>
                         <has-error :form="data" field="seccion_2_parrafo"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Chino)</label>
+                        <ckeditor class="col-md-10 form-control"  :class="{ 'is-invalid': '' }" tag-name="textarea"  :editor="editor" v-model="data.seccion_2_parrafo_zh" :config="editorConfig"></ckeditor>
+                        <has-error :form="data" field="seccion_2_parrafo_zh"></has-error>
                   </div>
                   <div class="form-group">
                     <label for="seccion2_imagen_fondo">Imagen de Fondo</label>
@@ -162,15 +189,26 @@
                   <h3 style="margin-top: 30px">Seccion 3</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
+                        <label>Titulo (Español)</label>
                         <input v-model="data.seccion3_titulo" type="text" class="form-control" name="seccion3_titulo" placeholder="Ingrese Titulo" :class="{ 'is-invalid': '' }">
                        <has-error :form="data" field="seccion3_titulo"></has-error>
                   </div>
                   <div class="form-group">
-                        <label>Parrafo</label>
+                        <label>Titulo (Chino)</label>
+                        <input v-model="data.seccion3_titulo_zh" type="text" class="form-control" name="seccion3_titulo_zh" placeholder="Ingrese Titulo" :class="{ 'is-invalid': '' }">
+                       <has-error :form="data" field="seccion3_titulo_zh"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Español)</label>
                         <!--<textarea v-model="form.seccion3_parrafo" :class="{ 'is-invalid': form.errors.has('seccion3_parrafo') }" class="form-control" rows="3" placeholder="Enter ..."></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid':'' }"  tag-name="textarea"  :editor="editor" v-model="data.seccion3_parrafo" :config="editorConfig"></ckeditor>
                         <has-error :form="data" field="seccion3_parrafo"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Chino)</label>
+                        <!--<textarea v-model="form.seccion3_parrafo" :class="{ 'is-invalid': form.errors.has('seccion3_parrafo') }" class="form-control" rows="3" placeholder="Enter ..."></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid':'' }"  tag-name="textarea"  :editor="editor" v-model="data.seccion3_parrafo_zh" :config="editorConfig"></ckeditor>
+                        <has-error :form="data" field="seccion3_parrafo_zh"></has-error>
                   </div>
                   <div class="form-group">
                     <label for="seccion3_imagen">Imagen</label>
@@ -191,9 +229,14 @@
                   <h3 style="margin-top: 30px">Seccion 4</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
+                        <label>Titulo (Español)</label>
                         <input v-model="data.seccion4_titulo" :class="{ 'is-invalid': '' }" type="text" name="seccion4_titulo" class="form-control" placeholder="Ingrese Titulo">
                         <has-error :form="data" field="seccion4_titulo"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Titulo (Chino)</label>
+                        <input v-model="data.seccion4_titulo_zh" :class="{ 'is-invalid': '' }" type="text" name="seccion4_titulo_zh" class="form-control" placeholder="Ingrese Titulo">
+                        <has-error :form="data" field="seccion4_titulo_zh"></has-error>
                   </div>
                   <div class="form-group">
                     <label for="seccion4_imagen_fondo">Imagen</label>
@@ -357,6 +400,9 @@
             formData.append('seccion_1_parrafo',this.data.seccion_1_parrafo);
             formData.append('seccion_2_parrafo',this.data.seccion_2_parrafo);
             formData.append('seccion3_parrafo',this.data.seccion3_parrafo);
+            formData.append('seccion_1_parrafo_zh',this.data.seccion_1_parrafo_zh);
+            formData.append('seccion_2_parrafo_zh',this.data.seccion_2_parrafo_zh);
+            formData.append('seccion3_parrafo_zh',this.data.seccion3_parrafo_zh);
              formData.append('_method', 'PUT');
             //this.form.submit('put','api/inicio/'+this.form.id,{
               axios.post('api/inicio/'+this.data.id,formData)
@@ -444,6 +490,9 @@
             formData.append('seccion_1_parrafo',this.data.seccion_1_parrafo);
             formData.append('seccion_2_parrafo',this.data.seccion_2_parrafo);
             formData.append('seccion3_parrafo',this.data.seccion3_parrafo);
+            formData.append('seccion_1_parrafo_zh',this.data.seccion_1_parrafo_zh);
+            formData.append('seccion_2_parrafo_zh',this.data.seccion_2_parrafo_zh);
+            formData.append('seccion3_parrafo_zh',this.data.seccion3_parrafo_zh);
 
             axios.post('api/inicio',formData)
                 .then(() => {

@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\CategoriaCorte;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,43 +35,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/recursoshumanos','PaginaRecursosHumanosController@saveForm')->name('recursoshumanosform');
     Route::get('/getnacionalidad/{id}','PaginaRecursosHumanosController@getNacionalidadFromPais')->name('getnacionalidad');
     Route::post('/contacto','PaginaContactoController@saveForm')->name('contactoform');
-
-
-    /*Route::get('/quienessomos', function () {
-        return view('web.quienessomos');
-    })->name('quienessomos');*/
-
-    /*Route::get('produccion', function () {
-        return view('web.produccion');
-    })->name('produccion');*/
-
-    /*Route::get('exportacion', function () {
-        return view('web.exportacion');
-    });*/
-
-    /*Route::get('productos', function () {
-        return view('web.productos');
-    })->name('productos');*/
-
-    /*Route::get('calidad', function () {
-        return view('web.calidad');
-    });*/
-
-    /*Route::get('impactosocial', function () {
-        return view('web.impactosocial');
-    })->name('impactosocial');*/
-
-    /*Route::get('recursoshumanos', function () {
-        return view('web.recursoshumanos');
-    })->name('recursoshumanos');*/
-
-    /*Route::get('contacto', function () {
-        return view('web.contacto');
-    })->name('contacto');*/
-
-    /*Route::get('productosdetalle',function(){
-        return view('web.productosdetalle');
-    })->name('productosdetalle');*/
     
     Route::prefix('admin')->group(function() {
       Auth::routes();

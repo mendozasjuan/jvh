@@ -53,12 +53,12 @@
         @enderror
         <div class="row">
           <div class="col-8">
-            <div class="icheck-primary">
+            <!--<div class="icheck-primary">
               <input type="checkbox" id="remember" {{ old('remember') ? 'checked' : '' }}>
               <label for="remember">
                 {{ __('Remember Me') }}
               </label>
-            </div>
+            </div>-->
           </div>
           <!-- /.col -->
           <div class="col-4">
@@ -71,11 +71,11 @@
 
       <!-- /.social-auth-links -->
 
-      <p class="mb-1">
+      <!--<p class="mb-1">
         @if (Route::has('password.request'))
           <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
         @endif
-      </p>
+      </p>-->
     </div>
     <!-- /.login-card-body -->
   </div>

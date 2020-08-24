@@ -26,6 +26,25 @@ class QuienesSomosController extends Controller
      */
     public function store(Request $request)
     {
+      $this->validate($request, [
+            'encabezado_imagen_fondo' => 'required',
+            'seccio1_parrafo1' => 'required',
+            'seccio1_parrafo2' => 'required',
+            'seccio1_parrafo3' => 'required',
+            'seccio1_parrafo4' => 'required',
+            'seccion1_imagen_fondo' => 'required',
+            'seccion2_titulo' => 'required',
+            'seccion2_parrafo' => 'required',
+            'seccion2_imagen_fondo' => 'required',
+            'seccion3_parrafo1' => 'required',
+            'seccion3_parrafo2' => 'required',
+            'seccion4_parrafo1' => 'required',
+            'seccion4_parrafo2' => 'required',
+            'seccion4_parrafo3' => 'required',
+            'seccion4_parrafo4' => 'required',
+            'seccion4_imagen_fondo' => 'required'
+
+        ]);
     	$quienessomos = new QuienesSomos;
 
         if($request['id'] != null){

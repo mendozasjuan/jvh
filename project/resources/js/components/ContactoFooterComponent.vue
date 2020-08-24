@@ -13,16 +13,28 @@
                 <div class="card-body">
 
                   <div class="form-group">
-                        <label>Ciudad 1</label>
+                        <label>Ciudad 1 (Español)</label>
                         <input v-model="form.ciudad1" type="text" class="form-control" placeholder="Ingrese el Titulo" name="ciudad1" :class="{ 'is-invalid': form.errors.has('ciudad1') }">
                         <has-error :form="form" field="ciudad1"></has-error>
                   </div>
+                  <div class="form-group">
+                        <label>Ciudad 1 (Chino)</label>
+                        <input v-model="form.ciudad1_zh" type="text" class="form-control" placeholder="Ingrese el Titulo" name="ciudad1_zh" :class="{ 'is-invalid': form.errors.has('ciudad1_zh') }">
+                        <has-error :form="form" field="ciudad1_zh"></has-error>
+                  </div>
 
                   <div class="form-group">
-                        <label>Direccion 1</label>
+                        <label>Direccion 1 (Español)</label>
                         <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('direccion1') }" tag-name="textarea"  :editor="editor" v-model="form.direccion1" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="direccion1"></has-error>
+                  </div>
+
+                  <div class="form-group">
+                        <label>Direccion 1 (Chino)</label>
+                        <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('direccion1_zh') }" tag-name="textarea"  :editor="editor" v-model="form.direccion1_zh" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="direccion1_zh"></has-error>
                   </div>
 
                   <div class="form-group">
@@ -35,17 +47,30 @@
                   
 
                   <div class="form-group">
-                        <label>Ciudad 2</label>
+                        <label>Ciudad 2 (Español)</label>
                         <input v-model="form.ciudad2" type="text" class="form-control" placeholder="Ingrese el Titulo" name="ciudad2" :class="{ 'is-invalid': form.errors.has('ciudad2') }">
                         <has-error :form="form" field="ciudad2"></has-error>
                   </div>
 
+                  <div class="form-group">
+                        <label>Ciudad 2 (Chino)</label>
+                        <input v-model="form.ciudad2_zh" type="text" class="form-control" placeholder="Ingrese el Titulo" name="ciudad2_zh" :class="{ 'is-invalid': form.errors.has('ciudad2_zh') }">
+                        <has-error :form="form" field="ciudad2_zh"></has-error>
+                  </div>
+
 
                   <div class="form-group">
-                        <label>Direccion 2</label>
+                        <label>Direccion 2 (Español)</label>
                         <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('direccion2') }" tag-name="textarea"  :editor="editor" v-model="form.direccion2" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="direccion2"></has-error>
+                  </div>
+
+                  <div class="form-group">
+                        <label>Direccion 2 (Chino)</label>
+                        <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('direccion2_zh') }" tag-name="textarea"  :editor="editor" v-model="form.direccion2_zh" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="direccion2_zh"></has-error>
                   </div>
 
                   <div class="form-group">
@@ -58,9 +83,15 @@
 
 
                   <div class="form-group">
-                        <label>Contacto Titulo</label>
+                        <label>Contacto Titulo (Español)</label>
                         <input v-model="form.contacto_titulo" type="text" class="form-control" placeholder="Ingrese el Titulo" name="contacto_titulo" :class="{ 'is-invalid': form.errors.has('contacto_titulo') }">
                         <has-error :form="form" field="contacto_titulo"></has-error>
+                  </div>
+
+                  <div class="form-group">
+                        <label>Contacto Titulo (Chino)</label>
+                        <input v-model="form.contacto_titulo_zh" type="text" class="form-control" placeholder="Ingrese el Titulo" name="contacto_titulo_zh" :class="{ 'is-invalid': form.errors.has('contacto_titulo_zh') }">
+                        <has-error :form="form" field="contacto_titulo_zh"></has-error>
                   </div>
 
 

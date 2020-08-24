@@ -26,6 +26,13 @@ class PaginaProductosController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'encabezado_imagen_fondo' => 'required',
+            'seccion1_titulo' => 'required',
+            'seccion1_imagen' => 'required',
+            'seccion1_imagen_fondo' => 'required',
+
+        ]);
     	$paginaproductos = new PaginaProductos;
 
         if($request['id'] != null){
@@ -86,20 +93,16 @@ class PaginaProductosController extends Controller
 
         if($image['encabezado_imagen_fondo'] !=null )
             $paginaproductos->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
-        else
-            $paginaproductos->encabezado_imagen_fondo = null;
+        
         
 
         if($image['seccion1_imagen'] !=null )
             $paginaproductos->seccion1_imagen = $image['seccion1_imagen'];
-        else
-            $paginaproductos->seccion1_imagen = null;
-        
+               
 
         if($image['seccion1_imagen_fondo'] !=null )
             $paginaproductos->seccion1_imagen_fondo = $image['seccion1_imagen_fondo'];
-        else
-            $paginaproductos->seccion1_imagen_fondo = null;
+        
 
         $paginaproductos->update();
     }

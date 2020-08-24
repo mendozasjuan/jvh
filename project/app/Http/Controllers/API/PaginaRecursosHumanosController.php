@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 Use App\PaginaRecursosHumanos;
+use App\RecursosHumanos;
 
 class PaginaRecursosHumanosController extends Controller
 {
@@ -26,6 +27,12 @@ class PaginaRecursosHumanosController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'encabezado_imagen_fondo' => 'required',
+            'seccion1_titulo' => 'required',
+            'seccion1_parrafo' => 'required',
+
+        ]);
     	$paginarecursoshumanos = new PaginaRecursosHumanos;
 
         if($request['id'] != null){
@@ -41,9 +48,6 @@ class PaginaRecursosHumanosController extends Controller
             $paginarecursoshumanos->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
         else
             $paginarecursoshumanos->encabezado_imagen_fondo = null;
-        
-
-        
         $paginarecursoshumanos->save();
 
         return $paginarecursoshumanos;
@@ -77,8 +81,6 @@ class PaginaRecursosHumanosController extends Controller
 
         if($image['encabezado_imagen_fondo'] !=null )
             $paginarecursoshumanos->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
-        else
-            $paginarecursoshumanos->encabezado_imagen_fondo = null;
 
         $paginarecursoshumanos->update();
     }
@@ -106,5 +108,18 @@ class PaginaRecursosHumanosController extends Controller
           }
 
           return $image;
+    }
+
+    public function listCurriculums(){
+        return RecursosHumanos::with('pais')
+                ->get();
+    }
+
+    public function deleteCurriculum($id){
+         $curriculum = RecursosHumanos::findOrFail($id);
+        $curriculum->delete();
+        return response()->json([
+         'message' => 'curriculum deleted successfully'
+        ]);
     }
 }

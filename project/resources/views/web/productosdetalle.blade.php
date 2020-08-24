@@ -90,6 +90,14 @@
 			border: 1px solid #CCCCCC;
 		}
 
+		.prev, .next{
+			cursor: pointer;
+		}
+
+		#descripcion_producto p {
+			color: #6E6F71;
+		}
+
     </style>
 @endsection
 
@@ -100,7 +108,7 @@
 @section('secciones')
 	<div id="pd-seccion" style="padding-top:48px;margin-bottom: 45px;height: 100%;padding-left: 38px;">
 		<div class="row">
-			<div class="col-3">
+			<div class="col-12 col-md-3">
 				<div class="miacordion" id="accordionExample">
 					@foreach ($categorias as $categoria)
 						<div class="card box-shadow-0">
@@ -182,31 +190,43 @@
 
 							
 								<div class="row justify-content-center align-items-center mb-4">
-									<div>
-										<img class="product-img" src="{{ asset('img/03.png') }}">
+									<div class="slider">
+										<ul class="slides">
+											@if($producto->imagenes)
+												@foreach($producto->imagenes as $imagen)
+													<li><img class="product-img" src="{{ asset($imagen->imagen) }}"></li>
+													<!--<li><img class="product-img" src="{{ asset('img/02.png') }}"></li>
+													<li><img class="product-img" src="{{ asset('img/04.png') }}"></li>
+													<li><img class="product-img" src="{{ asset('img/05.png') }}"></li>
+													<li><img class="product-img" src="{{ asset('img/06.png') }}"></li>
+													<li><img class="product-img" src="{{ asset('img/07.png') }}"></li>-->
+												@endforeach
+											@endif
+										</ul>
 									</div>
 									
 								</div>
 								<div class="row justify-content-between align-items-center">
-									<div>
+									<div class="prev">
 										<i class="far fa-arrow-alt-circle-left"></i>
 									</div>
-									<div>
+									<div style="width: 260px; height:60px;overflow: hidden;" class="slide">
+										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/02.png') }}">
 										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/03.png') }}">
-										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/03.png') }}">
-										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/03.png') }}">
-										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/03.png') }}">
+										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/04.png') }}">
+										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/05.png') }}">
+										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/06.png') }}">
 									</div>
-									<div>
+									<div class="next">
 										<i class="far fa-arrow-alt-circle-right"></i>
 									</div>
 								
 							</div>
 						
 					</div>
-					<div class="col">
+					<div class="col" id="descripcion_producto">
 						<h2>{{$producto->nombre}}<!--Corazon de Cuadril--></h2>
-						<p style="color: #6E6F71">{{$producto->descripcion}}<!--Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío y gran eficacia en el área de la comercialización y atención al cliente. Por su eficacia, tecnología y competitividad comercial, Frigorífico hv S.A, garantiza en todos sus productos, la más alta calidad en la industria de la carne.--></p>
+						{!!$producto->descripcion!!}<!--Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío y gran eficacia en el área de la comercialización y atención al cliente. Por su eficacia, tecnología y competitividad comercial, Frigorífico hv S.A, garantiza en todos sus productos, la más alta calidad en la industria de la carne.-->
 
 						<table class="table" >
 						  <thead>
@@ -280,6 +300,61 @@
 			$(this).parent().find('.card-header').removeClass('nocollapsed-acordion').addClass('collapsed-acordion');
 		})
 	});
+
+	window.addEventListener('load', () => {
+
+
+	    // initial slide
+	    let slide = 1;
+
+	    // total slides
+	    let slides = document.querySelectorAll(".slider ul li");
+	    let slide1 = document.querySelectorAll(".slide img");
+	    active= $('.slide img:visible:first');
+	    total = slides.length;
+	    console.log(active);
+
+	    // show first side
+	    showSlide(1);
+
+	    next = document.querySelector(".next");
+	    prev = document.querySelector(".prev")
+
+	    /**
+	     * event next button
+	     */
+	    next.addEventListener('click', (evt) => {
+	        evt.preventDefault();
+	        slide++;
+	        if (slide > total) { slide = 1; }
+	        showSlide(slide);
+	    })
+
+	    /** 
+	     * event prev button
+	     */
+	    prev.addEventListener("click", (evt) => {
+	        evt.preventDefault();
+	        slide--;
+	        if (slide < 1) { slide = total; }
+	        showSlide(slide);
+	    })
+
+	    /**
+	     * show slides
+	     * 
+	     * @param {number} n 
+	     * @return {null}
+	     * 
+	     */
+	    function showSlide(n) {
+	        n--; // decrement 1
+	        for (i = 0; i < slides.length; i++) {
+	            (i == n) ? slides[n].style.display = "block" : slides[i].style.display = "none";
+	        }
+	    }
+
+	})
 </script>
 @endsection
 

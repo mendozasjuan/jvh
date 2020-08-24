@@ -61,11 +61,18 @@
                     </figure>
                   </div>
                   <div class="form-group">
-                        <label>Texto</label>
+                        <label>Texto (Español)</label>
                         <input v-model="form.texto_encabezado" type="text" class="form-control" placeholder="Ingrese el Texto" name="texto_encabezado" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }">
                         <!--<textarea v-model="form.texto_encabezado" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('texto_encabezado') }"></textarea>-->
                         <!--<ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }" tag-name="textarea"  :editor="editor" v-model="form.texto_encabezado" :config="editorConfig"></ckeditor>-->
                         <has-error :form="form" field="texto_encabezado"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Texto (Chino)</label>
+                        <input v-model="form.texto_encabezado_zh" type="text" class="form-control" placeholder="Ingrese el Texto" name="texto_encabezado_zh" :class="{ 'is-invalid': form.errors.has('texto_encabezado_zh') }">
+                        <!--<textarea v-model="form.texto_encabezado" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('texto_encabezado') }"></textarea>-->
+                        <!--<ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('texto_encabezado') }" tag-name="textarea"  :editor="editor" v-model="form.texto_encabezado" :config="editorConfig"></ckeditor>-->
+                        <has-error :form="form" field="texto_encabezado_zh"></has-error>
                   </div>
                   <div class="form-check">
                     <input v-model="form.texto_encabezado_habilitado" type="checkbox" class="form-check-input" name="texto_encabezado_habilitado" id="texto_encabezado_habilitado" :class="{ 'is-invalid': form.errors.has('texto_encabezado_habilitado') }">
@@ -76,15 +83,26 @@
                   <h3 style="margin-top: 30px">Seccion 1</h3>
 
                   <div class="form-group">
-                        <label>Titulo</label>
+                        <label>Titulo (Español)</label>
                         <input v-model="form.seccion1_titulo" type="text" class="form-control" placeholder="Ingrese el Titulo" name="seccion1_titulo" :class="{ 'is-invalid': form.errors.has('seccion1_titulo') }">
                         <has-error :form="form" field="seccion1_titulo"></has-error>
                   </div>
                   <div class="form-group">
-                        <label>Parrafo</label>
+                        <label>Titulo (Chino)</label>
+                        <input v-model="form.seccion1_titulo_zh" type="text" class="form-control" placeholder="Ingrese el Titulo" name="seccion1_titulo_zh" :class="{ 'is-invalid': form.errors.has('seccion1_titulo_zh') }">
+                        <has-error :form="form" field="seccion1_titulo_zh"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Español)</label>
                         <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }" tag-name="textarea"  :editor="editor" v-model="form.seccion1_parrafo" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="seccion1_parrafo"></has-error>
+                  </div>
+                  <div class="form-group">
+                        <label>Parrafo (Chino)</label>
+                        <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('seccion1_parrafo_zh') }" tag-name="textarea"  :editor="editor" v-model="form.seccion1_parrafo_zh" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="seccion1_parrafo_zh"></has-error>
                   </div>
                   <div class="form-group">
                     <label for="seccion1_logo1">Logo 1</label>
@@ -419,8 +437,8 @@
 
             this.$Progress.start()
             let formData =  new FormData(event.target)
-			formData.append('seccion1_parrafo',this.form.seccion1_parrafo);
-			formData.append('seccion1_parrafo_zh',this.form.seccion1_parrafo_zh);
+      			formData.append('seccion1_parrafo',this.form.seccion1_parrafo);
+      			formData.append('seccion1_parrafo_zh',this.form.seccion1_parrafo_zh);
 
             axios.post('api/calidad',formData)
                 .then(() => {

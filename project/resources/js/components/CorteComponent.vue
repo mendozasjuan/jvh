@@ -25,32 +25,32 @@
                   </tr> 
                 </thead>
                   <paginate name="cortes" :list="cortes" :per="10" tag="tbody">
-                      <tr v-for="corte in paginated('cortes')" :key="corte.id">
+                      <tr v-for="corte in paginated('cortes')" :key="corte.id" >
                           <!--<tr v-for="corte in cortes.data" :key="corte.id">-->
                             <td>{{ corte.id }}</td>
                             <td>{{ corte.nombre }}</td>
-                            <td>{{ corte.descripcion }}</td>
+                            <td>{{ corte.descripcion | strippedContent }}</td>
                             <td>{{ corte.categoria.categoria.es }}</td>
                             <td>{{ corte.tamano_caja }}</td>
 
                             <td>
-                                <a href="#" data-id="corte.id" @click="editModalWindow(corte)">
+                                <a href="#" data-id="corte.id" @click="editModalWindow(corte)" title="Editar Corte">
                                     <i class="fa fa-edit blue"></i>
                                 </a>
                                 |
-                                <a href="#" @click="addModalImagenesProductoWindow(corte)">
-                                    <i class="fa fa-trash red"></i>
+                                <a href="#" @click="addModalImagenesProductoWindow(corte)" title="Agregar Imagenes de Producto">
+                                    <i class="far fa-images red"></i>
                                 </a>
                                 |
-                                <a href="#" @click="addModalEtiquetadoProductoWindow(corte)">
-                                    <i class="fa fa-trash red"></i>
+                                <a href="#" @click="addModalEtiquetadoProductoWindow(corte)" title="Agregar Etiquetado Producto">
+                                    <i class="far fa-sticky-note red"></i>
                                 </a>
                                 |
-                                <a href="#" @click="addModalPackagingProductoWindow(corte)">
-                                    <i class="fa fa-trash red"></i>
+                                <a href="#" @click="addModalPackagingProductoWindow(corte)" title="Agregar Packaging de Producto">
+                                    <i class="  fas fa-box-open red"></i>
                                 </a>
                                 |
-                                <a href="#" @click="deleteCorte(corte.id)">
+                                <a href="#" @click="deleteCorte(corte.id)" title="Eliminar Corte">
                                     <i class="fa fa-trash red"></i>
                                 </a>
 
@@ -86,48 +86,58 @@
               <form @submit.prevent="editMode ? updateCorte() : createCorte()" enctype="multipart/form-data" id='form'>
                 <div class="modal-body">
                    <div class="form-group">
+                    <label for="nombre">Nombre</label>
                         <input v-model="form.nombre" type="text" name="nombre"
                             placeholder="Nombre"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('nombre') }">
                         <has-error :form="form" field="nombre"></has-error>
                     </div>
                     <div class="form-group">
-                        <input v-model="form.descripcion" type="text" name="descripcion"
+                      <label for="descripcion">Descripcion</label>
+                      <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('descripcion') }" tag-name="textarea"  :editor="editor" v-model="form.descripcion" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="descripcion"></has-error>
+                        <!--<input v-model="form.descripcion" type="text" name="descripcion"
                             placeholder="Descripcion"
-                            class="form-control" :class="{ 'is-invalid': form.errors.has('descripcion') }">
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('descripcion') }">-->
                         <has-error :form="form" field="descripcion"></has-error>
                     </div>
                     <div class="form-group">
+                      <label for="tamano_caja">Tamaño de Caja</label>
                         <input v-model="form.tamano_caja" type="text" name="tamano_caja"
                             placeholder="Tamaño de Caja"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('tamano_caja') }">
                         <has-error :form="form" field="tamano_caja"></has-error>
                     </div>
                     <div class="form-group">
+                      <label for="medidas">Medidas</label>
                         <input v-model="form.medidas" type="text" name="medidas"
                             placeholder="Medidas"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('medidas') }">
                         <has-error :form="form" field="medidas"></has-error>
                     </div>
                     <div class="form-group">
+                      <label for="envasado">Envasado</label>
                         <input v-model="form.envasado" type="text" name="envasado"
                             placeholder="Envasado"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('envasado') }">
                         <has-error :form="form" field="envasado"></has-error>
                     </div>
                     <div class="form-group">
+                      <label for="piezas_por_caja">Piezas por Caja</label>
                         <input v-model="form.piezas_por_caja" type="text" name="piezas_por_caja"
                             placeholder="Piezas por Caja"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('piezas_por_caja') }">
                         <has-error :form="form" field="piezas_por_caja"></has-error>
                     </div>
                     <div class="form-group">
+                      <label for="condiciones_termicas">Condiciones Termicas</label>
                         <input v-model="form.condiciones_termicas" type="text" name="condiciones_termicas"
                             placeholder="Condiciones Termicas"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('condiciones_termicas') }">
                         <has-error :form="form" field="condiciones_termicas"></has-error>
                     </div>
                     <div class="form-group">
+                      <label for="especificaciones">Especificaciones</label>
                         <input v-model="form.especificaciones" type="text" name="especificaciones"
                             placeholder="Especificaciones"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('especificaciones') }">
@@ -135,7 +145,8 @@
                     </div>
 
                     <div class="form-group">
-                        <select v-model="form.categoria_corte_id" name="categoria_corte_id">
+                      <label for="categoria_corte_id">Categoria</label>
+                        <select v-model="form.categoria_corte_id" name="categoria_corte_id" class="form-control" :class="{ 'is-invalid': form.errors.has('categoria_corte_id') }">
                           <option value="" selected>Seleccione Una Categoria</option>
                           <option v-for="categoria in categorias.data" :key="categoria.id" :value="categoria.id" >{{ categoria.categoria.es }}</option>
                         </select>
@@ -156,14 +167,6 @@
                         <label for="imagenPackaging">Imagen Packaging</label>
                         <input type="file" class="form-control" id="imagenPackaging" ref="file" name="imagenPackaging" v-on:change="onUploadImage" >
                     </div>-->
-                    <label for="imagenPackaging">Cargar Imagenes</label>
-
-                    <div v-show="editMode" class="form-group">
-                        
-                        <button type="button" class="btn btn-success" >Producto</button>
-                        <button type="button" class="btn btn-success" >Etiquetado</button>
-                        <button type="button" class="btn btn-success" >Packaging</button>
-                    </div>
 
 
 
@@ -409,6 +412,7 @@
 </template>
 
 <script>
+  import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
     export default {
         data() {
             return {
@@ -425,6 +429,10 @@
                 picFile:'',
                 idElement:'',
                 paginate: ['cortes','imagenesproducto','etiquetados','packagings'],
+                editor: ClassicEditor,
+                editorData: '',
+                editorConfig:{
+                },
                 form: new Form({
                     id: '',
                     nombre : '',
@@ -567,7 +575,7 @@
             })
 
             this.$Progress.finish()
-            this.loadImagenesProducto(data.data.corte_id);
+            this.loadImagenesProducto(this.corte.id);
 
             
 
@@ -964,6 +972,11 @@
                 this.loadCategorias();
             });
 
-        }
+        },computed: {
+            strippedContent() {
+              let regex = /(<([^>]+)>)/ig;
+              return this.comment.content.rendered.replace(regex, "");
+            }
+          }
     }
 </script> 

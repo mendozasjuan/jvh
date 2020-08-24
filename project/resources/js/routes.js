@@ -15,6 +15,8 @@ import PaginaContacto from './components/PaginaContactoComponent.vue'
 import ContactoFooter from './components/ContactoFooterComponent.vue'
 import RedesSociales from './components/RedesSocialesComponent.vue'
 import Logo from './components/LogoComponent.vue'
+import RecursosHumanosData from './components/RecursosHumanosDataComponent.vue'
+import ContactoData from './components/ContactoDataComponent.vue'
 
 export const routes = [
     {
@@ -84,6 +86,14 @@ export const routes = [
     { 
         path:'/logo',
         component:Logo
+    },
+    { 
+        path:'/listcurriculums',
+        component:RecursosHumanosData
+    },
+    { 
+        path:'/listmensajes',
+        component:ContactoData
     },
  
  

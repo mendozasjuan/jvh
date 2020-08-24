@@ -65,6 +65,7 @@ class EtiquetadoCorteController extends Controller
     }
 
     public function saveEtiquetado(Request $request){
+
         if($request->file('etiquetadoproducto')){
             $etiquetadoproducto = $request->file('etiquetadoproducto')->store('img/etiquetado','public');
             $etiquetadoCorte = EtiquetadoCorte::create([
@@ -78,6 +79,10 @@ class EtiquetadoCorteController extends Controller
     }
 
     public function updateEtiquetado(Request $request,$id){
+        $this->validate($request, [
+            'etiquetado' => 'required',
+        ]);
+
         $etiquetado = EtiquetadoCorte::find($id);
         $etiquetadoOld = $etiquetado->etiquetado;
 

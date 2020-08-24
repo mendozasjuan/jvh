@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="./img/logo.png" alt="JVH Logo" class="brand-image elevation-3"
+      <img src="{{$logo ? $logo->logo : ''}}" alt="JVH Logo" class="brand-image "
            style="opacity: .8">
       <span class="brand-text font-weight-light">JVH</span>
     </a>
@@ -44,11 +44,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="./img/profile.png" class="img-circle elevation-2" alt="User Image">
+
+          <!--<img src="./img/profile.png" class="img-circle elevation-2" alt="User Image">-->
         </div>
         <div class="info">
           <a href="#" class="d-block">
-              {{ Auth::user()->name }}
+              <i class="far fa-user-circle"></i> {{ Auth::user()->name }}
           </a>
         </div>
       </div>
@@ -58,14 +59,121 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-        <li class="nav-item">
-          <router-link to="/dashboard" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dashboard
-            </p>
-          </router-link>
-        </li>
+          <li class="nav-item">
+                <router-link to="/inicio" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Inicio
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/quienessomos" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Quienes Somos
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/produccion" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Producción
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/exportacion" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Exportacion
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/paginaproductos" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Pagina Productos
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/calidad" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Calidad
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/impactosocial" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Impacto Social
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/paginarecursoshumanos" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Pagina Recursos Humanos
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/listcurriculums" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Curriculums Recibidos
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/paginacontacto" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Pagina Contacto
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/listmensajes" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Mensaje de Contacto Recibidos
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>
+                Productos
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <router-link to="/categorias-corte" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Categorias de Corte
+                  </p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/cortes" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Cortes
+                  </p>
+                </router-link>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
@@ -83,7 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <li class="nav-item">
                 <router-link to="/contactofooter" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
+                  <i class="nav-icon far fa-address-card"></i>
                   <p>
                     Contacto Footer
                   </p>
@@ -91,7 +199,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <li class="nav-item">
                 <router-link to="/redessociales" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
+                  <i class="nav-icon fas fa-users"></i>
                   <p>
                     Redes Sociales
                   </p>
@@ -99,7 +207,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <li class="nav-item">
                 <router-link to="/logo" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
+                  <i class="nav-icon far fa-image"></i>
                   <p>
                     Logo
                   </p>
@@ -107,34 +215,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cogs"></i>
-              <p>
-                Productos
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <router-link to="/categorias-corte" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Categorias de Corte
-                  </p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/cortes" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Cortes
-                  </p>
-                </router-link>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
+          
+          <!--<li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
@@ -143,89 +225,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <router-link to="/inicio" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Inicio
-                  </p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/quienessomos" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Quienes Somos
-                  </p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/produccion" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Producción
-                  </p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/exportacion" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Exportacion
-                  </p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/paginaproductos" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Pagina Productos
-                  </p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/calidad" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Calidad
-                  </p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/impactosocial" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Impacto Social
-                  </p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/paginarecursoshumanos" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Pagina Recursos Humanos
-                  </p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/paginacontacto" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Pagina Contacto
-                  </p>
-                </router-link>
-              </li>
+              
             </ul>
-          </li>
+          </li>-->
           
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <router-link to="/profile" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Perfil
               </p>
             </router-link>
-          </li>
+          </li>-->
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
                onclick="event.preventDefault();

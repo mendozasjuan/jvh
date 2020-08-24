@@ -41,12 +41,12 @@ class PaginaRecursosHumanosController extends Controller
         $fecha = $request['dia'] . '-' .$request['mes'] . '-' . $request['ano'];
         
         if($request->file('foto'))
-            $foto = $request->file('foto')->store('img','public');
+            $foto = $request->file('foto')->store('doc','public');
         else
             $foto = null;
 
         if($request->file('curriculum'))
-            $curriculum = $request->file('curriculum')->store('img','public');
+            $curriculum = $request->file('curriculum')->store('doc','public');
         else
             $curriculum = null;
 

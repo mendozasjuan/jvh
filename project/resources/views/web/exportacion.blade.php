@@ -41,6 +41,9 @@
 			color:#fff;
 			font-size: 40px;
 		}
+		.dividir{
+			font-size: 17px;
+		}
 
 		.dividir p{
 			font-weight: 600;
@@ -57,7 +60,7 @@
 			width: 40px;
 			position: absolute;
 		    margin-top: 25px;
-		    margin-left: 19px;
+		    margin-left: 40px;
 		}
     </style>
 @endsection

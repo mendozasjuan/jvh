@@ -26,6 +26,10 @@ class LogoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'logo' => 'required',
+
+        ]);
 
         if($request['id'] != null){
             return $this->update($request,$request['id']);

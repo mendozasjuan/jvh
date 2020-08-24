@@ -26,6 +26,18 @@ class ExportacionController extends Controller
      */
     public function store(Request $request)
     {
+      $this->validate($request, [
+            'encabezado_imagen_fondo' => 'required',
+            'seccion1_titulo' => 'required',
+            'seccion1_parrafo' => 'required',
+            'seccion1_imagen' => 'required',
+            'seccion2_parrafo1' => 'required',
+            'seccion2_parrafo2' => 'required',
+            'seccion2_imagen_fondo' => 'required',
+            'seccion3_titulo' => 'required',
+            'seccion3_imagen_fondo' => 'required'
+
+        ]);
     	$exportacion = new Exportacion;
 
         if($request['id'] != null){
@@ -101,6 +113,7 @@ class ExportacionController extends Controller
      */
     public function update(Request $request, $id)
     {
+      
         $image = $this->storeImagenes($request);
 
         $exportacion = Exportacion::findOrFail($id);

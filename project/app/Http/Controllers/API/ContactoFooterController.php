@@ -26,6 +26,19 @@ class ContactoFooterController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'ciudad1' => 'required',
+            'direccion1' => 'required',
+            'telefonos1' => 'required',
+            'ciudad2' => 'required',
+            'direccion2' => 'required',
+            'telefonos2' => 'required',
+            'contacto_titulo' => 'required',
+            'comercio_exterior' => 'required',
+            'area_comercial' => 'required'
+
+        ]);
+
     	$contactoFooter = new ContactoFooter;
 
         if($request['id'] != null){

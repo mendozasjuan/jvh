@@ -26,6 +26,13 @@ class RedesSocialesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'linkedin' => 'required',
+            'instagram' => 'required',
+            'facebook' => 'required',
+            'youtube' => 'required',
+
+        ]);
 
         if($request['id'] != null){
             return $this->update($request,$request['id']);
@@ -63,6 +70,13 @@ class RedesSocialesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'linkedin' => 'required',
+            'instagram' => 'required',
+            'facebook' => 'required',
+            'youtube' => 'required',
+
+        ]);
 
 
         $redesSociales = RedesSociales::findOrFail($id);
