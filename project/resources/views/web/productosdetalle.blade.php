@@ -195,11 +195,6 @@
 											@if($producto->imagenes)
 												@foreach($producto->imagenes as $imagen)
 													<li><img class="product-img" src="{{ asset($imagen->imagen) }}"></li>
-													<!--<li><img class="product-img" src="{{ asset('img/02.png') }}"></li>
-													<li><img class="product-img" src="{{ asset('img/04.png') }}"></li>
-													<li><img class="product-img" src="{{ asset('img/05.png') }}"></li>
-													<li><img class="product-img" src="{{ asset('img/06.png') }}"></li>
-													<li><img class="product-img" src="{{ asset('img/07.png') }}"></li>-->
 												@endforeach
 											@endif
 										</ul>
@@ -210,12 +205,12 @@
 									<div class="prev">
 										<i class="far fa-arrow-alt-circle-left"></i>
 									</div>
-									<div style="width: 260px; height:60px;overflow: hidden;">
-										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/02.png') }}">
-										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/03.png') }}">
-										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/04.png') }}">
-										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/05.png') }}">
-										<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset('img/06.png') }}">
+									<div style="width: 260px; height:60px">
+										@if($producto->imagenes)
+												@foreach($producto->imagenes as $imagen)
+													<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset($imagen->imagen) }}">
+												@endforeach
+										@endif
 									</div>
 									<div class="next">
 										<i class="far fa-arrow-alt-circle-right"></i>
