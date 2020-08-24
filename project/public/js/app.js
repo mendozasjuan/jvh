@@ -76618,7 +76618,7 @@ var render = function() {
                               title: "Descargar Curriculum"
                             }
                           },
-                          [_c("i", { staticClass: "fa fa-edit blue" })]
+                          [_c("i", { staticClass: "fas fa-file-download" })]
                         ),
                         _vm._v(
                           "\n                            |\n                            "

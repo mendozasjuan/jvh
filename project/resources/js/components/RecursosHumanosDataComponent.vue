@@ -37,7 +37,7 @@
 
                             <td>
                                 <a :href="curriculum.curriculum" target="_blank" title="Descargar Curriculum">
-                                    <i class="fa fa-edit blue"></i>
+                                    <i class="fas fa-file-download"></i>
                                 </a>
                                 |
                                 <a href="#" @click="deleteCurriculum(curriculum.id)" title="Eliminar">
