@@ -14,7 +14,7 @@
 
 		#p-seccion1{
 			width: 100%;
-			height: 376px;
+			height: 550px;
 			background: transparent url("{{ asset($productos->seccion1_imagen_fondo) }}") 0% 0% no-repeat padding-box;
 			opacity: 1;
 			position: relative;
