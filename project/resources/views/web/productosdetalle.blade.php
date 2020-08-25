@@ -86,8 +86,14 @@
 
 
 		.product-img{
-			width: 300px;
-			border: 1px solid #CCCCCC;
+			border: 1px solid #cccccc70;
+			margin-left: 7.5px;
+			cursor: pointer;
+		}
+
+		.imageCarrousel{
+			border: 1px solid #cccccc70;
+
 		}
 
 		.prev, .next{
@@ -98,6 +104,48 @@
 			color: #6E6F71;
 		}
 
+		 .linkactive a{
+			color:#E51D2A !important;
+		}
+
+
+		.carousel-control-prev, .carousel-control-next{
+			position:relative;
+			width: fit-content;
+
+		}
+
+		.fa-arrow-alt-circle-left:before{
+			float: left;
+		}
+
+		.carousel-control-next:before{
+			float: right;
+		}
+
+		.carousel-inner{
+			width: 30rem;
+    		height: 30rem;
+    		cursor: pointer;
+		}
+
+		.carousel-item{
+			width: 100%;
+    		height: 100%;
+		}
+
+		.contenedorImageIndicators{
+			width: 30rem;
+		}
+		@media (max-width: 505px) {
+			.carousel-inner{
+				width: 20rem;
+	    		height: 20rem;
+			}
+			.contenedorImageIndicators{
+				width: 20rem;
+			}
+		}
     </style>
 @endsection
 
@@ -121,8 +169,8 @@
 							    <div id="collapse{{$categoria->id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 							      <div class="card-body">
 							        <ul class="list-group list-group-flush">
-									@foreach ($categoria->cortes as $corte)
-										<li class="list-group-item"><a href="{{route('productosdetalle',['id' => $corte->id])}}">{{ $corte->nombre }}</a></li>
+									@foreach ($categoria->cortes->sortBy('nombre') as $corte)
+										<li class="list-group-item {{$producto->id == $corte->id ? 'linkactive' : ''}}"><a href="{{route('productosdetalle',['id' => $corte->id])}}">{{ $corte->nombre }}</a></li>
 									@endforeach
 									</ul>
 						      </div>
@@ -130,103 +178,72 @@
 						  </div>
 							
 					@endforeach
-				  <!--<div class="card box-shadow-0">
-				    <div class="card-header collapsed-acordion" id="headingOne">
-				      
-				        <a class="text-left" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-				          	CUARTO TRASERO
-				        </a>
-				      
-				    </div> 
 
-				    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-				      <div class="card-body">
-				        <ul class="list-group list-group-flush">
-					      <li class="list-group-item"><a href="#">Bife angosto</a></li>
-					      <li class="list-group-item"><a href="#">Lomo</a></li>
-					      <li class="list-group-item"><a href="#">Tapa de cuadril/ picaña</a></li>
-					      <li class="list-group-item"><a href="#">Corazon de cuadril</a></li>
-					      <li class="list-group-item"><a href="#">Peceto</a></li>
-					      <li class="list-group-item"><a href="#">Cuadradal</a></li>
-					      <li class="list-group-item"><a href="#">Nalga</a></li>
-					      <li class="list-group-item"><a href="#">Tortuguita</a></li>
-					      <li class="list-group-item"><a href="#">Bola de lomo</a></li>
-					      <li class="list-group-item"><a href="#">Garron Vacio</a></li>
-					    </ul>
-				      </div>
-				    </div>
-				  </div>-->
-
-				  <!--<div class="card">
-				    <div class="card-header nocollapsed-acordion" id="headingTwo">
-				      <a class="text-left" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
-				          	CUARTO DELANTERO
-				        </a>
-				    </div>
-				    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-				      <div class="card-body">
-				      	<ul class="list-group list-group-flush">
-					      <li class="list-group-item"><a href="#">Bife angosto</a></li>
-					      <li class="list-group-item"><a href="#">Lomo</a></li>
-					      <li class="list-group-item"><a href="#">Tapa de cuadril/ picaña</a></li>
-					      <li class="list-group-item"><a href="#">Corazon de cuadril</a></li>
-					      <li class="list-group-item"><a href="#">Peceto</a></li>
-					      <li class="list-group-item"><a href="#">Cuadradal</a></li>
-					      <li class="list-group-item"><a href="#">Nalga</a></li>
-					      <li class="list-group-item"><a href="#">Tortuguita</a></li>
-					      <li class="list-group-item"><a href="#">Bola de lomo</a></li>
-					      <li class="list-group-item"><a href="#">Garron Vacio</a></li>
-					    </ul>
-				      </div>
-				    </div>
-				  </div>-->
-				
 				</div>
 			</div>
 			<div class="col">
 				<div class="row ">
-					<div class="col align-self-center" style="margin-right: 36px; width: 100%;">
-						
+					<div class="col" style="width: 100%;">
+						<div id="carouselProducto" class="carousel slide d-flex justify-content-center" data-ride="carousel" style="width: 100%;">
 
-							
-								<div class="row justify-content-center align-items-center mb-4">
-									<div class="slider">
-										<ul class="slides">
-											@if($producto->imagenes)
-												@foreach($producto->imagenes as $imagen)
-													<li><img class="product-img" src="{{ asset($imagen->imagen) }}"></li>
-												@endforeach
-											@endif
-										</ul>
+							<div class="contenedorImageIndicators">
+								<div class="carousel-inner">
+									@if($producto->imagenes)
+										@foreach($producto->imagenes as $imagen)
+											<div class="carousel-item {{ $loop->first ? 'active' : ''}}">
+												<img class="d-block imageCarrousel w-100 h-100" src="{{ asset($imagen->imagen) }}">
+											</div>
+										@endforeach
+									@endif
+									<!--<div class="carousel-item active ">
+										<img class="d-block imageCarrousel w-100 h-100" src="{{ asset('img/etiquetado/7C7r80vg9gFWibHrqqb7a8ce7eFSf3eIqFuXHOv6.png') }}">
 									</div>
-									
-								</div>
-								<div class="row justify-content-between align-items-center">
-									<div class="prev">
-										<i class="far fa-arrow-alt-circle-left"></i>
+									<div class="carousel-item ">
+										<img  class="d-block imageCarrousel w-100 h-100" src="{{ asset('img/etiquetado/n40xhvvwGADCmNvnVI4Qeui7wVIaDfABnUAsoIfs.png') }}">
 									</div>
-									<div style="width: 260px; height:60px">
+									<div class="carousel-item ">
+										<img   class="d-block imageCarrousel w-100 h-100" src="{{ asset('img/etiquetado/nyNKZlKsMOxFumXpSoChj7Gxq483QOB8KUFZ54Hx.png') }}">
+									</div>
+									<div class="carousel-item ">
+										<img class="d-block imageCarrousel w-100 h-100" src="{{ asset('img/03.png') }}">
+									</div>-->
+							  </div>
+							  <div class="d-flex justify-content-between align-items-center mt-3">
+								  	<a class="carousel-control-prev d-block far fa-arrow-alt-circle-left" href="#carouselProducto" style="color:#000" role="button" data-slide="prev">
+									</a>
+									<!--<i class="far fa-arrow-alt-circle-left carousel-control-prev d-block" ></i>-->
+									<div style="width: 100%;text-align: center;">
 										@if($producto->imagenes)
 												@foreach($producto->imagenes as $imagen)
-													<img style="width: 60px;height: 60px;" class="product-img" src="{{ asset($imagen->imagen) }}">
+													<img style="width: 60px;height: 60px;" data-target="#carouselProducto" data-slide-to="{{$loop->index}}" class="product-img"src="{{ asset($imagen->imagen) }}">
 												@endforeach
-										@endif
+											@endif
+										<!--<img style="width: 60px;height: 60px;" data-target="#carouselProducto" data-slide-to="0" class="product-img" src="{{ asset('img/03.png') }}">
+
+										<img style="width: 60px;height: 60px;" data-target="#carouselProducto" data-slide-to="1" class="product-img" src="{{ asset('img/05.png') }}">
+
+										<img style="width: 60px;height: 60px;" data-target="#carouselProducto" data-slide-to="2" class="product-img" src="{{ asset('img/06.png') }}">
+
+										<img style="width: 60px;height: 60px;" data-target="#carouselProducto" data-slide-to="3" class="product-img" src="{{ asset('img/07.png') }}">-->
+
 									</div>
-									<div class="next">
-										<i class="far fa-arrow-alt-circle-right"></i>
-									</div>
-								
+
+									
+								  <a class="carousel-control-next d-block far fa-arrow-alt-circle-right" href="#carouselProducto" style="color:#000" role="button" data-slide="next">
+										<i class="" data-slide="next" role="button"></i>
+								  </a>
+						  	</div>
 							</div>
-						
+						</div>
 					</div>
 					<div class="col" id="descripcion_producto">
-						<h2>{{$producto->nombre}}<!--Corazon de Cuadril--></h2>
-						{!!$producto->descripcion!!}<!--Equipos de última generación para los procesos de congelado, enfriado y envasado al vacío y gran eficacia en el área de la comercialización y atención al cliente. Por su eficacia, tecnología y competitividad comercial, Frigorífico hv S.A, garantiza en todos sus productos, la más alta calidad en la industria de la carne.-->
+						<strong style="font-size: 27px;">{{$producto->nombre}}</strong><!--Corazon de Cuadril-->
+						{{--$producto->descripcion --}}
 
 						<table class="table" >
 						  <thead>
 						    <tr>
-						      <th colspan="2" style="border-top: none;">Especificaciones</th>
+						      <th colspan="2" style="border-top: none; font-size:17px;">Especificaciones</th>
 						    </tr>
 						  </thead>
 						  <tbody style="color:#6E6F71; font-size: 14px;">
@@ -282,6 +299,33 @@
 			</div>
 		</div>
 	</div>
+
+
+	<div class="modal fade" id="vistaPrevia" tabindex="-1" role="dialog" aria-labelledby="vistaPreviaLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="vistaPrevia">Vista Previa</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+             
+                <div class="modal-body">
+                	 <div class="d-flex justify-content-center">
+                	 	<img src="" id="imagepreview" style="width: 400px; height: 400px;" >
+                	 </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+
+                </div>
+            </div>
+            </div>
 @endsection
 
 @section('scripts')
@@ -294,59 +338,19 @@
 		$('.collapse').on('shown.bs.collapse', function () {
 			$(this).parent().find('.card-header').removeClass('nocollapsed-acordion').addClass('collapsed-acordion');
 		})
+
+		$('.carousel').carousel({
+		  interval: false
+		});
+
+		$(".imageCarrousel").on("click", function() {
+		   $('#imagepreview').attr('src', $(this).attr('src'));
+		   $('#vistaPrevia').modal('show');
+		});
 	});
+	$('.list-group-item a').on()
 
-	window.addEventListener('load', () => {
-
-
-	    // initial slide
-	    let slide = 1;
-
-	    // total slides
-	    let slides = document.querySelectorAll(".slider ul li");
-	    total = slides.length;
-
-	    // show first side
-	    showSlide(1);
-
-	    next = document.querySelector(".next");
-	    prev = document.querySelector(".prev")
-
-	    /**
-	     * event next button
-	     */
-	    next.addEventListener('click', (evt) => {
-	        evt.preventDefault();
-	        slide++;
-	        if (slide > total) { slide = 1; }
-	        showSlide(slide);
-	    })
-
-	    /** 
-	     * event prev button
-	     */
-	    prev.addEventListener("click", (evt) => {
-	        evt.preventDefault();
-	        slide--;
-	        if (slide < 1) { slide = total; }
-	        showSlide(slide);
-	    })
-
-	    /**
-	     * show slides
-	     * 
-	     * @param {number} n 
-	     * @return {null}
-	     * 
-	     */
-	    function showSlide(n) {
-	        n--; // decrement 1
-	        for (i = 0; i < slides.length; i++) {
-	            (i == n) ? slides[n].style.display = "block" : slides[i].style.display = "none";
-	        }
-	    }
-
-	})
+	
 </script>
 @endsection
 

@@ -33,4 +33,8 @@ class Corte extends Model
     {
         return $this->hasMany(PackagingCorte::class,'corte_id');
     }
+
+    public function getNombreAttribute($nombre){
+        return ucfirst($nombre);
+    }
 }
