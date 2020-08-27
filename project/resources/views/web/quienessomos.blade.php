@@ -7,8 +7,8 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset($quienessomos->encabezado_imagen_fondo) }}") no-repeat center center;
-			background-size: cover;
+			/*background: url("{{ asset($quienessomos->encabezado_imagen_fondo) }}") no-repeat center center;
+			background-size: cover;*/
 			position: relative;
 		}
 
@@ -70,7 +70,8 @@
 		'activeLink' => 'quienessomos',
 		'logo1'=> $quienessomos->logo_1_encabezado,
 		'logo2' => $quienessomos->logo_2_encabezado,
-		'logotipo' => $logo
+		'logotipo' => $logo,
+		'carousel' => $carousel
 	])
 @endsection
 

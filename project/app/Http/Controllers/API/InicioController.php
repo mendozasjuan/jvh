@@ -15,7 +15,7 @@ class InicioController extends Controller
      */
     public function index()
     {
-        return Inicio::first();
+        return Inicio::with('sliders')->first();
     }
 
     /**
@@ -27,7 +27,7 @@ class InicioController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'encabezado_imagen_fondo' => 'required',
+            //'encabezado_imagen_fondo' => 'required',
             'logo_1_encabezado' => 'required',
             'logo_2_encabezado' => 'required',
             'texto_encabezado' => 'required',
@@ -56,14 +56,54 @@ class InicioController extends Controller
         $image = $this->storeImagenes($request);
 
 
-          $inicio->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
-            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
-            ->setTranslations('seccion_1_parrafo', ['es' => $request['seccion_1_parrafo'],'zh' =>$request['seccion_1_parrafo_zh'] ])
-            ->setTranslations('seccio2_titulo', ['es' => $request['seccio2_titulo'],'zh' =>$request['seccio2_titulo_zh'] ])
-            ->setTranslations('seccion_2_parrafo', ['es' => $request['seccion_2_parrafo'],'zh' =>$request['seccion_2_parrafo_zh'] ])
-            ->setTranslations('seccion3_titulo', ['es' => $request['seccion3_titulo'],'zh' =>$request['seccion3_titulo_zh'] ])
-            ->setTranslations('seccion3_parrafo', ['es' => $request['seccion3_parrafo'],'zh' =>$request['seccion3_parrafo_zh'] ])
-            ->setTranslations('seccion4_titulo', ['es' => $request['seccion4_titulo'],'zh' =>$request['seccion4_titulo_zh'] ]);
+          $inicio->setTranslations('texto_encabezado', 
+            [
+              'es' => $request['texto_encabezado'],
+              'zh' => $request['texto_encabezado_zh'],
+              'en' => $request['texto_encabezado_en']
+            ] )
+            ->setTranslations('seccion1_titulo', 
+              [
+                'es' => $request['seccion1_titulo'],
+               'zh' =>$request['seccion1_titulo_zh'],
+               'en' =>$request['seccion1_titulo_en'],
+               ] )
+            ->setTranslations('seccion_1_parrafo', 
+              [
+                'es' => $request['seccion_1_parrafo'],
+              'zh' =>$request['seccion_1_parrafo_zh'],
+              'en' =>$request['seccion_1_parrafo_en'],
+              ])
+            ->setTranslations('seccio2_titulo', 
+              [
+                'es' => $request['seccio2_titulo'],
+                'zh' =>$request['seccio2_titulo_zh'],
+                'en' =>$request['seccio2_titulo_en']
+              ])
+            ->setTranslations('seccion_2_parrafo', 
+              [
+                'es' => $request['seccion_2_parrafo'],
+                'zh' =>$request['seccion_2_parrafo_zh'],
+                'en' =>$request['seccion_2_parrafo_en'],
+              ])
+            ->setTranslations('seccion3_titulo', 
+              [
+                'es' => $request['seccion3_titulo'],
+                'zh' =>$request['seccion3_titulo_zh'],
+                'en' =>$request['seccion3_titulo_en']
+              ])
+            ->setTranslations('seccion3_parrafo', 
+              [
+                'es' => $request['seccion3_parrafo'],
+                'zh' =>$request['seccion3_parrafo_zh'],
+                'en' =>$request['seccion3_parrafo_en']
+             ])
+            ->setTranslations('seccion4_titulo', 
+              [
+                'es' => $request['seccion4_titulo'],
+                'zh' =>$request['seccion4_titulo_zh'],
+                'en' =>$request['seccion4_titulo_en'],
+              ]);
 
         $inicio->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
 
@@ -124,14 +164,54 @@ class InicioController extends Controller
         $image = $this->storeImagenes($request);
 
         $inicio = Inicio::findOrFail($id);
-        $inicio->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
-            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
-            ->setTranslations('seccion_1_parrafo', ['es' => $request['seccion_1_parrafo'],'zh' =>$request['seccion_1_parrafo_zh'] ])
-            ->setTranslations('seccio2_titulo', ['es' => $request['seccio2_titulo'],'zh' =>$request['seccio2_titulo_zh'] ])
-            ->setTranslations('seccion_2_parrafo', ['es' => $request['seccion_2_parrafo'],'zh' =>$request['seccion_2_parrafo_zh'] ])
-            ->setTranslations('seccion3_titulo', ['es' => $request['seccion3_titulo'],'zh' =>$request['seccion3_titulo_zh'] ])
-            ->setTranslations('seccion3_parrafo', ['es' => $request['seccion3_parrafo'],'zh' =>$request['seccion3_parrafo_zh'] ])
-            ->setTranslations('seccion4_titulo', ['es' => $request['seccion4_titulo'],'zh' =>$request['seccion4_titulo_zh'] ]);
+        $inicio->setTranslations('texto_encabezado', 
+            [
+              'es' => $request['texto_encabezado'],
+              'zh' => $request['texto_encabezado_zh'],
+              'en' => $request['texto_encabezado_en']
+            ] )
+            ->setTranslations('seccion1_titulo', 
+              [
+                'es' => $request['seccion1_titulo'],
+               'zh' =>$request['seccion1_titulo_zh'],
+               'en' =>$request['seccion1_titulo_en'],
+               ] )
+            ->setTranslations('seccion_1_parrafo', 
+              [
+                'es' => $request['seccion_1_parrafo'],
+              'zh' =>$request['seccion_1_parrafo_zh'],
+              'en' =>$request['seccion_1_parrafo_en'],
+              ])
+            ->setTranslations('seccio2_titulo', 
+              [
+                'es' => $request['seccio2_titulo'],
+                'zh' =>$request['seccio2_titulo_zh'],
+                'en' =>$request['seccio2_titulo_en']
+              ])
+            ->setTranslations('seccion_2_parrafo', 
+              [
+                'es' => $request['seccion_2_parrafo'],
+                'zh' =>$request['seccion_2_parrafo_zh'],
+                'en' =>$request['seccion_2_parrafo_en'],
+              ])
+            ->setTranslations('seccion3_titulo', 
+              [
+                'es' => $request['seccion3_titulo'],
+                'zh' =>$request['seccion3_titulo_zh'],
+                'en' =>$request['seccion3_titulo_en']
+              ])
+            ->setTranslations('seccion3_parrafo', 
+              [
+                'es' => $request['seccion3_parrafo'],
+                'zh' =>$request['seccion3_parrafo_zh'],
+                'en' =>$request['seccion3_parrafo_en']
+             ])
+            ->setTranslations('seccion4_titulo', 
+              [
+                'es' => $request['seccion4_titulo'],
+                'zh' =>$request['seccion4_titulo_zh'],
+                'en' =>$request['seccion4_titulo_en'],
+              ]);
 
         $inicio->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
 

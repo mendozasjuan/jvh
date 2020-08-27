@@ -19,29 +19,37 @@ class ProductosDetalleController extends Controller
      */
     public function index()
     {
-        $productos = Corte::first();
+        $productos = PaginaProductos::first();
+        $cortes = Corte::first();
         $categoriascorte=CategoriaCorte::all();
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
+        $carousel = $productos->sliders->pluck('imagen')->all();
         return view('web.productos')->with(
             [
-                'productos' => $productos,
+                'productos' => $cortes,
                 'categorias' => $categoriascorte,
                 'footer' => $footer,
                 'logo' => $logo,
+                'carousel' => [
+                    'alto' => '300px',
+                    'imagenes' => $carousel
+                ]
             ]);
     }
 
 
     public function detalle($id)
     {
+        $productos = PaginaProductos::first();
         $corte = Corte::find($id);
         $categoriascorte=CategoriaCorte::all();
-        $img_fondo = PaginaProductos::first()->encabezado_imagen_fondo;
+        $img_fondo = $productos->encabezado_imagen_fondo;
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
+        $carousel = $productos->sliders->pluck('imagen')->all();
        return view('web.productosdetalle')->with(
             [
                 'producto' => $corte,
@@ -50,6 +58,10 @@ class ProductosDetalleController extends Controller
                 'footer' => $footer,
                 'redessociales' => $redessociales,
                 'logo' => $logo,
+                'carousel' => [
+                    'alto' => '300px',
+                    'imagenes' => $carousel
+                ]
             ]);
     }
 }

@@ -7,8 +7,8 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset($impactosocial->encabezado_imagen_fondo) }}") no-repeat center center;
-			background-size: cover;
+			/*background: url("{{ asset($impactosocial->encabezado_imagen_fondo) }}") no-repeat center center;
+			background-size: cover;*/
 			position: relative;
 			margin-bottom: 29px;
 		}
@@ -42,6 +42,7 @@
 		'logo1'=> $impactosocial->logo_1_encabezado,
 		'logo2' => $impactosocial->logo_2_encabezado,
 		'logotipo' => $logo,
+		'carousel' => $carousel
 	])
 @endsection
 

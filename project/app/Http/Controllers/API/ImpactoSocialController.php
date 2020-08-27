@@ -15,7 +15,7 @@ class ImpactoSocialController extends Controller
      */
     public function index()
     {
-        return ImpactoSocial::first();
+        return ImpactoSocial::with('sliders')->first();
     }
 
     /**
@@ -27,7 +27,7 @@ class ImpactoSocialController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-            'encabezado_imagen_fondo' => 'required',
+            //'encabezado_imagen_fondo' => 'required',
             'seccion1_titulo' => 'required',
             'seccion1_parrafo1' => 'required',
             'seccion1_parrafo2' => 'required',
@@ -43,11 +43,31 @@ class ImpactoSocialController extends Controller
 
         $image = $this->storeImagenes($request);
 
-        $impactosocial->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
-            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
-            ->setTranslations('seccion1_parrafo1', ['es' => $request['seccion1_parrafo1'],'zh' =>$request['seccion1_parrafo1_zh'] ])
-            ->setTranslations('seccion1_parrafo2', ['es' => $request['seccion1_parrafo2'],'zh' =>$request['seccion1_parrafo2_zh'] ] )
-            ->setTranslations('seccion2_titulo', ['es' => $request['seccion2_titulo'],'zh' =>$request['seccion2_titulo_zh'] ]);
+        $impactosocial->setTranslations('texto_encabezado', [
+            'es' => $request['texto_encabezado'],
+            'zh' =>$request['texto_encabezado_zh'],
+            'en' =>$request['texto_encabezado_en']
+         ] )
+            ->setTranslations('seccion1_titulo', [
+                'es' => $request['seccion1_titulo'],
+                'zh' =>$request['seccion1_titulo_zh'],
+                'en' =>$request['seccion1_titulo_en']
+             ] )
+            ->setTranslations('seccion1_parrafo1', [
+                'es' => $request['seccion1_parrafo1'],
+                'zh' =>$request['seccion1_parrafo1_zh'],
+                'en' =>$request['seccion1_parrafo1_en']
+             ])
+            ->setTranslations('seccion1_parrafo2', [
+                'es' => $request['seccion1_parrafo2'],
+                'zh' =>$request['seccion1_parrafo2_zh'],
+                'en' =>$request['seccion1_parrafo2_en']
+             ] )
+            ->setTranslations('seccion2_titulo', [
+                'es' => $request['seccion2_titulo'],
+                'zh' =>$request['seccion2_titulo_zh'],
+                'en' =>$request['seccion2_titulo_en']
+             ]);
 
 
             $impactosocial->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
@@ -106,11 +126,31 @@ class ImpactoSocialController extends Controller
 
         $impactosocial = ImpactoSocial::findOrFail($id);
 
-        $impactosocial->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
-            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
-            ->setTranslations('seccion1_parrafo1', ['es' => $request['seccion1_parrafo1'],'zh' =>$request['seccion1_parrafo1_zh'] ])
-            ->setTranslations('seccion1_parrafo2', ['es' => $request['seccion1_parrafo2'],'zh' =>$request['seccion1_parrafo2_zh'] ] )
-            ->setTranslations('seccion2_titulo', ['es' => $request['seccion2_titulo'],'zh' =>$request['seccion2_titulo_zh'] ]);
+        $impactosocial->setTranslations('texto_encabezado', [
+            'es' => $request['texto_encabezado'],
+            'zh' =>$request['texto_encabezado_zh'],
+            'en' =>$request['texto_encabezado_en']
+         ] )
+            ->setTranslations('seccion1_titulo', [
+                'es' => $request['seccion1_titulo'],
+                'zh' =>$request['seccion1_titulo_zh'],
+                'en' =>$request['seccion1_titulo_en']
+             ] )
+            ->setTranslations('seccion1_parrafo1', [
+                'es' => $request['seccion1_parrafo1'],
+                'zh' =>$request['seccion1_parrafo1_zh'],
+                'en' =>$request['seccion1_parrafo1_en']
+             ])
+            ->setTranslations('seccion1_parrafo2', [
+                'es' => $request['seccion1_parrafo2'],
+                'zh' =>$request['seccion1_parrafo2_zh'],
+                'en' =>$request['seccion1_parrafo2_en']
+             ] )
+            ->setTranslations('seccion2_titulo', [
+                'es' => $request['seccion2_titulo'],
+                'zh' =>$request['seccion2_titulo_zh'],
+                'en' =>$request['seccion2_titulo_en']
+             ]);
 
 
             $impactosocial->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];

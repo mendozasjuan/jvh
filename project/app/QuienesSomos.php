@@ -50,4 +50,9 @@ class QuienesSomos extends Model
     	'seccion4_parrafo4',
     	'seccion4_imagen_fondo',
     ];
+
+    public function sliders()
+    {
+        return $this->hasMany(SliderQuienesSomos::class,'quienes_somos_id');
+    }
 }

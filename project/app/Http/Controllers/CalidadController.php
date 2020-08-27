@@ -21,12 +21,17 @@ class CalidadController extends Controller
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
+        $carousel = $calidad->sliders->pluck('imagen')->all();
         return view('web.calidad')->with(
             [
                 'calidad' => $calidad,
                 'footer' => $footer,
                 'redessociales' => $redessociales,
                 'logo' => $logo,
+                'carousel' => [
+                    'alto' => '600px',
+                    'imagenes' => $carousel
+                ]
             ]
         );
     }

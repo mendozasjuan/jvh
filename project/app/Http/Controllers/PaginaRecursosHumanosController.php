@@ -27,12 +27,17 @@ class PaginaRecursosHumanosController extends Controller
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
+        $carousel = $recursoshumanos->sliders->pluck('imagen')->all();
         return view('web.recursoshumanos')->with([
             'recursoshumanos' => $recursoshumanos,
             'paises' => $paises,
             'footer' => $footer,
             'redessociales' => $redessociales,
             'logo' => $logo,
+            'carousel' => [
+                'alto' => '400px',
+                'imagenes' => $carousel
+            ]
         ]);
     }
 

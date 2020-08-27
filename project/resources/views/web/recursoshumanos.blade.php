@@ -7,8 +7,8 @@
 		.hero-img{
 			height: 400px;
 			width: 100%;
-			background: url("{{ asset($recursoshumanos->encabezado_imagen_fondo) }}") no-repeat center center;
-			background-size: cover;
+			/*background: url("{{ asset($recursoshumanos->encabezado_imagen_fondo) }}") no-repeat center center;
+			background-size: cover;*/
 			position: relative;
 		}
 
@@ -47,6 +47,7 @@
 			'text' => false,
 			'activeLink' => 'recursoshumanos',
 			'logotipo' => $logo,
+			'carousel' => $carousel
 	])
 @endsection
 

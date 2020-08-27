@@ -17,16 +17,21 @@ class InicioController extends Controller
      */
     public function index()
     {
-        $inicio = Inicio::first();
+        $inicio = Inicio::with('sliders')->first();
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
+        $carousel = $inicio->sliders->pluck('imagen')->all();
         return view('web.index')->with(
             [
                 'inicio' => $inicio,
                 'footer' => $footer,
                 'redessociales' => $redessociales,
-                'logo' => $logo
+                'logo' => $logo,
+                'carousel' => [
+                    'alto' => '600px',
+                    'imagenes' => $carousel
+                ]
             ]
         );
     }

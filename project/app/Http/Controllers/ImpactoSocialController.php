@@ -21,12 +21,17 @@ class ImpactoSocialController extends Controller
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
+        $carousel = $impactosocial->sliders->pluck('imagen')->all();
         return view('web.impactosocial')->with(
             [
                 'impactosocial' => $impactosocial,
                 'footer' => $footer,
                 'redessociales' => $redessociales,
                 'logo' => $logo,
+                'carousel' => [
+                    'alto' => '600px',
+                    'imagenes' => $carousel
+                ]
             ]
         );
     }

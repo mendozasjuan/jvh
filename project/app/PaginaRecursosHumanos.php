@@ -22,4 +22,9 @@ class PaginaRecursosHumanos extends Model
     	'seccion1_titulo',
     	'seccion1_parrafo',
     ];
+
+    public function sliders()
+    {
+        return $this->hasMany(SliderRecursosHumanos::class,'pagina_recursos_humanos_id');
+    }
 }

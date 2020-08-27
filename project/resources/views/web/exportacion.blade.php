@@ -7,8 +7,8 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset($exportacion->encabezado_imagen_fondo) }}") no-repeat center center;
-			background-size: cover;
+			/*background: url("{{ asset($exportacion->encabezado_imagen_fondo) }}") no-repeat center center;
+			background-size: cover;*/
 			position: relative;
 			margin-bottom: 29px;
 		}
@@ -73,12 +73,13 @@
 		'logo1'=> $exportacion->logo_1_encabezado,
 		'logo2' => $exportacion->logo_2_encabezado,
 		'logotipo' => $logo,
+		'carousel' => $carousel
 	])
 @endsection
 
 @section('secciones')
 		<!--<section>-->
-	<div id="h-seccion4" class="row">
+	<div id="h-seccion4" class="row mb-4">
 		<div class="col-7 col-lg-4 col-xl-2">
 			<div class="lineavertical">
 				<h2>{!! $exportacion->seccion1_titulo !!}<!--Mercados en el Mundo--></h2>
@@ -90,7 +91,7 @@
 		</div>
 		<div class="col">
 			<!--<img class="float-right" src="img/map.svg">-->
-			<img class="float-right" src="{{ asset($exportacion->seccion1_imagen) }}">
+			<img class="float-right" src="{{ asset($exportacion->seccion1_imagen) }}" style="width: 100%; height: 100%">
 		</div>
 
 	</div>	

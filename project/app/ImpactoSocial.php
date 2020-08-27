@@ -32,4 +32,9 @@ class ImpactoSocial extends Model
     	'seccion2_titulo',	
     	'seccion2_imagen_fondo',
     ];
+
+    public function sliders()
+    {
+        return $this->hasMany(SliderImpactoSocial::class,'impacto_social_id');
+    }
 }

@@ -21,13 +21,17 @@ class QuienesSomosController extends Controller
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
-        //dd($quienessomos);
+        $carousel = $quienessomos->sliders->pluck('imagen')->all();
         return view('web.quienessomos')->with(
             [
                 'quienessomos' => $quienessomos,
                 'footer' => $footer,
                 'redessociales' => $redessociales,
-                'logo' => $logo
+                'logo' => $logo,
+                'carousel' => [
+                    'alto' => '600px',
+                    'imagenes' => $carousel
+                ]
             ]);
     }
 }

@@ -7,8 +7,8 @@
 		.hero-img{
 			height: 300px;
 			width: 100%;
-			background: url("{{ asset($productos->encabezado_imagen_fondo) }}") no-repeat center center;
-			background-size: cover;
+			/*background: url("{{ asset($productos->encabezado_imagen_fondo) }}") no-repeat center center;
+			background-size: cover;*/
 			position: relative;
 		}
 
@@ -69,7 +69,7 @@
 @endsection
 
 @section('header')
-	@include('layouts.header',['text' => false,'titulo'=>$inicio->texto_encabezado ?? '','activeLink' => 'productos','logotipo' => $logo,])
+	@include('layouts.header',['text' => false,'titulo'=>$inicio->texto_encabezado ?? '','activeLink' => 'productos','logotipo' => $logo,'carousel' => $carousel])
 @endsection
 
 @section('secciones')

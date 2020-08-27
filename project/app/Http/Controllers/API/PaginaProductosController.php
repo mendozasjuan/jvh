@@ -15,7 +15,7 @@ class PaginaProductosController extends Controller
      */
     public function index()
     {
-        return PaginaProductos::first();
+        return PaginaProductos::with('sliders')->first();
     }
 
     /**
@@ -27,7 +27,7 @@ class PaginaProductosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'encabezado_imagen_fondo' => 'required',
+            //'encabezado_imagen_fondo' => 'required',
             'seccion1_titulo' => 'required',
             'seccion1_imagen' => 'required',
             'seccion1_imagen_fondo' => 'required',
@@ -41,7 +41,11 @@ class PaginaProductosController extends Controller
 
         $image = $this->storeImagenes($request);
 
-        $paginaproductos->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] );
+        $paginaproductos->setTranslations('seccion1_titulo', [
+            'es' => $request['seccion1_titulo'],
+            'zh' =>$request['seccion1_titulo_zh'],
+            'en' =>$request['seccion1_titulo_en']
+         ] );
 
         if($image['encabezado_imagen_fondo'] !=null )
             $paginaproductos->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
@@ -89,7 +93,11 @@ class PaginaProductosController extends Controller
         $image = $this->storeImagenes($request);
 
         $paginaproductos = PaginaProductos::findOrFail($id);
-        $paginaproductos->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] );
+        $paginaproductos->setTranslations('seccion1_titulo', [
+            'es' => $request['seccion1_titulo'],
+            'zh' =>$request['seccion1_titulo_zh'],
+            'en' =>$request['seccion1_titulo_en']
+         ] );
 
         if($image['encabezado_imagen_fondo'] !=null )
             $paginaproductos->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];

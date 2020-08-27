@@ -36,4 +36,9 @@ class Exportacion extends Model
     	'seccion3_titulo',	
     	'seccion3_imagen_fondo',
     ];
+
+    public function sliders()
+    {
+        return $this->hasMany(SliderExportacion::class,'exportacion_id');
+    }
 }

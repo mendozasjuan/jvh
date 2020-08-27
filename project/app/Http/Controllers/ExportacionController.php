@@ -21,12 +21,17 @@ class ExportacionController extends Controller
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
+        $carousel = $exportacion->sliders->pluck('imagen')->all();
         return view('web.exportacion')->with(
             [
                 'exportacion' => $exportacion,
                 'footer' => $footer,
                 'redessociales' => $redessociales,
                 'logo' => $logo,
+                'carousel' => [
+                    'alto' => '600px',
+                    'imagenes' => $carousel
+                ]
             ]
         );
     }

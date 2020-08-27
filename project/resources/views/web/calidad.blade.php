@@ -7,8 +7,8 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset($calidad->encabezado_imagen_fondo) }}") no-repeat center center;
-			background-size: cover;
+			/*background: url("{{ asset($calidad->encabezado_imagen_fondo) }}") no-repeat center center;
+			background-size: cover;*/
 			position: relative;
 			margin-bottom: 29px;
 		}
@@ -39,6 +39,7 @@
 		'logo1'=> $calidad->logo_1_encabezado,
 		'logo2' => $calidad->logo_2_encabezado,
 		'logotipo' => $logo,
+		'carousel' => $carousel
 	])
 @endsection
 

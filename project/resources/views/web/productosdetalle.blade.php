@@ -7,8 +7,8 @@
 		.hero-img{
 			height: 300px;
 			width: 100%;
-			background: url("{{ asset($img_fondo) }}") no-repeat center center;
-			background-size: cover;
+			/*background: url("{{ asset($img_fondo) }}") no-repeat center center;
+			background-size: cover;*/
 			position: relative;
 		}
 
@@ -109,27 +109,28 @@
 		}
 
 
-		.carousel-control-prev, .carousel-control-next{
-			position:relative;
-			width: fit-content;
+		.carousel-control-prev .detalle, .carousel-control-next .detalle{
+			position:relative!important;
+			width: fit-content!important;
+			color:#000!important;
 
 		}
 
-		.fa-arrow-alt-circle-left:before{
+		.fa-arrow-alt-circle-left:before .detalle{
 			float: left;
 		}
 
-		.carousel-control-next:before{
+		.carousel-control-next:before .detalle{
 			float: right;
 		}
 
-		.carousel-inner{
+		.carousel-inner .detalle{
 			width: 30rem;
     		height: 30rem;
     		cursor: pointer;
 		}
 
-		.carousel-item{
+		.carousel-item .detalle{
 			width: 100%;
     		height: 100%;
 		}
@@ -150,7 +151,7 @@
 @endsection
 
 @section('header')
-	@include('layouts.header',['text' => false,'titulo'=>$inicio->texto_encabezado ?? '','logotipo' => $logo,])
+	@include('layouts.header',['text' => false,'titulo'=>$inicio->texto_encabezado ?? '','logotipo' => $logo,'carousel' => $carousel])
 @endsection
 
 @section('secciones')
@@ -187,10 +188,10 @@
 						<div id="carouselProducto" class="carousel slide d-flex justify-content-center" data-ride="carousel" style="width: 100%;">
 
 							<div class="contenedorImageIndicators">
-								<div class="carousel-inner">
+								<div class="carousel-inner detalle">
 									@if($producto->imagenes)
 										@foreach($producto->imagenes as $imagen)
-											<div class="carousel-item {{ $loop->first ? 'active' : ''}}">
+											<div class="carousel-item detalle {{ $loop->first ? 'active' : ''}}">
 												<img class="d-block imageCarrousel w-100 h-100" src="{{ asset($imagen->imagen) }}">
 											</div>
 										@endforeach
@@ -208,8 +209,8 @@
 										<img class="d-block imageCarrousel w-100 h-100" src="{{ asset('img/03.png') }}">
 									</div>-->
 							  </div>
-							  <div class="d-flex justify-content-between align-items-center mt-3">
-								  	<a class="carousel-control-prev d-block far fa-arrow-alt-circle-left" href="#carouselProducto" style="color:#000" role="button" data-slide="prev">
+							  <div class="d-flex justify-content-between align-items-center mt-3 " style="position:relative;">
+								  	<a class="carousel-control-prev detalle d-block far fa-arrow-alt-circle-left" href="#carouselProducto" style="color:#000;width: fit-content;position: relative;" role="button" data-slide="prev">
 									</a>
 									<!--<i class="far fa-arrow-alt-circle-left carousel-control-prev d-block" ></i>-->
 									<div style="width: 100%;text-align: center;">
@@ -229,7 +230,7 @@
 									</div>
 
 									
-								  <a class="carousel-control-next d-block far fa-arrow-alt-circle-right" href="#carouselProducto" style="color:#000" role="button" data-slide="next">
+								  <a class="carousel-control-next d-block far fa-arrow-alt-circle-right detalle" href="#carouselProducto" style="color:#000;width: fit-content;position: relative;" role="button" data-slide="next">
 										<i class="" data-slide="next" role="button"></i>
 								  </a>
 						  	</div>

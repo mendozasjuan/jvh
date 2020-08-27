@@ -23,6 +23,7 @@ class PaginaProductosController extends Controller
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
+        $carousel = $productos->sliders->pluck('imagen')->all();
         return view('web.productos')->with(
             [
                 'productos' => $productos,
@@ -30,6 +31,10 @@ class PaginaProductosController extends Controller
                 'footer' => $footer,
                 'redessociales' => $redessociales,
                 'logo' => $logo,
+                'carousel' => [
+                    'alto' => '300px',
+                    'imagenes' => $carousel
+                ]
             ]);
     }
 }

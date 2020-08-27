@@ -22,4 +22,9 @@ class PaginaProductos extends Model
     	'seccion1_imagen',
     	'seccion1_imagen_fondo',
     ];
+
+    public function sliders()
+    {
+        return $this->hasMany(SliderProductos::class,'pagina_productos_id');
+    }
 }

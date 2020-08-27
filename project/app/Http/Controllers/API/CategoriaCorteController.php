@@ -26,13 +26,21 @@ class CategoriaCorteController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        /*/*$this->validate($request, [
             'categoria' => 'required'
-        ]);
+        ]);*/
 
-        return CategoriaCorte::create([
-           'categoria' => $request['categoria']
-        ]);
+        $categoria = new CategoriaCorte;
+
+         $categoria->setTranslations('categoria', [
+            'es' => $request['categoria'],
+            'zh' =>$request['categoria_zh'],
+            'en' =>$request['categoria_en']
+         ] );
+
+         return $categoria->save();
+
+
     }
 
     /**
@@ -55,14 +63,19 @@ class CategoriaCorteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        /*$this->validate($request, [
             'categoria' => 'required',
-        ]);
+            'categoria_en' => 'required'
+        ]);*/
 
         $categoria = CategoriaCorte::findOrFail($id);
-        $categoria->categoria = $request['categoria'];
+        $categoria->setTranslations('categoria', [
+            'es' => $request['categoria'],
+            'zh' =>$request['categoria_zh'],
+            'en' =>$request['categoria_en']
+         ] );
 
-        $categoria->update();
+        return $categoria->update();
     }
 
     /**

@@ -19,7 +19,7 @@ Route::group(['middleware' => ['web']], function () {
             session(['lang' => $lang]);
             return \Redirect::back();
         })->where([
-            'lang' => 'es|zh'
+            'lang' => 'es|zh|en'
     ]);
 
     Route::get('/','InicioController@index')->name('inicio');

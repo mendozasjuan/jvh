@@ -7,8 +7,8 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset($contacto->encabezado_imagen_fondo) }}") no-repeat center center;
-			background-size: cover;
+			/*background: url("{{ asset($contacto->encabezado_imagen_fondo) }}") no-repeat center center;
+			background-size: cover;*/
 			position: relative;
 			margin-bottom: 29px;
 		}
@@ -34,6 +34,18 @@
 			color:#6E6F71; 
 			margin-bottom:30px;"
 		}
+
+
+
+		.mapa{
+			width: inherit!important;
+			height: 382px!important;
+		}
+
+		iframe{
+			width: 100%;
+			height: 100%;
+		}
     </style>
 @endsection
 
@@ -41,6 +53,7 @@
 	@include('layouts.header',[
 			'text' => false,
 			'logotipo' => $logo,
+			'carousel' => $carousel
 	])
 @endsection
 
@@ -49,56 +62,82 @@
 	<div id="c-seccion">
 		<div class="row">
 			<div class="col-12 pr-0 mb-3 col-md-6" >
-				<div style="width: 100%">
+						<div class="mapa">
+							{!!$contacto->coordenadas1!!}
+							<!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.6690732305055!2d-58.52651318418095!3d-34.663059468148596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc8f6b5e34985%3A0xdb70aaf7981ec532!2sFrigor%C3%ADfico%20Hv!5e0!3m2!1ses!2sve!4v1598389817421!5m2!1ses!2sve" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
 
-						<img style="width: inherit;height: 382px" src="{{ asset('img/lomasdelmirador.png')}}" alt="">
+						</div>
 
-				</div>
+
 				<div  class="caja" style="background: #ccc 0% 0% no-repeat padding-box; ">
 						<h3 style="font: normal normal 600 23px Raleway;font-weight:bold;">{!! $contacto->ciudad1!!}<!--Lomas del Mirador--></h3>
-							
 
 					<div class="row" style="font-size:14px;color:#060505">
 
 						<div class="col" >
-							<i style="font-weight: bold; color:#E51D2A" class="fa fa-map-marker-alt "  aria-hidden="true"></i>
-							<span style="font-weight: bold; color:#E51D2A;">Dirección</span> 
+							<div class="row">
+								<div class="col-1"><i style="font-weight: bold; color:#E51D2A" class="fa fa-map-marker-alt "  aria-hidden="true"></i></div>
+								<div class="col"><span style="font-weight: bold; color:#E51D2A;">Dirección</span> 
 							{!! $contacto->direccion1!!}
-							<!--Paso 3030 (1752) Lomas del Mirador Buenos Aires-->
+							<!--Paso 3030 (1752) Lomas del Mirador Buenos Aires--></div>
+							</div>
+							
+							
 						</div>
 
 						<div class="col">
-							<i style="font-weight: bold; color:#E51D2A" class="fas fa-phone-alt " aria-hidden="true"></i>
-							<span style="font-weight: bold; color:#E51D2A">Llámenos al</span> 
+							<div class="row">
+								<div class="col-1"><i style="font-weight: bold; color:#E51D2A" class="fas fa-phone-alt " aria-hidden="true"></i></div>
+								<div class="col">
+									<span style="font-weight: bold; color:#E51D2A">Llámenos al</span> 
 							<!--+54 (11)) 4699-4424 +54 (11)) 4699-2882-->
-							<p>{!! $contacto->telefonos1!!}</p>
+									<p>{!! $contacto->telefonos1!!}</p>
+								</div>
+							</div>
+							
+							
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col" style="padding-right: 0px;">
-				<div style="width: 100%">
-						<img style="width: inherit;height: 382px" src="{{ asset('img/bernasconi.png')}}" alt="">
-
+				
+				<div class="mapa">
+					{!! $contacto->coordenadas2 !!}
+					<!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6299.341128860751!2d-63.77794607803259!3d-37.86799802558851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95e8e96d5a2d0a05%3A0x45277c28a55c3022!2sFrigorifico%20HV%20S.A!5e0!3m2!1ses!2sve!4v1598390165255!5m2!1ses!2sve"  frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
 				</div>
+				
+
 				<div class="caja" style="background: #060505 0% 0% no-repeat padding-box" >
 							<h3 style="color:#E51D2A">{!! $contacto->ciudad2!!}<!--Bernasconi--></h3>
 					<div class="row" style="font-size:14px;color:#fff">
 
 						<div class="col">
-							<i style="font-weight: bold; color:#E51D2A" class="fa fa-map-marker-alt "  aria-hidden="true"></i>
-							<span style="color:#E51D2A"><strong>Dirección</strong></span>
-							<div class="datos_blanco" style="color:#fff">
-								{!! $contacto->direccion2!!}
+							<div class="row">
+								<div class="col-1"><i style="font-weight: bold; color:#E51D2A" class="fa fa-map-marker-alt "  aria-hidden="true"></i></div>
+								<div class="col">
+									<span style="color:#E51D2A"><strong>Dirección</strong></span>
+									<div class="datos_blanco" style="color:#fff">
+										{!! $contacto->direccion2!!}
+									</div>
+								</div>
 							</div>
+							
+							
 							
 							<!--<br>Ruta 35, Km 165 (8204) Bernasconi - La Pampa-->
 						</div>
 
 						<div class="col">
-							<i style="font-weight: bold; color:#E51D2A" class="fas fa-phone-alt " aria-hidden="true"></i>
-							<span style="color:#E51D2A"><strong>Llámenos al</strong></span> 
+							<div class="row">
+								<div class="col-1"><i style="font-weight: bold; color:#E51D2A" class="fas fa-phone-alt " aria-hidden="true"></i></div>
+								<div class="col">
+									<span style="color:#E51D2A"><strong>Llámenos al</strong></span> 
 							<p class="datos_blanco">{!! $contacto->telefonos2!!}</p>
+								</div>
+							</div>
+							
+							
 							<!--<br>+54 (11)) 4699-4424 / +54 (11)) 4699-2882-->
 						</div>
 					</div>

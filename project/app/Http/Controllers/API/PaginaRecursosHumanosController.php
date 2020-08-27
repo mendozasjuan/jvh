@@ -16,7 +16,7 @@ class PaginaRecursosHumanosController extends Controller
      */
     public function index()
     {
-        return PaginaRecursosHumanos::first();
+        return PaginaRecursosHumanos::with('sliders')->first();
     }
 
     /**
@@ -28,7 +28,7 @@ class PaginaRecursosHumanosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'encabezado_imagen_fondo' => 'required',
+            //'encabezado_imagen_fondo' => 'required',
             'seccion1_titulo' => 'required',
             'seccion1_parrafo' => 'required',
 
@@ -41,8 +41,16 @@ class PaginaRecursosHumanosController extends Controller
 
         $image = $this->storeImagenes($request);
 
-        $paginarecursoshumanos->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
-            ->setTranslations('seccion1_parrafo', ['es' => $request['seccion1_parrafo'],'zh' =>$request['seccion1_parrafo_zh'] ] );
+        $paginarecursoshumanos->setTranslations('seccion1_titulo', [
+            'es' => $request['seccion1_titulo'],
+            'zh' =>$request['seccion1_titulo_zh'],
+            'en' =>$request['seccion1_titulo_en']
+        ] )
+            ->setTranslations('seccion1_parrafo', [
+                'es' => $request['seccion1_parrafo'],
+                'zh' =>$request['seccion1_parrafo_zh'],
+                'en' =>$request['seccion1_parrafo_en'] 
+        ] );
 
         if($image['encabezado_imagen_fondo'] !=null )
             $paginarecursoshumanos->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];
@@ -76,8 +84,16 @@ class PaginaRecursosHumanosController extends Controller
         $image = $this->storeImagenes($request);
 
         $paginarecursoshumanos = PaginaRecursosHumanos::findOrFail($id);
-        $paginarecursoshumanos->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
-            ->setTranslations('seccion1_parrafo', ['es' => $request['seccion1_parrafo'],'zh' =>$request['seccion1_parrafo_zh'] ] );
+        $paginarecursoshumanos->setTranslations('seccion1_titulo', [
+            'es' => $request['seccion1_titulo'],
+            'zh' =>$request['seccion1_titulo_zh'],
+            'en' =>$request['seccion1_titulo_en']
+        ] )
+            ->setTranslations('seccion1_parrafo', [
+                'es' => $request['seccion1_parrafo'],
+                'zh' =>$request['seccion1_parrafo_zh'],
+                'en' =>$request['seccion1_parrafo_en'] 
+        ] );
 
         if($image['encabezado_imagen_fondo'] !=null )
             $paginarecursoshumanos->encabezado_imagen_fondo = $image['encabezado_imagen_fondo'];

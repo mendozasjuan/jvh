@@ -15,7 +15,7 @@ class CalidadController extends Controller
      */
     public function index()
     {
-        return Calidad::first();
+        return Calidad::with('sliders')->first();
     }
 
     /**
@@ -27,7 +27,7 @@ class CalidadController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-            'encabezado_imagen_fondo' => 'required',
+            //'encabezado_imagen_fondo' => 'required',
             'seccion1_titulo' => 'required',
             'seccion1_parrafo' => 'required',
             'seccion1_logo1' => 'required',
@@ -49,9 +49,21 @@ class CalidadController extends Controller
 
         $image = $this->storeImagenes($request);
 
-        $calidad->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
-            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
-            ->setTranslations('seccion1_parrafo', ['es' => $request['seccion1_parrafo'],'zh' =>$request['seccion1_parrafo_zh'] ]);
+        $calidad->setTranslations('texto_encabezado', [
+            'es' => $request['texto_encabezado'],
+            'zh' =>$request['texto_encabezado_zh'],
+            'en' =>$request['texto_encabezado_en']
+         ] )
+            ->setTranslations('seccion1_titulo', [
+                'es' => $request['seccion1_titulo'],
+                'zh' =>$request['seccion1_titulo_zh'],
+                'en' =>$request['seccion1_titulo_en']
+             ] )
+            ->setTranslations('seccion1_parrafo', [
+                'es' => $request['seccion1_parrafo'],
+                'zh' =>$request['seccion1_parrafo_zh'],
+                'en' =>$request['seccion1_parrafo_en']
+            ]);
 
 
             $calidad->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];
@@ -142,9 +154,21 @@ class CalidadController extends Controller
         $image = $this->storeImagenes($request);
 
         $calidad = Calidad::findOrFail($id);
-        $calidad->setTranslations('texto_encabezado', ['es' => $request['texto_encabezado'],'zh' =>$request['texto_encabezado_zh'] ] )
-            ->setTranslations('seccion1_titulo', ['es' => $request['seccion1_titulo'],'zh' =>$request['seccion1_titulo_zh'] ] )
-            ->setTranslations('seccion1_parrafo', ['es' => $request['seccion1_parrafo'],'zh' =>$request['seccion1_parrafo_zh'] ]);
+        $calidad->setTranslations('texto_encabezado', [
+            'es' => $request['texto_encabezado'],
+            'zh' =>$request['texto_encabezado_zh'],
+            'en' =>$request['texto_encabezado_en']
+         ] )
+            ->setTranslations('seccion1_titulo', [
+                'es' => $request['seccion1_titulo'],
+                'zh' =>$request['seccion1_titulo_zh'],
+                'en' =>$request['seccion1_titulo_en']
+             ] )
+            ->setTranslations('seccion1_parrafo', [
+                'es' => $request['seccion1_parrafo'],
+                'zh' =>$request['seccion1_parrafo_zh'],
+                'en' =>$request['seccion1_parrafo_en']
+            ]);
 
 
             $calidad->texto_encabezado_habilitado = $request['texto_encabezado_habilitado'];

@@ -45,11 +45,31 @@ class ContactoFooterController extends Controller
             return $this->update($request,$request['id']);
         }
 
-        $contactoFooter->setTranslations('ciudad1', ['es' => $request['ciudad1'],'zh' =>$request['ciudad1_zh'] ] )
-            ->setTranslations('direccion1', ['es' => $request['direccion1'],'zh' =>$request['direccion1_zh'] ] )
-            ->setTranslations('ciudad2', ['es' => $request['ciudad2'],'zh' =>$request['ciudad2_zh'] ] )
-            ->setTranslations('direccion2', ['es' => $request['direccion2'],'zh' =>$request['direccion2_zh'] ] )
-            ->setTranslations('contacto_titulo', ['es' => $request['contacto_titulo'],'zh' =>$request['contacto_titulo_zh'] ]);
+        $contactoFooter->setTranslations('ciudad1', [
+                'es' => $request['ciudad1'],
+                'zh' =>$request['ciudad1_zh'],
+                'en' =>$request['ciudad1_en']
+         ] )
+            ->setTranslations('direccion1', [
+                'es' => $request['direccion1'],
+                'zh' =>$request['direccion1_zh'],
+                'en' =>$request['direccion1_en']
+             ] )
+            ->setTranslations('ciudad2', [
+                'es' => $request['ciudad2'],
+                'zh' =>$request['ciudad2_zh'],
+                'en' =>$request['ciudad2_en']
+             ] )
+            ->setTranslations('direccion2', [
+                'es' => $request['direccion2'],
+                'zh' =>$request['direccion2_zh'],
+                'en' =>$request['direccion2_en']
+             ] )
+            ->setTranslations('contacto_titulo', [
+                'es' => $request['contacto_titulo'],
+                'zh' =>$request['contacto_titulo_zh'],
+                'en' =>$request['contacto_titulo_en']
+             ]);
 
             $contactoFooter->telefonos1 = $request['telefonos1'];
             $contactoFooter->telefonos2 = $request['telefonos2'];
@@ -84,11 +104,31 @@ class ContactoFooterController extends Controller
 
 
         $contactoFooter = ContactoFooter::findOrFail($id);
-         $contactoFooter->setTranslations('ciudad1', ['es' => $request['ciudad1'],'zh' =>$request['ciudad1_zh'] ] )
-            ->setTranslations('direccion1', ['es' => $request['direccion1'],'zh' =>$request['direccion1_zh'] ] )
-            ->setTranslations('ciudad2', ['es' => $request['ciudad2'],'zh' =>$request['ciudad2_zh'] ] )
-            ->setTranslations('direccion2', ['es' => $request['direccion2'],'zh' =>$request['direccion2_zh'] ] )
-            ->setTranslations('contacto_titulo', ['es' => $request['contacto_titulo'],'zh' =>$request['contacto_titulo_zh'] ] );
+         $contactoFooter->setTranslations('ciudad1', [
+                'es' => $request['ciudad1'],
+                'zh' =>$request['ciudad1_zh'],
+                'en' =>$request['ciudad1_en']
+         ] )
+            ->setTranslations('direccion1', [
+                'es' => $request['direccion1'],
+                'zh' =>$request['direccion1_zh'],
+                'en' =>$request['direccion1_en']
+             ] )
+            ->setTranslations('ciudad2', [
+                'es' => $request['ciudad2'],
+                'zh' =>$request['ciudad2_zh'],
+                'en' =>$request['ciudad2_en']
+             ] )
+            ->setTranslations('direccion2', [
+                'es' => $request['direccion2'],
+                'zh' =>$request['direccion2_zh'],
+                'en' =>$request['direccion2_en']
+             ] )
+            ->setTranslations('contacto_titulo', [
+                'es' => $request['contacto_titulo'],
+                'zh' =>$request['contacto_titulo_zh'],
+                'en' =>$request['contacto_titulo_en']
+             ]);
 
             $contactoFooter->telefonos1 = $request['telefonos1'];
             $contactoFooter->telefonos2 = $request['telefonos2'];

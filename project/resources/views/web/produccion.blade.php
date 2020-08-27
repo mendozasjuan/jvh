@@ -7,8 +7,8 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			background: url("{{ asset($produccion->encabezado_imagen_fondo) }}") no-repeat center center;
-			background-size: cover;
+			/*background: url("{{ asset($produccion->encabezado_imagen_fondo) }}") no-repeat center center;
+			background-size: cover;*/
 			position: relative;
 		}
 
@@ -37,6 +37,16 @@
 			color:#fff;
 		}
 
+		/*.video-foreground,
+		.video-background iframe {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  pointer-events: none;
+		}*/
+
     </style>
 @endsection
 
@@ -48,6 +58,7 @@
 		'logo1'=> $produccion->logo_1_encabezado,
 		'logo2' => $produccion->logo_2_encabezado,
 		'logotipo' => $logo,
+		'carousel' => $carousel
 	])
 @endsection
 
@@ -94,7 +105,12 @@
 				</div>
 
 			</div>
-			<div  id="h-seccion3" >
+			<div  id="h-seccion3">
+				<!--<div class="video-background">
+				    <div class="video-foreground">
+				     
+				    </div>
+				</div>-->
 				<div class="negro">
 
 				</div>

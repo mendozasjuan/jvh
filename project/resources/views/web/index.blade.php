@@ -7,9 +7,9 @@
 		.hero-img{
 			height: 600px;
 			width: 100%;
-			/*background: url("{{ asset('img/bg-black_angus-001-JAndrewPatronik.png') }}") no-repeat center center;*/
+			/*background: url("{{ asset('img/bg-black_angus-001-JAndrewPatronik.png') }}") no-repeat center center;
 			background: url("{{ asset($inicio->encabezado_imagen_fondo) }}") no-repeat center center;
-			background-size: cover;
+			background-size: cover;*/
 			position: relative;
 			margin-bottom: 29px;
 		}
@@ -37,6 +37,8 @@
 			opacity:1;
 			position: relative;
 		}
+
+
     </style>
 @endsection
 
@@ -46,7 +48,8 @@
 		'titulo'=> $inicio->texto_encabezado,
 		'logo1'=> $inicio->logo_1_encabezado,
 		'logo2' => $inicio->logo_2_encabezado,
-		'logotipo' => $logo
+		'logotipo' => $logo,
+		'carousel' => $carousel
 		])
 @endsection
 

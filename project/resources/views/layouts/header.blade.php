@@ -1,3 +1,37 @@
+<div id="carouselEncabezado" class="carousel slide" data-ride="carousel" >
+	<ol class="carousel-indicators">
+		@foreach($carousel['imagenes'] as $imagen)
+			<li data-target="#carouselEncabezado" data-slide-to="{{$loop->index}}" class="{{ $loop->first ? 'active' : ''}}"></li>
+    	@endforeach
+  </ol>
+  <div class="carousel-inner">
+  	<a class="carousel-control-prev" href="#carouselEncabezado" role="button" data-slide="prev" style="width: 50px;">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="sr-only">Anterior</span>
+  	</a>
+  	@foreach($carousel['imagenes'] as $imagen)
+	    <div class="carousel-item {{ $loop->first ? 'active' : ''}}">
+	    	
+	      <img class="d-block w-100" alt="..." style="height: {{$carousel['alto'] ? $carousel['alto']  : '600px'}}; width: 100%;background: url({{ asset($imagen) }}) no-repeat center center;background-size: cover;position: relative;">
+	    </div>
+
+    @endforeach
+    <!--<div class="carousel-item">
+      <img src="{{ asset('img/WpZ0Rl0cyC94ykIMCyAKDOhUtCksksrIFFOUkOMm.png') }}" class="d-block w-100" alt="...">
+    </div>-->
+    <a class="carousel-control-next" href="#carouselEncabezado" role="button" data-slide="next" style="width: 50px;">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Siguiente</span>
+  </a>
+  </div>
+ 
+  	
+  
+
+  
+</div>
+
+
 <div class="degradado">
 	<section id="nav">
 		<div class="row justify-content-center topnavbar-desktop__row">
@@ -8,6 +42,7 @@
 				<div class="row contacto justify-content-center justify-content-sm-end mr-3">
 					<a href="{{ url('contacto') }}">Contacto</a>
 					<a class="{{ App::isLocale('es') ? 'localeActive' : ''}}" href="{{ url('lang', ['es']) }}">Es</a>
+					<a class="{{ App::isLocale('en') ? 'localeActive' : ''}}" href="{{ url('lang', ['en']) }}">En</a>
 					<a class="{{ App::isLocale('zh') ? 'localeActive' :''}}" href="{{ url('lang', ['zh']) }}">独</a>
 				</div>
 				<div class="row">
@@ -23,46 +58,41 @@
 							<div class="collapse navbar-collapse justify-content-lg-end" id="navbarSupportedContent">
 								<ul class="navbar-nav ">
 									<li class="nav-item">
-										<a class="nav-link" href="{{ url('quienessomos') }}">Quienes Somos</a>
-										@if (isset($activeLink) && $activeLink == 'quienessomos')
-											<div class="linea"></div>
-										@endif
+										<a class="nav-link {{ isset($activeLink) && $activeLink == 'quienessomos' ? 'linkActivo' : ''}}" href="{{ url('quienessomos') }}">
+										Quienes Somos
+										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ url('produccion') }}">Producción</a>
-										@if (isset($activeLink) && $activeLink == 'produccion')
-											<div class="linea"></div>
-										@endif
+										<a class="nav-link {{ isset($activeLink) && $activeLink == 'produccion' ? 'linkActivo' : ''}}" href="{{ url('produccion') }}">
+											Producción
+										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ url('exportacion') }}">Exportación</a>
-										@if (isset($activeLink) && $activeLink == 'exportacion')
-											<div class="linea"></div>
-										@endif
+										<a class="nav-link {{ isset($activeLink) && $activeLink == 'exportacion' ? 'linkActivo' : ''}}" href="{{ url('exportacion') }}">
+											Exportación
+										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ url('productos') }}">Productos</a>
-										@if (isset($activeLink) && $activeLink == 'productos')
-											<div class="linea"></div>
-										@endif
+										<a class="nav-link {{ isset($activeLink) && $activeLink == 'productos' ? 'linkActivo' : ''}}" href="{{ url('productos') }}">
+											Productos
+										</a>
+										
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ url('calidad') }}">Calidad</a>
-										@if (isset($activeLink) && $activeLink == 'calidad')
-											<div class="linea"></div>
-										@endif
+										<a class="nav-link {{ isset($activeLink) && $activeLink == 'calidad' ? 'linkActivo' : ''}}" href="{{ url('calidad') }}">
+											Calidad
+										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ url('impactosocial') }}">Impacto Social</a>
-										@if (isset($activeLink) && $activeLink == 'impactosocial')
-											<div class="linea"></div>
-										@endif
+										<a class="nav-link {{ isset($activeLink) && $activeLink == 'impactosocial' ? 'linkActivo' : ''}}" href="{{ url('impactosocial') }}">
+											Impacto Social
+											<span class="linea "></span>
+										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ url('recursoshumanos') }}">Recursos Humanos</a>
-										@if (isset($activeLink) && $activeLink == 'recursoshumanos')
-											<div class="linea"></div>
-										@endif
+										<a class="nav-link {{ isset($activeLink) && $activeLink == 'recursoshumanos' ? 'linkActivo' :''}}" href="{{ url('recursoshumanos') }}">
+											Recursos Humanos
+										</a>
 									</li>
 								</ul>
 							</div>
@@ -74,15 +104,13 @@
 	</section>
 	@if ($text)
 		<div id="h-seccion1" class="row align-items-center">
-			<div class="col-12 col-md-4 col-lg-3 col-xl-2 text-center">
-				<!--<img  src="img/Object-5209.svg">
-				<img  src="img/Object-1237.svg">-->
+			<div class="col-12 col-md-4 col-lg-3 text-center">
 				<img  src="{{ asset($logo1) }}">
 				<img  src="{{ asset($logo2) }}">
 			</div>
 			<div class="col-12 col-md-7 col-xl-3 col-lg-3">
 				<h2>
-					{!! $titulo !!}<!--"Carne Argentina de alta calidad para los mercados más exigentes del mundo"-->
+					{!! $titulo !!}
 				</h2>
 			</div>
 		</div>
@@ -102,6 +130,7 @@
 		<div class="collapse" id="collapseLang" data-parent="#accordionMobileNavbar">
 			<div class="topnavbar-mobile__card">
 				<a href="{{ url('lang', ['es']) }}">ES</a>
+				<a href="{{ url('lang', ['en']) }}">EN</a>
 				<a href="{{url('lang', ['zh']) }}">独</a>
 			</div>
 		</div>

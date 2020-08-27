@@ -41,4 +41,9 @@ class Produccion extends Model
     	'seccion3_parrafo',
     	'seccion3_imagen_fondo'
     ];
+
+    public function sliders()
+    {
+        return $this->hasMany(SliderProduccion::class,'produccion_id');
+    }
 }

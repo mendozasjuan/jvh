@@ -35,4 +35,9 @@ class Calidad extends Model
     	'seccion1_logo7',	
     	'seccion2_imagen_fondo',
     ];
+
+    public function sliders()
+    {
+        return $this->hasMany(SliderCalidad::class,'calidad_id');
+    }
 }

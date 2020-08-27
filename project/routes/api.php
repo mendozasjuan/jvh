@@ -35,6 +35,16 @@ Route::apiResources(['contactofooter' => 'API\ContactoFooterController']);
 Route::apiResources(['redessociales' => 'API\RedesSocialesController']);
 Route::apiResources(['logo' => 'API\LogoController']);
 
+Route::apiResources(['sliderinicio' => 'API\SliderInicioController']);
+Route::apiResources(['sliderquienessomos' => 'API\SliderQuienesSomosController']);
+Route::apiResources(['sliderproduccion' => 'API\SliderProduccionController']);
+Route::apiResources(['sliderexportacion' => 'API\SliderExportacionController']);
+Route::apiResources(['sliderproductos' => 'API\SliderProductosController']);
+Route::apiResources(['slidercalidad' => 'API\SliderCalidadController']);
+Route::apiResources(['sliderimpactosocial' => 'API\SliderImpactoSocialController']);
+Route::apiResources(['sliderrecursoshumanos' => 'API\SliderRecursosHumanosController']);
+Route::apiResources(['slidercontacto' => 'API\SliderContactoController']);
+
 Route::post('saveimageproducto','API\ImagenCorteController@saveImage');
 Route::get('allimagesproducto/{idproducto}','API\ImagenCorteController@allImagesProducto');
 Route::post('updateimageproducto/{idimagen}','API\ImagenCorteController@updateImage');
@@ -55,5 +65,17 @@ Route::post('deletecurriculum/{id}','API\PaginaRecursosHumanosController@deleteC
 
 Route::get('listcontactos','API\PaginaContactoController@listContactos');
 Route::post('deletecontacto/{id}','API\PaginaContactoController@deleteContacto');
+
+
+Route::get('allsliderinicio/{pagina_inicio_id}','API\SliderInicioController@getAll');
+Route::get('allsliderquienessomos/{quienes_somos_id}','API\SliderQuienesSomosController@getAll');
+Route::get('allsliderproduccion/{produccion_id}','API\SliderProduccionController@getAll');
+Route::get('allsliderexportacion/{exportacion_id}','API\SliderExportacionController@getAll');
+Route::get('allsliderproductos/{pagina_productos_id}','API\SliderProductosController@getAll');
+Route::get('allslidercalidad/{calidad_id}','API\SliderCalidadController@getAll');
+Route::get('allsliderimpactosocial/{impacto_social_id}','API\SliderImpactoSocialController@getAll');
+Route::get('allsliderrecursoshumanos/{pagina_recursos_humanos_id}','API\SliderRecursosHumanosController@getAll');
+Route::get('allslidercontacto/{pagina_contacto_id}','API\SliderContactoController@getAll');
+
 
 Route::get('storage/{filename}', 'InicioController@images');

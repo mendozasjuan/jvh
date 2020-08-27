@@ -21,12 +21,17 @@ class ProduccionController extends Controller
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
+        $carousel = $produccion->sliders->pluck('imagen')->all();
         return view('web.produccion')->with(
             [
                 'produccion' => $produccion,
                 'footer' => $footer,
                 'redessociales' => $redessociales,
                 'logo' => $logo,
+                'carousel' => [
+                    'alto' => '600px',
+                    'imagenes' => $carousel
+                ]
             ]);
     }
 }

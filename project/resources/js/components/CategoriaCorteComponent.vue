@@ -61,13 +61,28 @@
                     </button>
                 </div>
 
-<form @submit.prevent="editMode ? updateCategoria() : createCategoria()">
+<form role="form" @submit.prevent="updateCategoria">
 <div class="modal-body">
      <div class="form-group">
+        <label>Categoria (Español)</label>
         <input v-model="form.categoria" type="text" name="categoria"
             placeholder="Categoria"
             class="form-control" :class="{ 'is-invalid': form.errors.has('categoria') }">
         <has-error :form="form" field="categoria"></has-error>
+    </div>
+    <div class="form-group">
+        <label>Categoria (Chino)</label>
+        <input v-model="form.categoria_zh" type="text" name="categoria_zh"
+            placeholder="Categoria"
+            class="form-control" :class="{ 'is-invalid': form.errors.has('categoria_zh') }">
+        <has-error :form="form" field="categoria_zh"></has-error>
+    </div>
+    <div class="form-group">
+        <label>Categoria (Ingles)</label>
+        <input v-model="form.categoria_en" type="text" name="categoria_en"
+            placeholder="Categoria"
+            class="form-control" :class="{ 'is-invalid': form.errors.has('categoria_en') }">
+        <has-error :form="form" field="categoria_en"></has-error>
     </div>
 
 </div>
@@ -95,7 +110,10 @@
                 form: new Form({
                     id: '',
                     categoria : '',
-                })
+                    categoria_zh : '',
+                    categoria_en : '',
+                    _method:''
+                }),
             }
         },
         methods: {
@@ -104,10 +122,23 @@
            this.form.clear();
            this.editMode = true
            this.form.reset();
+
+           this.form.id=categoria.id;
+
+           this.form.categoria= typeof categoria.categoria === 'object' ? categoria.categoria.es : '';
+            this.form.categoria_zh= typeof categoria.categoria === 'object' ? categoria.categoria.zh : '';
+            this.form.categoria_en= typeof categoria.categoria === 'object' ? categoria.categoria.en : '';
+
            $('#addNew').modal('show');
-           this.form.fill(categoria)
         },
-        updateCategoria(){
+        updateCategoria(event){
+          if(!this.editMode)
+            return this.createCategoria(event);
+
+            this.$Progress.start()
+            let formData =  new FormData(event.target)
+
+
            this.form.put('api/categorias-corte/'+this.form.id)
                .then(()=>{
 
@@ -115,13 +146,17 @@
                       icon: 'success',
                       title: 'Categoria Actualizada con Exito'
                     })
+                   this.$Progress.finish()
 
                     Fire.$emit('AfterCreatedCategoriaLoadIt');
 
                     $('#addNew').modal('hide');
                })
-               .catch(()=>{
-                  console.log("Error.....")
+               .catch(error=>{
+                  if (error.response.status == 422) {
+                    this.form.errors = error.response.data;
+                    console.log(this.form.errors)
+                  }
                })
         },
         openModalWindow(){
@@ -137,11 +172,11 @@
 
         },
 
-        createCategoria(){
+        createCategoria(event){
 
             this.$Progress.start()
-
-            this.form.post('api/categorias-corte')
+            let formData =  new FormData(event.target)
+            axios.post('api/categorias-corte',formData)
                 .then(() => {
                    
                     Fire.$emit('AfterCreatedCategoriaLoadIt'); //custom events

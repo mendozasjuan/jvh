@@ -44,5 +44,10 @@ class Inicio extends Model
     	'seccion4_imagen_fondo',
     ];
 
+    public function sliders()
+    {
+        return $this->hasMany(SliderInicio::class,'pagina_inicio_id');
+    }
+
     }
 

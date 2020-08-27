@@ -15,7 +15,7 @@ class PaginaContactoController extends Controller
      */
     public function index()
     {
-        return PaginaContacto::first();
+        return PaginaContacto::with('sliders')->first();
     }
 
     /**
@@ -27,7 +27,7 @@ class PaginaContactoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'encabezado_imagen_fondo' => 'required',
+            //'encabezado_imagen_fondo' => 'required',
             'ciudad1' => 'required',
             'direccion1' => 'required',
             'telefonos1' => 'required',
@@ -50,12 +50,36 @@ class PaginaContactoController extends Controller
 
         $image = $this->storeImagenes($request);
 
-        $paginacontacto->setTranslations('ciudad1', ['es' => $request['ciudad1'],'zh' =>$request['ciudad1_zh'] ] )
-            ->setTranslations('direccion1', ['es' => $request['direccion1'],'zh' =>$request['direccion1_zh'] ] )
-            ->setTranslations('ciudad2', ['es' => $request['ciudad2'],'zh' =>$request['ciudad2_zh'] ] )
-            ->setTranslations('direccion2', ['es' => $request['direccion2'],'zh' =>$request['direccion2_zh'] ] )
-            ->setTranslations('contacto_titulo', ['es' => $request['contacto_titulo'],'zh' =>$request['contacto_titulo_zh'] ] )
-            ->setTranslations('contacto_descripcion', ['es' => $request['contacto_descripcion'],'zh' =>$request['contacto_descripcion_zh'] ] );
+        $paginacontacto->setTranslations('ciudad1', [
+            'es' => $request['ciudad1'],
+            'zh' =>$request['ciudad1_zh'],
+            'en' =>$request['ciudad1_en']
+        ] )
+            ->setTranslations('direccion1', [
+                'es' => $request['direccion1'],
+                'zh' =>$request['direccion1_zh'],
+                'en' =>$request['direccion1_en']
+             ] )
+            ->setTranslations('ciudad2', [
+                'es' => $request['ciudad2'],
+                'zh' =>$request['ciudad2_zh'],
+                'en' =>$request['ciudad2_en']
+            ] )
+            ->setTranslations('direccion2', [
+                'es' => $request['direccion2'],
+                'zh' =>$request['direccion2_zh'],
+                'en' =>$request['direccion2_en']
+            ] )
+            ->setTranslations('contacto_titulo', [
+                'es' => $request['contacto_titulo'],
+                'zh' =>$request['contacto_titulo_zh'],
+                'en' =>$request['contacto_titulo_en']
+            ] )
+            ->setTranslations('contacto_descripcion', [
+                'es' => $request['contacto_descripcion'],
+                'zh' =>$request['contacto_descripcion_zh'],
+                'en' =>$request['contacto_descripcion_en']
+            ] );
 
             $paginacontacto->telefonos1 = $request['telefonos1'];
             $paginacontacto->telefonos2 = $request['telefonos2'];
@@ -98,12 +122,36 @@ class PaginaContactoController extends Controller
         $image = $this->storeImagenes($request);
 
         $paginacontacto = PaginaContacto::findOrFail($id);
-         $paginacontacto->setTranslations('ciudad1', ['es' => $request['ciudad1'],'zh' =>$request['ciudad1_zh'] ] )
-            ->setTranslations('direccion1', ['es' => $request['direccion1'],'zh' =>$request['direccion1_zh'] ] )
-            ->setTranslations('ciudad2', ['es' => $request['ciudad2'],'zh' =>$request['ciudad2_zh'] ] )
-            ->setTranslations('direccion2', ['es' => $request['direccion2'],'zh' =>$request['direccion2_zh'] ] )
-            ->setTranslations('contacto_titulo', ['es' => $request['contacto_titulo'],'zh' =>$request['contacto_titulo_zh'] ] )
-            ->setTranslations('contacto_descripcion', ['es' => $request['contacto_descripcion'],'zh' =>$request['contacto_descripcion_zh'] ] );
+         $paginacontacto->setTranslations('ciudad1', [
+            'es' => $request['ciudad1'],
+            'zh' =>$request['ciudad1_zh'],
+            'en' =>$request['ciudad1_en']
+        ] )
+            ->setTranslations('direccion1', [
+                'es' => $request['direccion1'],
+                'zh' =>$request['direccion1_zh'],
+                'en' =>$request['direccion1_en']
+             ] )
+            ->setTranslations('ciudad2', [
+                'es' => $request['ciudad2'],
+                'zh' =>$request['ciudad2_zh'],
+                'en' =>$request['ciudad2_en']
+            ] )
+            ->setTranslations('direccion2', [
+                'es' => $request['direccion2'],
+                'zh' =>$request['direccion2_zh'],
+                'en' =>$request['direccion2_en']
+            ] )
+            ->setTranslations('contacto_titulo', [
+                'es' => $request['contacto_titulo'],
+                'zh' =>$request['contacto_titulo_zh'],
+                'en' =>$request['contacto_titulo_en']
+            ] )
+            ->setTranslations('contacto_descripcion', [
+                'es' => $request['contacto_descripcion'],
+                'zh' =>$request['contacto_descripcion_zh'],
+                'en' =>$request['contacto_descripcion_en']
+            ] );
 
             $paginacontacto->telefonos1 = $request['telefonos1'];
             $paginacontacto->telefonos2 = $request['telefonos2'];

@@ -22,6 +22,11 @@
                         <input v-model="form.ciudad1_zh" type="text" class="form-control" placeholder="Ingrese el Titulo" name="ciudad1_zh" :class="{ 'is-invalid': form.errors.has('ciudad1_zh') }">
                         <has-error :form="form" field="ciudad1_zh"></has-error>
                   </div>
+                  <div class="form-group">
+                        <label>Ciudad 1 (Ingles)</label>
+                        <input v-model="form.ciudad1_en" type="text" class="form-control" placeholder="Ingrese el Titulo" name="ciudad1_en" :class="{ 'is-invalid': form.errors.has('ciudad1_en') }">
+                        <has-error :form="form" field="ciudad1_en"></has-error>
+                  </div>
 
                   <div class="form-group">
                         <label>Direccion 1 (Español)</label>
@@ -35,6 +40,13 @@
                         <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('direccion1_zh') }" tag-name="textarea"  :editor="editor" v-model="form.direccion1_zh" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="direccion1_zh"></has-error>
+                  </div>
+
+                  <div class="form-group">
+                        <label>Direccion 1 (Ingles)</label>
+                        <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('direccion1_en') }" tag-name="textarea"  :editor="editor" v-model="form.direccion1_en" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="direccion1_en"></has-error>
                   </div>
 
                   <div class="form-group">
@@ -58,6 +70,12 @@
                         <has-error :form="form" field="ciudad2_zh"></has-error>
                   </div>
 
+                  <div class="form-group">
+                        <label>Ciudad 2 (Ingles)</label>
+                        <input v-model="form.ciudad2_en" type="text" class="form-control" placeholder="Ingrese el Titulo" name="ciudad2_en" :class="{ 'is-invalid': form.errors.has('ciudad2_en') }">
+                        <has-error :form="form" field="ciudad2_en"></has-error>
+                  </div>
+
 
                   <div class="form-group">
                         <label>Direccion 2 (Español)</label>
@@ -71,6 +89,13 @@
                         <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
                         <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('direccion2_zh') }" tag-name="textarea"  :editor="editor" v-model="form.direccion2_zh" :config="editorConfig"></ckeditor>
                         <has-error :form="form" field="direccion2_zh"></has-error>
+                  </div>
+
+                  <div class="form-group">
+                        <label>Direccion 2 (Ingles)</label>
+                        <!--<textarea v-model="form.seccion1_parrafo" class="form-control" rows="3" placeholder="Enter ..." :class="{ 'is-invalid': form.errors.has('seccion1_parrafo') }"></textarea>-->
+                        <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('direccion2_en') }" tag-name="textarea"  :editor="editor" v-model="form.direccion2_en" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="direccion2_en"></has-error>
                   </div>
 
                   <div class="form-group">
@@ -92,6 +117,12 @@
                         <label>Contacto Titulo (Chino)</label>
                         <input v-model="form.contacto_titulo_zh" type="text" class="form-control" placeholder="Ingrese el Titulo" name="contacto_titulo_zh" :class="{ 'is-invalid': form.errors.has('contacto_titulo_zh') }">
                         <has-error :form="form" field="contacto_titulo_zh"></has-error>
+                  </div>
+
+                  <div class="form-group">
+                        <label>Contacto Titulo (Ingles)</label>
+                        <input v-model="form.contacto_titulo_en" type="text" class="form-control" placeholder="Ingrese el Titulo" name="contacto_titulo_en" :class="{ 'is-invalid': form.errors.has('contacto_titulo_en') }">
+                        <has-error :form="form" field="contacto_titulo_en"></has-error>
                   </div>
 
 
@@ -142,14 +173,19 @@
                     direccion1 : '',
                     ciudad1_zh : '',
                     direccion1_zh : '',
+                    ciudad1_en : '',
+                    direccion1_en : '',
                     telefonos1 : '',
                     ciudad2 : '',
                     direccion2 : '',
                     ciudad2_zh : '',
                     direccion2_zh : '',
+                    ciudad2_en : '',
+                    direccion2_en : '',
                     telefonos2 : '',
                     contacto_titulo : '',
                     contacto_titulo_zh : '',
+                    contacto_titulo_en : '',
                     comercio_exterior : '',
                     area_comercial : '',
 
@@ -172,14 +208,19 @@
     				this.form.direccion1= typeof contactofooter.direccion1 === 'object' ? contactofooter.direccion1.es : '';
             this.form.ciudad1_zh= typeof contactofooter.ciudad1 === 'object' ? contactofooter.ciudad1.zh : '';
             this.form.direccion1_zh= typeof contactofooter.direccion1 === 'object' ? contactofooter.direccion1.zh : '';
+            this.form.ciudad1_en= typeof contactofooter.ciudad1 === 'object' ? contactofooter.ciudad1.en : '';
+            this.form.direccion1_en= typeof contactofooter.direccion1 === 'object' ? contactofooter.direccion1.en : '';
 
             this.form.ciudad2= typeof contactofooter.ciudad2 === 'object' ? contactofooter.ciudad2.es : '';
             this.form.direccion2= typeof contactofooter.direccion2 === 'object' ? contactofooter.direccion2.es : '';
             this.form.ciudad2_zh= typeof contactofooter.ciudad2 === 'object' ? contactofooter.ciudad2.zh : '';
             this.form.direccion2_zh= typeof contactofooter.direccion2 === 'object' ? contactofooter.direccion2.zh : '';
+            this.form.ciudad2_en= typeof contactofooter.ciudad2 === 'object' ? contactofooter.ciudad2.en : '';
+            this.form.direccion2_en= typeof contactofooter.direccion2 === 'object' ? contactofooter.direccion2.en : '';
 
             this.form.contacto_titulo= typeof contactofooter.contacto_titulo === 'object' ? contactofooter.contacto_titulo.es : '';
             this.form.contacto_titulo_zh= typeof contactofooter.contacto_titulo === 'object' ? contactofooter.contacto_titulo.zh : '';
+            this.form.contacto_titulo_en= typeof contactofooter.contacto_titulo === 'object' ? contactofooter.contacto_titulo.en : '';
 
             this.form.telefonos1 = contactofooter.telefonos1;
             this.form.telefonos2 = contactofooter.telefonos2;
@@ -206,8 +247,10 @@
            let formData =  new FormData(event.target)
            formData.append('direccion1',this.form.direccion1);
             formData.append('direccion1_zh',this.form.direccion1_zh);
+            formData.append('direccion1_en',this.form.direccion1_en);
             formData.append('direccion2',this.form.direccion2);
             formData.append('direccion2_zh',this.form.direccion2_zh);
+            formData.append('direccion2_en',this.form.direccion2_en);
             formData.append('telefonos1',this.form.telefonos1);
             formData.append('telefonos2',this.form.telefonos2);
 
@@ -235,8 +278,10 @@
             let formData =  new FormData(event.target)
             formData.append('direccion1',this.form.direccion1);
             formData.append('direccion1_zh',this.form.direccion1_zh);
+             formData.append('direccion1_en',this.form.direccion1_en);
             formData.append('direccion2',this.form.direccion2);
             formData.append('direccion2_zh',this.form.direccion2_zh);
+            formData.append('direccion2_en',this.form.direccion2_en);
             formData.append('telefonos1',this.form.telefonos1);
             formData.append('telefonos2',this.form.telefonos2);
 

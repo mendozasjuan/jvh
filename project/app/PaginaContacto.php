@@ -36,4 +36,9 @@ class PaginaContacto extends Model
         'coordenadas1',
         'coordenadas2',
     ];
+
+    public function sliders()
+    {
+        return $this->hasMany(SliderContacto::class,'pagina_contacto_id');
+    }
 }

@@ -15,8 +15,10 @@ Vue.filter("formatDate", function(date) {
 }); 
 
 Vue.filter("strippedContent", function(text) {
-
-	let regex = /(<([^>]+)>)/ig;
-  return text.replace(regex, "");
+	if(text!=null){
+		let regex = /(<([^>]+)>)/ig;
+  		return text.replace(regex, "");
+	}
+	
 
 });

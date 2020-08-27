@@ -96,6 +96,9 @@ footer p{
 	height: 201px;
 	background: transparent linear-gradient(180deg, #060505 0%, #06050500 100%) 0% 0% no-repeat padding-box;
 	margin-bottom: 14px;
+	position:absolute;
+	top:0;
+	width: 100%;
 }
 /*///////////////////////
 // End Hero Img
@@ -136,12 +139,21 @@ footer p{
 	background-color: #E51D2A;
 }
 
-.nav .linea{
-	border-top: 1px solid #E51D2A;
-	width: 40px;
-	margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
+
+a.nav-link:hover{
+	 text-decoration: none;
+    background-image: linear-gradient(#E51D2A, #E51D2A);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 50px 1px;
+}
+
+.linkActivo{
+	text-decoration: none;
+    background-image: linear-gradient(#E51D2A, #E51D2A);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 50px 1px;
 }
 
 .fa.fa-navicon {
@@ -423,4 +435,8 @@ footer img{
 	.redes-sociales {
 		justify-content: center;
 	}
+}
+
+.carousel-item img{
+	height: inherit;
 }

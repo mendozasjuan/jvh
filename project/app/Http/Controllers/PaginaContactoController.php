@@ -23,12 +23,17 @@ class PaginaContactoController extends Controller
         $footer = ContactoFooter::first();
         $redessociales = RedesSociales::first();
         $logo = Logo::first();
+        $carousel = $contacto->sliders->pluck('imagen')->all();
         return view('web.contacto')->with(
             [
                 'contacto' => $contacto,
                 'footer' => $footer,
                 'redessociales' => $redessociales,
                 'logo' => $logo,
+                'carousel' => [
+                    'alto' => '600px',
+                    'imagenes' => $carousel
+                ]
             ]
         );
     }
