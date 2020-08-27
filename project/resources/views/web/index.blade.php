@@ -87,7 +87,7 @@
 				</div>
 			</div>
 	</div>
-	<div id="h-seccion4" class="row">
+	<div id="h-seccion4" class="row" style="min-height: 428px;">
 		<div class="col-7 col-lg-4 col-xl-2">
 			<div class="lineavertical">
 				<h2>{{$inicio->seccion3_titulo}}<!--Mercados en el Mundo--></h2>

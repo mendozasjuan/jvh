@@ -77,7 +77,7 @@
 						<div class="col" >
 							<div class="row">
 								<div class="col-1"><i style="font-weight: bold; color:#E51D2A" class="fa fa-map-marker-alt "  aria-hidden="true"></i></div>
-								<div class="col"><span style="font-weight: bold; color:#E51D2A;">Dirección</span> 
+								<div class="col"><span style="font-weight: bold; color:#E51D2A;">@lang('textos.direccion')</span> 
 							{!! $contacto->direccion1!!}
 							<!--Paso 3030 (1752) Lomas del Mirador Buenos Aires--></div>
 							</div>
@@ -89,7 +89,7 @@
 							<div class="row">
 								<div class="col-1"><i style="font-weight: bold; color:#E51D2A" class="fas fa-phone-alt " aria-hidden="true"></i></div>
 								<div class="col">
-									<span style="font-weight: bold; color:#E51D2A">Llámenos al</span> 
+									<span style="font-weight: bold; color:#E51D2A">@lang('textos.llamenosal')</span> 
 							<!--+54 (11)) 4699-4424 +54 (11)) 4699-2882-->
 									<p>{!! $contacto->telefonos1!!}</p>
 								</div>
@@ -116,7 +116,7 @@
 							<div class="row">
 								<div class="col-1"><i style="font-weight: bold; color:#E51D2A" class="fa fa-map-marker-alt "  aria-hidden="true"></i></div>
 								<div class="col">
-									<span style="color:#E51D2A"><strong>Dirección</strong></span>
+									<span style="color:#E51D2A"><strong>@lang('textos.direccion')</strong></span>
 									<div class="datos_blanco" style="color:#fff">
 										{!! $contacto->direccion2!!}
 									</div>
@@ -132,7 +132,7 @@
 							<div class="row">
 								<div class="col-1"><i style="font-weight: bold; color:#E51D2A" class="fas fa-phone-alt " aria-hidden="true"></i></div>
 								<div class="col">
-									<span style="color:#E51D2A"><strong>Llámenos al</strong></span> 
+									<span style="color:#E51D2A"><strong>@lang('textos.llamenosal')</strong></span> 
 							<p class="datos_blanco">{!! $contacto->telefonos2!!}</p>
 								</div>
 							</div>
@@ -159,7 +159,7 @@
 						<i  class="far fa-envelope " aria-hidden="true"></i>
 					</div>
 					<div style="margin-left:5px;">
-						<span style="font-weight: bold;color:#E51D2A;">Comercio Exterior</span>
+						<span style="font-weight: bold;color:#E51D2A;">@lang('textos.comercioexterior')</span>
 					 	<br>{!! $contacto->comercio_exterior !!}<!--Jescudero@frigorificohv.com.ar-->
 					</div>
 				</div>
@@ -169,7 +169,7 @@
 						<i  class="far fa-envelope " aria-hidden="true"></i>
 					</div>
 					<div style="margin-left:5px;">
-						<span style="font-weight: bold;color:#E51D2A;">Área Comercial</span>
+						<span style="font-weight: bold;color:#E51D2A;">@lang('textos.areacomercial')</span>
 					 	<br>{!! $contacto->area_comercial !!}<!--dvigna@frigorificohv.com.ar-->
 					</div>
 				</div>
@@ -179,33 +179,33 @@
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="form-row mb-3">
 						<div class="form-group col mr-3">
-					      <input type="text" name="nombre" class="rounded-sm form-control" id="nombre" placeholder="Nombre" value="{{old('nombre')}}">
+					      <input type="text" name="nombre" class="rounded-sm form-control" id="nombre" placeholder="@lang('textos.nombre')" value="{{old('nombre')}}">
 					      <small  class="form-text text-danger">{{ $errors->first('nombre',':message') }}</small>
 					    </div>
 					    <div class="form-group col">
-					      <input type="text" name="apellido" class="rounded-sm form-control" id="apellido" placeholder="Apellido" value="{{old('apellido')}}">
+					      <input type="text" name="apellido" class="rounded-sm form-control" id="apellido" placeholder="@lang('textos.apellido')" value="{{old('apellido')}}">
 					      <small  class="form-text text-danger">{{ $errors->first('apellido',':message') }}</small>
 					    </div>
 					</div>
 					<div class="form-row mb-3">
 					    <div class="form-group col mr-3">
-					      <input type="email" name="correo" class="rounded-sm form-control" id="correo" placeholder="Correo Electronico" value="{{old('correo')}}">
+					      <input type="email" name="correo" class="rounded-sm form-control" id="correo" placeholder="@lang('textos.correoelectronico')" value="{{old('correo')}}">
 					      <small  class="form-text text-danger">{{ $errors->first('correo',':message') }}</small>
 					    </div>
 					    <div class="form-group col">
-					      <input type="text" name="telefono" class="rounded-sm form-control" id="telefono" placeholder="Teléfono" value="{{old('telefono')}}">
+					      <input type="text" name="telefono" class="rounded-sm form-control" id="telefono" placeholder="@lang('textos.telefono')" value="{{old('telefono')}}">
 					      <small  class="form-text text-danger">{{ $errors->first('telefono',':message') }}</small>
 					    </div>
 					</div>
 					<div class="form-row mb-3">
 					    <div class="form-group col">
-					      <textarea name="mensaje" class="rounded-sm form-control">{{old('mensaje') ? old('mensaje') : 'Mensaje' }}</textarea>
+					      <textarea name="mensaje" class="rounded-sm form-control">{{old('mensaje') ? old('mensaje') : __('textos.mensaje') }}</textarea>
 					      <small  class="form-text text-danger">{{ $errors->first('mensaje',':message') }}</small>
 					    </div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col">
-							<button class="btn boton float-right rounded-pill" type="submit">Enviar           <strong>></strong></button>
+							<button class="btn boton float-right rounded-pill" type="submit">@lang('textos.enviar')           <strong>></strong></button>
 						</div>
 					</div>
 				</form>

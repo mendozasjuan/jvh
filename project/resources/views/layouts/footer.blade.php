@@ -29,7 +29,7 @@
 										<i class="fa fa-map-marker-alt "  aria-hidden="true"></i>
 									</div>
 									<div class="col">
-										<span style="font-weight: bold;">Dirección</span><span style="color:#fff">
+										<span style="font-weight: bold;">@lang('textos.direccion')</span><span style="color:#fff">
 										{!! $footer->direccion1 !!}<!--Paso 3030 (1752) Lomas del Mirador Buenos Aires Argentina--></span>
 
 									</div>
@@ -45,7 +45,7 @@
 										<i class="fas fa-map-marker-alt "  aria-hidden="true"></i>
 									</div>
 									<div class="col">
-										<span style="font-weight: bold;">Dirección</span> <span style="color:#fff">
+										<span style="font-weight: bold;">@lang('textos.direccion')</span> <span style="color:#fff">
 										{!! $footer->direccion2 !!}<!--Ruta 35, Km 165 (8204) Bernasconi La Pampa - Argentina--></span>
 									</div>
 								</div>
@@ -58,7 +58,7 @@
 										<i class="far fa-envelope " aria-hidden="true"></i>
 									</div>
 									<div class="col">
-										<span style="font-weight: bold;">Comercio Exterior</span><p><span style="color:#fff">{!! $footer->comercio_exterior !!}</span><!--Jescudero@frigorificohv.com.ar--></p>
+										<span style="font-weight: bold;">@lang('textos.comercioexterior')</span><p><span style="color:#fff"><a style="color:#fff" href="mailto:{!! $footer->comercio_exterior !!}">{!! $footer->comercio_exterior !!}</a></span><!--Jescudero@frigorificohv.com.ar--></p>
 
 									</div>
 
@@ -74,7 +74,7 @@
 										<i class="fas fa-phone-alt " aria-hidden="true"></i>
 									</div>
 									<div class="col">
-										<span style="font-weight: bold;">Llámenos al</span><span style="color:#fff">
+										<span style="font-weight: bold;">@lang('textos.llamenosal')</span><span class="numeroTelefono" style="color:#fff">
 										{!! $footer->telefonos1 !!}<!--+54 (11)) 4699-4424 <br>+54 (11)) 4699-2882--></span>
 									</div>
 								</div>
@@ -86,7 +86,7 @@
 										<i class="fas fa-phone-alt " aria-hidden="true"></i>
 									</div>
 									<div class="col">
-										<span style="font-weight: bold;">Llámenos al</span><span style="color:#fff">
+										<span  style="font-weight: bold;">@lang('textos.llamenosal')</span><span class="numeroTelefono" style="color:#fff">
 									{!! $footer->telefonos2 !!}<!--+54 (11)) 4699-4424 <br>+54 (11)) 4699-2882--></span>
 									</div>
 								</div>
@@ -98,9 +98,9 @@
 										<i class="far fa-envelope " aria-hidden="true"></i>
 									</div>
 									<div class="col">
-										<span style="font-weight: bold;">Área Comercial</span><p>
+										<span style="font-weight: bold;">@lang('textos.areacomercial')</span><p>
 											<span style="color:#fff">
-										{!! $footer->area_comercial !!}<!--dvigna@frigorificohv.com.ar--></span>
+										<a style="color:#fff" href="mailto:{!! $footer->area_comercial !!}">{!! $footer->area_comercial !!}</a><!--dvigna@frigorificohv.com.ar--></span>
 										</p>
 									</div>
 								</div>

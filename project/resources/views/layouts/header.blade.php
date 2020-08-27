@@ -40,7 +40,7 @@
 			</div>
 			<div class="col col-sm-10">
 				<div class="row contacto justify-content-center justify-content-sm-end mr-3">
-					<a href="{{ url('contacto') }}">Contacto</a>
+					<a href="{{ url('contacto') }}">@lang('textos.contacto')</a>
 					<a class="{{ App::isLocale('es') ? 'localeActive' : ''}}" href="{{ url('lang', ['es']) }}">Es</a>
 					<a class="{{ App::isLocale('en') ? 'localeActive' : ''}}" href="{{ url('lang', ['en']) }}">En</a>
 					<a class="{{ App::isLocale('zh') ? 'localeActive' :''}}" href="{{ url('lang', ['zh']) }}">独</a>
@@ -59,39 +59,39 @@
 								<ul class="navbar-nav ">
 									<li class="nav-item">
 										<a class="nav-link {{ isset($activeLink) && $activeLink == 'quienessomos' ? 'linkActivo' : ''}}" href="{{ url('quienessomos') }}">
-										Quienes Somos
+										@lang('textos.quienessomos')
 										</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link {{ isset($activeLink) && $activeLink == 'produccion' ? 'linkActivo' : ''}}" href="{{ url('produccion') }}">
-											Producción
+											@lang('textos.produccion')
 										</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link {{ isset($activeLink) && $activeLink == 'exportacion' ? 'linkActivo' : ''}}" href="{{ url('exportacion') }}">
-											Exportación
+											@lang('textos.exportacion')
 										</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link {{ isset($activeLink) && $activeLink == 'productos' ? 'linkActivo' : ''}}" href="{{ url('productos') }}">
-											Productos
+											@lang('textos.productos')
 										</a>
 										
 									</li>
 									<li class="nav-item">
 										<a class="nav-link {{ isset($activeLink) && $activeLink == 'calidad' ? 'linkActivo' : ''}}" href="{{ url('calidad') }}">
-											Calidad
+											@lang('textos.calidad')
 										</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link {{ isset($activeLink) && $activeLink == 'impactosocial' ? 'linkActivo' : ''}}" href="{{ url('impactosocial') }}">
-											Impacto Social
+											@lang('textos.impactosocial')
 											<span class="linea "></span>
 										</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link {{ isset($activeLink) && $activeLink == 'recursoshumanos' ? 'linkActivo' :''}}" href="{{ url('recursoshumanos') }}">
-											Recursos Humanos
+											@lang('textos.recursoshumanos')
 										</a>
 									</li>
 								</ul>
@@ -136,13 +136,13 @@
 		</div>
 		<div class="collapse" id="collapseMenu" data-parent="#accordionMobileNavbar">
 			<div class="topnavbar-mobile__card">
-				<a href="{{ url('quienessomos') }}">Quienes Somos</a>
-				<a href="{{ url('produccion') }}">Producción</a>
-				<a href="{{ url('exportacion') }}">Exportación</a>
-				<a href="{{ url('productos') }}">Productos</a>
-				<a href="{{ url('calidad') }}">Calidad</a>
-				<a href="{{ url('impactosocial') }}">Impacto Social</a>
-				<a href="{{ url('recursoshumanos') }}">Recursos Humanos</a>
+				<a href="{{ url('quienessomos') }}">@lang('textos.quienessomos')</a>
+				<a href="{{ url('produccion') }}">@lang('textos.produccion')</a>
+				<a href="{{ url('exportacion') }}">@lang('textos.exportacion')</a>
+				<a href="{{ url('productos') }}">@lang('textos.productos')</a>
+				<a href="{{ url('calidad') }}">@lang('textos.calidad')</a>
+				<a href="{{ url('impactosocial') }}">@lang('textos.impactosocial')</a>
+				<a href="{{ url('recursoshumanos') }}">@lang('textos.recursoshumanos')</a>
 			</div>
 		</div>
 	</div>

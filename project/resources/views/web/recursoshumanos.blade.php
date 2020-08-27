@@ -39,6 +39,10 @@
 		#rh-seccion p{
 			color:#6E6F71;
 		}
+
+		.altoInput{
+			height: 60px!important;
+		}
     </style>
 @endsection
 
@@ -69,18 +73,18 @@
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="row" style="border-top: 2px solid #ccc;border-bottom: 2px solid #ccc;padding-top: 20px;padding-bottom: 50px;">
 				<div class="col-sm-10 col-lg-4">
-					<span style="font-weight: bold;color:#E51D2A;font-size: 17px;">DATOS PERSONALES</span>
-					<p style="color:#6E6F71;margin-top: 30px;margin-bottom:10px;font-size: 17px;">Foto</p>
+					<span style="font-weight: bold;color:#E51D2A;font-size: 17px;text-transform: uppercase;">@lang('textos.datospersonales')</span>
+					<p style="color:#6E6F71;margin-top: 30px;margin-bottom:10px;font-size: 17px;">@lang('textos.foto')</p>
 					<div  style="border: 1px solid #000; width: fit-content;margin-bottom: 20px;">
 						<div id="divFoto" style="background-color: #ccc;margin: 5px;width: 200px;height: 200px;" class="d-flex align-items-center justify content-center">
 							<p class="text-center" style="color:#E51D2A;font-size: 16px;">
-								TAMAÑO MAXIMO: 5MB FORMATO: JPG O PNG
+								@lang('textos.tamano') @lang('textos.formato')
 							</p>
 						</div>
 						<img style="border: 1px solid #ccc;margin: 5px;width: 200px;height: 200px;" id="imgFoto" src="" alt="" class="d-none">
 					</div>
 				
-					<label class="btn boton" for="foto">Seleccionar Archivo</label>
+					<label class="btn boton" for="foto">@lang('textos.seleccionararchivo')</label>
 					<input type="file" name="foto" style="display:none;" id="foto">
 					<small  class="form-text text-danger">{{ $errors->first('foto',':message') }}</small>
 
@@ -88,33 +92,33 @@
 				<div class="col" >
 						<div class="form-row mb-3">
 							<div class="form-group col-md-5 mr-3">
-						      <label for="nombre" class='etiqueta'>Nombre<sub>*</sub></label>
-						      <input type="text" name="nombre" class="h-75 rounded-sm form-control form-control-lg" id="nombre" placeholder="Ingresar nombre" value="{{old('nombre')}}">
+						      <label for="nombre" class='etiqueta'>@lang('textos.nombre')<sub>*</sub></label>
+						      <input type="text" name="nombre" class="altoInput rounded-sm form-control form-control-lg" id="nombre" placeholder="@lang('textos.ingresenombre')" value="{{old('nombre')}}">
 						      <small  class="form-text text-danger">{{ $errors->first('nombre',':message') }}</small>
 						    </div>
 						    <div class="form-group col-md-5">
-						      <label for="apellido" class='etiqueta'>Apellido<sub>*</sub></label>
-						      <input type="text" name="apellido" class="h-75 rounded-sm form-control form-control-lg" id="apellido" placeholder="Ingresar apellido" value="{{old('apellido')}}">
+						      <label for="apellido" class='etiqueta'>@lang('textos.apellido')<sub>*</sub></label>
+						      <input type="text" name="apellido" class="altoInput rounded-sm form-control form-control-lg" id="apellido" placeholder="@lang('textos.ingreseapellido')" value="{{old('apellido')}}">
 						      <small  class="form-text text-danger">{{ $errors->first('apellido',':message') }}</small>
 						    </div>
 						</div>
 						<div class="form-row mb-3">
 							<div class="form-group col-md-5 mr-3">
-						      <label for="telefono" class='etiqueta'>Teléfono<sub>*</sub></label>
-						      <input type="tel" name="telefono" class="h-75 rounded-sm form-control form-control-lg" id="telefono" placeholder="Ingresar teléfono" value="{{old('telefono')}}">
+						      <label for="telefono" class='etiqueta'>@lang('textos.telefono')<sub>*</sub></label>
+						      <input type="tel" name="telefono" class="altoInput rounded-sm form-control form-control-lg" id="telefono" placeholder="@lang('textos.ingresartelefono')" value="{{old('telefono')}}">
 						      <small  class="form-text text-danger">{{ $errors->first('telefono',':message') }}</small>
 						    </div>
 						    <div class="form-group col-md-5 mr-3">
-						      <label for="email" class='etiqueta'>Email<sub>*</sub></label>
-						      <input type="email" name="email" class="h-75 rounded-sm form-control form-control-lg" id="email" placeholder="Ingresar email" value="{{old('email')}}">
+						      <label for="email" class='etiqueta'>@lang('textos.email')<sub>*</sub></label>
+						      <input type="email" name="email" class="altoInput rounded-sm form-control form-control-lg" id="email" placeholder="Ingresar email" value="{{old('email')}}">
 						      <small  class="form-text text-danger">{{ $errors->first('email',':message') }}</small>
 						    </div>
 						</div>
 						<div class="form-row mb-3">
 							<div class="form-group col-md-5 mr-3">
-						      <label for="pais" class='etiqueta'>País de Residencia<sub>*</sub></label>
-						      <select id="pais" name="pais" class="h-75 rounded-sm form-control form-control-lg">
-						      	<option selected="selected" value="">Seleccione Pais</option>
+						      <label for="pais" class='etiqueta'>@lang('textos.paisderesidencia')<sub>*</sub></label>
+						      <select id="pais" name="pais" class="altoInput rounded-sm form-control form-control-lg">
+						      	<option selected="selected" value="">@lang('textos.seleccionepais')</option>
 						      	@foreach ($paises as $pais)
 										<option value="{{$pais->id}}" data-url={{route('getnacionalidad',['id' => $pais->id])}}>{{ $pais->pais_nac }}</option>
 								@endforeach
@@ -122,33 +126,33 @@
 						      <small  class="form-text text-danger">{{ $errors->first('pais',':message') }}</small>
 						    </div>
 						    <div class="form-group col-md-5 mr-3">
-						      <label for="nacionalidad" class='etiqueta'>Nacionalidad<sub>*</sub></label>
-						      <input type="text" id="nacionalidad" name="nacionalidad" class="h-75 rounded-sm form-control form-control-lg" id="nacionalidad" placeholder="Seleccione Pais" >
+						      <label for="nacionalidad" class='etiqueta'>@lang('textos.nacionalidad')<sub>*</sub></label>
+						      <input type="text" id="nacionalidad" name="nacionalidad" class="altoInput rounded-sm form-control form-control-lg" id="nacionalidad" placeholder="@lang('textos.seleccionepais')" >
 						      <small  class="form-text text-danger">{{ $errors->first('nacionalidad',':message') }}</small>
 						    </div>
 
 						</div>
 						<div class="form-row mb-3">
 							<div class="form-group col-md-5">
-						      <label for="dni" class='etiqueta'>(DNI) Documento de Identidad<sub>*</sub></label>
-						      <input type="text" name="dni" class="h-50 rounded-sm form-control form-control-lg" id="dni" placeholder="xxxxxxxx" value="{{old('dni')}}">
+						      <label for="dni" class='etiqueta'>@lang('textos.dni')<sub>*</sub></label>
+						      <input type="text" name="dni" class="altoInput rounded-sm form-control form-control-lg" id="dni" placeholder="" value="{{old('dni')}}">
 						      <small  class="form-text text-danger">{{ $errors->first('dni',':message') }}</small>
 						    </div>
 						</div>
 						<div class="form-row">
-							<label for="inputEmail4" class='etiqueta'>Fecha de Nacimiento<sub>*</sub></label>
+							<label for="inputEmail4" class='etiqueta'>@lang('textos.fechanacimiento')<sub>*</sub></label>
 						</div>
 						<div class="form-row">
 							<div class="col">
-								<input type="text" name="dia" class="h-75 rounded-sm form-control form-control-lg" id="dia" placeholder="Día" value="{{old('dia')}}">
+								<input type="text" name="dia"  class="altoInput rounded-sm form-control form-control-lg" id="dia" placeholder="@lang('textos.dia')" value="{{old('dia')}}">
 								<small  class="form-text text-danger">{{ $errors->first('dia',':message') }}</small>
 							</div>
 							<div class="col">
-								<input type="text" name="mes" class="h-75 rounded-sm form-control form-control-lg" id="mes" placeholder="Mes" value="{{old('mes')}}">
+								<input type="text" name="mes"  class="altoInput rounded-sm form-control form-control-lg" id="mes" placeholder="@lang('textos.mes')" value="{{old('mes')}}">
 								<small  class="form-text text-danger">{{ $errors->first('mes',':message') }}</small>
 							</div>
 							<div class="col">
-								<input type="text" name="ano" class="h-75 rounded-sm form-control form-control-lg" id="ano" placeholder="Año" value="{{old('ano')}}">
+								<input type="text" name="ano" class="altoInput rounded-sm form-control form-control-lg" id="ano" placeholder="@lang('textos.anio')" value="{{old('ano')}}">
 								<small  class="form-text text-danger">{{ $errors->first('ano',':message') }}</small>
 							</div>
 
@@ -157,14 +161,14 @@
 			</div>
 			<div class="row" >
 				<div class="col-sm-10 col-lg-4">
-					<span style="font-weight: bold;color:#E51D2A;font-size: 17px;">CURRICULUM</span>
+					<span style="font-weight: bold;color:#E51D2A;font-size: 17px;text-transform: uppercase;">@lang('textos.curriculum')</span>
 				</div>
 				<div class="col" >
-					<p style="color:#6E6F71;font-size: 17px;">Curriculum</p>
+					<p style="color:#6E6F71;font-size: 17px;">@lang('textos.curriculum')</p>
 					<input type="file" name="curriculum">
 					<small  class="form-text text-danger">{{ $errors->first('curriculum',':message') }}</small>
 
-					<input class="btn boton float-right" type="submit" name="submit">
+					<button class="btn boton float-right" type="submit">@lang('textos.enviar')</button>
 				</div>
 			</div>
 			</form>
