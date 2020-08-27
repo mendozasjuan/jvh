@@ -140,7 +140,7 @@
 		}
 		@media (max-width: 505px) {
 			.carousel-inner{
-				width: 20rem;
+				width: rem;
 	    		height: 20rem;
 			}
 			.contenedorImageIndicators{
@@ -191,7 +191,7 @@
 								<div class="carousel-inner detalle">
 									@if($producto->imagenes)
 										@foreach($producto->imagenes as $imagen)
-											<div class="carousel-item detalle {{ $loop->first ? 'active' : ''}}">
+											<div class="carousel-item w-100 h-100 detalle {{ $loop->first ? 'active' : ''}}">
 												<img class="d-block imageCarrousel w-100 h-100" src="{{ asset($imagen->imagen) }}">
 											</div>
 										@endforeach
