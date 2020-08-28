@@ -28,8 +28,8 @@
                       <tr v-for="corte in paginated('cortes')" :key="corte.id" >
                           <!--<tr v-for="corte in cortes.data" :key="corte.id">-->
                             <td>{{ corte.id }}</td>
-                            <td>{{ corte.nombre }}</td>
-                            <td>{{ corte.descripcion | strippedContent }}</td>
+                            <td>{{ corte.nombre.es }}</td>
+                            <td>{{ corte.descripcion.es | strippedContent }}</td>
                             <td>{{ corte.categoria.categoria.es }}</td>
                             <td>{{ corte.tamano_caja }}</td>
 
@@ -85,13 +85,31 @@
 
               <form @submit.prevent="editMode ? updateCorte() : createCorte()" enctype="multipart/form-data" id='form'>
                 <div class="modal-body">
-                   <div class="form-group">
+                  <div class="row">
+                    <div class="form-group">
                     <label for="nombre">Nombre</label>
                         <input v-model="form.nombre" type="text" name="nombre"
                             placeholder="Nombre"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('nombre') }">
                         <has-error :form="form" field="nombre"></has-error>
                     </div>
+                    <div class="form-group">
+                    <label for="nombre">Nombre (Chino)</label>
+                        <input v-model="form.nombre_zh" type="text" name="nombre_zh"
+                            placeholder="Nombre"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('nombre_zh') }">
+                        <has-error :form="form" field="nombre_zh"></has-error>
+                    </div>
+                    <div class="form-group">
+                    <label for="nombre">Nombre (Ingles)</label>
+                        <input v-model="form.nombre_en" type="text" name="nombre_en"
+                            placeholder="Nombre"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('nombre_en') }">
+                        <has-error :form="form" field="nombre_en"></has-error>
+                    </div>
+                  </div>
+
+                  <div class="row">
                     <div class="form-group">
                       <label for="descripcion">Descripcion</label>
                       <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('descripcion') }" tag-name="textarea"  :editor="editor" v-model="form.descripcion" :config="editorConfig"></ckeditor>
@@ -102,12 +120,48 @@
                         <has-error :form="form" field="descripcion"></has-error>
                     </div>
                     <div class="form-group">
+                      <label for="descripcion">Descripcion (Chino)</label>
+                      <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('descripcion_zh') }" tag-name="textarea"  :editor="editor" v-model="form.descripcion_zh" :config="editorConfig"></ckeditor>
+                        <!--<input v-model="form.descripcion" type="text" name="descripcion"
+                            placeholder="Descripcion"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('descripcion') }">-->
+                        <has-error :form="form" field="descripcion_zh"></has-error>
+                    </div>
+                    <div class="form-group">
+                      <label for="descripcion">Descripcion (Ingles)</label>
+                      <ckeditor class="col-md-10 form-control" :class="{ 'is-invalid': form.errors.has('descripcion_en') }" tag-name="textarea"  :editor="editor" v-model="form.descripcion_en" :config="editorConfig"></ckeditor>
+                        <has-error :form="form" field="descripcion_en"></has-error>
+                        <!--<input v-model="form.descripcion" type="text" name="descripcion"
+                            placeholder="Descripcion"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('descripcion') }">-->
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group">
                       <label for="tamano_caja">Tamaño de Caja</label>
                         <input v-model="form.tamano_caja" type="text" name="tamano_caja"
                             placeholder="Tamaño de Caja"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('tamano_caja') }">
                         <has-error :form="form" field="tamano_caja"></has-error>
                     </div>
+                    <div class="form-group">
+                      <label for="tamano_caja">Tamaño de Caja (Chino)</label>
+                        <input v-model="form.tamano_caja_zh" type="text" name="tamano_caja_zh"
+                            placeholder="Tamaño de Caja"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('tamano_caja_zh') }">
+                        <has-error :form="form" field="tamano_caja_zh"></has-error>
+                    </div>
+                    <div class="form-group">
+                      <label for="tamano_caja">Tamaño de Caja (Ingles)</label>
+                        <input v-model="form.tamano_caja_en" type="text" name="tamano_caja_en"
+                            placeholder="Tamaño de Caja"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('tamano_caja_en') }">
+                        <has-error :form="form" field="tamano_caja_en"></has-error>
+                    </div>
+                  </div>
+
+                  <div class="row">
                     <div class="form-group">
                       <label for="medidas">Medidas</label>
                         <input v-model="form.medidas" type="text" name="medidas"
@@ -116,12 +170,47 @@
                         <has-error :form="form" field="medidas"></has-error>
                     </div>
                     <div class="form-group">
+                      <label for="medidas_zh">Medidas (Chino)</label>
+                        <input v-model="form.medidas_zh" type="text" name="medidas_zh"
+                            placeholder="Medidas"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('medidas_zh') }">
+                        <has-error :form="form" field="medidas_zh"></has-error>
+                    </div>
+                    <div class="form-group">
+                      <label for="medidas_en">Medidas (Ingles)</label>
+                        <input v-model="form.medidas_en" type="text" name="medidas"
+                            placeholder="Medidas"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('medidas_en') }">
+                        <has-error :form="form" field="medidas_en"></has-error>
+                    </div>
+                  </div>
+                    
+                  
+                  <div class="row">
+                    <div class="form-group">
                       <label for="envasado">Envasado</label>
                         <input v-model="form.envasado" type="text" name="envasado"
                             placeholder="Envasado"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('envasado') }">
                         <has-error :form="form" field="envasado"></has-error>
                     </div>
+                    <div class="form-group">
+                      <label for="envasado_zh">Envasado (Chino)</label>
+                        <input v-model="form.envasado_zh" type="text" name="envasado_zh"
+                            placeholder="Envasado"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('envasado_zh') }">
+                        <has-error :form="form" field="envasado_zh"></has-error>
+                    </div>
+                    <div class="form-group">
+                      <label for="envasado_en">Envasado (Ingles)</label>
+                        <input v-model="form.envasado" type="text" name="envasado_en"
+                            placeholder="Envasado"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('envasado_en') }">
+                        <has-error :form="form" field="envasado_en"></has-error>
+                    </div>
+                  </div>
+
+                  <div class="row">
                     <div class="form-group">
                       <label for="piezas_por_caja">Piezas por Caja</label>
                         <input v-model="form.piezas_por_caja" type="text" name="piezas_por_caja"
@@ -130,6 +219,23 @@
                         <has-error :form="form" field="piezas_por_caja"></has-error>
                     </div>
                     <div class="form-group">
+                      <label for="piezas_por_caja_zh">Piezas por Caja (Chino)</label>
+                        <input v-model="form.piezas_por_caja_zh" type="text" name="piezas_por_caja_zh"
+                            placeholder="Piezas por Caja"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('piezas_por_caja_zh') }">
+                        <has-error :form="form" field="piezas_por_caja_zh"></has-error>
+                    </div>
+                    <div class="form-group">
+                      <label for="piezas_por_caja_en">Piezas por Caja (Ingles)</label>
+                        <input v-model="form.piezas_por_caja_en" type="text" name="piezas_por_caja_en"
+                            placeholder="Piezas por Caja"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('piezas_por_caja_en') }">
+                        <has-error :form="form" field="piezas_por_caja_en"></has-error>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group">
                       <label for="condiciones_termicas">Condiciones Termicas</label>
                         <input v-model="form.condiciones_termicas" type="text" name="condiciones_termicas"
                             placeholder="Condiciones Termicas"
@@ -137,12 +243,50 @@
                         <has-error :form="form" field="condiciones_termicas"></has-error>
                     </div>
                     <div class="form-group">
+                      <label for="condiciones_termicas_zh">Condiciones Termicas (Chino)</label>
+                        <input v-model="form.condiciones_termicas_zh" type="text" name="condiciones_termicas_zh"
+                            placeholder="Condiciones Termicas"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('condiciones_termicas_zh') }">
+                        <has-error :form="form" field="condiciones_termicas_zh"></has-error>
+                    </div>
+                    <div class="form-group">
+                      <label for="condiciones_termicas_en">Condiciones Termicas (Ingles)</label>
+                        <input v-model="form.condiciones_termicas_en" type="text" name="condiciones_termicas_en"
+                            placeholder="Condiciones Termicas"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('condiciones_termicas_en') }">
+                        <has-error :form="form" field="condiciones_termicas_en"></has-error>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group">
                       <label for="especificaciones">Especificaciones</label>
                         <input v-model="form.especificaciones" type="text" name="especificaciones"
                             placeholder="Especificaciones"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('especificaciones') }">
                         <has-error :form="form" field="especificaciones"></has-error>
                     </div>
+                    <div class="form-group">
+                      <label for="especificaciones_zh">Especificaciones (Chino)</label>
+                        <input v-model="form.especificaciones_zh" type="text" name="especificaciones_zh"
+                            placeholder="Especificaciones"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('especificaciones_zh') }">
+                        <has-error :form="form" field="especificaciones_zh"></has-error>
+                    </div>
+                    <div class="form-group">
+                      <label for="especificaciones_en">Especificaciones (Ingles)</label>
+                        <input v-model="form.especificaciones_en" type="text" name="especificaciones_en"
+                            placeholder="Especificaciones"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('especificaciones_en') }">
+                        <has-error :form="form" field="especificaciones_en"></has-error>
+                    </div>
+                    
+                  </div>
+                    
+                    
+                    
+                    
+                    
 
                     <div class="form-group">
                       <label for="categoria_corte_id">Categoria</label>
@@ -443,6 +587,26 @@
                     piezas_por_caja: '',
                     condiciones_termicas: '',
                     especificaciones: '',
+
+                    nombre_zh : '',
+                    descripcion_zh: '',
+                    tamano_caja_zh: '',
+                    medidas_zh: '',
+                    envasado_zh: '',
+                    piezas_por_caja_zh: '',
+                    condiciones_termicas_zh: '',
+                    especificaciones_zh: '',
+
+                    nombre_en : '',
+                    descripcion_en: '',
+                    tamano_caja_en: '',
+                    medidas_en: '',
+                    envasado_en: '',
+                    piezas_por_caja_en: '',
+                    condiciones_termicas_en: '',
+                    especificaciones_en: '',
+
+
                     categoria_corte_id: '',
                     imagen_corte: '',
                     imagen_etiquetado:'',
@@ -459,7 +623,41 @@
            this.editMode = true
            this.form.reset();
            $('#addNew').modal('show');
-           this.form.fill(corte)
+           //this.form.fill(corte)
+
+           this.form.id= corte.id;
+            this.form.categoria_corte_id = corte.categoria_corte_id;
+            this.form.imagen_corte= corte.imagen_corte;
+            this.form.imagen_etiquetado= corte.imagen_etiquetado;
+            this.form.imagen_packaging= corte.imagen_packaging;
+
+            this.form.nombre= typeof corte.nombre === 'object' ? corte.nombre.es : '';
+            this.form.descripcion= typeof corte.descripcion === 'object' ? corte.descripcion.es : '';
+            this.form.tamano_caja= typeof corte.tamano_caja === 'object' ? corte.tamano_caja.es : '';
+            this.form.medidas= typeof corte.medidas === 'object' ? corte.medidas.es : '';
+            this.form.envasado= typeof corte.envasado === 'object' ? corte.envasado.es : '';
+            this.form.piezas_por_caja= typeof corte.piezas_por_caja === 'object' ? corte.piezas_por_caja.es : '';
+            this.form.condiciones_termicas= typeof corte.condiciones_termicas === 'object' ? corte.condiciones_termicas.es : '';
+            this.form.especificaciones= typeof corte.especificaciones === 'object' ? corte.especificaciones.es : '';
+
+
+            this.form.nombre_zh= typeof corte.nombre === 'object' ? corte.nombre.zh : '';
+            this.form.descripcion_zh= typeof corte.descripcion === 'object' ? corte.descripcion.zh : '';
+            this.form.tamano_caja_zh= typeof corte.tamano_caja === 'object' ? corte.tamano_caja.zh : '';
+            this.form.medidas_zh= typeof corte.medidas === 'object' ? corte.medidas.zh : '';
+            this.form.envasado_zh= typeof corte.envasado === 'object' ? corte.envasado.zh : '';
+            this.form.piezas_por_caja_zh= typeof corte.piezas_por_caja === 'object' ? corte.piezas_por_caja.zh : '';
+            this.form.condiciones_termicas_zh= typeof corte.condiciones_termicas === 'object' ? corte.condiciones_termicas.zh : '';
+            this.form.especificaciones_zh= typeof corte.especificaciones === 'object' ? corte.especificaciones.zh : '';
+
+            this.form.texto_encabezado_en= typeof corte.nombre === 'object' ? corte.nombre.en : '';
+            this.form.texto_encabezado_en= typeof corte.descripcion === 'object' ? corte.descripcion.en : '';
+            this.form.texto_encabezado_en= typeof corte.tamano_caja === 'object' ? corte.tamano_caja.en : '';
+            this.form.texto_encabezado_en= typeof corte.medidas === 'object' ? corte.medidas.en : '';
+            this.form.texto_encabezado_en= typeof corte.envasado === 'object' ? corte.envasado.en : '';
+            this.form.texto_encabezado_en= typeof corte.piezas_por_caja === 'object' ? corte.piezas_por_caja.en : '';
+            this.form.texto_encabezado_en= typeof corte.condiciones_termicas === 'object' ? corte.condiciones_termicas.en : '';
+            this.form.texto_encabezado_en= typeof corte.especificaciones === 'object' ? corte.especificaciones.en : '';
         },
 
         addModalImagenesProductoWindow(corte){

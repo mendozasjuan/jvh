@@ -33,7 +33,7 @@ class CorteController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        /*$this->validate($request, [
             'nombre' => 'required',
             'descripcion' => 'required',
             'tamano_caja' => 'required',
@@ -44,11 +44,61 @@ class CorteController extends Controller
             'especificaciones' => 'required',
             'categoria_corte_id' => 'required'
 
-        ]);
+        ]);*/
+
+
+        $corte = new Corte;
+
+        
+        $corte->setTranslations('nombre', [
+            'es' => $request['nombre'],
+            'zh' =>$request['nombre_zh'],
+            'en' =>$request['nombre_en']
+         ] )
+        ->setTranslations('descripcion', [
+            'es' => $request['descripcion'],
+            'zh' =>$request['descripcion_zh'],
+            'en' =>$request['descripcion_en']
+         ] )
+        ->setTranslations('tamano_caja', [
+            'es' => $request['tamano_caja'],
+            'zh' =>$request['tamano_caja_zh'],
+            'en' =>$request['tamano_caja_en']
+         ] )
+        ->setTranslations('medidas', [
+            'es' => $request['medidas'],
+            'zh' =>$request['medidas_zh'],
+            'en' =>$request['medidas_en']
+         ] )
+         ->setTranslations('envasado', [
+            'es' => $request['envasado'],
+            'zh' =>$request['envasado_zh'],
+            'en' =>$request['envasado_en']
+         ] )
+         ->setTranslations('piezas_por_caja', [
+            'es' => $request['piezas_por_caja'],
+            'zh' =>$request['piezas_por_caja_zh'],
+            'en' =>$request['piezas_por_caja_en']
+         ] )
+         ->setTranslations('condiciones_termicas', [
+            'es' => $request['condiciones_termicas'],
+            'zh' =>$request['condiciones_termicas_zh'],
+            'en' =>$request['condiciones_termicas_en']
+         ] )
+         ->setTranslations('especificaciones', [
+            'es' => $request['especificaciones'],
+            'zh' =>$request['especificaciones_zh'],
+            'en' =>$request['especificaciones_en']
+         ] );
+
+         $corte->categoria_corte_id=$request['categoria_corte_id'];
+
+         $corte->save();
+
 
         
 
-        $corte = Corte::create([
+        /*$corte = Corte::create([
            'nombre' => $request['nombre'],
            'descripcion' => $request['descripcion'],
            'tamano_caja' => $request['tamano_caja'],
@@ -109,7 +159,7 @@ class CorteController extends Controller
                     'corte_id' => $corte->id
                 ]);
             }
-          }
+          }*/
 
         return $corte;
     }
@@ -134,7 +184,7 @@ class CorteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        /*$this->validate($request, [
             'nombre' => 'required',
             'descripcion' => 'required',
             'tamano_caja' => 'required',
@@ -143,18 +193,51 @@ class CorteController extends Controller
             'piezas_por_caja' => 'required',
             'condiciones_termicas' => 'required',
             'especificaciones' => 'required',
-        ]);
+        ]);*/
 
         $corte = Corte::findOrFail($id);
-        $corte->nombre = $request['nombre'];
-        $corte->descripcion = $request['descripcion'];
-        $corte->tamano_caja = $request['tamano_caja'];
-        $corte->medidas = $request['medidas'];
-        $corte->envasado = $request['envasado'];
-        $corte->piezas_por_caja = $request['piezas_por_caja'];
-        $corte->condiciones_termicas = $request['condiciones_termicas'];
-        $corte->especificaciones = $request['especificaciones'];
-        $corte->categoria_corte_id = $request['categoria_corte_id'];
+        $corte->setTranslations('nombre', [
+            'es' => $request['nombre'],
+            'zh' =>$request['nombre_zh'],
+            'en' =>$request['nombre_en']
+         ] )
+        ->setTranslations('descripcion', [
+            'es' => $request['descripcion'],
+            'zh' =>$request['descripcion_zh'],
+            'en' =>$request['descripcion_en']
+         ] )
+        ->setTranslations('tamano_caja', [
+            'es' => $request['tamano_caja'],
+            'zh' =>$request['tamano_caja_zh'],
+            'en' =>$request['tamano_caja_en']
+         ] )
+        ->setTranslations('medidas', [
+            'es' => $request['medidas'],
+            'zh' =>$request['medidas_zh'],
+            'en' =>$request['medidas_en']
+         ] )
+         ->setTranslations('envasado', [
+            'es' => $request['envasado'],
+            'zh' =>$request['envasado_zh'],
+            'en' =>$request['envasado_en']
+         ] )
+         ->setTranslations('piezas_por_caja', [
+            'es' => $request['piezas_por_caja'],
+            'zh' =>$request['piezas_por_caja_zh'],
+            'en' =>$request['piezas_por_caja_en']
+         ] )
+         ->setTranslations('condiciones_termicas', [
+            'es' => $request['condiciones_termicas'],
+            'zh' =>$request['condiciones_termicas_zh'],
+            'en' =>$request['condiciones_termicas_en']
+         ] )
+         ->setTranslations('especificaciones', [
+            'es' => $request['especificaciones'],
+            'zh' =>$request['especificaciones_zh'],
+            'en' =>$request['especificaciones_en']
+         ] );
+
+         $corte->categoria_corte_id=$request['categoria_corte_id'];
 
         $corte->update();
     }

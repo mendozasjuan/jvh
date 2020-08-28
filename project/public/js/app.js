@@ -3402,6 +3402,152 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3845,6 +3991,22 @@ __webpack_require__.r(__webpack_exports__);
         piezas_por_caja: '',
         condiciones_termicas: '',
         especificaciones: '',
+        nombre_zh: '',
+        descripcion_zh: '',
+        tamano_caja_zh: '',
+        medidas_zh: '',
+        envasado_zh: '',
+        piezas_por_caja_zh: '',
+        condiciones_termicas_zh: '',
+        especificaciones_zh: '',
+        nombre_en: '',
+        descripcion_en: '',
+        tamano_caja_en: '',
+        medidas_en: '',
+        envasado_en: '',
+        piezas_por_caja_en: '',
+        condiciones_termicas_en: '',
+        especificaciones_en: '',
         categoria_corte_id: '',
         imagen_corte: '',
         imagen_etiquetado: '',
@@ -3858,8 +4020,37 @@ __webpack_require__.r(__webpack_exports__);
       this.form.clear();
       this.editMode = true;
       this.form.reset();
-      $('#addNew').modal('show');
-      this.form.fill(corte);
+      $('#addNew').modal('show'); //this.form.fill(corte)
+
+      this.form.id = corte.id;
+      this.form.categoria_corte_id = corte.categoria_corte_id;
+      this.form.imagen_corte = corte.imagen_corte;
+      this.form.imagen_etiquetado = corte.imagen_etiquetado;
+      this.form.imagen_packaging = corte.imagen_packaging;
+      this.form.nombre = _typeof(corte.nombre) === 'object' ? corte.nombre.es : '';
+      this.form.descripcion = _typeof(corte.descripcion) === 'object' ? corte.descripcion.es : '';
+      this.form.tamano_caja = _typeof(corte.tamano_caja) === 'object' ? corte.tamano_caja.es : '';
+      this.form.medidas = _typeof(corte.medidas) === 'object' ? corte.medidas.es : '';
+      this.form.envasado = _typeof(corte.envasado) === 'object' ? corte.envasado.es : '';
+      this.form.piezas_por_caja = _typeof(corte.piezas_por_caja) === 'object' ? corte.piezas_por_caja.es : '';
+      this.form.condiciones_termicas = _typeof(corte.condiciones_termicas) === 'object' ? corte.condiciones_termicas.es : '';
+      this.form.especificaciones = _typeof(corte.especificaciones) === 'object' ? corte.especificaciones.es : '';
+      this.form.nombre_zh = _typeof(corte.nombre) === 'object' ? corte.nombre.zh : '';
+      this.form.descripcion_zh = _typeof(corte.descripcion) === 'object' ? corte.descripcion.zh : '';
+      this.form.tamano_caja_zh = _typeof(corte.tamano_caja) === 'object' ? corte.tamano_caja.zh : '';
+      this.form.medidas_zh = _typeof(corte.medidas) === 'object' ? corte.medidas.zh : '';
+      this.form.envasado_zh = _typeof(corte.envasado) === 'object' ? corte.envasado.zh : '';
+      this.form.piezas_por_caja_zh = _typeof(corte.piezas_por_caja) === 'object' ? corte.piezas_por_caja.zh : '';
+      this.form.condiciones_termicas_zh = _typeof(corte.condiciones_termicas) === 'object' ? corte.condiciones_termicas.zh : '';
+      this.form.especificaciones_zh = _typeof(corte.especificaciones) === 'object' ? corte.especificaciones.zh : '';
+      this.form.texto_encabezado_en = _typeof(corte.nombre) === 'object' ? corte.nombre.en : '';
+      this.form.texto_encabezado_en = _typeof(corte.descripcion) === 'object' ? corte.descripcion.en : '';
+      this.form.texto_encabezado_en = _typeof(corte.tamano_caja) === 'object' ? corte.tamano_caja.en : '';
+      this.form.texto_encabezado_en = _typeof(corte.medidas) === 'object' ? corte.medidas.en : '';
+      this.form.texto_encabezado_en = _typeof(corte.envasado) === 'object' ? corte.envasado.en : '';
+      this.form.texto_encabezado_en = _typeof(corte.piezas_por_caja) === 'object' ? corte.piezas_por_caja.en : '';
+      this.form.texto_encabezado_en = _typeof(corte.condiciones_termicas) === 'object' ? corte.condiciones_termicas.en : '';
+      this.form.texto_encabezado_en = _typeof(corte.especificaciones) === 'object' ? corte.especificaciones.en : '';
     },
     addModalImagenesProductoWindow: function addModalImagenesProductoWindow(corte) {
       this.loadImagenesProducto(corte.id);
@@ -71441,11 +71632,13 @@ var render = function() {
                     return _c("tr", { key: corte.id }, [
                       _c("td", [_vm._v(_vm._s(corte.id))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(corte.nombre))]),
+                      _c("td", [_vm._v(_vm._s(corte.nombre.es))]),
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(_vm._f("strippedContent")(corte.descripcion))
+                          _vm._s(
+                            _vm._f("strippedContent")(corte.descripcion.es)
+                          )
                         )
                       ]),
                       _vm._v(" "),
@@ -71642,380 +71835,1200 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "modal-body" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", { attrs: { for: "nombre" } }, [
-                          _vm._v("Nombre")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.nombre,
-                              expression: "form.nombre"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("nombre")
-                          },
-                          attrs: {
-                            type: "text",
-                            name: "nombre",
-                            placeholder: "Nombre"
-                          },
-                          domProps: { value: _vm.form.nombre },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "nombre" } }, [
+                            _vm._v("Nombre")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.nombre,
+                                expression: "form.nombre"
                               }
-                              _vm.$set(_vm.form, "nombre", $event.target.value)
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "nombre" }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", { attrs: { for: "descripcion" } }, [
-                          _vm._v("Descripcion")
-                        ]),
-                        _vm._v(" "),
-                        _c("ckeditor", {
-                          staticClass: "col-md-10 form-control",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("descripcion")
-                          },
-                          attrs: {
-                            "tag-name": "textarea",
-                            editor: _vm.editor,
-                            config: _vm.editorConfig
-                          },
-                          model: {
-                            value: _vm.form.descripcion,
-                            callback: function($$v) {
-                              _vm.$set(_vm.form, "descripcion", $$v)
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("nombre")
                             },
-                            expression: "form.descripcion"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "descripcion" }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "descripcion" }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", { attrs: { for: "tamano_caja" } }, [
-                          _vm._v("Tamaño de Caja")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.tamano_caja,
-                              expression: "form.tamano_caja"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("tamano_caja")
-                          },
-                          attrs: {
-                            type: "text",
-                            name: "tamano_caja",
-                            placeholder: "Tamaño de Caja"
-                          },
-                          domProps: { value: _vm.form.tamano_caja },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                            attrs: {
+                              type: "text",
+                              name: "nombre",
+                              placeholder: "Nombre"
+                            },
+                            domProps: { value: _vm.form.nombre },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "nombre",
+                                  $event.target.value
+                                )
                               }
-                              _vm.$set(
-                                _vm.form,
-                                "tamano_caja",
-                                $event.target.value
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "nombre" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "nombre" } }, [
+                            _vm._v("Nombre (Chino)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.nombre_zh,
+                                expression: "form.nombre_zh"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("nombre_zh")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "nombre_zh",
+                              placeholder: "Nombre"
+                            },
+                            domProps: { value: _vm.form.nombre_zh },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "nombre_zh",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "nombre_zh" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "nombre" } }, [
+                            _vm._v("Nombre (Ingles)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.nombre_en,
+                                expression: "form.nombre_en"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("nombre_en")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "nombre_en",
+                              placeholder: "Nombre"
+                            },
+                            domProps: { value: _vm.form.nombre_en },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "nombre_en",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "nombre_en" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "descripcion" } }, [
+                            _vm._v("Descripcion")
+                          ]),
+                          _vm._v(" "),
+                          _c("ckeditor", {
+                            staticClass: "col-md-10 form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("descripcion")
+                            },
+                            attrs: {
+                              "tag-name": "textarea",
+                              editor: _vm.editor,
+                              config: _vm.editorConfig
+                            },
+                            model: {
+                              value: _vm.form.descripcion,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "descripcion", $$v)
+                              },
+                              expression: "form.descripcion"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "descripcion" }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "descripcion" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "descripcion" } }, [
+                            _vm._v("Descripcion (Chino)")
+                          ]),
+                          _vm._v(" "),
+                          _c("ckeditor", {
+                            staticClass: "col-md-10 form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "descripcion_zh"
                               )
+                            },
+                            attrs: {
+                              "tag-name": "textarea",
+                              editor: _vm.editor,
+                              config: _vm.editorConfig
+                            },
+                            model: {
+                              value: _vm.form.descripcion_zh,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "descripcion_zh", $$v)
+                              },
+                              expression: "form.descripcion_zh"
                             }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "tamano_caja" }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", { attrs: { for: "medidas" } }, [
-                          _vm._v("Medidas")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.medidas,
-                              expression: "form.medidas"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("medidas")
-                          },
-                          attrs: {
-                            type: "text",
-                            name: "medidas",
-                            placeholder: "Medidas"
-                          },
-                          domProps: { value: _vm.form.medidas },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "medidas", $event.target.value)
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "medidas" }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", { attrs: { for: "envasado" } }, [
-                          _vm._v("Envasado")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.envasado,
-                              expression: "form.envasado"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("envasado")
-                          },
-                          attrs: {
-                            type: "text",
-                            name: "envasado",
-                            placeholder: "Envasado"
-                          },
-                          domProps: { value: _vm.form.envasado },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.form,
-                                "envasado",
-                                $event.target.value
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "descripcion_zh" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "descripcion" } }, [
+                            _vm._v("Descripcion (Ingles)")
+                          ]),
+                          _vm._v(" "),
+                          _c("ckeditor", {
+                            staticClass: "col-md-10 form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "descripcion_en"
                               )
+                            },
+                            attrs: {
+                              "tag-name": "textarea",
+                              editor: _vm.editor,
+                              config: _vm.editorConfig
+                            },
+                            model: {
+                              value: _vm.form.descripcion_en,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "descripcion_en", $$v)
+                              },
+                              expression: "form.descripcion_en"
                             }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "envasado" }
-                        })
-                      ],
-                      1
-                    ),
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "descripcion_en" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", { attrs: { for: "piezas_por_caja" } }, [
-                          _vm._v("Piezas por Caja")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.piezas_por_caja,
-                              expression: "form.piezas_por_caja"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("piezas_por_caja")
-                          },
-                          attrs: {
-                            type: "text",
-                            name: "piezas_por_caja",
-                            placeholder: "Piezas por Caja"
-                          },
-                          domProps: { value: _vm.form.piezas_por_caja },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "tamano_caja" } }, [
+                            _vm._v("Tamaño de Caja")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.tamano_caja,
+                                expression: "form.tamano_caja"
                               }
-                              _vm.$set(
-                                _vm.form,
-                                "piezas_por_caja",
-                                $event.target.value
-                              )
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("tamano_caja")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "tamano_caja",
+                              placeholder: "Tamaño de Caja"
+                            },
+                            domProps: { value: _vm.form.tamano_caja },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "tamano_caja",
+                                  $event.target.value
+                                )
+                              }
                             }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "piezas_por_caja" }
-                        })
-                      ],
-                      1
-                    ),
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "tamano_caja" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "tamano_caja" } }, [
+                            _vm._v("Tamaño de Caja (Chino)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.tamano_caja_zh,
+                                expression: "form.tamano_caja_zh"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "tamano_caja_zh"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "tamano_caja_zh",
+                              placeholder: "Tamaño de Caja"
+                            },
+                            domProps: { value: _vm.form.tamano_caja_zh },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "tamano_caja_zh",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "tamano_caja_zh" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "tamano_caja" } }, [
+                            _vm._v("Tamaño de Caja (Ingles)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.tamano_caja_en,
+                                expression: "form.tamano_caja_en"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "tamano_caja_en"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "tamano_caja_en",
+                              placeholder: "Tamaño de Caja"
+                            },
+                            domProps: { value: _vm.form.tamano_caja_en },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "tamano_caja_en",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "tamano_caja_en" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c(
-                          "label",
-                          { attrs: { for: "condiciones_termicas" } },
-                          [_vm._v("Condiciones Termicas")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.condiciones_termicas,
-                              expression: "form.condiciones_termicas"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: {
-                            "is-invalid": _vm.form.errors.has(
-                              "condiciones_termicas"
-                            )
-                          },
-                          attrs: {
-                            type: "text",
-                            name: "condiciones_termicas",
-                            placeholder: "Condiciones Termicas"
-                          },
-                          domProps: { value: _vm.form.condiciones_termicas },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "medidas" } }, [
+                            _vm._v("Medidas")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.medidas,
+                                expression: "form.medidas"
                               }
-                              _vm.$set(
-                                _vm.form,
-                                "condiciones_termicas",
-                                $event.target.value
-                              )
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("medidas")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "medidas",
+                              placeholder: "Medidas"
+                            },
+                            domProps: { value: _vm.form.medidas },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "medidas",
+                                  $event.target.value
+                                )
+                              }
                             }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: {
-                            form: _vm.form,
-                            field: "condiciones_termicas"
-                          }
-                        })
-                      ],
-                      1
-                    ),
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "medidas" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "medidas_zh" } }, [
+                            _vm._v("Medidas (Chino)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.medidas_zh,
+                                expression: "form.medidas_zh"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("medidas_zh")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "medidas_zh",
+                              placeholder: "Medidas"
+                            },
+                            domProps: { value: _vm.form.medidas_zh },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "medidas_zh",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "medidas_zh" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "medidas_en" } }, [
+                            _vm._v("Medidas (Ingles)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.medidas_en,
+                                expression: "form.medidas_en"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("medidas_en")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "medidas",
+                              placeholder: "Medidas"
+                            },
+                            domProps: { value: _vm.form.medidas_en },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "medidas_en",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "medidas_en" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", { attrs: { for: "especificaciones" } }, [
-                          _vm._v("Especificaciones")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.especificaciones,
-                              expression: "form.especificaciones"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: {
-                            "is-invalid": _vm.form.errors.has(
-                              "especificaciones"
-                            )
-                          },
-                          attrs: {
-                            type: "text",
-                            name: "especificaciones",
-                            placeholder: "Especificaciones"
-                          },
-                          domProps: { value: _vm.form.especificaciones },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "envasado" } }, [
+                            _vm._v("Envasado")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.envasado,
+                                expression: "form.envasado"
                               }
-                              _vm.$set(
-                                _vm.form,
-                                "especificaciones",
-                                $event.target.value
-                              )
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("envasado")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "envasado",
+                              placeholder: "Envasado"
+                            },
+                            domProps: { value: _vm.form.envasado },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "envasado",
+                                  $event.target.value
+                                )
+                              }
                             }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "especificaciones" }
-                        })
-                      ],
-                      1
-                    ),
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "envasado" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "envasado_zh" } }, [
+                            _vm._v("Envasado (Chino)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.envasado_zh,
+                                expression: "form.envasado_zh"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("envasado_zh")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "envasado_zh",
+                              placeholder: "Envasado"
+                            },
+                            domProps: { value: _vm.form.envasado_zh },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "envasado_zh",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "envasado_zh" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "envasado_en" } }, [
+                            _vm._v("Envasado (Ingles)")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.envasado,
+                                expression: "form.envasado"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("envasado_en")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "envasado_en",
+                              placeholder: "Envasado"
+                            },
+                            domProps: { value: _vm.form.envasado },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "envasado",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "envasado_en" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "piezas_por_caja" } }, [
+                            _vm._v("Piezas por Caja")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.piezas_por_caja,
+                                expression: "form.piezas_por_caja"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "piezas_por_caja"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "piezas_por_caja",
+                              placeholder: "Piezas por Caja"
+                            },
+                            domProps: { value: _vm.form.piezas_por_caja },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "piezas_por_caja",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "piezas_por_caja" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            { attrs: { for: "piezas_por_caja_zh" } },
+                            [_vm._v("Piezas por Caja (Chino)")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.piezas_por_caja_zh,
+                                expression: "form.piezas_por_caja_zh"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "piezas_por_caja_zh"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "piezas_por_caja_zh",
+                              placeholder: "Piezas por Caja"
+                            },
+                            domProps: { value: _vm.form.piezas_por_caja_zh },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "piezas_por_caja_zh",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "piezas_por_caja_zh"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            { attrs: { for: "piezas_por_caja_en" } },
+                            [_vm._v("Piezas por Caja (Ingles)")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.piezas_por_caja_en,
+                                expression: "form.piezas_por_caja_en"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "piezas_por_caja_en"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "piezas_por_caja_en",
+                              placeholder: "Piezas por Caja"
+                            },
+                            domProps: { value: _vm.form.piezas_por_caja_en },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "piezas_por_caja_en",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "piezas_por_caja_en"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            { attrs: { for: "condiciones_termicas" } },
+                            [_vm._v("Condiciones Termicas")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.condiciones_termicas,
+                                expression: "form.condiciones_termicas"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "condiciones_termicas"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "condiciones_termicas",
+                              placeholder: "Condiciones Termicas"
+                            },
+                            domProps: { value: _vm.form.condiciones_termicas },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "condiciones_termicas",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "condiciones_termicas"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            { attrs: { for: "condiciones_termicas_zh" } },
+                            [_vm._v("Condiciones Termicas (Chino)")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.condiciones_termicas_zh,
+                                expression: "form.condiciones_termicas_zh"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "condiciones_termicas_zh"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "condiciones_termicas_zh",
+                              placeholder: "Condiciones Termicas"
+                            },
+                            domProps: {
+                              value: _vm.form.condiciones_termicas_zh
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "condiciones_termicas_zh",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "condiciones_termicas_zh"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            { attrs: { for: "condiciones_termicas_en" } },
+                            [_vm._v("Condiciones Termicas (Ingles)")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.condiciones_termicas_en,
+                                expression: "form.condiciones_termicas_en"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "condiciones_termicas_en"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "condiciones_termicas_en",
+                              placeholder: "Condiciones Termicas"
+                            },
+                            domProps: {
+                              value: _vm.form.condiciones_termicas_en
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "condiciones_termicas_en",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "condiciones_termicas_en"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "especificaciones" } }, [
+                            _vm._v("Especificaciones")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.especificaciones,
+                                expression: "form.especificaciones"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "especificaciones"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "especificaciones",
+                              placeholder: "Especificaciones"
+                            },
+                            domProps: { value: _vm.form.especificaciones },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "especificaciones",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "especificaciones" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            { attrs: { for: "especificaciones_zh" } },
+                            [_vm._v("Especificaciones (Chino)")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.especificaciones_zh,
+                                expression: "form.especificaciones_zh"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "especificaciones_zh"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "especificaciones_zh",
+                              placeholder: "Especificaciones"
+                            },
+                            domProps: { value: _vm.form.especificaciones_zh },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "especificaciones_zh",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "especificaciones_zh"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            { attrs: { for: "especificaciones_en" } },
+                            [_vm._v("Especificaciones (Ingles)")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.especificaciones_en,
+                                expression: "form.especificaciones_en"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "especificaciones_en"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "especificaciones_en",
+                              placeholder: "Especificaciones"
+                            },
+                            domProps: { value: _vm.form.especificaciones_en },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "especificaciones_en",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "especificaciones_en"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
                     _vm._v(" "),
                     _c(
                       "div",

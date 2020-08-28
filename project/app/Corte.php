@@ -10,6 +10,19 @@ class Corte extends Model
     protected $table = 'corte';
     public $timestamps = false;
 
+    use HasTranslations;
+
+    protected $translatable = [
+        'nombre',
+        'descripcion',
+        'tamano_caja',
+        'medidas',
+        'envasado',
+        'piezas_por_caja',
+        'condiciones_termicas',
+        'especificaciones'
+    ];
+
     protected $fillable = [
         'nombre','descripcion','tamano_caja','medidas','envasado','piezas_por_caja','condiciones_termicas','especificaciones','categoria_corte_id'
     ];
