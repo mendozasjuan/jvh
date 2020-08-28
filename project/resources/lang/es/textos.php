@@ -55,7 +55,19 @@ return [
     'curriculum' => 'Curriculum',
     'enviar' => 'Enviar',
     'correoelectronico' => 'Correo Electronico',
-    'mensaje' => 'Mensaje'
+    'mensaje' => 'Mensaje',
+
+    //Detalle Productos
+    'tamanodecaja' => 'Tamaño de Caja',
+    'medidas' => 'Medidas',
+    'envasado' => 'Envasado',
+    'piezaporcaja' => 'Piezas por Caja',
+    'condicionestermicas' => 'Condiciones Termicas',
+    'especificaciones' => 'Especificaciones',
+
+    'packaging' => 'Embalaje',
+    'etiquetado' => 'Etiquetado',
+
 
 
 ];

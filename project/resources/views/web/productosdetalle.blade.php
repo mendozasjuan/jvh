@@ -244,24 +244,24 @@
 						<table class="table" >
 						  <thead>
 						    <tr>
-						      <th colspan="2" style="border-top: none; font-size:17px;">Especificaciones</th>
+						      <th colspan="2" style="border-top: none; font-size:17px;">@lang('textos.especificaciones')</th>
 						    </tr>
 						  </thead>
 						  <tbody style="color:#6E6F71; font-size: 14px;">
 						    <tr>
-						      <td>TAMAÑO DE CAJA </td>
+						      <td style="text-transform: uppercase;">@lang('textos.tamanodecaja')</td>
 						      <td>{{$producto->tamano_caja}}</td>
 						    </tr>
 						    <tr>
-						      <td>MEDIDAS</td>
+						      <td style="text-transform: uppercase;">@lang('textos.medidas')</td>
 						      <td>{{$producto->medidas}}</td>
 						    </tr>
 						    <tr>
-						      <td>ENVASADO</td>
+						      <td style="text-transform: uppercase;">@lang('textos.envasado')</td>
 						      <td>{{$producto->envasado}}</td>
 						    </tr>
 						    <tr>
-						      <td>PIEZAS POR CAJA</td>
+						      <td style="text-transform: uppercase;">@lang('textos.piezaporcaja')</td>
 						      <td>{{$producto->piezas_por_caja}}</td>
 						    </tr>
 						    <!--<tr>
@@ -269,11 +269,11 @@
 						      <td>{{$producto->descripcion}}</td>
 						    </tr>-->
 						    <tr>
-						      <td>CONDIONES TERMICAS</td>
+						      <td style="text-transform: uppercase;">@lang('textos.condicionestermicas')</td>
 						      <td>{{$producto->condiciones_termicas}}</td>
 						    </tr>
 						    <tr>
-						      <td>ESPECIFICACIONES</td>
+						      <td style="text-transform: uppercase;">@lang('textos.especificaciones')</td>
 						      <td>{{$producto->especificaciones}}</td>
 						    </tr>
 						  </tbody>
@@ -282,7 +282,7 @@
 				</div>
 				<div class="row" >
 					<div class="col" style="margin-right: 36px; width: 100%;">
-						<strong style="font-size: 17px;">Packaging</strong>
+						<strong style="font-size: 17px;">@lang('textos.packaging')</strong>
 						<hr style="margin-top: 12px;">
 						@foreach ($producto->etiquetados as $etiquetado)
 								<img style="width:200px" src="{{ asset($etiquetado->etiquetado)}}" alt="">
@@ -290,7 +290,7 @@
 						
 					</div>
 					<div class="col">
-						<strong style="font-size: 17px;">Etiquetado</strong>
+						<strong style="font-size: 17px;">@lang('textos.etiquetado')</strong>
 						<hr style="margin-top: 12px;">
 						@foreach ($producto->packagings as $packaging)
 								<img style="margin-right:12px; width: 200px;" src="{{ asset($packaging->packaging)}}" alt="">

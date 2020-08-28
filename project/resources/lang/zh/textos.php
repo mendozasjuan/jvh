@@ -55,7 +55,19 @@ return [
     'curriculum' => '恢復',
     'enviar' => '發送',
     'correoelectronico' => '電子郵件',
-    'mensaje' => '信息'
+    'mensaje' => '信息',
+
+
+     //Detalle Productos
+    'tamanodecaja' => '箱體尺寸',
+    'medidas' => '測量',
+    'envasado' => '填料',
+    'piezaporcaja' => '每箱件數',
+    'condicionestermicas' => '熱條件',
+    'especificaciones' => '眼鏡',
+
+    'packaging' => '打包',
+    'etiquetado' => '貼有標籤',
 
 
 ];

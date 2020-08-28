@@ -56,7 +56,19 @@ return [
     'curriculum' => 'Resume',
     'enviar' => 'Send',
     'correoelectronico' => 'Email',
-    'mensaje' => 'Message'
+    'mensaje' => 'Message',
+
+
+    //Detalle Productos
+    'tamanodecaja' => 'Box Size',
+    'medidas' => 'Measurements',
+    'envasado' => 'Packing',
+    'piezaporcaja' => 'Piece per Box',
+    'condicionestermicas' => 'Thermal Conditions',
+    'especificaciones' => 'Specs',
+
+    'packaging' => 'Packaging',
+    'etiquetado' => 'Labelled',
 
 
 ];
