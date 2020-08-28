@@ -62,6 +62,34 @@
 		    margin-top: 25px;
 		    margin-left: 40px;
 		}
+
+		.img-mapa{
+			position: absolute;
+		    right: 0;
+		}
+
+		@media (max-width: 768px) {
+			.img-mapa{
+				display: none;
+			}
+		}
+
+		
+		@media screen and (min-width: 769px) and (max-width: 1000px) { 
+			.img-mapa{
+				display: block;
+				width: 150%;
+				top:20%; 
+			}
+		}
+
+		@media (min-width: 1001px) {
+			.img-mapa{
+				display: block;
+				width: 130%;
+				top:10%; 
+			}
+		}
     </style>
 @endsection
 
@@ -79,9 +107,9 @@
 
 @section('secciones')
 		<!--<section>-->
-	<div id="h-seccion4" class="row mb-4">
-		<div class="col-7 col-lg-4 col-xl-2">
-			<div class="lineavertical">
+	<div id="h-seccion4" class="row mb-4" style="min-height: 428px;">
+		<div class="col-10 col-md-5 col-lg-4 col-xl-3">
+			<div class="lineavertical" style="z-index: 1;">
 				<h2>{!! $exportacion->seccion1_titulo !!}<!--Mercados en el Mundo--></h2>
 				{!! $exportacion->seccion1_parrafo !!}
 				<!--<p style="color:#6E6F71">
@@ -89,9 +117,11 @@
 				</p>-->
 			</div>
 		</div>
-		<div class="col">
+		<div class="col" style="overflow: hidden;">
 			<!--<img class="float-right" src="img/map.svg">-->
-			<img class="float-right" src="{{ asset($exportacion->seccion1_imagen) }}" style="width: 100%; height: 100%">
+			
+			<!--<img class="float-right img-mapa" src="{{ asset($exportacion->seccion1_imagen) }}" >-->
+			<img class="float-right img-mapa" src="https://osolelaravel.com/jvh/public/img/ZiDGVCyCJ8ytkFcir1xP11bXoIuclFVtftSbldQ8.png" >
 		</div>
 
 	</div>	
@@ -100,7 +130,7 @@
 		<div class="negro">
 
 		</div>
-		<div style="height: 100%; padding-top: 76px; padding-bottom: 70px;" class="row align-items-center" >
+		<div style="height: 100%; padding-top: 76px; padding-bottom: 70px;" class="row" >
 			<div class="col">
 				<div class="row">
 					<div class="col dividir">

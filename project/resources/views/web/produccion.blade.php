@@ -17,15 +17,17 @@
 		}
 
 		#h-seccion3{
-			height: 100%;
-			background: transparent url("{{ asset($produccion->seccion3_imagen_fondo) }}") no-repeat center center;
+			height: 400px;
+			/*background: transparent url("{{ asset($produccion->seccion3_imagen_fondo) }}") no-repeat center center;*/
 			opacity:1;
 			color:#fff;
 			padding-right: 38px;
-			background-size: cover;
+			/*background-size: cover;*/
 			margin-right: auto;
 			position: relative;
 			width: 100%;
+			overflow: hidden;
+			padding-bottom: 56.25%; /* 16:9 */
 		}
 
 		#p-seccion1{
@@ -37,15 +39,30 @@
 			color:#fff;
 		}
 
-		/*.video-foreground,
-		.video-background iframe {
-		  position: absolute;
-		  top: 0;
-		  left: 0;
-		  width: 100%;
-		  height: 100%;
-		  pointer-events: none;
-		}*/
+		#myVideo {
+
+  /*padding-bottom: 56.25%; /* 16:9 */
+
+	width: 100%;
+  	height: 100%;
+	position: absolute;
+	 object-fit: cover;
+	top:0;
+}
+
+.videocontenedor {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.videocontenedor video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
     </style>
 @endsection
@@ -106,11 +123,15 @@
 
 			</div>
 			<div  id="h-seccion3">
-				<!--<div class="video-background">
-				    <div class="video-foreground">
-				     
-				    </div>
-				</div>-->
+				<div id="videocontenedor">
+					<video id="myVideo" autoplay muted loop>
+						  <source src="img/FrigorificoBernasconi.mp4" type="video/mp4">
+						</video>
+				</div>
+				  
+						
+				 
+				
 				<div class="negro">
 
 				</div>

@@ -20,11 +20,11 @@
 
 		#h-seccion3{
 			height: 100%;
-			background: transparent url("{{ asset($inicio->seccion2_imagen_fondo) }}") no-repeat center center;
+			/*background: transparent url("{{ asset($inicio->seccion2_imagen_fondo) }}") no-repeat center center;*/
 			opacity:1;
 			color:#fff;
 			padding-right: 38px;
-			background-size: cover;
+			/*background-size: cover;*/
 			margin-right: auto;
 			position: relative;
 			width: 100%;
@@ -38,6 +38,44 @@
 			position: relative;
 		}
 
+		#myVideo {
+
+  /*padding-bottom: 56.25%; /* 16:9 */
+
+	width: 100%;
+  	height: 100%;
+	position: absolute;
+	 object-fit: cover;
+	top:0;
+}
+
+.img-mapa{
+			position: absolute;
+		    right: 0;
+		}
+
+		@media (max-width: 768px) {
+			.img-mapa{
+				display: none;
+			}
+		}
+
+		
+		@media screen and (min-width: 769px) and (max-width: 1000px) { 
+			.img-mapa{
+				display: block;
+				width: 150%;
+				top:20%; 
+			}
+		}
+
+		@media (min-width: 1001px) {
+			.img-mapa{
+				display: block;
+				width: 130%;
+				top:10%; 
+			}
+		}
 
     </style>
 @endsection
@@ -77,6 +115,9 @@
 	</div>
 
 	<div  id="h-seccion3" >
+		<video id="myVideo" autoplay muted loop>
+						  <source src="img/videopromohome.mp4" type="video/mp4">
+						</video>
 		<div class="negro">
 
 		</div>
@@ -87,17 +128,18 @@
 				</div>
 			</div>
 	</div>
-	<div id="h-seccion4" class="row" style="min-height: 428px;">
-		<div class="col-7 col-lg-4 col-xl-2">
+	<div id="h-seccion4" class="row" style="min-height: 428px;" style="z-index: 1;">
+		<div class="col-10 col-md-5 col-lg-4 col-xl-3">
 			<div class="lineavertical">
 				<h2>{{$inicio->seccion3_titulo}}<!--Mercados en el Mundo--></h2>
 					{!! $inicio->seccion3_parrafo !!}
 					<!--Cuenta con todos los permisos y certificaciones necesarios para exportar a la unión europea, israel, suiza, rusia, hong kong, brasil y sudáfrica entre otros.-->
 			</div>
 		</div>
-		<div class="col">
+		<div class="col" style="overflow: hidden;">
 			<!--<img class="float-right" src="img/map.svg">-->
-			<img class="float-right" src="{{ asset($inicio->seccion3_imagen) }}">
+			<!--<img class="float-right" src="{{ asset($inicio->seccion3_imagen) }}">-->
+			<img class="float-right img-mapa" src="https://osolelaravel.com/jvh/public/img/ZiDGVCyCJ8ytkFcir1xP11bXoIuclFVtftSbldQ8.png" >
 		</div>
 
 	</div>

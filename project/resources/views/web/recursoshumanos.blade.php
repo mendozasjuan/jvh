@@ -110,7 +110,7 @@
 						    </div>
 						    <div class="form-group col-md-5 mr-3">
 						      <label for="email" class='etiqueta'>@lang('textos.email')<sub>*</sub></label>
-						      <input type="email" name="email" class="altoInput rounded-sm form-control form-control-lg" id="email" placeholder="Ingresar email" value="{{old('email')}}">
+						      <input type="email" name="email" class="altoInput rounded-sm form-control form-control-lg" id="email" placeholder="@lang('textos.ingresaremail')" value="{{old('email')}}">
 						      <small  class="form-text text-danger">{{ $errors->first('email',':message') }}</small>
 						    </div>
 						</div>

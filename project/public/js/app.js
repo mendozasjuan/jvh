@@ -104895,8 +104895,8 @@ var imagesRootPath = 'storage/';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\xampp\htdocs\jvhs\project\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\xampp\htdocs\jvhs\project\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/jvhs/project/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/jvhs/project/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
