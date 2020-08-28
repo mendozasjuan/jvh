@@ -139,7 +139,7 @@
 		<div class="col" style="overflow: hidden;">
 			<!--<img class="float-right" src="img/map.svg">-->
 			<!--<img class="float-right" src="{{ asset($inicio->seccion3_imagen) }}">-->
-			<img class="float-right img-mapa" src="https://osolelaravel.com/jvh/public/img/ZiDGVCyCJ8ytkFcir1xP11bXoIuclFVtftSbldQ8.png" >
+			<img class="float-right img-mapa" src="{{ asset($inicio->seccion3_imagen) }}" >
 		</div>
 
 	</div>

@@ -83,7 +83,7 @@
 						</div>
 						@foreach ($categorias as $categoria)
 							<div class="col-12 col-md-4 text-center">
-								<p style="font-size: 16px;letter-spacing: 1.5px;font-weight: 600;">{{ $categoria->categoria }}<!--CUARTO TRASERO--></p>
+								<p style="font-size: 16px;letter-spacing: 1.5px;font-weight: 600;text-transform: uppercase;">{{ $categoria->categoria }}<!--CUARTO TRASERO--></p>
 								<p>
 									@foreach ($categoria->cortes as $corte)
 										<a style="text-decoration: none; color:#fff" href="{{route('productosdetalle',['id' => $corte->id])}}">{{ $corte->nombre }}</a><br>

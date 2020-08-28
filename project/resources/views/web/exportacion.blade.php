@@ -121,7 +121,7 @@
 			<!--<img class="float-right" src="img/map.svg">-->
 			
 			<!--<img class="float-right img-mapa" src="{{ asset($exportacion->seccion1_imagen) }}" >-->
-			<img class="float-right img-mapa" src="https://osolelaravel.com/jvh/public/img/ZiDGVCyCJ8ytkFcir1xP11bXoIuclFVtftSbldQ8.png" >
+			<img class="float-right img-mapa" src="{{ asset($exportacion->seccion1_imagen) }}" >
 		</div>
 
 	</div>	
