@@ -74,7 +74,7 @@
 
 		</div>
 		<div class="row" style="margin-right: auto;">
-			<div class="col-12 col-xl-3">
+			<div class="col-12 col-xl-5">
 				<h2>{!! $impactosocial->seccion2_titulo !!}<!--"Nos sentimos muy agradecidos de tener la oportunidad de contribuir al desarrollo social y económico en las comunidades donde trabajamos"--></h2>
 			</div>
 		</div>

@@ -67,8 +67,8 @@ return [
     'condicionestermicas' => 'Thermal Conditions',
     'especificaciones' => 'Specs',
 
-    'packaging' => 'Packaging',
-    'etiquetado' => 'Labelled',
+    'packaging' => 'Labelled',
+    'etiquetado' => 'Packaging',
 
 
 ];

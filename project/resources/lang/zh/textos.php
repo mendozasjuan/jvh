@@ -66,8 +66,8 @@ return [
     'condicionestermicas' => '熱條件',
     'especificaciones' => '眼鏡',
 
-    'packaging' => '打包',
-    'etiquetado' => '貼有標籤',
+    'packaging' => '貼有標籤',
+    'etiquetado' => '打包',
 
 
 ];

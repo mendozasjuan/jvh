@@ -65,8 +65,8 @@ return [
     'condicionestermicas' => 'Condiciones Termicas',
     'especificaciones' => 'Especificaciones',
 
-    'packaging' => 'Embalaje',
-    'etiquetado' => 'Etiquetado',
+    'packaging' => 'Etiquetado',
+    'etiquetado' => 'Embalaje',
 
 
 
