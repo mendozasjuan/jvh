@@ -161,13 +161,13 @@
 				<div class="miacordion" id="accordionExample">
 					@foreach ($categorias as $categoria)
 						<div class="card box-shadow-0">
-							<div class="card-header {{ $loop->first ? 'collapsed-acordion' : 'nocollapsed-acordion' }}" id="heading{{$categoria->id}}">
+							<div class="card-header nocollapsed-acordion" id="heading{{$categoria->id}}">
 						        <a class="text-left" href="#" data-toggle="collapse" data-target="#collapse{{$categoria->id}}" aria-expanded="true" aria-controls="collapse{{$categoria->id}}">
 						          	{{ $categoria->categoria }}<!--CUARTO TRASERO-->
 						        </a>
 							      
 							    </div>
-							    <div id="collapse{{$categoria->id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+							    <div id="collapse{{$categoria->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 							      <div class="card-body">
 							        <ul class="list-group list-group-flush">
 									@foreach ($categoria->cortes->sortBy('nombre') as $corte)
@@ -332,6 +332,9 @@
 @section('scripts')
 <script type="text/javascript">
 	$(document).ready(function(){
+		$("#accordionExample").find('.linkactive').parents('.collapse').addClass('show')
+		$("#accordionExample").find('.linkactive').parents('.card').find('.card-header').removeClass('nocollapsed-acordion').addClass('collapsed-acordion')
+
 		$('.collapse').on('hidden.bs.collapse', function () {
 			$(this).parent().find('.card-header').removeClass('collapsed-acordion').addClass('nocollapsed-acordion');
 		})
