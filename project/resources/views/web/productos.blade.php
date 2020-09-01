@@ -14,11 +14,12 @@
 
 		#p-seccion1{
 			width: 100%;
-			height: 550px;
+			/*height: 550px;*/
 			background: transparent url("{{ asset($productos->seccion1_imagen_fondo) }}") 0% 0% no-repeat padding-box;
 			opacity: 1;
 			position: relative;
 			background-size: cover;
+			padding-bottom: 40px;
 		}
 		.item-product{
 			height: 100%;
@@ -76,13 +77,13 @@
 	<div id="p-seccion1">
 					<div class="negro"></div>
 					<div style="height: 100%; padding-top: 38px;" class="row" >
-						<div class="col-12 col-md-4 text-center" >
+						<div class="col-12 col-md-4 text-center mb-5" >
 							<h2 style="margin-left: 90px; padding-left: 20px; border-left: 3px solid #fff;">{!! $productos->seccion1_titulo!!}<!--Catálogo de cortes--></h2>
 							<!--<img src="{{ asset('img/vaca-1.png') }}" alt="">-->
 							<img src="{{ asset($productos->seccion1_imagen) }}" alt="">
 						</div>
 						@foreach ($categorias as $categoria)
-							<div class="col-12 col-md-4 text-center">
+							<div class="col-12 col-md-4 text-center mb-5">
 								<p style="font-size: 16px;letter-spacing: 1.5px;font-weight: 600;text-transform: uppercase;">{{ $categoria->categoria }}<!--CUARTO TRASERO--></p>
 								<p>
 									@foreach ($categoria->cortes as $corte)

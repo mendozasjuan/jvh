@@ -118,7 +118,10 @@
 </div>
 <div class="topnavbar-mobile">
 	<div class="topnavbar-mobile__button" data-toggle="collapse" href="#collapseLang" role="button" aria-expanded="false" aria-controls="collapseLang">
-		{{ strtoupper('es') }} <i class="fas fa-caret-down"></i>
+		<div class="{{ !App::isLocale('es') ? 'd-none' :'d-block'}}">{{ strtoupper('es') }}</div>
+		<div class="{{ !App::isLocale('en') ? 'd-none' :'d-block'}}">{{ strtoupper('en') }}</div>
+		<div class="{{ !App::isLocale('zh') ? 'd-none' :'d-block'}}">独</div>
+		 <i class="fas fa-caret-down"></i>
 	</div>
 	<a class="topnavbar-mobile__logo" href="{{ url('/') }}">
 		<img src="{{ asset($logotipo->logo) }}">
@@ -131,7 +134,7 @@
 			<div class="topnavbar-mobile__card">
 				<a href="{{ url('lang', ['es']) }}">ES</a>
 				<a href="{{ url('lang', ['en']) }}">EN</a>
-				<a href="{{url('lang', ['zh']) }}">独</a>
+				<a class="{{ App::isLocale('zh') ? 'active' :''}}" href="{{url('lang', ['zh']) }}">独</a>
 			</div>
 		</div>
 		<div class="collapse" id="collapseMenu" data-parent="#accordionMobileNavbar">
