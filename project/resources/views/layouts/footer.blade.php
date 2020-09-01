@@ -1,6 +1,6 @@
 <footer>
 				<div class="row align-items-center" style="margin-right: auto;">
-					<div class="col">
+					<div class="col mb-5">
 						<div class="row justify-content-sm-center">
 
 								<img src="{{ asset($logo->logo) }}" alt="">

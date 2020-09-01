@@ -372,7 +372,8 @@ footer img{
 .topnavbar-mobile {
 	display: none;
 }
-@media (max-width: 575.98px) {
+/*@media (max-width: 575.98px) {*/
+@media (max-width: 991px) {
 	.topnavbar-desktop__row {
 		display: none;
 	}
